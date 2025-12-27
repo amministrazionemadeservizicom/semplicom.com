@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://semplicom.com/sitemap.xml
+
+# Disallow pages that don't need indexing
+Disallow: /assets/
