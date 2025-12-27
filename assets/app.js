@@ -10,7 +10,6 @@
     const navToggle = document.getElementById('navToggle');
     const nav = document.getElementById('nav');
     const navLinks = document.querySelectorAll('.nav-link');
-    const pricingToggle = document.getElementById('pricingToggle');
     const faqQuestions = document.querySelectorAll('.faq-question');
     const contactForm = document.getElementById('contactForm');
     const formSuccess = document.getElementById('formSuccess');
@@ -94,34 +93,6 @@
         }
     });
 
-    // Pricing toggle (monthly/yearly)
-    if (pricingToggle) {
-        let isYearly = false;
-
-        pricingToggle.addEventListener('click', () => {
-            isYearly = !isYearly;
-            pricingToggle.classList.toggle('active', isYearly);
-
-            // Update toggle labels
-            document.querySelectorAll('.toggle-label').forEach(label => {
-                const period = label.dataset.period;
-                label.classList.toggle('active',
-                    (period === 'yearly' && isYearly) ||
-                    (period === 'monthly' && !isYearly)
-                );
-            });
-
-            // Update prices
-            document.querySelectorAll('.price-amount').forEach(price => {
-                const monthly = price.dataset.monthly;
-                const yearly = price.dataset.yearly;
-                price.textContent = isYearly ? yearly : monthly;
-            });
-        });
-
-        // Set initial state
-        document.querySelector('.toggle-label[data-period="monthly"]').classList.add('active');
-    }
 
     // FAQ accordion
     faqQuestions.forEach(question => {
