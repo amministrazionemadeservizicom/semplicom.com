@@ -1,6 +1,7 @@
 {
-  "name": "semplicom-functions",
+  "name": "semplicom-website",
   "version": "1.0.0",
+  "private": true,
   "dependencies": {
     "@sendgrid/mail": "^8.1.0"
   }
