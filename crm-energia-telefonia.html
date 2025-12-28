@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CRM per agenzie energia, gas e telefonia. Gestione pratiche, OCR bollette, calcolo commissioni e automazioni. Prova SempliCom gratis.">
+    <meta name="keywords" content="CRM energia, CRM telefonia, CRM luce gas, software agenzie energia, gestionale pratiche, OCR bollette, CRM agenti energia">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://semplicom.com/crm-energia-telefonia">
+
+    <title>CRM per Agenzie Energia, Gas e Telefonia | SempliCom</title>
+
+    <link rel="stylesheet" href="/assets/styles.css">
+    <style>
+        .landing-hero {
+            padding: calc(var(--header-height) + 60px) 0 60px;
+            background: linear-gradient(135deg, #1A1A2E 0%, #2D2D44 100%);
+            color: white;
+            text-align: center;
+        }
+        .landing-hero h1 {
+            color: white;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 20px;
+        }
+        .landing-hero .highlight {
+            color: var(--color-primary);
+        }
+        .landing-hero p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .problems-section {
+            padding: 80px 0;
+            background: var(--color-gray-100);
+        }
+        .problems-section h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .problem-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        .problem-icon {
+            width: 48px;
+            height: 48px;
+            background: #FFEBEE;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .problem-icon svg {
+            width: 24px;
+            height: 24px;
+            color: #E53935;
+        }
+        .solution-icon {
+            background: #E8F5E9;
+        }
+        .solution-icon svg {
+            color: #43A047;
+        }
+        .problem-content h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: #E53935;
+        }
+        .problem-content p {
+            font-size: 0.95rem;
+            color: var(--color-gray-600);
+            margin: 0;
+        }
+        .solution-content h3 {
+            color: #43A047;
+        }
+
+        .solutions-section {
+            padding: 80px 0;
+        }
+        .solutions-section h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .features-landing {
+            padding: 80px 0;
+            background: var(--color-gray-100);
+        }
+        .features-landing h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: white;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+        .feature-item svg {
+            width: 24px;
+            height: 24px;
+            color: var(--color-primary);
+            flex-shrink: 0;
+        }
+
+        .cta-section {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--color-primary) 0%, #E8B923 100%);
+        }
+        .cta-section h2 {
+            margin-bottom: 16px;
+        }
+        .cta-section p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        .cta-section .btn {
+            background: var(--color-gray-900);
+            color: white;
+        }
+        .cta-section .btn:hover {
+            background: #000;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <a href="/" class="logo" aria-label="SempliCom Home">
+                <img src="/assets/img/logo.svg" alt="SempliCom" class="logo-img">
+            </a>
+            <nav class="nav" id="nav">
+                <ul class="nav-list">
+                    <li><a href="/#funzionalita" class="nav-link">Funzionalita</a></li>
+                    <li><a href="/#prezzi" class="nav-link">Prezzi</a></li>
+                    <li><a href="/#faq" class="nav-link">FAQ</a></li>
+                </ul>
+                <button type="button" class="btn btn-primary nav-cta open-modal">Richiedi demo</button>
+            </nav>
+            <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="landing-hero">
+            <div class="container">
+                <h1>Il CRM per chi vende <span class="highlight">Luce, Gas e Telefonia</span></h1>
+                <p>Basta Excel, WhatsApp e fogli volanti. Gestisci pratiche, clienti e commissioni in un'unica piattaforma.</p>
+                <button type="button" class="btn btn-primary btn-lg open-modal">Richiedi demo gratuita</button>
+            </div>
+        </section>
+
+        <!-- Problemi -->
+        <section class="problems-section">
+            <div class="container">
+                <h2>Ti riconosci in questi <span style="color: #E53935;">problemi</span>?</h2>
+                <div class="problems-grid">
+                    <div class="problem-card">
+                        <div class="problem-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <div class="problem-content">
+                            <h3>Bollette ricopiate a mano</h3>
+                            <p>Ore perse a trascrivere dati dalle bollette dei clienti su Excel o gestionali lenti.</p>
+                        </div>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <div class="problem-content">
+                            <h3>Pratiche ovunque</h3>
+                            <p>Contratti su email, foto su WhatsApp, appunti su carta. Niente e in ordine.</p>
+                        </div>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <div class="problem-content">
+                            <h3>"A che punto e il contratto?"</h3>
+                            <p>Clienti che chiamano ogni giorno per sapere lo stato della pratica.</p>
+                        </div>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <div class="problem-content">
+                            <h3>Commissioni calcolate a mano</h3>
+                            <p>Fine mese = incubo. Calcoli su Excel, errori, discussioni con i gestori.</p>
+                        </div>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <div class="problem-content">
+                            <h3>Documenti persi o scaduti</h3>
+                            <p>Carte d'identita scadute, documenti introvabili, pratiche bloccate.</p>
+                        </div>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <div class="problem-content">
+                            <h3>Zero visibilita sulle vendite</h3>
+                            <p>Non sai quante pratiche hai fatto questo mese, chi vende di piu, cosa funziona.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Soluzioni -->
+        <section class="solutions-section">
+            <div class="container">
+                <h2>Come <span style="color: #43A047;">SempliCom</span> risolve tutto</h2>
+                <div class="problems-grid">
+                    <div class="problem-card">
+                        <div class="problem-icon solution-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div class="problem-content solution-content">
+                            <h3>OCR Bollette automatico</h3>
+                            <p>Fotografa la bolletta, i dati si compilano da soli. Zero errori, zero tempo perso.</p>
+                        </div>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon solution-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div class="problem-content solution-content">
+                            <h3>Tutto in una dashboard</h3>
+                            <p>Pratiche, documenti, contratti, comunicazioni. Tutto in un posto, sempre aggiornato.</p>
+                        </div>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon solution-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div class="problem-content solution-content">
+                            <h3>Stato pratica in tempo reale</h3>
+                            <p>Sai sempre a che punto e ogni contratto: inviato, in lavorazione, attivo, respinto.</p>
+                        </div>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon solution-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div class="problem-content solution-content">
+                            <h3>Commissioni automatiche</h3>
+                            <p>Imposti le regole una volta, il sistema calcola tutto. Report pronti in un click.</p>
+                        </div>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon solution-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div class="problem-content solution-content">
+                            <h3>Archivio digitale con alert</h3>
+                            <p>Tutti i documenti salvati, con notifiche automatiche prima delle scadenze.</p>
+                        </div>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon solution-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div class="problem-content solution-content">
+                            <h3>Dashboard vendite</h3>
+                            <p>Statistiche in tempo reale: pratiche per gestore, conversioni, fatturato previsto.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features-landing">
+            <div class="container">
+                <h2>Tutto quello che ti serve</h2>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                        <span>OCR bollette luce e gas</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                        <span>Gestione pratiche e contratti</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                        <span>Calcolo commissioni automatico</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                        <span>Notifiche email e WhatsApp</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                        <span>Archivio documenti digitale</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                        <span>Generatore offerte e preventivi</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                        <span>App mobile per agenti</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                        <span>Report e statistiche vendite</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Pronto a semplificare il tuo lavoro?</h2>
+                <p>Richiedi una demo gratuita e scopri come SempliCom puo aiutarti.</p>
+                <button type="button" class="btn btn-lg open-modal">Richiedi demo gratuita</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer semplificato -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border: none; padding: 0;">
+                <p>&copy; 2025 SempliCom. Tutti i diritti riservati.</p>
+                <p><a href="/privacy.html">Privacy Policy</a> | <a href="/termini.html">Termini e Condizioni</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Contatto (stesso della homepage) -->
+    <div class="modal-overlay" id="contactModal" hidden>
+        <div class="modal">
+            <button class="modal-close" id="modalClose" aria-label="Chiudi">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+            <div class="modal-header">
+                <h2 class="modal-title">Richiedi informazioni</h2>
+                <p class="modal-subtitle">Compila il form e ti ricontatteremo entro 24 ore</p>
+            </div>
+            <form class="modal-form" id="modalForm">
+                <div class="form-group">
+                    <label for="modalPlan">Piano di interesse</label>
+                    <select id="modalPlan" name="plan">
+                        <option value="">Seleziona un piano</option>
+                        <option value="starter">Starter</option>
+                        <option value="professional">Professional</option>
+                        <option value="enterprise">Enterprise</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="modalName">Nome e cognome *</label>
+                        <input type="text" id="modalName" name="name" required placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="modalCompany">Azienda</label>
+                        <input type="text" id="modalCompany" name="company" placeholder="">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="modalEmail">Email *</label>
+                        <input type="email" id="modalEmail" name="email" required placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="modalPhone">Telefono</label>
+                        <input type="tel" id="modalPhone" name="phone" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="modalMessage">Messaggio</label>
+                    <textarea id="modalMessage" name="message" rows="3" placeholder="Raccontaci le tue esigenze..."></textarea>
+                </div>
+                <div class="form-group form-checkbox">
+                    <input type="checkbox" id="modalPrivacy" name="privacy" required>
+                    <label for="modalPrivacy">Ho letto e accetto la <a href="/privacy.html" target="_blank">Privacy Policy</a> *</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block btn-lg">
+                    <span class="btn-text">Invia richiesta</span>
+                    <span class="btn-loading">
+                        <svg class="spinner" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="31.4 31.4" stroke-linecap="round"/>
+                        </svg>
+                        Invio in corso...
+                    </span>
+                </button>
+                <div class="form-success" id="modalSuccess">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <p><strong>Richiesta inviata!</strong><br>Ti contatteremo a breve.</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/assets/app.js"></script>
+</body>
+</html>
