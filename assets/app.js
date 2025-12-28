@@ -174,11 +174,280 @@
         yearSpan.textContent = new Date().getFullYear();
     }
 
+    // Hero Carousel
+    function initCarousel() {
+        const carousel = document.querySelector('.hero-carousel');
+        if (!carousel) return;
+
+        const track = carousel.querySelector('.carousel-track');
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const dots = carousel.querySelectorAll('.carousel-dots .dot');
+
+        if (slides.length === 0) return;
+
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+        const autoPlayInterval = 2500; // 2.5 secondi
+
+        function goToSlide(index) {
+            currentIndex = index;
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+            // Update dots
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        function nextSlide() {
+            const next = (currentIndex + 1) % totalSlides;
+            goToSlide(next);
+        }
+
+        function prevSlide() {
+            const prev = (currentIndex - 1 + totalSlides) % totalSlides;
+            goToSlide(prev);
+        }
+
+        // Click on dots
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => goToSlide(i));
+        });
+
+        // Auto-play
+        let autoPlay = setInterval(nextSlide, autoPlayInterval);
+
+        function resetAutoPlay() {
+            clearInterval(autoPlay);
+            autoPlay = setInterval(nextSlide, autoPlayInterval);
+        }
+
+        // Pause on hover
+        carousel.addEventListener('mouseenter', () => clearInterval(autoPlay));
+        carousel.addEventListener('mouseleave', () => {
+            autoPlay = setInterval(nextSlide, autoPlayInterval);
+        });
+
+        // Touch/Swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const minSwipeDistance = 50;
+
+        carousel.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            clearInterval(autoPlay);
+        }, { passive: true });
+
+        carousel.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const swipeDistance = touchEndX - touchStartX;
+
+            if (Math.abs(swipeDistance) > minSwipeDistance) {
+                if (swipeDistance < 0) {
+                    nextSlide(); // Swipe left = next
+                } else {
+                    prevSlide(); // Swipe right = prev
+                }
+            }
+            resetAutoPlay();
+        }, { passive: true });
+
+        // Mouse drag support for desktop
+        let isDragging = false;
+        let dragStartX = 0;
+
+        carousel.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            dragStartX = e.clientX;
+            clearInterval(autoPlay);
+            carousel.style.cursor = 'grabbing';
+        });
+
+        carousel.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+        });
+
+        carousel.addEventListener('mouseup', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            carousel.style.cursor = 'grab';
+
+            const dragDistance = e.clientX - dragStartX;
+            if (Math.abs(dragDistance) > minSwipeDistance) {
+                if (dragDistance < 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+            resetAutoPlay();
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            if (isDragging) {
+                isDragging = false;
+                carousel.style.cursor = 'grab';
+            }
+        });
+
+        // Set initial cursor style
+        carousel.style.cursor = 'grab';
+    }
+
+    // Contact Modal
+    function initContactModal() {
+        const modal = document.getElementById('contactModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalForm = document.getElementById('modalForm');
+        const modalPlan = document.getElementById('modalPlan');
+        const modalSuccess = document.getElementById('modalSuccess');
+        const openButtons = document.querySelectorAll('.open-modal');
+
+        if (!modal) return;
+
+        // Open modal
+        function openModal(plan = '') {
+            modal.hidden = false;
+            document.body.style.overflow = 'hidden';
+
+            // Set plan if provided
+            if (plan && modalPlan) {
+                modalPlan.value = plan;
+            }
+
+            // Focus first input after animation
+            setTimeout(() => {
+                const firstInput = modalForm.querySelector('input, select');
+                if (firstInput) firstInput.focus();
+            }, 300);
+        }
+
+        // Close modal
+        function closeModal() {
+            modal.hidden = true;
+            document.body.style.overflow = '';
+
+            // Reset form after close animation
+            setTimeout(() => {
+                if (modalForm) modalForm.reset();
+                if (modalSuccess) modalSuccess.hidden = true;
+
+                // Show form again, hide success
+                const formElements = modalForm.querySelectorAll('.form-group, .btn');
+                formElements.forEach(el => el.style.display = '');
+            }, 300);
+        }
+
+        // Button click handlers
+        openButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const plan = btn.dataset.plan || '';
+                openModal(plan);
+            });
+        });
+
+        // Close button
+        if (modalClose) {
+            modalClose.addEventListener('click', closeModal);
+        }
+
+        // Click outside to close
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Escape key to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.hidden) {
+                closeModal();
+            }
+        });
+
+        // Form submission
+        if (modalForm) {
+            modalForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                // Validate required fields
+                const name = modalForm.querySelector('#modalName');
+                const email = modalForm.querySelector('#modalEmail');
+                const privacy = modalForm.querySelector('#modalPrivacy');
+
+                if (!name.value.trim() || !email.value.trim()) {
+                    return;
+                }
+
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email.value)) {
+                    email.focus();
+                    return;
+                }
+
+                // Privacy check
+                if (!privacy.checked) {
+                    privacy.focus();
+                    return;
+                }
+
+                // Get submit button
+                const submitBtn = modalForm.querySelector('button[type="submit"]');
+                const btnText = submitBtn.querySelector('.btn-text');
+                const btnLoading = submitBtn.querySelector('.btn-loading');
+
+                // Show loading state
+                if (btnText) btnText.hidden = true;
+                if (btnLoading) btnLoading.hidden = false;
+                submitBtn.disabled = true;
+
+                // Collect form data
+                const formData = new FormData(modalForm);
+                const data = Object.fromEntries(formData.entries());
+
+                // Here you would send to your backend/Netlify function
+                // For now, we simulate a delay and show success
+                try {
+                    // Simulate API call
+                    await new Promise(resolve => setTimeout(resolve, 1500));
+
+                    // In production, replace with actual fetch:
+                    // await fetch('/.netlify/functions/send-email', {
+                    //     method: 'POST',
+                    //     headers: { 'Content-Type': 'application/json' },
+                    //     body: JSON.stringify(data)
+                    // });
+
+                    // Hide form fields, show success
+                    const formElements = modalForm.querySelectorAll('.form-group, button[type="submit"]');
+                    formElements.forEach(el => el.style.display = 'none');
+                    modalSuccess.hidden = false;
+
+                    // Close modal after delay
+                    setTimeout(closeModal, 3000);
+
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    alert('Si è verificato un errore. Riprova più tardi.');
+                } finally {
+                    // Reset button state
+                    if (btnText) btnText.hidden = false;
+                    if (btnLoading) btnLoading.hidden = true;
+                    submitBtn.disabled = false;
+                }
+            });
+        }
+    }
+
     // Initialize
     function init() {
         window.addEventListener('scroll', handleScroll, { passive: true });
         handleScroll(); // Initial check
         initRevealAnimations();
+        initCarousel();
+        initContactModal();
     }
 
     // Run on DOM ready

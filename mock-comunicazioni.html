@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+    <title>Comunicazioni - SempliCom</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #333;
+        }
+
+        .app-container {
+            display: flex;
+            width: 1400px;
+            min-height: 900px;
+            height: auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+            overflow: visible;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 180px;
+            background: #f5c518;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .sidebar-logo {
+            padding: 16px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .sidebar-logo img {
+            height: 28px;
+            width: auto;
+        }
+
+        .sidebar-nav {
+            flex: 1;
+            padding: 10px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 10px;
+            border-radius: 8px;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .nav-item.active {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .nav-item svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-footer {
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding: 10px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #1a1a1a;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 11px;
+        }
+
+        .user-name {
+            font-weight: 600;
+            font-size: 12px;
+            color: #1a1a1a;
+        }
+
+        .user-role {
+            font-size: 10px;
+            color: #666;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 24px 30px;
+            overflow-y: auto;
+            background: #fafafa;
+        }
+
+        /* Page Header */
+        .page-header {
+            margin-bottom: 24px;
+        }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .page-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        /* Communication Cards */
+        .comm-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .comm-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border-left: 4px solid #f5c518;
+        }
+
+        .comm-card.urgent {
+            border-left-color: #e53935;
+        }
+
+        .comm-card.info {
+            border-left-color: #1976d2;
+        }
+
+        .comm-card.success {
+            border-left-color: #43a047;
+        }
+
+        .comm-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .comm-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .comm-badge.fattura {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .comm-badge.istruzioni {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .comm-badge.nuovo {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .comm-badge.pagamento {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .comm-date {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .comm-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .comm-body {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .comm-body p {
+            margin-bottom: 10px;
+        }
+
+        .comm-body ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .comm-body li {
+            margin-bottom: 6px;
+        }
+
+        .comm-body strong {
+            color: #1a1a1a;
+        }
+
+        .comm-details {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-top: 12px;
+        }
+
+        .comm-details-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .comm-details-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .comm-detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .comm-detail-label {
+            font-size: 11px;
+            color: #888;
+        }
+
+        .comm-detail-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .comm-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .btn-primary {
+            padding: 10px 20px;
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-primary:hover {
+            background: #333;
+        }
+
+        .btn-secondary {
+            padding: 10px 20px;
+            background: white;
+            color: #1a1a1a;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: #f5f5f5;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff3cc 100%);
+            border: 1px solid #f5c518;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-top: 12px;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-size: 13px;
+            color: #8a6d00;
+        }
+
+        .code-box {
+            background: #1a1a1a;
+            color: #00ff88;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 12px;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+
+        .instructions-list {
+            counter-reset: step;
+            list-style: none;
+            padding: 0;
+        }
+
+        .instructions-list li {
+            counter-increment: step;
+            position: relative;
+            padding-left: 36px;
+            margin-bottom: 12px;
+        }
+
+        .instructions-list li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background: #f5c518;
+            color: #1a1a1a;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <img src="assets/img/logo.svg" alt="SempliCom">
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    Messaggi
+                </a>
+                <a href="#" class="nav-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                    Dashboard
+                </a>
+                <a href="#" class="nav-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+                    Home
+                </a>
+                <a href="#" class="nav-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    Nuova Pratica
+                </a>
+                <a href="#" class="nav-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                    Caricamento Fast
+                </a>
+                <a href="#" class="nav-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+                    Rinnovi
+                </a>
+                <a href="#" class="nav-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg>
+                    Contratti
+                </a>
+                <a href="#" class="nav-item active">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    Comunicazioni
+                </a>
+                <a href="#" class="nav-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    Drive
+                </a>
+                <a href="#" class="nav-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                    Telefoni Noleggio
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">CT</div>
+                    <div>
+                        <div class="user-name">Consulente Test</div>
+                        <div class="user-role">Consulente</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1 class="page-title">Comunicazioni</h1>
+                <p class="page-subtitle">Inviti a fatturare e comunicazioni importanti</p>
+            </div>
+
+            <div class="comm-list">
+                <!-- Invito a Fatturare 1 -->
+                <div class="comm-card urgent">
+                    <div class="comm-header">
+                        <div>
+                            <span class="comm-badge fattura">Invito a Fatturare</span>
+                            <span class="comm-badge nuovo">NUOVO</span>
+                        </div>
+                        <span class="comm-date">28 Dicembre 2025 - 10:30</span>
+                    </div>
+                    <h3 class="comm-title">Invito a Fatturare - Dicembre 2025</h3>
+                    <div class="comm-body">
+                        <p>Gentile Consulente, ti invitiamo a emettere fattura per le provvigioni maturate nel mese di <strong>Dicembre 2025</strong>.</p>
+                    </div>
+                    <div class="comm-details">
+                        <div class="comm-details-title">Riepilogo Provvigioni</div>
+                        <div class="comm-details-grid">
+                            <div class="comm-detail-item">
+                                <span class="comm-detail-label">Contratti Completati</span>
+                                <span class="comm-detail-value">8</span>
+                            </div>
+                            <div class="comm-detail-item">
+                                <span class="comm-detail-label">Totale Provvigioni</span>
+                                <span class="comm-detail-value">€ 1.240,00</span>
+                            </div>
+                            <div class="comm-detail-item">
+                                <span class="comm-detail-label">Scadenza Emissione</span>
+                                <span class="comm-detail-value">15 Gennaio 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="highlight-box">
+                        <p><strong>Importante:</strong> La fattura deve essere emessa entro il 15 del mese successivo per garantire il pagamento entro fine mese.</p>
+                    </div>
+                    <div class="comm-actions">
+                        <button class="btn-primary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                            Vedi Dettaglio Contratti
+                        </button>
+                        <button class="btn-secondary">Scarica Riepilogo PDF</button>
+                    </div>
+                </div>
+
+                <!-- Istruzioni Fatturazione -->
+                <div class="comm-card info">
+                    <div class="comm-header">
+                        <span class="comm-badge istruzioni">Istruzioni</span>
+                        <span class="comm-date">Aggiornato: 20 Dicembre 2025</span>
+                    </div>
+                    <h3 class="comm-title">Come Emettere la Fattura - Guida Completa</h3>
+                    <div class="comm-body">
+                        <p>Segui questi passaggi per emettere correttamente la fattura delle tue provvigioni:</p>
+
+                        <ol class="instructions-list">
+                            <li><strong>Intestazione fattura:</strong> La fattura deve essere intestata a:<br>
+                                <div class="code-box">
+                                    SempliCom S.r.l.<br>
+                                    Via Roma 123, 20100 Milano (MI)<br>
+                                    P.IVA: 12345678901<br>
+                                    PEC: fatture@pec.semplicom.it
+                                </div>
+                            </li>
+                            <li><strong>Descrizione:</strong> Inserire come descrizione:<br>
+                                <div class="code-box">
+                                    Provvigioni per intermediazione contratti utilities - Mese di [MESE/ANNO]<br>
+                                    Rif. Invito n. [NUMERO_INVITO]
+                                </div>
+                            </li>
+                            <li><strong>Importo:</strong> L'importo deve corrispondere esattamente al totale indicato nell'invito a fatturare. Se sei in regime forfettario, indica "Operazione senza applicazione dell'IVA ai sensi dell'art. 1 comma 58 L. 190/2014".</li>
+                            <li><strong>Codice SDI:</strong> Utilizza il codice destinatario <strong>M5UXCR1</strong> per l'invio tramite Sistema di Interscambio.</li>
+                            <li><strong>Marca da bollo:</strong> Per importi superiori a €77,47, applicare marca da bollo da €2,00 (virtuale o fisica).</li>
+                        </ol>
+                    </div>
+                    <div class="comm-details">
+                        <div class="comm-details-title">Dati per la Fatturazione</div>
+                        <div class="comm-details-grid">
+                            <div class="comm-detail-item">
+                                <span class="comm-detail-label">Ragione Sociale</span>
+                                <span class="comm-detail-value">SempliCom S.r.l.</span>
+                            </div>
+                            <div class="comm-detail-item">
+                                <span class="comm-detail-label">P.IVA</span>
+                                <span class="comm-detail-value">12345678901</span>
+                            </div>
+                            <div class="comm-detail-item">
+                                <span class="comm-detail-label">Codice SDI</span>
+                                <span class="comm-detail-value">M5UXCR1</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comm-actions">
+                        <button class="btn-primary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Scarica PDF Istruzioni
+                        </button>
+                        <button class="btn-secondary">Copia Dati</button>
+                    </div>
+                </div>
+
+                <!-- Invito precedente -->
+                <div class="comm-card success">
+                    <div class="comm-header">
+                        <div>
+                            <span class="comm-badge pagamento">Pagamento Effettuato</span>
+                        </div>
+                        <span class="comm-date">30 Novembre 2025</span>
+                    </div>
+                    <h3 class="comm-title">Invito a Fatturare - Novembre 2025</h3>
+                    <div class="comm-body">
+                        <p>Fattura ricevuta e pagamento effettuato. Grazie!</p>
+                    </div>
+                    <div class="comm-details">
+                        <div class="comm-details-grid">
+                            <div class="comm-detail-item">
+                                <span class="comm-detail-label">Contratti</span>
+                                <span class="comm-detail-value">6</span>
+                            </div>
+                            <div class="comm-detail-item">
+                                <span class="comm-detail-label">Importo Pagato</span>
+                                <span class="comm-detail-value">€ 980,00</span>
+                            </div>
+                            <div class="comm-detail-item">
+                                <span class="comm-detail-label">Data Pagamento</span>
+                                <span class="comm-detail-value">28/11/2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Altro invito precedente -->
+                <div class="comm-card success">
+                    <div class="comm-header">
+                        <div>
+                            <span class="comm-badge pagamento">Pagamento Effettuato</span>
+                        </div>
+                        <span class="comm-date">31 Ottobre 2025</span>
+                    </div>
+                    <h3 class="comm-title">Invito a Fatturare - Ottobre 2025</h3>
+                    <div class="comm-body">
+                        <p>Fattura ricevuta e pagamento effettuato. Grazie!</p>
+                    </div>
+                    <div class="comm-details">
+                        <div class="comm-details-grid">
+                            <div class="comm-detail-item">
+                                <span class="comm-detail-label">Contratti</span>
+                                <span class="comm-detail-value">5</span>
+                            </div>
+                            <div class="comm-detail-item">
+                                <span class="comm-detail-label">Importo Pagato</span>
+                                <span class="comm-detail-value">€ 750,00</span>
+                            </div>
+                            <div class="comm-detail-item">
+                                <span class="comm-detail-label">Data Pagamento</span>
+                                <span class="comm-detail-value">29/10/2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

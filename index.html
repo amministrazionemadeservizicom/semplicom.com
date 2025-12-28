@@ -51,7 +51,7 @@
                     <li><a href="#faq" class="nav-link">FAQ</a></li>
                     <li><a href="#contatti" class="nav-link">Contatti</a></li>
                 </ul>
-                <a href="mailto:amministrazione@madeservizi.com" class="btn btn-primary nav-cta">Richiedi demo</a>
+                <button type="button" class="btn btn-primary nav-cta open-modal" data-plan="">Richiedi demo</button>
             </nav>
         </div>
     </header>
@@ -61,27 +61,62 @@
         <section class="hero" id="hero">
             <div class="container">
                 <div class="hero-content reveal">
-                    <h1 class="hero-title">SempliCom.<br><span class="highlight">Più vendite. Meno caos.</span></h1>
-                    <p class="hero-subtitle">La piattaforma per consulenti energia, gas, telefonia e servizi. Offerte, pratiche, documenti e automazioni in un unico posto.</p>
+                    <h1 class="hero-title">SempliCom.<br><span class="highlight">Più vendite. <span style="white-space: nowrap;">Meno caos.</span></span></h1>
+                    <p class="hero-subtitle">La <span class="subtitle-highlight">suite</span> operativa per consulenti e reti vendita. Gestisci offerte, pratiche e documenti con flussi intelligenti automatizzati in un unico ambiente.</p>
                     <div class="hero-cta">
-                        <a href="mailto:amministrazione@madeservizi.com" class="btn btn-primary btn-lg">Richiedi demo</a>
+                        <button type="button" class="btn btn-primary btn-lg open-modal" data-plan="">Richiedi demo</button>
                         <a href="#prezzi" class="btn btn-outline btn-lg">Vedi prezzi</a>
                     </div>
                 </div>
                 <div class="hero-visual reveal">
-                    <div class="hero-mockup">
-                        <div class="mockup-header">
-                            <span class="mockup-dot"></span>
-                            <span class="mockup-dot"></span>
-                            <span class="mockup-dot"></span>
-                        </div>
-                        <div class="mockup-content">
-                            <div class="mockup-sidebar"></div>
-                            <div class="mockup-main">
-                                <div class="mockup-card"></div>
-                                <div class="mockup-card"></div>
-                                <div class="mockup-card short"></div>
+                    <div class="hero-carousel">
+                        <div class="carousel-track">
+                            <div class="carousel-slide">
+                                <img src="assets/screenshots/slide1.png" alt="Dashboard SempliCom">
                             </div>
+                            <div class="carousel-slide">
+                                <img src="assets/screenshots/slide2.png" alt="Gestione Pratiche">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/screenshots/slide3.png" alt="Offerte e Contratti">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/screenshots/slide4.png" alt="WhatsApp Automatico">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/screenshots/Slide5.png" alt="Nuova Pratica Flow">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/screenshots/Slide6.png" alt="Collage Funzionalità">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/screenshots/Slide7.png" alt="Noleggio Auto">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/screenshots/Slide8.png" alt="Noleggio Stampanti">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/screenshots/Slide9.png" alt="Noleggio Smartphone">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/screenshots/Slide10.png" alt="Telefoni a Noleggio">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/screenshots/Slide11.png" alt="Comunicazioni">
+                            </div>
+                        </div>
+                        <div class="carousel-dots">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
                         </div>
                     </div>
                 </div>
@@ -92,80 +127,89 @@
         <section class="section features" id="funzionalita">
             <div class="container">
                 <div class="section-header reveal">
-                    <h2 class="section-title">Cosa fa SempliCom</h2>
-                    <p class="section-subtitle">Tutto ciò che serve per gestire la tua attività di consulenza, in un'unica piattaforma modulare.</p>
+                    <h2 class="section-title">La tua regia. <span class="gradient-animate">In automatico.</span></h2>
+                    <p class="section-subtitle">Dalla bolletta al contratto, senza perdite di tempo: processi puliti, offerte sempre pronte, documenti in ordine. Tutto in un'unica piattaforma.</p>
                 </div>
 
                 <div class="features-grid">
                     <div class="feature-card reveal">
                         <div class="feature-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10 9 9 9 8 9"></polyline>
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 2a10 10 0 0 1 10 10"></path>
+                                <path d="M12 6a6 6 0 0 1 6 6"></path>
+                                <circle cx="12" cy="12" r="2" fill="currentColor"></circle>
                             </svg>
                         </div>
-                        <h3 class="feature-title">OCR bollette e documenti</h3>
-                        <p class="feature-desc">Carica una bolletta o un documento d'identità: il sistema estrae automaticamente i dati rilevanti. Niente più ricopiature manuali.</p>
+                        <h3 class="feature-title">Dati pronti dai documenti</h3>
+                        <p class="feature-desc">Carichi bolletta e documenti: le informazioni vengono organizzate automaticamente. Niente ricopiature, niente errori.</p>
                     </div>
 
                     <div class="feature-card reveal">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                        <div class="feature-icon feature-icon-colored">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true">
+                                <rect x="3" y="3" width="18" height="18" rx="2" stroke="#E8A94B" fill="none"></rect>
+                                <path d="M8 10l2 2 4-4" stroke="#43a047" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <line x1="8" y1="15" x2="16" y2="15" stroke="#D4785A"></line>
+                                <line x1="8" y1="18" x2="13" y2="18" stroke="#C94E6B"></line>
                             </svg>
                         </div>
-                        <h3 class="feature-title">Gestione pratiche e contratti</h3>
-                        <p class="feature-desc">Ogni pratica ha il suo stato, le sue note, i suoi allegati. Tieni tutto sotto controllo e non perdere mai un passaggio.</p>
+                        <h3 class="feature-title">Pratiche sempre in linea</h3>
+                        <p class="feature-desc">Ogni contratto ha stato, note e allegati. Tutto tracciato, tutto chiaro, zero "a che punto siamo?".</p>
                     </div>
 
                     <div class="feature-card reveal">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <line x1="18" y1="20" x2="18" y2="10"></line>
-                                <line x1="12" y1="20" x2="12" y2="4"></line>
-                                <line x1="6" y1="20" x2="6" y2="14"></line>
+                        <div class="feature-icon feature-icon-colored">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <rect x="4" y="14" width="4" height="7" rx="1" fill="#C94E6B"></rect>
+                                <rect x="10" y="9" width="4" height="12" rx="1" fill="#E8A94B"></rect>
+                                <rect x="16" y="4" width="4" height="17" rx="1" fill="#43a047"></rect>
+                                <line x1="2" y1="21" x2="22" y2="21" stroke="#888" stroke-width="1.5"></line>
                             </svg>
                         </div>
-                        <h3 class="feature-title">Offerte e comparazione</h3>
-                        <p class="feature-desc">Listini sempre aggiornati per energia, gas e telefonia. Confronta le offerte e proponi la soluzione migliore al cliente.</p>
+                        <h3 class="feature-title">Il comparatore che parte dalla bolletta</h3>
+                        <p class="feature-desc">Carichi il documento e ottieni un confronto immediato tra offerte, con una proposta pulita da mostrare al cliente.</p>
                     </div>
 
                     <div class="feature-card reveal">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
+                        <div class="feature-icon feature-icon-colored">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <rect x="2" y="5" width="20" height="14" rx="2" stroke="#E8A94B" stroke-width="2" fill="none"></rect>
+                                <polyline points="22,7 12,14 2,7" stroke="#D4785A" stroke-width="2" fill="none"></polyline>
+                                <circle cx="19" cy="5" r="4" fill="#43a047"></circle>
+                                <path d="M17.5 5l1 1 2-2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
                         </div>
-                        <h3 class="feature-title">Automazioni email</h3>
-                        <p class="feature-desc">Invio automatico di conferme, promemoria e documenti via email (SendGrid). In roadmap: notifiche SMS per i tuoi clienti.</p>
+                        <h3 class="feature-title">Invii e promemoria automatici</h3>
+                        <p class="feature-desc">Email di conferma, documenti e follow-up che partono da soli. Meno messaggi, più tempo.</p>
                     </div>
 
                     <div class="feature-card reveal">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        <div class="feature-icon feature-icon-colored">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <circle cx="12" cy="6" r="3" fill="#E8A94B"></circle>
+                                <circle cx="5" cy="12" r="2.5" fill="#D4785A"></circle>
+                                <circle cx="19" cy="12" r="2.5" fill="#C94E6B"></circle>
+                                <line x1="12" y1="9" x2="7" y2="11" stroke="#888" stroke-width="1.5"></line>
+                                <line x1="12" y1="9" x2="17" y2="11" stroke="#888" stroke-width="1.5"></line>
+                                <path d="M5 15v3" stroke="#D4785A" stroke-width="2" stroke-linecap="round"></path>
+                                <path d="M19 15v3" stroke="#C94E6B" stroke-width="2" stroke-linecap="round"></path>
+                                <path d="M12 9v9" stroke="#E8A94B" stroke-width="2" stroke-linecap="round"></path>
                             </svg>
                         </div>
                         <h3 class="feature-title">Ruoli e rete vendita</h3>
-                        <p class="feature-desc">Consulenti, master agent, back office: ogni ruolo ha i suoi permessi. Struttura modulare per team di qualsiasi dimensione.</p>
+                        <p class="feature-desc">Consulenti, master e back office: permessi ordinati e operatività scalabile, senza confusione.</p>
                     </div>
 
                     <div class="feature-card reveal">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        <div class="feature-icon feature-icon-colored">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M12 2l8 4v6c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V6l8-4z" stroke="#43a047" stroke-width="2" fill="none"></path>
+                                <path d="M9 12l2 2 4-4" stroke="#43a047" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
                         </div>
-                        <h3 class="feature-title">Sicurezza e GDPR</h3>
-                        <p class="feature-desc">Dati protetti, accessi tracciati, conformità normativa. I tuoi dati e quelli dei tuoi clienti sono al sicuro.</p>
+                        <h3 class="feature-title">Sicurezza e conformità</h3>
+                        <p class="feature-desc">Accessi tracciati e dati protetti. Per lavorare sereni, anche con team grandi.</p>
                     </div>
                 </div>
             </div>
@@ -175,42 +219,133 @@
         <section class="section target" id="per-chi">
             <div class="container">
                 <div class="section-header reveal">
-                    <h2 class="section-title">Per chi è SempliCom</h2>
-                    <p class="section-subtitle">Una piattaforma pensata per chi lavora ogni giorno con clienti, contratti e pratiche.</p>
+                    <h2 class="section-title">Per chi vuole lavorare <span class="gradient-animate">ad alto livello</span></h2>
+                    <p class="section-subtitle">SempliCom è per chi gestisce volumi, clienti e pratiche ogni giorno — e vuole ordine, velocità e controllo in un'unica regia.</p>
                 </div>
 
-                <div class="target-grid">
-                    <div class="target-card reveal">
-                        <div class="target-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                <div class="target-grid target-grid-4">
+                    <!-- Card 1 - Agenzie Luce & Gas -->
+                    <div class="target-card target-card-premium reveal">
+                        <div class="target-icon target-icon-gradient" style="background: linear-gradient(135deg, #E8A94B 0%, #D4785A 100%);">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="white"/>
                             </svg>
                         </div>
-                        <h3 class="target-title">Agenzie luce e gas</h3>
-                        <p class="target-desc">Gestisci volture, subentri, cambi fornitore e nuove attivazioni. OCR bollette, comparazione offerte e tracking pratiche in tempo reale.</p>
+                        <h3 class="target-title">Agenzie energia e reti vendita</h3>
+                        <p class="target-desc">Dalla bolletta alla proposta, dalla pratica alla firma: tutto tracciato e sempre sotto controllo.</p>
+                        <p class="target-detail"><strong>Perfetto per:</strong> switch, subentri, volture, nuove attivazioni, business e residenziale.</p>
+                        <p class="target-detail"><strong>In più:</strong> permessi per team, gestione documenti, comunicazioni automatiche.</p>
+                        <div class="target-bullets">
+                            <span>Proposta rapida</span>
+                            <span>Pratiche in ordine</span>
+                            <span>Flussi automatizzati</span>
+                        </div>
                     </div>
 
-                    <div class="target-card reveal">
-                        <div class="target-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                    <!-- Card 2 - Telefonia / TLC -->
+                    <div class="target-card target-card-premium reveal">
+                        <div class="target-icon target-icon-gradient" style="background: linear-gradient(135deg, #C94E6B 0%, #9C27B0 100%);">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <rect x="5" y="2" width="14" height="20" rx="3" fill="white"/>
+                                <rect x="8" y="5" width="8" height="10" rx="1" fill="currentColor" opacity="0.2"/>
+                                <circle cx="12" cy="18" r="1.5" fill="currentColor" opacity="0.4"/>
                             </svg>
                         </div>
-                        <h3 class="target-title">Negozi telefonia</h3>
-                        <p class="target-desc">Attivazioni SIM, portabilità, offerte mobile e fisso. Tieni traccia di ogni pratica e invia conferme automatiche ai clienti.</p>
+                        <h3 class="target-title">Negozi telefonia e team TLC</h3>
+                        <p class="target-desc">Attivazioni più veloci e meno caos: pratiche, documenti e follow-up in un flusso unico.</p>
+                        <p class="target-detail"><strong>Perfetto per:</strong> SIM, portabilità, fisso, fibra, convergenza.</p>
+                        <p class="target-detail"><strong>In più:</strong> conferme automatiche, storico cliente, stati lavorazione chiari.</p>
+                        <div class="target-bullets">
+                            <span>Tempi ridotti</span>
+                            <span>Niente errori</span>
+                            <span>Cliente seguito meglio</span>
+                        </div>
                     </div>
 
-                    <div class="target-card reveal">
-                        <div class="target-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="2" y1="12" x2="22" y2="12"></line>
-                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    <!-- Card 3 - Multi-servizio -->
+                    <div class="target-card target-card-premium reveal">
+                        <div class="target-icon target-icon-gradient" style="background: linear-gradient(135deg, #43a047 0%, #00897B 100%);">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <circle cx="12" cy="12" r="9" stroke="white" stroke-width="2" fill="none"/>
+                                <circle cx="12" cy="12" r="4" fill="white"/>
+                                <path d="M12 3v4M12 17v4M3 12h4M17 12h4" stroke="white" stroke-width="2" stroke-linecap="round"/>
                             </svg>
                         </div>
-                        <h3 class="target-title">Point multi-servizio</h3>
-                        <p class="target-desc">Energia, TLC, spedizioni, pratiche CAF, assicurazioni in partnership. Un unico gestionale per tutti i tuoi servizi.</p>
+                        <h3 class="target-title">Point multi-servizio e franchising</h3>
+                        <p class="target-desc">Energia, TLC e servizi: un'unica piattaforma per gestire tutto senza strumenti sparsi.</p>
+                        <p class="target-detail"><strong>Perfetto per:</strong> store con più linee di business e più operatori.</p>
+                        <p class="target-detail"><strong>In più:</strong> ruoli e accessi, standard operativi, crescita senza caos.</p>
+                        <div class="target-bullets">
+                            <span>Struttura scalabile</span>
+                            <span>Ruoli & controllo</span>
+                            <span>Operatività "da catena"</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 - Back Office -->
+                    <div class="target-card target-card-premium reveal">
+                        <div class="target-icon target-icon-gradient" style="background: linear-gradient(135deg, #1976d2 0%, #5E35B1 100%);">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <rect x="3" y="4" width="18" height="16" rx="2" stroke="white" stroke-width="2" fill="none"/>
+                                <path d="M7 9h10M7 13h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                                <circle cx="17" cy="15" r="3" fill="white"/>
+                                <path d="M16 15l1 1 2-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+                            </svg>
+                        </div>
+                        <h3 class="target-title">Back office e operations</h3>
+                        <p class="target-desc">Gestione pratiche, controllo documenti, qualità e comunicazioni: un pannello unico per far scorrere tutto.</p>
+                        <p class="target-detail"><strong>Perfetto per:</strong> team operativi che gestiscono volumi elevati.</p>
+                        <p class="target-detail"><strong>In più:</strong> dashboard dedicate, filtri avanzati, export dati.</p>
+                        <div class="target-bullets">
+                            <span>Tracciamento</span>
+                            <span>Standard</span>
+                            <span>Riduzione tempi</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 - Agenzie Immobiliari -->
+                    <div class="target-card target-card-premium reveal">
+                        <div class="target-icon target-icon-gradient" style="background: linear-gradient(135deg, #FF7043 0%, #E64A19 100%);">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M3 21h18" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M5 21V7l7-4 7 4v14" stroke="white" stroke-width="2" fill="none"/>
+                                <rect x="9" y="13" width="6" height="8" rx="1" fill="white"/>
+                                <rect x="9" y="9" width="2" height="2" fill="white" opacity="0.7"/>
+                                <rect x="13" y="9" width="2" height="2" fill="white" opacity="0.7"/>
+                            </svg>
+                        </div>
+                        <h3 class="target-title">Agenzie immobiliari e broker</h3>
+                        <p class="target-desc">Clienti, documenti e pratiche: tutto ordinato e tracciato, con follow-up automatici e storico sempre disponibile.</p>
+                        <p class="target-detail"><strong>Perfetto per:</strong> agenzie immobiliari, mediatori creditizi, property manager, franchising.</p>
+                        <p class="target-detail"><strong>In più:</strong> anagrafiche complete, gestione documenti, appuntamenti e comunicazioni, flussi standard.</p>
+                        <div class="target-bullets">
+                            <span>Clienti in ordine</span>
+                            <span>Documenti pronti</span>
+                            <span>Follow-up automatici</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 - Partner & Convenzioni -->
+                    <div class="target-card target-card-premium reveal">
+                        <div class="target-icon target-icon-gradient" style="background: linear-gradient(135deg, #7E57C2 0%, #4527A0 100%);">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <circle cx="12" cy="12" r="3" fill="white"/>
+                                <circle cx="5" cy="6" r="2" fill="white" opacity="0.8"/>
+                                <circle cx="19" cy="6" r="2" fill="white" opacity="0.8"/>
+                                <circle cx="5" cy="18" r="2" fill="white" opacity="0.8"/>
+                                <circle cx="19" cy="18" r="2" fill="white" opacity="0.8"/>
+                                <path d="M7 7l3 3M17 7l-3 3M7 17l3-3M17 17l-3-3" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="target-title">Partner, network e convenzioni</h3>
+                        <p class="target-desc">Un sistema unico per gestire affiliati e referral: richieste clienti, documenti e stati lavorazione con standard chiari.</p>
+                        <p class="target-detail"><strong>Perfetto per:</strong> associazioni e network (es. Federaziende), convenzioni territoriali, franchisor, community di professionisti.</p>
+                        <p class="target-detail"><strong>In più:</strong> accessi per ruolo, tracciamento pratiche, report e visibilità per struttura.</p>
+                        <div class="target-bullets">
+                            <span>Struttura scalabile</span>
+                            <span>Tracciamento</span>
+                            <span>Standard operativo</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -220,151 +355,133 @@
         <section class="section how-it-works" id="come-funziona">
             <div class="container">
                 <div class="section-header reveal">
-                    <h2 class="section-title">Come funziona</h2>
-                    <p class="section-subtitle">Tre passaggi per digitalizzare la tua attività.</p>
+                    <h2 class="section-title">Tre step per lavorare <span class="gradient-animate">come un'organizzazione.</span></h2>
                 </div>
 
                 <div class="steps">
                     <div class="step reveal">
                         <div class="step-number">1</div>
                         <div class="step-content">
-                            <h3 class="step-title">Onboarding e settaggi</h3>
-                            <p class="step-desc">Configuriamo insieme il tuo account: utenti, ruoli, listini e template email. In poche ore sei operativo.</p>
+                            <h3 class="step-title">Setup e onboarding</h3>
+                            <p class="step-desc">Configuriamo il tuo spazio: utenti, ruoli, listini e comunicazioni. In poche ore sei operativo con una struttura pulita.</p>
                         </div>
                     </div>
 
                     <div class="step reveal">
                         <div class="step-number">2</div>
                         <div class="step-content">
-                            <h3 class="step-title">Carica documenti e bollette</h3>
-                            <p class="step-desc">Scansiona o fotografa i documenti. L'OCR estrae automaticamente i dati: POD, PDR, codice fiscale, IBAN e molto altro.</p>
+                            <h3 class="step-title">Carichi i documenti. Il resto lo fa SempliCom.</h3>
+                            <p class="step-desc">Bolletta e documenti entrano una volta sola: i dati vengono organizzati automaticamente e la pratica si prepara da sé. Niente copia-incolla.</p>
                         </div>
                     </div>
 
                     <div class="step reveal">
                         <div class="step-number">3</div>
                         <div class="step-content">
-                            <h3 class="step-title">Gestisci e invia conferme</h3>
-                            <p class="step-desc">Segui ogni pratica dal preventivo alla chiusura. Invia email di conferma, aggiorna lo stato e tieni tutto sotto controllo.</p>
+                            <h3 class="step-title">Gestisci, invii, chiudi</h3>
+                            <p class="step-desc">Segui ogni pratica dall'apertura alla conferma: stati chiari, allegati ordinati e comunicazioni automatiche. Controllo totale, senza caos.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Prezzi -->
+        <!-- Piani -->
         <section class="section pricing" id="prezzi">
             <div class="container">
                 <div class="section-header reveal">
-                    <h2 class="section-title">Piani di noleggio</h2>
-                    <p class="section-subtitle">Scegli la soluzione più adatta alla tua attività. Canone mensile, IVA esclusa.</p>
-                </div>
-
-                <div class="setup-fee reveal">
-                    <span class="setup-fee-label">Setup iniziale</span>
-                    <span class="setup-fee-price">299 €</span>
-                    <span class="setup-fee-desc">una tantum — formazione e configurazione incluse</span>
+                    <h2 class="section-title">Piani <span class="gradient-animate">SempliCom</span></h2>
+                    <p class="section-subtitle">Soluzioni su misura in base a team, volumi e gestori attivi.</p>
                 </div>
 
                 <div class="pricing-grid pricing-grid-4">
-                    <!-- Start -->
-                    <div class="pricing-card reveal">
+                    <!-- Team Base -->
+                    <div class="pricing-card pricing-card-new reveal">
                         <div class="pricing-header">
-                            <h3 class="pricing-name">Start</h3>
-                            <p class="pricing-desc">Per il consulente indipendente</p>
+                            <h3 class="pricing-name">Team Base</h3>
+                            <p class="pricing-desc">Per chi parte con una struttura snella.</p>
                         </div>
-                        <div class="pricing-price">
-                            <span class="price-amount">249</span>
-                            <span class="price-currency">€</span>
-                            <span class="price-period">/mese</span>
+                        <div class="pricing-team-size">
+                            <span>Esempio team: 3–5 utenti</span>
+                            <small>(consulenti + back office)</small>
                         </div>
                         <ul class="pricing-features">
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 1 utente</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Fino a 2 gestori</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Pratiche illimitate</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 50 scansioni OCR/mese</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 300 email/mese</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Listini energia e TLC</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Consenso privacy e GDPR</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Supporto email</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Fino a 2 gestori attivi</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Pratiche illimitate</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 300 email/mese incluse</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 100 letture documenti/mese</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> GDPR, consenso e tracciamento accessi</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Supporto email</li>
                         </ul>
-                        <a href="mailto:amministrazione@madeservizi.com?subject=Richiesta piano Start" class="btn btn-outline btn-block">Inizia con Start</a>
+                        <button type="button" class="btn btn-outline btn-block open-modal" data-plan="Team Base">Richiedi info</button>
                     </div>
 
-                    <!-- Pro -->
-                    <div class="pricing-card featured reveal">
+                    <!-- Team Growth -->
+                    <div class="pricing-card pricing-card-new featured reveal">
                         <div class="pricing-badge">Più scelto</div>
                         <div class="pricing-header">
-                            <h3 class="pricing-name">Pro</h3>
-                            <p class="pricing-desc">Per piccoli team e point</p>
+                            <h3 class="pricing-name">Team Growth</h3>
+                            <p class="pricing-desc">Per point e piccoli team che lavorano ogni giorno su volumi costanti.</p>
                         </div>
-                        <div class="pricing-price">
-                            <span class="price-amount">399</span>
-                            <span class="price-currency">€</span>
-                            <span class="price-period">/mese</span>
+                        <div class="pricing-team-size">
+                            <span>Esempio team: 6–12 utenti</span>
                         </div>
                         <ul class="pricing-features">
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Fino a 5 utenti</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Fino a 4 gestori</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Pratiche illimitate</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 150 scansioni OCR/mese</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 800 email/mese</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Ruoli e permessi</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Report e statistiche</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Supporto prioritario</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Fino a 4 gestori attivi</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Ruoli e permessi (consulente / master / back office)</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Report e statistiche</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 800 email/mese incluse</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 250 letture documenti/mese</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Supporto prioritario</li>
                         </ul>
-                        <a href="mailto:amministrazione@madeservizi.com?subject=Richiesta piano Pro" class="btn btn-primary btn-block">Scegli Pro</a>
+                        <button type="button" class="btn btn-primary btn-block open-modal" data-plan="Team Growth">Richiedi info</button>
                     </div>
 
-                    <!-- Agency -->
-                    <div class="pricing-card reveal">
+                    <!-- Team Network -->
+                    <div class="pricing-card pricing-card-new reveal">
                         <div class="pricing-header">
-                            <h3 class="pricing-name">Agency</h3>
-                            <p class="pricing-desc">Per reti vendita strutturate</p>
+                            <h3 class="pricing-name">Team Network</h3>
+                            <p class="pricing-desc">Per reti vendita strutturate e operatività multi-ruolo avanzata.</p>
                         </div>
-                        <div class="pricing-price">
-                            <span class="price-amount">599</span>
-                            <span class="price-currency">€</span>
-                            <span class="price-period">/mese</span>
+                        <div class="pricing-team-size">
+                            <span>Esempio team: 13–30 utenti</span>
                         </div>
                         <ul class="pricing-features">
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Utenti illimitati</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Fino a 8 gestori</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Pratiche illimitate</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 300 scansioni OCR/mese</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 2.000 email/mese</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Multi-ruolo avanzato</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Dashboard rete vendita</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Onboarding incluso</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Supporto dedicato</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Fino a 8 gestori attivi</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Dashboard rete vendita (KPI e controllo pratiche)</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Standard operativi e flussi condivisi</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 2.000 email/mese incluse</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 500 letture documenti/mese</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Onboarding dedicato + supporto dedicato</li>
                         </ul>
-                        <a href="mailto:amministrazione@madeservizi.com?subject=Richiesta piano Agency" class="btn btn-outline btn-block">Scegli Agency</a>
+                        <button type="button" class="btn btn-outline btn-block open-modal" data-plan="Team Network">Richiedi info</button>
                     </div>
 
                     <!-- Enterprise -->
-                    <div class="pricing-card pricing-card-dark reveal">
+                    <div class="pricing-card pricing-card-new pricing-card-dark reveal">
                         <div class="pricing-header">
                             <h3 class="pricing-name">Enterprise</h3>
-                            <p class="pricing-desc">Per esigenze avanzate</p>
+                            <p class="pricing-desc">Per realtà avanzate con volumi elevati e integrazioni.</p>
                         </div>
-                        <div class="pricing-price">
-                            <span class="price-custom">Su misura</span>
+                        <div class="pricing-team-size">
+                            <span>Esempio team: 30+ utenti</span>
+                            <small>(multi-sede / franchising)</small>
                         </div>
                         <ul class="pricing-features">
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Oltre 8 gestori</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Volumi personalizzati</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Email, SMS, WhatsApp API</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> White-label</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Integrazioni dedicate</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> SLA e supporto avanzato</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Gestori e volumi personalizzati</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Email, SMS, WhatsApp (integrazioni)</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> White-label</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Integrazioni dedicate (API / sistemi interni)</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="#43a047" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> SLA e supporto avanzato</li>
                         </ul>
-                        <a href="mailto:amministrazione@madeservizi.com?subject=Richiesta piano Enterprise" class="btn btn-accent btn-block">Contattaci</a>
+                        <button type="button" class="btn btn-accent btn-block open-modal" data-plan="Enterprise">Contattaci</button>
                     </div>
                 </div>
 
-                <!-- Note -->
-                <div class="pricing-notes reveal">
-                    <p>Canone mensile, senza vincoli. Upgrade o downgrade disponibile in qualsiasi momento.</p>
+                <!-- Note Premium -->
+                <div class="pricing-notes pricing-notes-premium reveal">
+                    <p><strong>SempliCom è tutto incluso.</strong> Cambia solo la dimensione del team e i volumi. Minimo 3 utenti.</p>
+                    <p class="pricing-cta-text">Richiedi una demo e ricevi una proposta su misura.</p>
                 </div>
             </div>
         </section>
@@ -424,7 +541,7 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            <p>Le email vengono inviate tramite SendGrid, uno dei servizi più affidabili al mondo. Puoi personalizzare i template e monitorare le consegne direttamente dalla piattaforma.</p>
+                            <p>Le email vengono inviate tramite provider professionali ad alta affidabilità. Puoi personalizzare i template e monitorare le consegne direttamente dalla piattaforma.</p>
                         </div>
                     </div>
 
@@ -434,7 +551,7 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            <p>Sì, nei piani Pro e Agency puoi configurare il tuo dominio per l'invio email. Ci occupiamo noi delle configurazioni tecniche (SPF, DKIM, DMARC).</p>
+                            <p>Sì, nel piano Enterprise puoi configurare il tuo dominio per l'invio email. Ci occupiamo noi delle configurazioni tecniche (SPF, DKIM, DMARC).</p>
                         </div>
                     </div>
 
@@ -482,13 +599,13 @@
                             </div>
                         </div>
 
-                        <div class="contact-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        <div class="contact-item contact-item-whatsapp">
+                            <svg viewBox="0 0 24 24" fill="#25D366" aria-hidden="true">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
                             <div>
-                                <strong>Telefono</strong>
-                                <a href="tel:+390832000000">+39 0832 000 000</a>
+                                <strong>WhatsApp</strong>
+                                <a href="https://wa.me/393295628882" target="_blank" rel="noopener">Scrivici su WhatsApp</a>
                             </div>
                         </div>
 
@@ -499,7 +616,7 @@
                             </svg>
                             <div>
                                 <strong>Sede</strong>
-                                <span>Via Roma, 1 - 73020 Cavallino (LE)</span>
+                                <span>Via Martiri della Resistenza 10, Cavallino (LE)</span>
                             </div>
                         </div>
                     </div>
@@ -535,6 +652,88 @@
         </section>
     </main>
 
+    <!-- Contact Modal -->
+    <div class="modal-overlay" id="contactModal" hidden>
+        <div class="modal">
+            <button class="modal-close" id="modalClose" aria-label="Chiudi">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <div class="modal-header">
+                <h3 class="modal-title">Richiedi informazioni</h3>
+                <p class="modal-subtitle">Compila il form e ti ricontatteremo entro 24 ore</p>
+            </div>
+
+            <form class="modal-form" id="modalForm" novalidate>
+                <div class="form-group">
+                    <label for="modalPlan">Piano di interesse</label>
+                    <select id="modalPlan" name="plan" required>
+                        <option value="">Seleziona un piano</option>
+                        <option value="Team Base">Team Base</option>
+                        <option value="Team Growth">Team Growth</option>
+                        <option value="Team Network">Team Network</option>
+                        <option value="Enterprise">Enterprise</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="modalName">Nome e cognome *</label>
+                        <input type="text" id="modalName" name="name" required autocomplete="name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modalCompany">Azienda</label>
+                        <input type="text" id="modalCompany" name="company" autocomplete="organization">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="modalEmail">Email *</label>
+                        <input type="email" id="modalEmail" name="email" required autocomplete="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modalPhone">Telefono</label>
+                        <input type="tel" id="modalPhone" name="phone" autocomplete="tel">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="modalMessage">Messaggio</label>
+                    <textarea id="modalMessage" name="message" rows="3" placeholder="Raccontaci le tue esigenze..."></textarea>
+                </div>
+
+                <div class="form-group form-checkbox">
+                    <input type="checkbox" id="modalPrivacy" name="privacy" required>
+                    <label for="modalPrivacy">Ho letto e accetto la <a href="/privacy.html" target="_blank">Privacy Policy</a> *</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block btn-lg">
+                    <span class="btn-text">Invia richiesta</span>
+                    <span class="btn-loading" hidden>
+                        <svg class="spinner" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="31.4 31.4" stroke-linecap="round"/>
+                        </svg>
+                        Invio in corso...
+                    </span>
+                </button>
+
+                <div class="form-success" id="modalSuccess" hidden>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <p><strong>Richiesta inviata!</strong><br>Ti contatteremo a breve.</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -566,8 +765,8 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; <span id="currentYear">2025</span> SempliCom. Tutti i diritti riservati.</p>
-                <p class="footer-address">Via Roma, 1 - 73020 Cavallino (LE)</p>
+                <p>&copy; <span id="currentYear">2025</span> SempliCom - Un prodotto di <strong>Made Srl Semplificata</strong></p>
+                <p class="footer-address">Via Martiri della Resistenza 10, Cavallino (LE) | P.IVA 05266540755</p>
             </div>
         </div>
     </footer>
