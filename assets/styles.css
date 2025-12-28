@@ -296,46 +296,50 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 @media (max-width: 900px) {
     .nav-toggle {
         display: block;
+        z-index: 1002;
     }
 
     .nav {
-        display: flex;
         position: fixed;
         top: var(--header-height);
         left: 0;
         right: 0;
-        bottom: 0;
-        background: #ffffff;
+        background: var(--color-white);
         flex-direction: column;
-        align-items: stretch;
-        padding: 32px 24px;
-        gap: 24px;
-        transform: translateX(100%);
-        transition: transform var(--transition-base);
-        z-index: 9998;
-        box-shadow: -5px 0 20px rgba(0,0,0,0.1);
-        overflow-y: auto;
-        opacity: 1;
+        padding: 0;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        z-index: 1001;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .nav.open {
-        transform: translateX(0);
+        max-height: 400px;
     }
 
     .nav-list {
         flex-direction: column;
         gap: 0;
+        padding: 8px 0;
     }
 
     .nav-link {
         display: block;
-        padding: 16px 0;
-        font-size: 1.1rem;
+        padding: 14px 24px;
+        font-size: 1rem;
+        color: var(--color-gray-800);
         border-bottom: 1px solid var(--color-gray-200);
     }
 
+    .nav-link:hover {
+        background: var(--color-gray-100);
+        color: var(--color-accent);
+    }
+
     .nav-cta {
-        margin-top: auto;
+        margin: 16px 24px;
     }
 }
 
