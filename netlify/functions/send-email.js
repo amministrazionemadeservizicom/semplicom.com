@@ -80,26 +80,19 @@ exports.handler = async (event) => {
 
         await sgMail.send(msgToAdmin);
 
-        // Email di conferma al cliente (opzionale)
+        // Email di conferma al cliente con template SendGrid
         const msgToClient = {
             to: email,
             from: 'noreply@semplicom.com',
-            subject: 'Grazie per aver contattato SempliCom!',
-            html: `
-                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                    <h2 style="color: #1A1A2E;">Ciao ${name}!</h2>
-                    <p>Grazie per aver richiesto una demo di SempliCom.</p>
-                    <p>Abbiamo ricevuto la tua richiesta e ti contatteremo al più presto per organizzare una dimostrazione personalizzata.</p>
-                    <p>Nel frattempo, se hai domande, rispondi pure a questa email.</p>
-                    <br>
-                    <p>A presto,<br><strong>Il team SempliCom</strong></p>
-                    <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;">
-                    <p style="color: #666; font-size: 12px;">
-                        SempliCom - Più vendite. Meno caos.<br>
-                        <a href="https://semplicom.com" style="color: #D81B60;">semplicom.com</a>
-                    </p>
-                </div>
-            `
+            templateId: 'd-a87c4d5a42ce4ed89a59c62548d30cd5',
+            dynamicTemplateData: {
+                name: name,
+                email: email,
+                company: company || '',
+                phone: phone || '',
+                plan: plan || '',
+                message: message || ''
+            }
         };
 
         await sgMail.send(msgToClient);
