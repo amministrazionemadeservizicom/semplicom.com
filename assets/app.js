@@ -187,7 +187,7 @@
 
         let currentIndex = 0;
         const totalSlides = slides.length;
-        const autoPlayInterval = 2500; // 2.5 secondi
+        const autoPlayInterval = 4000; // 4 secondi
 
         function goToSlide(index) {
             currentIndex = index;
