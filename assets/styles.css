@@ -1689,9 +1689,15 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     margin-top: 8px;
 }
 
-.modal-form .btn-text,
+.modal-form .btn-text {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
 .modal-form .btn-loading {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     gap: 8px;
