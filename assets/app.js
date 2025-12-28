@@ -430,8 +430,8 @@
                 } catch (error) {
                     console.error('Form submission error:', error);
                     alert('Si è verificato un errore. Riprova più tardi.');
-                } finally {
-                    // Reset button state
+
+                    // Reset button state only on error
                     if (btnText) btnText.hidden = false;
                     if (btnLoading) btnLoading.hidden = true;
                     submitBtn.disabled = false;
