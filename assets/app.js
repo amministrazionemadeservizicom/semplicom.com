@@ -407,18 +407,17 @@
                 const formData = new FormData(modalForm);
                 const data = Object.fromEntries(formData.entries());
 
-                // Here you would send to your backend/Netlify function
-                // For now, we simulate a delay and show success
+                // Invio email tramite Netlify Function
                 try {
-                    // Simulate API call
-                    await new Promise(resolve => setTimeout(resolve, 1500));
+                    const response = await fetch('/.netlify/functions/send-email', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
 
-                    // In production, replace with actual fetch:
-                    // await fetch('/.netlify/functions/send-email', {
-                    //     method: 'POST',
-                    //     headers: { 'Content-Type': 'application/json' },
-                    //     body: JSON.stringify(data)
-                    // });
+                    if (!response.ok) {
+                        throw new Error('Errore invio email');
+                    }
 
                     // Hide form fields, show success
                     const formElements = modalForm.querySelectorAll('.form-group, button[type="submit"]');
