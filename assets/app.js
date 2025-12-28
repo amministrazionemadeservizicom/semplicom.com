@@ -419,9 +419,11 @@
                         throw new Error('Errore invio email');
                     }
 
-                    // Hide form fields, show success
-                    const formElements = modalForm.querySelectorAll('.form-group, button[type="submit"]');
+                    // Hide form fields and button, show success
+                    const formElements = modalForm.querySelectorAll('.form-group');
                     formElements.forEach(el => el.style.display = 'none');
+                    submitBtn.style.display = 'none';
+                    if (btnLoading) btnLoading.hidden = true;
                     modalSuccess.hidden = false;
 
                     // Close modal after delay
