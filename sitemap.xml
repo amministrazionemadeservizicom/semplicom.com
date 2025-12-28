@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://semplicom.com/</loc>
-        <lastmod>2025-12-27</lastmod>
+        <lastmod>2025-12-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -11,6 +11,24 @@
         <lastmod>2025-12-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://semplicom.com/funzionalita.html</loc>
+        <lastmod>2025-12-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://semplicom.com/prezzi.html</loc>
+        <lastmod>2025-12-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://semplicom.com/faq.html</loc>
+        <lastmod>2025-12-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
     </url>
     <url>
         <loc>https://semplicom.com/privacy.html</loc>
