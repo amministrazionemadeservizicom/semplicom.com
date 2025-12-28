@@ -399,8 +399,8 @@
                 const btnLoading = submitBtn.querySelector('.btn-loading');
 
                 // Show loading state
-                if (btnText) btnText.hidden = true;
-                if (btnLoading) btnLoading.hidden = false;
+                if (btnText) btnText.style.display = 'none';
+                if (btnLoading) btnLoading.style.display = 'inline-flex';
                 submitBtn.disabled = true;
 
                 // Collect form data
@@ -423,8 +423,7 @@
                     const formElements = modalForm.querySelectorAll('.form-group');
                     formElements.forEach(el => el.style.display = 'none');
                     submitBtn.style.display = 'none';
-                    if (btnLoading) btnLoading.hidden = true;
-                    modalSuccess.hidden = false;
+                    modalSuccess.style.display = 'flex';
 
                     // Close modal after delay
                     setTimeout(closeModal, 3000);
@@ -434,8 +433,8 @@
                     alert('Si è verificato un errore. Riprova più tardi.');
 
                     // Reset button state only on error
-                    if (btnText) btnText.hidden = false;
-                    if (btnLoading) btnLoading.hidden = true;
+                    if (btnText) btnText.style.display = 'inline';
+                    if (btnLoading) btnLoading.style.display = 'none';
                     submitBtn.disabled = false;
                 }
             });
