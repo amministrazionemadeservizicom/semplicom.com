@@ -11,6 +11,66 @@
     <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
     <link rel="icon" type="image/png" href="/assets/img/favicon.png">
     <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/css/seo-pages.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://semplicom.com/"},
+        {"@type":"ListItem","position":2,"name":"FAQ","item":"https://semplicom.com/faq"}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Serve installare qualcosa per usare SempliCom?",
+          "acceptedAnswer": {"@type":"Answer","text":"No, SempliCom è una web app in cloud. Ti basta un browser e una connessione internet. Funziona su computer, tablet e smartphone senza installazioni."}
+        },
+        {
+          "@type": "Question",
+          "name": "Come si attiva il servizio SempliCom?",
+          "acceptedAnswer": {"@type":"Answer","text":"Richiedi una demo gratuita. Ti contatteremo per capire le tue esigenze, configuriamo insieme l'account e in poche ore sei operativo con la formazione inclusa."}
+        },
+        {
+          "@type": "Question",
+          "name": "Posso cambiare piano in qualsiasi momento?",
+          "acceptedAnswer": {"@type":"Answer","text":"Sì, puoi fare upgrade o downgrade del piano in qualsiasi momento. La modifica sarà effettiva dal mese successivo, con eventuale conguaglio."}
+        },
+        {
+          "@type": "Question",
+          "name": "I miei dati sono al sicuro? SempliCom è conforme al GDPR?",
+          "acceptedAnswer": {"@type":"Answer","text":"Tutti i dati sono crittografati e conservati su server europei. Siamo pienamente conformi al GDPR. Hai sempre il controllo completo sui tuoi dati e puoi richiedere l'esportazione o la cancellazione in qualsiasi momento."}
+        },
+        {
+          "@type": "Question",
+          "name": "Come funziona l'invio email con SempliCom?",
+          "acceptedAnswer": {"@type":"Answer","text":"Le email vengono inviate tramite provider professionali ad alta affidabilità. Puoi personalizzare i template e monitorare le consegne direttamente dalla piattaforma."}
+        },
+        {
+          "@type": "Question",
+          "name": "Posso usare un dominio personalizzato per le email?",
+          "acceptedAnswer": {"@type":"Answer","text":"Sì, nel piano Enterprise puoi configurare il tuo dominio per l'invio email. Ci occupiamo noi delle configurazioni tecniche (SPF, DKIM, DMARC)."}
+        },
+        {
+          "@type": "Question",
+          "name": "Che tipo di supporto offrite?",
+          "acceptedAnswer": {"@type":"Answer","text":"Tutti i piani includono supporto via email. I piani Pro e Agency hanno supporto prioritario con tempi di risposta garantiti. Il piano Agency include anche supporto telefonico dedicato."}
+        },
+        {
+          "@type": "Question",
+          "name": "Ci sono integrazioni con altri software?",
+          "acceptedAnswer": {"@type":"Answer","text":"Attualmente SempliCom è una piattaforma standalone. Stiamo lavorando a integrazioni con i principali CRM e gestionali. Contattaci per discutere esigenze specifiche."}
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <header class="header" id="header">
@@ -26,15 +86,48 @@
                     <li><a href="/" class="nav-link">Home</a></li>
                     <li><a href="/perche-semplicom.html" class="nav-link">Perché SempliCom?</a></li>
                     <li><a href="/funzionalita.html" class="nav-link">Funzionalità</a></li>
+                    <li class="nav-dropdown">
+                        <a href="/gestionale-multiservizio/" class="nav-link nav-link-dropdown">Soluzioni <span class="dropdown-arrow">▾</span></a>
+                        <ul class="nav-submenu">
+                            <li><a href="/crm-agenzie-energia/">CRM Energia e Gas</a></li>
+                            <li><a href="/comparatore-offerte-agenti/">Comparatore Offerte</a></li>
+                            <li><a href="/gestionale-multiservizio/">Gestionale Multiservizio</a></li>
+                            <li><a href="/software-provvigioni-agenti/">Software Provvigioni</a></li>
+                            <li><a href="/crm-caf-patronati/">CRM CAF e Patronati</a></li>
+                            <li><a href="/rete-vendita-energia/">Rete Vendita Energia</a></li>
+                            <li><a href="/alternativa-salesforce-italia/">vs Salesforce</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="/energia-gas/" class="nav-link nav-link-dropdown">Settori <span class="dropdown-arrow">▾</span></a>
+                        <ul class="nav-submenu">
+                            <li><a href="/energia-gas/">Energia e Gas</a></li>
+                            <li><a href="/telefonia/">Telefonia</a></li>
+                            <li><a href="/assicurazioni/">Assicurazioni</a></li>
+                            <li><a href="/immobiliare/">Immobiliare</a></li>
+                            <li><a href="/noleggio/">Noleggio</a></li>
+                            <li><a href="/efficienza-energetica/">Efficienza Energetica</a></li>
+                        </ul>
+                    </li>
                     <li><a href="/prezzi.html" class="nav-link">Prezzi</a></li>
                     <li><a href="/faq.html" class="nav-link active">FAQ</a></li>
+                    <li><a href="/blog/" class="nav-link">Blog</a></li>
                 </ul>
-                <button type="button" class="btn btn-primary nav-cta open-modal" data-plan="">Richiedi demo</button>
+                <a href="/diventa-partner/" class="btn btn-primary nav-cta">Diventa Partner</a>
             </nav>
         </div>
     </header>
 
     <main>
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+            <div class="container">
+                <ol class="breadcrumb-list">
+                    <li><a href="/">Home</a></li>
+                    <li aria-current="page">FAQ</li>
+                </ol>
+            </div>
+        </nav>
+
         <section class="hero" style="padding-bottom: 60px;">
             <div class="hero-content-centered reveal">
                 <h1 class="hero-title">Domande <span class="highlight">frequenti</span></h1>
@@ -81,7 +174,7 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            <p>Tutti i dati sono crittografati e conservati su server europei. Siamo pienamente conformi al GDPR. Hai sempre il controllo completo sui tuoi dati e puoi richiedere l'esportazione o la cancellazione in qualsiasi momento.</p>
+                            <p>Tutti i dati sono crittografati e conservati su server europei. Siamo pienamente conformi al GDPR. Hai sempre il controllo completo sui tuoi dati e puoi richiedere l'esportazione o la cancellazione in qualsiasi momento. Leggi la nostra <a href="/blog/gdpr-agenzie-energia-guida/">guida GDPR per agenzie energia</a> per approfondire.</p>
                         </div>
                     </div>
 
@@ -121,7 +214,7 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            <p>Attualmente SempliCom è una piattaforma standalone. Stiamo lavorando a integrazioni con i principali CRM e gestionali. Contattaci per discutere esigenze specifiche.</p>
+                            <p>Attualmente SempliCom è una piattaforma standalone. Stiamo lavorando a integrazioni con i principali CRM e gestionali. Contattaci per discutere esigenze specifiche. Scopri il <a href="/gestionale-multiservizio/">gestionale multiservizio</a> e i <a href="/crm-agenzie-energia/">CRM per agenzie energia</a> che supportiamo nativamente.</p>
                         </div>
                     </div>
                 </div>
@@ -132,7 +225,44 @@
             <div class="container">
                 <h2 style="margin-bottom: 16px;">Non hai trovato la risposta che cercavi?</h2>
                 <p style="margin-bottom: 30px; font-size: 1.1rem;">Contattaci e ti risponderemo entro 24 ore.</p>
-                <button type="button" class="btn btn-lg open-modal" style="background: var(--color-gray-900); color: white;">Contattaci</button>
+                <a href="https://wa.me/393295628882?text=Ciao%2C%20ho%20una%20domanda%20su%20SempliCom" class="btn btn-lg" style="background: var(--color-gray-900); color: white;" target="_blank" rel="noopener">Scrivici su WhatsApp</a>
+            </div>
+        </section>
+
+        <!-- Risorse collegate -->
+        <section class="section" style="background: var(--color-gray-100);">
+            <div class="container">
+                <div class="section-header" style="text-align:center;margin-bottom:32px;">
+                    <h2 class="section-title">Approfondisci</h2>
+                    <p class="section-subtitle">Guide e risorse per agenti energia, gas e telefonia.</p>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;">
+                    <a href="/crm-agenzie-energia/" style="display:block;background:#fff;border-radius:10px;padding:20px;text-decoration:none;color:var(--color-gray-900);box-shadow:0 2px 8px rgba(0,0,0,0.07);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+                        <strong style="display:block;margin-bottom:8px;">CRM per Agenzie Energia</strong>
+                        <span style="color:var(--color-gray-600);font-size:0.9rem;">Guida completa al CRM per agenzie energia e reti vendita</span>
+                    </a>
+                    <a href="/comparatore-offerte-agenti/" style="display:block;background:#fff;border-radius:10px;padding:20px;text-decoration:none;color:var(--color-gray-900);box-shadow:0 2px 8px rgba(0,0,0,0.07);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+                        <strong style="display:block;margin-bottom:8px;">Comparatore Offerte Agenti</strong>
+                        <span style="color:var(--color-gray-600);font-size:0.9rem;">Come funziona il comparatore integrato per agenti</span>
+                    </a>
+                    <a href="/software-provvigioni-agenti/" style="display:block;background:#fff;border-radius:10px;padding:20px;text-decoration:none;color:var(--color-gray-900);box-shadow:0 2px 8px rgba(0,0,0,0.07);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+                        <strong style="display:block;margin-bottom:8px;">Software Provvigioni</strong>
+                        <span style="color:var(--color-gray-600);font-size:0.9rem;">Calcolo automatico di gettoni, ricorrenti e bonus</span>
+                    </a>
+                    <a href="/blog/" style="display:block;background:#fff;border-radius:10px;padding:20px;text-decoration:none;color:var(--color-gray-900);box-shadow:0 2px 8px rgba(0,0,0,0.07);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+                        <strong style="display:block;margin-bottom:8px;">Blog SempliCom</strong>
+                        <span style="color:var(--color-gray-600);font-size:0.9rem;">Aggiornamenti normativi, guide e strategie di vendita</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Partner -->
+        <section class="section cta-affiliazione">
+            <div class="container" style="text-align:center;">
+                <h2 style="font-size:1.8rem;margin-bottom:16px;color:#fff;">Sei un consulente o lavori in un'agenzia?</h2>
+                <p style="font-size:1.1rem;margin-bottom:28px;color:rgba(255,255,255,0.85);">SempliCom è anche un network: entra gratis come Partner, lavora con 12 verticali e guadagna provvigioni ricorrenti.</p>
+                <a href="/diventa-partner/" class="btn btn-primary btn-lg">Scopri come diventare Partner →</a>
             </div>
         </section>
     </main>
@@ -140,7 +270,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom" style="border: none; padding: 0; text-align: center;">
-                <p>&copy; 2025 SempliCom. Tutti i diritti riservati. | <a href="https://www.iubenda.com/privacy-policy/59258474" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe" title="Privacy Policy">Privacy Policy</a> | <a href="https://www.iubenda.com/privacy-policy/59258474/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe" title="Cookie Policy">Cookie Policy</a> | <a href="/termini.html">Termini</a></p>
+                <p>&copy; <span id="currentYear">2025</span> SempliCom · MADE SRL Semplificata · Via Martiri della Resistenza 10, Cavallino (LE)</p>
             </div>
         </div>
     </footer>
@@ -204,6 +334,11 @@
             </form>
         </div>
     </div>
+    <!-- WhatsApp Sticky -->
+    <a href="https://wa.me/393295628882?text=Ciao%2C%20ho%20una%20domanda%20su%20SempliCom" class="whatsapp-sticky" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
     <script src="/assets/app.js"></script>
     <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
     <script type="text/javascript" src="https://embeds.iubenda.com/widgets/6e7c4da1-3449-47c7-863f-af1c17061fbc.js"></script>

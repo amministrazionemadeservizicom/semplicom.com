@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Il comparatore B2B per agenti energia: confronta tariffe luce e gas di tutti gli operatori in tempo reale. Uno strumento professionale con dati tecnici completi: PUN, spread, CCV e margini operativi.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://semplicom.com/comparatore-offerte-agenti/">
+    <title>Comparatore Offerte Energia per Agenti | Confronta Tariffe Multi-Operatore</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+    <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/css/seo-pages.css">
+
+    <!-- Schema: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "SempliCom — Comparatore Offerte Agenti",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Comparatore offerte B2B per agenti energia: confronta tariffe luce e gas di tutti gli operatori integrati in tempo reale, genera proposte PDF branded e invia link di firma digitale.",
+      "url": "https://semplicom.com/comparatore-offerte-agenti/",
+      "offers": {"@type": "Offer", "priceCurrency": "EUR", "price": "0"},
+      "publisher": {"@type": "Organization", "name": "MADE SRL Semplificata"}
+    }
+    </script>
+
+    <!-- Schema: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "I prezzi del comparatore SempliCom sono aggiornati in tempo reale?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì. Le tariffe degli operatori integrati vengono aggiornate automaticamente ogni volta che l'operatore modifica le proprie offerte. Per le offerte indicizzate al PUN o al PSV, il sistema aggiorna il prezzo di riferimento con cadenza mensile, in linea con il ciclo di aggiornamento dei prezzi all'ingrosso. Un indicatore visivo segnala quando un'offerta è stata aggiornata di recente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso fare comparazioni per clienti business con il comparatore SempliCom?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì. Il comparatore SempliCom supporta sia il segmento domestico (residenziale) che il segmento business (PMI, artigiani, piccole imprese, condomini). Per i clienti business è possibile inserire consumi più elevati e selezionare il profilo di utilizzo (tensione di fornitura, potenza impegnata) per ottenere comparazioni accurate sul mercato B2B."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come funziona la proposta PDF generata dal comparatore?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La proposta PDF viene generata automaticamente dal sistema e include: dati del cliente, dettaglio dell'offerta selezionata, simulazione del risparmio rispetto alla tariffa attuale, condizioni contrattuali principali e passaggi successivi per l'attivazione. Il documento può essere brandizzato con il logo dell'agenzia. Una volta generato, il PDF può essere inviato via email o WhatsApp direttamente dalla piattaforma."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Il comparatore include anche le offerte gas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì. Il comparatore SempliCom copre sia il mercato dell'energia elettrica che il mercato del gas naturale. Per il gas, il riferimento di prezzo è il PSV (Punto di Scambio Virtuale), l'equivalente del PUN per l'energia elettrica. Il comparatore permette di fare offerte abbinate luce + gas per gli operatori che le propongono, con una simulazione combinata del risparmio."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso personalizzare i risultati per mostrare solo alcuni operatori?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì. L'amministratore dell'agenzia può configurare il comparatore per mostrare solo gli operatori con cui l'agenzia ha accordi commerciali attivi. Questo evita di presentare offerte di operatori con cui non si lavora e mantiene il focus sui prodotti effettivamente vendibili. La lista degli operatori visibili è configurabile per singolo agente o per l'intera agenzia."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Schema: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://semplicom.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Comparatore Offerte per Agenti",
+          "item": "https://semplicom.com/comparatore-offerte-agenti/"
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+
+    <header class="header" id="header">
+        <div class="container">
+            <a href="/" class="logo" aria-label="SempliCom Home"><img src="/assets/img/logo.svg" alt="SempliCom" class="logo-img"></a>
+            <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false"><span class="hamburger"></span></button>
+            <nav class="nav" id="nav" aria-label="Navigazione principale">
+                <ul class="nav-list">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/perche-semplicom.html" class="nav-link">Perché SempliCom?</a></li>
+                    <li><a href="/funzionalita.html" class="nav-link">Funzionalità</a></li>
+                    <li class="nav-dropdown">
+                        <a href="/gestionale-multiservizio/" class="nav-link nav-link-dropdown">Soluzioni <span class="dropdown-arrow">▾</span></a>
+                        <ul class="nav-submenu">
+                            <li><a href="/crm-agenzie-energia/">CRM Energia e Gas</a></li>
+                            <li><a href="/comparatore-offerte-agenti/">Comparatore Offerte</a></li>
+                            <li><a href="/gestionale-multiservizio/">Gestionale Multiservizio</a></li>
+                            <li><a href="/software-provvigioni-agenti/">Software Provvigioni</a></li>
+                            <li><a href="/crm-caf-patronati/">CRM CAF e Patronati</a></li>
+                            <li><a href="/rete-vendita-energia/">Rete Vendita Energia</a></li>
+                            <li><a href="/alternativa-salesforce-italia/">vs Salesforce</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="/energia-gas/" class="nav-link nav-link-dropdown">Settori <span class="dropdown-arrow">▾</span></a>
+                        <ul class="nav-submenu">
+                            <li><a href="/energia-gas/">Energia e Gas</a></li>
+                            <li><a href="/telefonia/">Telefonia</a></li>
+                            <li><a href="/assicurazioni/">Assicurazioni</a></li>
+                            <li><a href="/immobiliare/">Immobiliare</a></li>
+                            <li><a href="/noleggio/">Noleggio</a></li>
+                            <li><a href="/efficienza-energetica/">Efficienza Energetica</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/prezzi.html" class="nav-link">Prezzi</a></li>
+                    <li><a href="/faq.html" class="nav-link">FAQ</a></li>
+                    <li><a href="/blog/" class="nav-link">Blog</a></li>
+                </ul>
+                <a href="/diventa-partner/" class="btn btn-primary nav-cta">Diventa Partner</a>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <ol>
+            <li><a href="/">Home</a></li>
+            <li>Comparatore Offerte per Agenti</li>
+        </ol>
+    </nav>
+
+    <main>
+        <!-- HERO -->
+        <section class="pillar-hero">
+            <h1>Comparatore Offerte per Agenti: Confronta Tariffe e Chiudi Più Contratti</h1>
+            <p>Lo strumento professionale per confrontare le tariffe di tutti gli operatori luce e gas in tempo reale. Non un comparatore consumer — uno strumento pensato per chi vende contratti e ha bisogno di dati tecnici completi.</p>
+            <div class="cta-buttons">
+                <a href="/diventa-partner/" class="btn btn-primary btn-lg">Accedi alla piattaforma</a>
+                <a href="https://wa.me/393295628882?text=Ciao%2C%20vorrei%20informazioni%20sul%20comparatore%20SempliCom" class="btn-whatsapp" target="_blank" rel="noopener">Chiedici su WhatsApp</a>
+            </div>
+        </section>
+
+        <div class="pillar-content">
+
+            <!-- TOC -->
+            <nav class="blog-toc" aria-label="Indice dei contenuti">
+                <h2>Indice dei contenuti</h2>
+                <ol>
+                    <li><a href="#definizione">Cos'è un comparatore offerte per agenti</a></li>
+                    <li><a href="#consumer-vs-b2b">Comparatore consumer vs comparatore per agenti</a></li>
+                    <li><a href="#come-funziona">Come funziona il comparatore SempliCom</a></li>
+                    <li><a href="#operatori">Gli operatori integrati in SempliCom</a></li>
+                    <li><a href="#glossario">Capire i prezzi energia: il glossario dell'agente</a></li>
+                    <li><a href="#chiudere-contratti">Come usare il comparatore per chiudere più contratti</a></li>
+                    <li><a href="#integrato-vs-esterno">Comparatore integrato vs comparatore esterno</a></li>
+                    <li><a href="#faq">Domande frequenti</a></li>
+                </ol>
+            </nav>
+
+            <!-- SECTION 1: DEFINIZIONE -->
+            <h2 id="definizione">Cos'è un Comparatore Offerte per Agenti</h2>
+
+            <div class="definition-box">
+                <p><strong>Il comparatore offerte per agenti</strong> è uno strumento professionale che permette a consulenti e agenzie di confrontare le tariffe di più operatori energia e gas in tempo reale, generando proposte personalizzate per i propri clienti. A differenza dei comparatori consumer come Facile.it o Segugio.it, un comparatore B2B come quello integrato in SempliCom è progettato per chi <em>vende</em> contratti e ha bisogno di dati tecnici completi: PUN, spread, CCV, componenti di costo, e margini operativi.</p>
+            </div>
+
+            <p>La differenza non è solo di forma, ma di sostanza. Un comparatore consumer è progettato per guidare un utente finale non esperto verso una scelta semplificata, mostrando poche opzioni e nascondendo la complessità. Un comparatore per agenti deve fare l'opposto: mostrare tutto, con tutti i dettagli tecnici, e permettere all'agente di fare una scelta informata per il proprio cliente — e di spiegargliela con chiarezza.</p>
+
+            <p>In questo senso, il comparatore integrato in SempliCom non è un "motore di ricerca offerte" aperto al pubblico. È uno strumento operativo riservato ai partner della rete, che fornisce accesso alle tariffe aggiornate degli operatori, alle simulazioni di risparmio personalizzate e alla generazione automatica di proposte commerciali pronte da presentare al cliente.</p>
+
+            <!-- SECTION 2: CONSUMER vs B2B -->
+            <h2 id="consumer-vs-b2b">Comparatore Consumer vs Comparatore per Agenti</h2>
+
+            <p>Prima di scegliere uno strumento di comparazione, è utile capire chiaramente le differenze tra un comparatore consumer — pensato per il cliente finale — e uno B2B pensato per chi lavora nel settore. Le differenze non riguardano solo l'interfaccia, ma l'intero modello di utilizzo.</p>
+
+            <div style="overflow-x: auto; margin: 32px 0;">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Caratteristica</th>
+                            <th>Facile.it / Segugio.it</th>
+                            <th class="table-highlight">SempliCom (per agenti)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Dati mostrati</td>
+                            <td>Prezzo stimato annuo, risparmio semplificato</td>
+                            <td class="table-highlight">PUN, spread, CCV, prezzo al kWh/mc, componenti fisse e variabili, margine operativo</td>
+                        </tr>
+                        <tr>
+                            <td>Operatori inclusi</td>
+                            <td>Solo operatori che pagano per apparire</td>
+                            <td class="table-highlight">Tutti gli operatori con cui l'agenzia ha accordi commerciali</td>
+                        </tr>
+                        <tr>
+                            <td>Aggiornamento prezzi</td>
+                            <td>Variabile, spesso in ritardo</td>
+                            <td class="table-highlight">Automatico a ogni aggiornamento dell'operatore</td>
+                        </tr>
+                        <tr>
+                            <td>Proposta personalizzabile</td>
+                            <td class="check-no">✗ No</td>
+                            <td class="table-highlight check-yes">✓ PDF brandizzato con dati cliente e simulazione risparmio</td>
+                        </tr>
+                        <tr>
+                            <td>Gestione firma</td>
+                            <td class="check-no">✗ No (rimanda al sito dell'operatore)</td>
+                            <td class="table-highlight check-yes">✓ Firma digitale integrata nel flusso</td>
+                        </tr>
+                        <tr>
+                            <td>Tracking pratica</td>
+                            <td class="check-no">✗ No</td>
+                            <td class="table-highlight check-yes">✓ Tracking automatico stati pratica con notifiche</td>
+                        </tr>
+                        <tr>
+                            <td>Calcolo provvigione</td>
+                            <td class="check-no">✗ No</td>
+                            <td class="table-highlight check-yes">✓ Automatico post-attivazione</td>
+                        </tr>
+                        <tr>
+                            <td>GDPR conforme per B2B</td>
+                            <td class="check-partial">~ Parzialmente (ottimizzato per consumer)</td>
+                            <td class="table-highlight check-yes">✓ Gestione consensi B2B e B2C integrata</td>
+                        </tr>
+                        <tr>
+                            <td>Integrazione CRM</td>
+                            <td class="check-no">✗ No (strumento standalone)</td>
+                            <td class="table-highlight check-yes">✓ Nativa — il comparatore è dentro il CRM</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>La questione dell'integrazione è cruciale. Quando un agente usa Facile.it per trovare un'offerta e poi torna nel suo CRM per inserire la pratica, sta facendo doppio inserimento dati — con tutti i rischi di errore che ne derivano. Con il comparatore integrato in SempliCom, i dati del cliente che ha usato per la comparazione diventano automaticamente i dati della pratica, senza nessuna ricopiatura.</p>
+
+            <!-- SECTION 3: COME FUNZIONA -->
+            <h2 id="come-funziona">Come Funziona il Comparatore SempliCom: Passo dopo Passo</h2>
+
+            <p>Il flusso operativo del comparatore SempliCom è stato progettato per minimizzare il tempo tra il primo contatto con il cliente e la firma del contratto. Ogni step è collegato al successivo in modo fluido, senza cambi di strumento e senza interruzioni.</p>
+
+            <h3>1 — Inserimento dati o caricamento bolletta</h3>
+            <p>Il consulente può partire in due modi: inserimento manuale dei dati del cliente (codice POD o PDR, consumo annuo in kWh per l'elettrico o mc per il gas, fornitore attuale, tipo di offerta corrente, potenza impegnata per il domestico) oppure caricamento della bolletta in formato PDF o immagine. La seconda opzione è quella consigliata perché elimina qualsiasi possibilità di errore di trascrizione e accelera il processo.</p>
+
+            <h3>2 — Lettura automatica OCR della bolletta</h3>
+            <p>Quando si carica la bolletta, il sistema OCR di SempliCom analizza il documento e estrae automaticamente i dati chiave: codice POD o PDR, consumo annuo storico, fornitore attuale, tariffa in corso, importo dell'ultima bolletta, potenza impegnata (per l'elettrico) e profilo di utilizzo. I campi estratti vengono mostrati al consulente per verifica prima di procedere — una conferma rapida, non una riscrittura. Questa fase richiede in media meno di 30 secondi.</p>
+
+            <h3>3 — Comparazione in tempo reale di tutte le offerte</h3>
+            <p>Con i dati confermati, il sistema avvia la comparazione automatica. In pochi secondi, SempliCom interroga il proprio database offerte e restituisce la lista di tutte le tariffe disponibili per il profilo del cliente, ordinate per risparmio stimato rispetto alla tariffa attuale. Ogni risultato mostra: nome operatore, nome offerta commerciale, tipo di prezzo (fisso, variabile indicizzato PUN/PSV, variabile con cap), prezzo al kWh o mc, CCV annuo, stima della spesa annua totale e risparmio stimato in euro e percentuale.</p>
+
+            <h3>4 — Visualizzazione risultati con tutti i dettagli tecnici</h3>
+            <p>A differenza di Facile.it, che semplifica i dati per il consumatore finale, SempliCom mostra ai consulenti tutti i dettagli tecnici: lo spread applicato sopra il PUN, il CCV, la durata dell'offerta, le condizioni di recesso, eventuali bonus di attivazione e il canone mensile della componente commerciale. Queste informazioni sono indispensabili per scegliere l'offerta giusta in base al profilo di consumo e alle aspettative del cliente.</p>
+
+            <h3>5 — Selezione offerta e generazione proposta PDF branded</h3>
+            <p>Il consulente seleziona l'offerta più adatta e, con un clic, genera la proposta PDF. Il documento è personalizzato con i dati del cliente, i dettagli dell'offerta selezionata, la simulazione del risparmio rispetto alla tariffa attuale e le condizioni principali del contratto. Il PDF può includere il logo dell'agenzia ed è pronto per essere presentato al cliente o inviato via email.</p>
+
+            <h3>6 — Invio proposta al cliente via email o WhatsApp</h3>
+            <p>Direttamente da SempliCom, il consulente può inviare la proposta al cliente via email (con template pre-compilato) o via WhatsApp (con link alla proposta). Non serve scaricare il PDF e allegarlo manualmente: tutto avviene dalla stessa schermata.</p>
+
+            <h3>7 — Firma digitale e avvio pratica automatica</h3>
+            <p>Quando il cliente accetta la proposta, SempliCom genera un link di firma digitale. Il cliente lo apre sul proprio dispositivo, legge le condizioni e firma. Al momento della firma, la pratica viene automaticamente creata nel CRM con lo stato "Firmata — in invio all'operatore". Da questo momento, il tracking automatico gestisce i passi successivi senza ulteriore intervento del consulente.</p>
+
+            <!-- SECTION 4: OPERATORI -->
+            <h2 id="operatori">Gli Operatori Integrati in SempliCom</h2>
+
+            <p>Il valore di un comparatore dipende dalla qualità e dall'ampiezza degli operatori integrati. SempliCom integra i principali operatori del mercato libero italiano, sia per energia elettrica e gas che per la telefonia fissa (fibra). Ecco la lista degli operatori attualmente disponibili:</p>
+
+            <div class="vertical-grid" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="vertical-card">
+                    <div class="vertical-icon">⚡</div>
+                    <h3>ACEA</h3>
+                    <p>Uno dei principali operatori del centro Italia, con offerte luce e gas per domestici e PMI. Forte presenza nel Lazio e in Toscana.</p>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">⚡</div>
+                    <h3>IREN</h3>
+                    <p>Multiutility del nord Italia (Piemonte, Liguria, Emilia-Romagna) con offerte luce, gas e servizi integrati per residenziale e business.</p>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">🌱</div>
+                    <h3>Sorgenia</h3>
+                    <p>Operatore digital-first con offerte 100% energia rinnovabile. Tra le proposte più competitive sul mercato per il segmento domestico evoluto.</p>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">⚡</div>
+                    <h3>Edison</h3>
+                    <p>Secondo operatore elettrico italiano per dimensione. Offerte luce e gas per tutti i segmenti, con prodotti business strutturati per le PMI.</p>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">📡</div>
+                    <h3>Fastweb</h3>
+                    <p>Leader nella fibra FTTH con infrastruttura proprietaria. Offerte fibra, luce e gas combinate per il mercato residenziale e business.</p>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">🔥</div>
+                    <h3>AGN Energia</h3>
+                    <p>Specialista nel gas propano e nel gas naturale, con offerte competitive per zone non metanizzate e clientela industriale.</p>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">💡</div>
+                    <h3>Illumia</h3>
+                    <p>Operatore emiliano in forte crescita con offerte luce e gas competitive, particolarmente attivo nel canale agenziale.</p>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">🌿</div>
+                    <h3>Engie</h3>
+                    <p>Multinazionale francese con forte presenza in Italia. Offerte luce, gas e soluzioni di efficienza energetica per domestico e business.</p>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">⚡</div>
+                    <h3>A2A</h3>
+                    <p>Multiutility lombarda con offerte luce, gas e teleriscaldamento. Forte presenza nel nord Italia e in espansione nel centro.</p>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">📊</div>
+                    <h3>Axpo</h3>
+                    <p>Operatore svizzero specializzato nel mercato business e industriale. Offerte strutturate su misura per grandi consumatori e PMI.</p>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">💧</div>
+                    <h3>Hera</h3>
+                    <p>Multiutility emiliano-romagnola con offerte luce, gas e servizi ambientali. Forte nel nord-est italiano.</p>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">🔆</div>
+                    <h3>Estra</h3>
+                    <p>Operatore toscano con offerte luce e gas per residenziale e business. Radicato nel centro Italia con una rete agenziale consolidata.</p>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">📶</div>
+                    <h3>TIM Fibra</h3>
+                    <p>Offerte FTTH e FTTC con la rete più capillare d'Italia. Prodotti casa e business con opzioni per la portabilità del numero fisso.</p>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">📶</div>
+                    <h3>WindTre Fibra</h3>
+                    <p>Fibra FTTH con rete OpenFiber e rete proprietaria. Offerte bundle con SIM mobile, particolarmente competitive per famiglie con più SIM.</p>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">📺</div>
+                    <h3>Sky WiFi</h3>
+                    <p>Offerta fibra abbinabile ai pacchetti Sky TV. Competitiva per clienti già abbonati Sky che vogliono un unico fornitore per connettività e intrattenimento.</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 24px;"><em><strong>Nota:</strong> La lista degli operatori integrati è in costante aggiornamento. Nuovi operatori vengono integrati ogni trimestre in base alle richieste della rete partner e agli accordi commerciali. I partner SempliCom vengono notificati di ogni nuovo operatore disponibile.</em></p>
+
+            <!-- SECTION 5: GLOSSARIO -->
+            <h2 id="glossario">Capire i Prezzi Energia: il Glossario dell'Agente</h2>
+
+            <p>Per usare un comparatore professionale in modo efficace, è fondamentale conoscere la terminologia del mercato energetico. Questi concetti sono quelli che troverai nel comparatore SempliCom e che dovrai saper spiegare ai tuoi clienti.</p>
+
+            <h3>PUN — Prezzo Unico Nazionale</h3>
+            <p>Il PUN è il prezzo all'ingrosso dell'energia elettrica in Italia, determinato dalle contrattazioni sul Mercato Elettrico (GME) e calcolato come media delle quotazioni su tutte le zone geografiche del paese. Viene pubblicato mensilmente da Gestore dei Mercati Energetici (GME). Per i contratti a prezzo variabile indicizzato, il prezzo che il cliente paga per l'energia è PUN + spread dell'operatore. Quando il PUN sale, la bolletta sale; quando scende, scende. È quindi fondamentale spiegare al cliente che un'offerta indicizzata al PUN non offre protezione dalle oscillazioni di mercato — a differenza di un'offerta a prezzo fisso.</p>
+
+            <h3>PSV — Punto di Scambio Virtuale</h3>
+            <p>Il PSV è per il gas quello che il PUN è per l'elettricità: il prezzo di riferimento all'ingrosso del gas naturale in Italia, espresso in €/MWh termici. Viene anch'esso pubblicato mensilmente e determina il costo variabile delle offerte gas indicizzate. La dinamica è la stessa: offerte variabili indicizzate al PSV riflettono l'andamento del mercato, mentre le offerte a prezzo fisso garantiscono una spesa prevedibile per la durata del contratto.</p>
+
+            <h3>Spread</h3>
+            <p>Lo spread è la componente di margine che ogni operatore aggiunge sopra il PUN (per la luce) o il PSV (per il gas). Se il PUN mensile è 0,100 €/kWh e l'operatore ha uno spread di 0,008 €/kWh, il cliente pagherà 0,108 €/kWh per la componente energia. Lo spread è fisso per la durata del contratto (nelle offerte indicizzate) o incluso nel prezzo fisso (nelle offerte flat). Nel comparatore SempliCom, lo spread di ogni operatore è visibile direttamente nella scheda dell'offerta — un'informazione che i comparatori consumer tipicamente non mostrano.</p>
+
+            <h3>CCV — Corrispettivo di Commercializzazione e Vendita</h3>
+            <p>Il CCV è un costo fisso annuale che il fornitore addebita per la gestione amministrativa del contratto: emissione bollette, gestione anagrafica, call center, ecc. Può variare da €10 a €60/anno a seconda dell'operatore e dell'offerta. Il CCV impatta la spesa totale in modo fisso e indipendente dai consumi: un cliente a basso consumo sentirà il peso del CCV più di un grande consumatore. Nel confronto tra offerte, è importante considerare il CCV nell'equazione totale, non solo il prezzo al kWh.</p>
+
+            <h3>Componenti di rete: trasporto, distribuzione, oneri di sistema</h3>
+            <p>Una parte consistente della bolletta elettrica e gas non è determinata dall'operatore commerciale, ma dai gestori di rete (Terna per il trasporto, distributori locali per la distribuzione) e dalla regolazione (oneri di sistema, gestione fine mercato tutelato). Queste componenti sono <strong>identiche per tutti gli operatori</strong> e non vengono influenzate dalla scelta del fornitore. Il comparatore SempliCom le include nella simulazione della spesa totale per dare al cliente un quadro realistico della bolletta finale, ma evidenzia chiaramente che non sono comparabili tra operatori diversi.</p>
+
+            <h3>Prezzo fisso vs prezzo variabile: la scelta giusta per ogni cliente</h3>
+            <p>Un'offerta a <strong>prezzo fisso</strong> garantisce lo stesso prezzo al kWh per tutta la durata del contratto (tipicamente 12 o 24 mesi). Protegge il cliente dalle oscillazioni del mercato ed è ideale per chi vuole prevedibilità nella spesa. Un'offerta a <strong>prezzo variabile</strong> (indicizzata al PUN o PSV) varia ogni mese seguendo il mercato all'ingrosso. Nei periodi di prezzi bassi, può essere vantaggiosa; nei periodi di alta volatilità, può portare aumenti significativi. La scelta giusta dipende dal profilo del cliente, dalla sua tolleranza al rischio e dall'andamento attuale del mercato — una valutazione che solo un consulente qualificato può fare, non un algoritmo di comparazione automatica.</p>
+
+            <!-- SECTION 6: CHIUDERE CONTRATTI -->
+            <h2 id="chiudere-contratti">Come Usare il Comparatore per Chiudere Più Contratti</h2>
+
+            <p>Avere un buon comparatore è solo il primo passo. Il vero valore si realizza nel modo in cui lo si usa durante la trattativa commerciale. Ecco le strategie più efficaci adottate dai consulenti della rete SempliCom.</p>
+
+            <h3>Usa la simulazione del risparmio come leva principale</h3>
+            <p>Il cliente non vuole capire come funziona il PUN: vuole sapere quanto risparmia. La simulazione del risparmio in euro all'anno è il dato più potente nella trattativa. "Con questa offerta, lei risparmia circa €180 all'anno rispetto alla sua tariffa attuale" è un messaggio molto più efficace di qualsiasi spiegazione tecnica. Il comparatore SempliCom calcola automaticamente questo risparmio sulla base dei consumi reali del cliente, rendendo il dato credibile e personalizzato.</p>
+
+            <h3>Confronta sempre almeno 3-4 operatori prima di proporre</h3>
+            <p>Proporre la prima offerta che compare nei risultati non è professionale e non costruisce fiducia. Mostrare al cliente che hai confrontato quattro o cinque operatori e hai scelto la migliore per lui dimostra competenza e indipendenza. Il comparatore SempliCom rende questo processo immediato — nessun bisogno di aprire siti diversi o sfogliare cataloghi.</p>
+
+            <h3>Spiega fisso vs variabile in base al profilo cliente</h3>
+            <p>Un pensionato con consumi stabili e reddito fisso dovrebbe quasi sempre preferire un'offerta a prezzo fisso, per la prevedibilità della spesa. Un professionista con alta propensione al risparmio e consumi variabili potrebbe preferire un indicizzato nei periodi di prezzi bassi. Usa questi ragionamenti per differenziarti dai concorrenti che propongono sempre la stessa offerta a tutti.</p>
+
+            <h3>Per le PMI, usa il comparatore B2B con i consumi aziendali</h3>
+            <p>Le piccole e medie imprese hanno profili di consumo molto diversi dai domestici: tensioni di fornitura BT o MT, potenze impegnate più elevate, utilizzo prevalentemente diurno. Il comparatore SempliCom supporta questo segmento con i campi specifici del mercato business. Una PMI che consuma 30.000 kWh/anno ha un potenziale di risparmio decine di volte superiore a un domestico — e una commissione proporzionalmente più alta per l'agente.</p>
+
+            <h3>Mantieni il portafoglio clienti aggiornato ogni trimestre</h3>
+            <p>Le offerte cambiano, i contratti scadono, le tariffe si muovono. Un cliente acquisito 12 mesi fa potrebbe avere oggi un'offerta migliore disponibile — anche con lo stesso operatore. SempliCom permette di identificare i clienti con contratti in scadenza o con offerte ormai non competitive, creando opportunità di ricontatto e fidelizzazione che generano reddito ricorrente senza bisogno di acquisire nuovi clienti.</p>
+
+            <!-- SECTION 7: INTEGRATO vs ESTERNO -->
+            <h2 id="integrato-vs-esterno">Comparatore Integrato vs Comparatore Esterno: Perché la Differenza Conta</h2>
+
+            <p>Molti consulenti usano uno strumento di comparazione separato (un sito o una app) e poi tornano nel proprio CRM per inserire la pratica. Questo flusso, apparentemente banale, nasconde tre problemi seri.</p>
+
+            <p><strong>Doppio inserimento dati.</strong> I dati del cliente vengono inseriti nel comparatore esterno per fare la simulazione, poi devono essere reinseriti nel CRM per aprire la pratica. Ogni reinserimento è un'opportunità di errore. Un POD copiato male, una data di nascita sbagliata di un anno, un consumo digitato con la virgola al posto sbagliato: ognuno di questi errori causa il rigetto della pratica e richiede tempo per essere corretto.</p>
+
+            <p><strong>Nessuna continuità del flusso.</strong> Quando il comparatore è esterno al CRM, la firma del contratto richiede un ulteriore cambio di strumento. E poi il tracking della pratica richiede un altro sistema. E il calcolo della provvigione un altro ancora. Con SempliCom, tutto avviene nella stessa interfaccia: dalla comparazione alla firma, dal tracking all'incasso della provvigione. Un solo login, un solo flusso, zero interruzioni.</p>
+
+            <p><strong>Nessuna visione unificata del cliente.</strong> Se il comparatore esterno non è collegato al CRM, non è possibile vedere la cronologia delle offerte presentate a un cliente, le simulazioni fatte in passato, o le offerte rifiutate. Con SempliCom, ogni comparazione fatta per un cliente viene registrata nel suo fascicolo — utile per i ricontatti futuri e per capire perché un cliente ha rifiutato un'offerta.</p>
+
+            <div class="highlight-box">
+                <h3>Il comparatore è incluso nella partnership SempliCom</h3>
+                <p>Non esiste un costo aggiuntivo per accedere al comparatore offerte. È parte integrante della suite SempliCom, disponibile per tutti i partner della rete. Ogni nuovo operatore integrato è immediatamente disponibile senza aggiornamenti da scaricare o configurazioni aggiuntive.</p>
+                <a href="/diventa-partner/" class="btn btn-primary">Scopri come diventare partner</a>
+            </div>
+
+            <!-- SECTION 8: FAQ -->
+            <h2 id="faq">Domande Frequenti sul Comparatore Offerte per Agenti</h2>
+
+            <div class="faq-list">
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        I prezzi del comparatore sono aggiornati in tempo reale?
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Sì. Le tariffe degli operatori integrati vengono aggiornate automaticamente ogni volta che l'operatore modifica le proprie offerte. Per le offerte indicizzate al PUN o al PSV, il sistema aggiorna il prezzo di riferimento con cadenza mensile, in linea con il ciclo di aggiornamento dei prezzi all'ingrosso. Un indicatore visivo nella schermata del comparatore segnala quando un'offerta è stata aggiornata di recente, garantendo che il consulente stia sempre lavorando con dati attuali.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Posso fare comparazioni per clienti business?
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Sì. Il comparatore SempliCom supporta sia il segmento domestico che il segmento business (PMI, artigiani, piccole imprese, studi professionali, condomini). Per i clienti business è possibile inserire consumi più elevati (fino a centinaia di migliaia di kWh/anno), selezionare il profilo di utilizzo (tensione BT o MT, potenza impegnata, fasce orarie prevalenti) e ottenere comparazioni accurate sul mercato B2B, dove le offerte sono strutturalmente diverse da quelle domestiche.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Come funziona la proposta PDF generata dal comparatore?
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>La proposta PDF viene generata automaticamente e include: intestazione con i dati del cliente, dettaglio dell'offerta selezionata (operatore, nome offerta, tipo di prezzo, prezzo al kWh/mc, CCV, durata), simulazione del risparmio rispetto alla tariffa attuale espressa in euro/anno e in percentuale, condizioni contrattuali principali (durata, recesso, rinnovo) e i passi successivi per l'attivazione. Il documento può essere brandizzato con il logo dell'agenzia. Una volta generato, può essere inviato via email o WhatsApp direttamente dalla piattaforma, senza bisogno di scaricarlo e allegarlo manualmente.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Il comparatore include anche le offerte gas?
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Sì. Il comparatore SempliCom copre sia il mercato dell'energia elettrica che il mercato del gas naturale. Per il gas, il riferimento di prezzo è il PSV (Punto di Scambio Virtuale). È possibile fare una comparazione solo luce, solo gas, oppure abbinata luce + gas per gli operatori che propongono offerte combinate, con una simulazione del risparmio totale sulla bolletta domestica. La comparazione abbinata è particolarmente efficace per aumentare il valore medio per cliente.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Posso personalizzare i risultati per mostrare solo alcuni operatori?
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Sì. L'amministratore dell'agenzia può configurare il comparatore per mostrare solo gli operatori con cui l'agenzia ha accordi commerciali attivi, evitando di presentare offerte che non è possibile vendere. La configurazione è flessibile: è possibile definire una lista di operatori visibili per l'intera agenzia oppure personalizzarla per singolo agente, in base alle certificazioni e agli accordi individuali. Questo mantiene il focus commerciale e garantisce che ogni offerta mostrata sia effettivamente vendibile dall'agente.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- LINK INTERNI -->
+            <h2>Risorse Correlate</h2>
+            <ul>
+                <li><a href="/crm-agenzie-energia/">CRM per agenzie energia: la guida completa alla scelta della piattaforma giusta</a></li>
+                <li><a href="/gestionale-multiservizio/">Gestionale multiservizio: gestisci energia, gas, telefonia e servizi in un'unica piattaforma</a></li>
+                <li><a href="/diventare-consulente-energia/">Come diventare consulente energia: guida al mercato libero italiano</a></li>
+                <li><a href="/diventa-partner/">Diventa partner SempliCom: accedi al comparatore e alla suite completa</a></li>
+            </ul>
+
+        </div><!-- end pillar-content -->
+
+        <!-- CTA AFFILIAZIONE -->
+        <section class="cta-affiliazione">
+            <div class="container">
+                <h2>Entra nella rete SempliCom</h2>
+                <p>Unisciti a oltre 100 partner in tutta Italia. Gestisci energia, gas, telefonia e servizi da un'unica piattaforma. Compensi trasparenti, formazione inclusa, supporto dedicato.</p>
+                <div class="cta-buttons">
+                    <a href="/diventa-partner/" class="btn btn-primary btn-lg">Diventa Partner</a>
+                    <a href="https://wa.me/393295628882?text=Ciao%2C%20vorrei%20informazioni%20per%20diventare%20partner%20SempliCom" class="btn-whatsapp">Scrivici su WhatsApp</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo"><img src="/assets/img/logo.svg" alt="SempliCom" class="logo-img"></a>
+                    <p>La suite operativa per consulenti e reti vendita.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Link utili</h4>
+                    <a href="/funzionalita.html">Funzionalità</a><a href="/prezzi.html">Prezzi</a><a href="/faq.html">FAQ</a><a href="/blog/">Blog</a><a href="/diventa-partner/">Diventa Partner</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Partnership</h4>
+                    <a href="/diventare-consulente-energia/">Diventa Consulente Energia</a><a href="/crm-agenzie-energia/">CRM per Agenzie Energia</a><a href="/partner-caf/">Programma CAF</a><a href="/master-consulente/">Diventa Master</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Legale</h4>
+                    <a href="https://www.iubenda.com/privacy-policy/59258474" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe" title="Privacy Policy">Privacy Policy</a>
+                    <a href="https://www.iubenda.com/privacy-policy/59258474/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe" title="Cookie Policy">Cookie Policy</a>
+                    <a href="/termini.html">Termini e Condizioni</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear">2025</span> SempliCom · MADE SRL Semplificata · Via Martiri della Resistenza 10, Cavallino (LE) · <a href="mailto:amministrazione@madeservizi.com">amministrazione@madeservizi.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="whatsapp-sticky">
+        <a href="https://wa.me/393295628882?text=Ciao%2C%20vorrei%20informazioni%20su%20SempliCom" aria-label="WhatsApp" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+    </div>
+
+    <script src="/assets/app.js"></script>
+    <script>
+    document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const isActive = btn.classList.contains('active');
+            document.querySelectorAll('.faq-question').forEach(b => { b.classList.remove('active'); b.nextElementSibling.classList.remove('open'); b.setAttribute('aria-expanded','false'); });
+            if (!isActive) { btn.classList.add('active'); btn.nextElementSibling.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+        });
+    });
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+    <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
+    <script type="text/javascript" src="https://embeds.iubenda.com/widgets/6e7c4da1-3449-47c7-863f-af1c17061fbc.js"></script>
+
+</body>
+</html>

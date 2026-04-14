@@ -11,6 +11,55 @@
     <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
     <link rel="icon" type="image/png" href="/assets/img/favicon.png">
     <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/css/seo-pages.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://semplicom.com/"},
+        {"@type":"ListItem","position":2,"name":"Prezzi","item":"https://semplicom.com/prezzi"}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "SempliCom",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "CRM e gestionale per agenzie energia, gas, telefonia e reti vendita. Piani Team Base, Team Growth, Team Network e Enterprise.",
+      "url": "https://semplicom.com/prezzi",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Team Base",
+          "description": "Per chi parte con una struttura snella. Fino a 2 gestori attivi, pratiche illimitate, 300 email/mese, 100 letture documenti/mese.",
+          "priceCurrency": "EUR"
+        },
+        {
+          "@type": "Offer",
+          "name": "Team Growth",
+          "description": "Per point e piccoli team. Fino a 4 gestori, ruoli e permessi, report, 800 email/mese, 250 letture documenti/mese.",
+          "priceCurrency": "EUR"
+        },
+        {
+          "@type": "Offer",
+          "name": "Team Network",
+          "description": "Per reti vendita strutturate. Fino a 8 gestori, dashboard rete vendita, 2000 email/mese, 500 letture documenti/mese.",
+          "priceCurrency": "EUR"
+        },
+        {
+          "@type": "Offer",
+          "name": "Enterprise",
+          "description": "Per realtà avanzate con volumi elevati, white-label e integrazioni API.",
+          "priceCurrency": "EUR"
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <header class="header" id="header">
@@ -26,15 +75,48 @@
                     <li><a href="/" class="nav-link">Home</a></li>
                     <li><a href="/perche-semplicom.html" class="nav-link">Perché SempliCom?</a></li>
                     <li><a href="/funzionalita.html" class="nav-link">Funzionalità</a></li>
+                    <li class="nav-dropdown">
+                        <a href="/gestionale-multiservizio/" class="nav-link nav-link-dropdown">Soluzioni <span class="dropdown-arrow">▾</span></a>
+                        <ul class="nav-submenu">
+                            <li><a href="/crm-agenzie-energia/">CRM Energia e Gas</a></li>
+                            <li><a href="/comparatore-offerte-agenti/">Comparatore Offerte</a></li>
+                            <li><a href="/gestionale-multiservizio/">Gestionale Multiservizio</a></li>
+                            <li><a href="/software-provvigioni-agenti/">Software Provvigioni</a></li>
+                            <li><a href="/crm-caf-patronati/">CRM CAF e Patronati</a></li>
+                            <li><a href="/rete-vendita-energia/">Rete Vendita Energia</a></li>
+                            <li><a href="/alternativa-salesforce-italia/">vs Salesforce</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="/energia-gas/" class="nav-link nav-link-dropdown">Settori <span class="dropdown-arrow">▾</span></a>
+                        <ul class="nav-submenu">
+                            <li><a href="/energia-gas/">Energia e Gas</a></li>
+                            <li><a href="/telefonia/">Telefonia</a></li>
+                            <li><a href="/assicurazioni/">Assicurazioni</a></li>
+                            <li><a href="/immobiliare/">Immobiliare</a></li>
+                            <li><a href="/noleggio/">Noleggio</a></li>
+                            <li><a href="/efficienza-energetica/">Efficienza Energetica</a></li>
+                        </ul>
+                    </li>
                     <li><a href="/prezzi.html" class="nav-link active">Prezzi</a></li>
                     <li><a href="/faq.html" class="nav-link">FAQ</a></li>
+                    <li><a href="/blog/" class="nav-link">Blog</a></li>
                 </ul>
-                <button type="button" class="btn btn-primary nav-cta open-modal" data-plan="">Richiedi demo</button>
+                <a href="/diventa-partner/" class="btn btn-primary nav-cta">Diventa Partner</a>
             </nav>
         </div>
     </header>
 
     <main>
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+            <div class="container">
+                <ol class="breadcrumb-list">
+                    <li><a href="/">Home</a></li>
+                    <li aria-current="page">Prezzi</li>
+                </ol>
+            </div>
+        </nav>
+
         <section class="hero" style="padding-bottom: 60px;">
             <div class="hero-content-centered reveal">
                 <h1 class="hero-title">Piani <span class="highlight">SempliCom</span></h1>
@@ -136,11 +218,50 @@
             </div>
         </section>
 
+        <!-- Alternativa al costo: diventa partner -->
+        <section class="section" style="background: var(--color-gray-100);">
+            <div class="container">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;" class="reveal">
+                    <div>
+                        <h2 style="font-size:1.6rem;margin-bottom:16px;">Hai un'agenzia o sei un consulente freelance?</h2>
+                        <p style="color:var(--color-gray-600);margin-bottom:16px;">Se gestisci la tua rete o lavori come agente indipendente, considera il programma <a href="/diventa-partner/" style="color:var(--color-primary);font-weight:600;">Partner SempliCom</a>: accedi alla piattaforma, guadagna provvigioni ricorrenti e cresci con il network.</p>
+                        <ul style="list-style:none;padding:0;margin-bottom:24px;">
+                            <li style="padding:6px 0;color:var(--color-gray-700);">✅ Ingresso gratuito (€0)</li>
+                            <li style="padding:6px 0;color:var(--color-gray-700);">✅ Formazione inclusa</li>
+                            <li style="padding:6px 0;color:var(--color-gray-700);">✅ Provvigioni su ogni cliente attivato</li>
+                            <li style="padding:6px 0;color:var(--color-gray-700);">✅ Ricorrenti mensili per tutta la vita del cliente</li>
+                        </ul>
+                        <a href="/diventa-partner/" class="btn btn-primary">Scopri il programma Partner →</a>
+                    </div>
+                    <div style="background:#fff;border-radius:12px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+                        <h3 style="font-size:1.1rem;margin-bottom:16px;color:var(--color-gray-900);">Confronta SempliCom con la concorrenza</h3>
+                        <p style="color:var(--color-gray-600);font-size:0.9rem;margin-bottom:16px;">Rispetto a Salesforce, HubSpot e altri CRM generici, SempliCom è progettato specificamente per il mercato energia e multiservizio italiano.</p>
+                        <a href="/alternativa-salesforce-italia/" style="color:var(--color-primary);font-weight:600;font-size:0.9rem;">Leggi il confronto completo →</a>
+                        <hr style="margin:16px 0;border:none;border-top:1px solid var(--color-gray-200);">
+                        <p style="color:var(--color-gray-600);font-size:0.9rem;margin-bottom:8px;">Hai dubbi sul piano giusto?</p>
+                        <a href="/faq.html" style="color:var(--color-primary);font-weight:600;font-size:0.9rem;">Consulta le FAQ →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="section" style="text-align: center; background: linear-gradient(135deg, var(--color-primary) 0%, #E8B923 100%);">
             <div class="container">
                 <h2 style="margin-bottom: 16px;">Hai bisogno di una soluzione personalizzata?</h2>
                 <p style="margin-bottom: 30px; font-size: 1.1rem;">Contattaci per una proposta su misura per la tua azienda.</p>
-                <button type="button" class="btn btn-lg open-modal" style="background: var(--color-gray-900); color: white;">Richiedi demo gratuita</button>
+                <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+                    <button type="button" class="btn btn-lg open-modal" style="background: var(--color-gray-900); color: white;">Richiedi demo gratuita</button>
+                    <a href="/diventa-partner/" class="btn btn-lg" style="background:transparent;border:2px solid var(--color-gray-900);color:var(--color-gray-900);">Diventa Partner →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Affiliazione -->
+        <section class="section cta-affiliazione">
+            <div class="container" style="text-align:center;">
+                <h2 style="font-size:1.8rem;margin-bottom:16px;color:#fff;">Sei un agente o hai una rete vendita?</h2>
+                <p style="font-size:1.1rem;margin-bottom:28px;color:rgba(255,255,255,0.85);">Il <a href="/software-provvigioni-agenti/" style="color:var(--color-primary);">software provvigioni</a> e la <a href="/rete-vendita-energia/" style="color:var(--color-primary);">gestione rete vendita</a> sono inclusi nei piani Team Network e Enterprise. Oppure entra come Partner.</p>
+                <a href="/diventa-partner/" class="btn btn-primary btn-lg">Diventa Partner SempliCom — è gratis →</a>
             </div>
         </section>
     </main>
@@ -148,7 +269,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom" style="border: none; padding: 0; text-align: center;">
-                <p>&copy; 2025 SempliCom. Tutti i diritti riservati. | <a href="https://www.iubenda.com/privacy-policy/59258474" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe" title="Privacy Policy">Privacy Policy</a> | <a href="https://www.iubenda.com/privacy-policy/59258474/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe" title="Cookie Policy">Cookie Policy</a> | <a href="/termini.html">Termini</a></p>
+                <p>&copy; <span id="currentYear">2025</span> SempliCom · MADE SRL Semplificata · Via Martiri della Resistenza 10, Cavallino (LE)</p>
             </div>
         </div>
     </footer>
@@ -212,6 +333,11 @@
             </form>
         </div>
     </div>
+    <!-- WhatsApp Sticky -->
+    <a href="https://wa.me/393295628882?text=Ciao%2C%20vorrei%20informazioni%20sui%20prezzi%20di%20SempliCom" class="whatsapp-sticky" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
     <script src="/assets/app.js"></script>
     <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
     <script type="text/javascript" src="https://embeds.iubenda.com/widgets/6e7c4da1-3449-47c7-863f-af1c17061fbc.js"></script>

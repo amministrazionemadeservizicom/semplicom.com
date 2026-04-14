@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stop ai fogli Excel per le provvigioni. SempliCom calcola automaticamente gettoni e ricorrenti per ogni agente della tua rete. Trasparente, in tempo reale, multi-livello.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://semplicom.com/software-provvigioni-agenti/">
+    <title>Calcolo Provvigioni Agenti Energia e Gas | Automatizza con SempliCom</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+    <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/css/seo-pages.css">
+
+    <!-- Schema: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "SempliCom",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Software per il calcolo automatico delle provvigioni degli agenti energia e gas. Gettoni, ricorrenti, bonus multi-livello in tempo reale. Addio ai fogli Excel.",
+      "url": "https://semplicom.com/software-provvigioni-agenti/",
+      "offers": {"@type": "Offer", "priceCurrency": "EUR", "price": "0"},
+      "publisher": {"@type": "Organization", "name": "MADE SRL Semplificata"}
+    }
+    </script>
+
+    <!-- Schema: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Posso configurare tabelle provvigionali diverse per prodotto?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì. SempliCom permette di configurare tabelle provvigionali distinte per ogni tipologia di prodotto: luce domestica, gas domestico, luce business, gas business, fibra, telefonia mobile, assicurazioni e altri verticali. Per ogni prodotto puoi impostare gettone di attivazione, ricorrente mensile e soglie di bonus volume in modo indipendente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Gli agenti vedono le provvigioni degli altri agenti?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Ogni agente vede esclusivamente i propri compensi maturati, i propri contratti e il proprio storico. Solo il Master e l'agenzia hanno visibilità aggregata sulla rete. La privacy tra agenti è garantita a livello di sistema, non solo di configurazione."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come funzionano gli storni in caso di contratto non attivato?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Quando un contratto non viene attivato dall'operatore energetico (per dati errati, disdetta precoce o altri motivi), SempliCom registra automaticamente lo storno. Il gettone precedentemente maturato viene detratto dal saldo dell'agente nel ciclo di liquidazione successivo. L'agente viene notificato in tempo reale con il motivo dello storno."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso esportare i dati delle provvigioni per la contabilità?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì. SempliCom permette di esportare il riepilogo provvigioni in formato Excel/CSV, con dettaglio per agente, per prodotto e per periodo. Il file è pronto per essere importato in qualsiasi software di contabilità (Fatture in Cloud, Zucchetti, TeamSystem, etc.)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Funziona anche con bonus variabili legati a campagne specifiche?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì. Gli operatori energetici lanciano periodicamente campagne con bonus aggiuntivi (es. +€20 per ogni contratto di un operatore specifico nel mese di gennaio). SempliCom permette di creare bonus temporanei che si aggiungono automaticamente alle provvigioni base per il periodo definito. Il sistema informa automaticamente gli agenti via notifica quando è attiva una campagna bonus."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Schema: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://semplicom.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Software Provvigioni Agenti", "item": "https://semplicom.com/software-provvigioni-agenti/"}
+      ]
+    }
+    </script>
+</head>
+<body>
+
+<header class="header" id="header">
+    <div class="container">
+        <a href="/" class="logo" aria-label="SempliCom Home"><img src="/assets/img/logo.svg" alt="SempliCom" class="logo-img"></a>
+        <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false"><span class="hamburger"></span></button>
+        <nav class="nav" id="nav" aria-label="Navigazione principale">
+            <ul class="nav-list">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/perche-semplicom.html" class="nav-link">Perché SempliCom?</a></li>
+                <li><a href="/funzionalita.html" class="nav-link">Funzionalità</a></li>
+                    <li class="nav-dropdown">
+                        <a href="/gestionale-multiservizio/" class="nav-link nav-link-dropdown">Soluzioni <span class="dropdown-arrow">▾</span></a>
+                        <ul class="nav-submenu">
+                            <li><a href="/crm-agenzie-energia/">CRM Energia e Gas</a></li>
+                            <li><a href="/comparatore-offerte-agenti/">Comparatore Offerte</a></li>
+                            <li><a href="/gestionale-multiservizio/">Gestionale Multiservizio</a></li>
+                            <li><a href="/software-provvigioni-agenti/">Software Provvigioni</a></li>
+                            <li><a href="/crm-caf-patronati/">CRM CAF e Patronati</a></li>
+                            <li><a href="/rete-vendita-energia/">Rete Vendita Energia</a></li>
+                            <li><a href="/alternativa-salesforce-italia/">vs Salesforce</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="/energia-gas/" class="nav-link nav-link-dropdown">Settori <span class="dropdown-arrow">▾</span></a>
+                        <ul class="nav-submenu">
+                            <li><a href="/energia-gas/">Energia e Gas</a></li>
+                            <li><a href="/telefonia/">Telefonia</a></li>
+                            <li><a href="/assicurazioni/">Assicurazioni</a></li>
+                            <li><a href="/immobiliare/">Immobiliare</a></li>
+                            <li><a href="/noleggio/">Noleggio</a></li>
+                            <li><a href="/efficienza-energetica/">Efficienza Energetica</a></li>
+                        </ul>
+                    </li>
+                <li><a href="/prezzi.html" class="nav-link">Prezzi</a></li>
+                <li><a href="/faq.html" class="nav-link">FAQ</a></li>
+                <li><a href="/blog/" class="nav-link">Blog</a></li>
+            </ul>
+            <a href="/diventa-partner/" class="btn btn-primary nav-cta">Diventa Partner</a>
+        </nav>
+    </div>
+</header>
+
+<nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <ol>
+        <li><a href="/">Home</a></li>
+        <li>Software Calcolo Provvigioni Agenti</li>
+    </ol>
+</nav>
+
+<section class="pillar-hero">
+    <div class="container">
+        <h1>Calcolo Provvigioni Agenti: Stop ai Fogli Excel, Automatizza Tutto</h1>
+        <p>Ogni mese, migliaia di agenzie energia perdono ore a compilare fogli Excel per calcolare le provvigioni. Errori, contestazioni, ritardi. SempliCom lo fa in automatico, in tempo reale, per ogni agente della tua rete.</p>
+        <div class="cta-buttons">
+            <a href="/diventa-partner/" class="btn btn-primary btn-lg">Inizia Gratis</a>
+            <a href="https://wa.me/393295628882?text=Ciao%2C%20vorrei%20informazioni%20sul%20sistema%20provvigioni%20SempliCom" class="btn-whatsapp" target="_blank" rel="noopener">Scrivici su WhatsApp</a>
+        </div>
+    </div>
+</section>
+
+<main>
+<article class="pillar-content">
+
+    <div class="definition-box">
+        <p><strong>Il calcolo delle provvigioni per gli agenti energia è uno dei processi più critici — e più soggetti ad errori — nella gestione di un'agenzia o rete vendita.</strong> SempliCom automatizza il calcolo di gettoni di attivazione, ricorrenti mensili e bonus su ogni contratto, rendendolo visibile in tempo reale sia all'agenzia che a ogni singolo agente, senza errori e senza fogli Excel.</p>
+    </div>
+
+    <nav class="blog-toc" aria-label="Indice della pagina">
+        <h2>Indice dei contenuti</h2>
+        <ol>
+            <li><a href="#problema-manuale">Il problema del calcolo provvigioni manuale</a></li>
+            <li><a href="#come-funziona">Come funziona il calcolo automatico in SempliCom</a></li>
+            <li><a href="#struttura-provvigionale">Struttura provvigionale tipica nel settore energia</a></li>
+            <li><a href="#multi-livello">Gestione multi-livello (Master → Consulente → Segnalatore)</a></li>
+            <li><a href="#trasparenza">Trasparenza: il vantaggio competitivo per il reclutamento</a></li>
+            <li><a href="#confronto">SempliCom vs gestione Excel: il confronto</a></li>
+            <li><a href="#faq">Domande frequenti</a></li>
+        </ol>
+    </nav>
+
+    <h2 id="problema-manuale">Il problema del calcolo provvigioni manuale</h2>
+
+    <p>Se gestisci un'agenzia energia con 5 o più agenti, conosci bene lo scenario: alla fine del mese devi raccogliere i dati di tutti i contratti attivati, capire quanti sono stati effettivamente confermati dall'operatore, applicare le percentuali giuste per ogni prodotto, tenere conto degli storni del mese precedente, calcolare i bonus volume per chi ha superato le soglie, e infine comunicare a ogni agente il suo totale. E sperare di non aver sbagliato nulla.</p>
+
+    <p>Il problema non è la buona volontà di chi gestisce il processo: è che il calcolo manuale delle provvigioni in un'agenzia energia è strutturalmente fragile. Ecco perché:</p>
+
+    <ul>
+        <li><strong>Errori di calcolo:</strong> formule Excel che si rompono, percentuali applicate al prodotto sbagliato, date di attivazione non aggiornate. Un singolo errore in un foglio condiviso può propagarsi su decine di righe.</li>
+        <li><strong>Ritardi nei pagamenti:</strong> il processo manuale richiede giorni. Nel frattempo gli agenti aspettano e non sanno quanto arriverà. Questo crea tensione e insoddisfazione anche quando i numeri alla fine sono corretti.</li>
+        <li><strong>Nessuna visibilità per l'agente:</strong> l'agente deve fidarsi del numero che riceve a fine mese, senza poter verificare da solo i contratti su cui è stato calcolato il compenso. Questa asimmetria informativa è una fonte continua di conflitti.</li>
+        <li><strong>Impossibile scalare:</strong> con 3 agenti forse ce la fai. Con 10 diventa un'attività a tempo pieno. Con 20 o 30 è semplicemente insostenibile senza uno strumento dedicato.</li>
+        <li><strong>Nessuna gestione dei bonus:</strong> le campagne bonus degli operatori hanno date precise e condizioni specifiche. Tenerle sotto controllo manualmente su Excel, aggiornando le formule per ogni campagna, è un'attività ad alto rischio di errore.</li>
+        <li><strong>Storni non tracciati:</strong> quando un contratto viene stornato dall'operatore (perché il cliente disdice, o perché i dati erano sbagliati), il sistema manuale spesso non ha una traccia chiara del processo. Risultato: contestazioni e incomprensioni.</li>
+        <li><strong>Nessuna storia:</strong> voler sapere quanto ha guadagnato un agente nei sei mesi precedenti per valutare una promozione? Con Excel è un'operazione che richiede ore. Con SempliCom è un click.</li>
+    </ul>
+
+    <p>La buona notizia è che tutti questi problemi sono risolvibili con un sistema di calcolo automatico integrato nel CRM operativo. Non servono software gestionali complessi o costosi: serve uno strumento costruito specificamente per il settore energia, che conosca la logica delle provvigioni senza bisogno di configurazioni elaborate.</p>
+
+    <h2 id="come-funziona">Come funziona il calcolo automatico in SempliCom</h2>
+
+    <p>Il sistema di calcolo provvigioni di SempliCom è costruito direttamente nel flusso operativo. Non è un modulo separato che va alimentato manualmente: i dati fluiscono automaticamente dal momento in cui un contratto viene inserito nella piattaforma fino alla liquidazione finale.</p>
+
+    <h3>Il flusso automatico passo per passo</h3>
+
+    <ol>
+        <li><strong>Inserimento contratto:</strong> l'agente inserisce il contratto in SempliCom (o lo firma digitalmente attraverso la piattaforma). Il sistema registra immediatamente l'agente referente, il prodotto, il cliente e la data di inserimento.</li>
+        <li><strong>Applicazione della tabella provvigionale:</strong> SempliCom legge la tabella provvigionale configurata per quell'agente e quel prodotto, e calcola automaticamente il gettone di attivazione atteso. L'agente vede già in questo momento quanto guadagnerà quando il contratto sarà attivato.</li>
+        <li><strong>Tracking dello stato pratica:</strong> il sistema monitora lo stato della pratica con l'operatore energetico. Quando la pratica passa dallo stato "inviata" ad "attivata", il compenso viene confermato e spostato dal saldo "previsto" al saldo "maturato".</li>
+        <li><strong>Calcolo della ricorrente:</strong> dal mese successivo all'attivazione, il sistema calcola automaticamente la ricorrente mensile per ogni contratto attivo. Non serve fare nulla: il primo del mese, il saldo ricorrenti viene aggiornato per tutti gli agenti.</li>
+        <li><strong>Gestione dei bonus:</strong> se è attiva una campagna bonus (es. +€15 per contratti Enel nel mese di marzo), il sistema applica automaticamente il bonus a tutti i contratti che soddisfano le condizioni, senza bisogno di aggiornare le formule Excel.</li>
+        <li><strong>Gestione degli storni:</strong> se un contratto viene stornato, il sistema detrae automaticamente il compenso maturato dal saldo dell'agente e registra il motivo dello storno. L'agente viene notificato via email o WhatsApp.</li>
+        <li><strong>Riepilogo per la liquidazione:</strong> a fine mese, l'agenzia vede il riepilogo provvigioni per ogni agente pronto per la liquidazione. Un click per esportare il file per la contabilità.</li>
+    </ol>
+
+    <div class="inline-cta">
+        <h3>Quante ore al mese spendi per calcolare le provvigioni?</h3>
+        <p>La maggior parte delle agenzie con 5-15 agenti spende tra le 8 e le 20 ore mensili solo su questo processo. Con SempliCom scendono a zero.</p>
+        <a href="https://wa.me/393295628882?text=Ciao%2C%20vorrei%20una%20demo%20del%20sistema%20provvigioni%20SempliCom" class="btn btn-primary" target="_blank" rel="noopener">Richiedi una demo gratuita</a>
+    </div>
+
+    <h2 id="struttura-provvigionale">Struttura provvigionale tipica nel settore energia</h2>
+
+    <p>Per capire come SempliCom automatizza il calcolo, è utile partire dalla struttura provvigionale tipica nel mercato libero dell'energia in Italia. Ogni agenzia può avere le sue varianti, ma il modello di base è abbastanza standardizzato.</p>
+
+    <h3>Le componenti del compenso di un agente energia</h3>
+
+    <ul>
+        <li><strong>Gettone di attivazione (una tantum):</strong> un compenso fisso pagato quando il contratto viene attivato dall'operatore. L'importo varia significativamente a seconda del tipo di contratto: dai €30-50 per un'utenza domestica base, fino ai €100-150 e oltre per contratti business con consumi elevati. Gli operatori che pagano meglio in termini di gettoni non sono sempre quelli con le offerte migliori per il cliente, e viceversa — il consulente deve saperlo.</li>
+        <li><strong>Ricorrente mensile (continuativa):</strong> una quota mensile percepita per ogni mese che il cliente rimane attivo con quel contratto. Mediamente tra €2 e €10 per cliente attivo al mese, a seconda del prodotto e dell'operatore. La ricorrente è la componente più preziosa nel lungo periodo: un portafoglio di 200 clienti attivi che genera €5/mese ciascuno vale €1.000 al mese di entrate passive.</li>
+        <li><strong>Bonus volume:</strong> compensi aggiuntivi per chi supera determinate soglie di contratti attivati nel mese. Esempio: +€10 per ogni contratto oltre i 20 nel mese, oppure un bonus flat di €500 se si superano i 30 contratti. I bonus volume incentivano i migliori performer e creano una dinamica competitiva sana nella rete.</li>
+        <li><strong>Bonus operatore (campagne temporanee):</strong> bonus aggiuntivi lanciati dagli operatori in specifiche finestre temporali per spingere le vendite di determinati prodotti o su determinate zone geografiche. Durano tipicamente 1-3 mesi e possono essere significativi (€20-50 per contratto in aggiunta al gettone standard).</li>
+        <li><strong>Storno (componente negativa):</strong> se un contratto non viene attivato o il cliente disdice entro il periodo di garanzia, il gettone precedentemente maturato viene recuperato dall'agenzia tramite storno. La gestione corretta degli storni è uno degli elementi più critici nella relazione tra agenzia e agente.</li>
+    </ul>
+
+    <p>SempliCom gestisce tutte queste componenti in modo nativo, senza bisogno di personalizzazioni. La configurazione iniziale della tabella provvigionale richiede circa 30 minuti e poi il sistema lavora in autonomia.</p>
+
+    <h2 id="multi-livello">Gestione multi-livello: Master, Consulente e Segnalatore</h2>
+
+    <p>Le reti vendita energia più strutturate non lavorano su un solo livello. Il modello tipico prevede un <strong>Master</strong> (o titolare di agenzia) che costruisce una rete di <strong>Consulenti</strong> autonomi, ognuno dei quali può avere a sua volta dei <strong>Segnalatori</strong> occasionali. A ogni passaggio, una quota delle provvigioni generate dal livello inferiore sale al livello superiore.</p>
+
+    <p>Questo modello è potenzialmente molto redditizio ma è quasi impossibile da gestire manualmente. Pensate a un Master con 10 Consulenti, ognuno dei quali ha 3-5 Segnalatori: stiamo parlando di 30-50 persone i cui compensi dipendono dall'attività di altri. Calcolare tutto questo a mano ogni mese è un incubo.</p>
+
+    <h3>Come SempliCom gestisce il multi-livello</h3>
+
+    <ul class="checklist">
+        <li><strong>Configurazione delle percentuali di retrocessione:</strong> per ogni livello si configura la quota che risale (es. il Master riceve il 15% delle provvigioni generate dai propri Consulenti). Una volta configurato, il calcolo è automatico.</li>
+        <li><strong>Visibilità separata per livello:</strong> il Segnalatore vede solo i propri compensi. Il Consulente vede i propri + l'aggregato dei suoi Segnalatori. Il Master vede tutta la rete. Ogni livello ha un pannello dedicato con le informazioni appropriate.</li>
+        <li><strong>Calcolo in cascata:</strong> quando un Segnalatore attiva un contratto, il sistema calcola automaticamente il compenso del Segnalatore, poi la quota di retrocessione al Consulente, poi la quota di retrocessione al Master. Tutto in tempo reale, senza nessun passaggio manuale.</li>
+        <li><strong>Storico completo:</strong> ogni componente della rete ha accesso al proprio storico provvigioni con il dettaglio di ogni transazione. Se sorge una contestazione, ci sono tutti i dati per risolverla in modo trasparente.</li>
+        <li><strong>Liquidazioni separate:</strong> il Master può liquidare i propri Consulenti in modo indipendente, senza che questo interferisca con le proprie provvigioni dirette o con i rapporti con l'agenzia principale.</li>
+    </ul>
+
+    <h2 id="trasparenza">Trasparenza: il vantaggio competitivo per il reclutamento</h2>
+
+    <p>C'è un aspetto delle provvigioni in tempo reale che le agenzie sottovalutano spesso, e che invece ha un impatto enorme sul reclutamento e sulla fidelizzazione degli agenti: la <strong>trasparenza</strong>.</p>
+
+    <p>Un agente che entra in una nuova agenzia ha due timori principali: non sapere quanto guadagnerà davvero, e non avere modo di verificare i conteggi che gli vengono presentati. Quando un'agenzia usa SempliCom e può dire al nuovo agente "guarda tu stesso i tuoi contratti e i tuoi compensi in tempo reale dal tuo pannello", si elimina uno dei principali freni al reclutamento.</p>
+
+    <p>Questo si traduce in vantaggi concreti:</p>
+
+    <ul>
+        <li><strong>Reclutamento più facile:</strong> un pannello trasparente è un argomento di vendita quando si cerca nuovi agenti. "Vedi esattamente quanto hai guadagnato, contratto per contratto" è molto più convincente di "fidati di noi".</li>
+        <li><strong>Zero contestazioni a fine mese:</strong> quando l'agente ha già visto i propri compensi maturare durante il mese, non ci sono sorprese nella liquidazione. Le contestazioni si azzerano quasi completamente.</li>
+        <li><strong>Motivazione più alta:</strong> vedere il proprio saldo crescere contratto per contratto, in tempo reale, è un potente motivatore. Gli agenti che usano SempliCom tendono ad essere più proattivi perché il feedback sulla propria performance è immediato.</li>
+        <li><strong>Fidelizzazione:</strong> un agente che ha i propri dati storici su una piattaforma, che vede il proprio portafoglio clienti crescere e le proprie ricorrenti aumentare mese dopo mese, ha un forte incentivo a rimanere. Cambiare agenzia significherebbe perdere questa visibilità e ricominciare da zero.</li>
+    </ul>
+
+    <h2 id="confronto">SempliCom vs gestione Excel: il confronto</h2>
+
+    <p>Mettiamo a confronto la gestione tradizionale con fogli Excel e il sistema automatizzato di SempliCom. I dati si riferiscono a un'agenzia tipo con 10 agenti attivi.</p>
+
+    <div style="overflow-x: auto; margin: 32px 0;">
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th>Caratteristica</th>
+                <th class="table-highlight">SempliCom</th>
+                <th>Fogli Excel</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tempo calcolo mensile</td>
+                <td class="table-highlight"><span class="check-yes">0 ore</span> (automatico)</td>
+                <td>8–20 ore/mese</td>
+            </tr>
+            <tr>
+                <td>Errori di calcolo</td>
+                <td class="table-highlight"><span class="check-yes">Zero</span> (formula verificata)</td>
+                <td>Frequenti (formule rotte, copia/incolla)</td>
+            </tr>
+            <tr>
+                <td>Visibilità per l'agente</td>
+                <td class="table-highlight"><span class="check-yes">In tempo reale</span>, contratto per contratto</td>
+                <td>Solo a fine mese, su comunicazione</td>
+            </tr>
+            <tr>
+                <td>Gestione multi-livello</td>
+                <td class="table-highlight"><span class="check-yes">Automatica</span>, a qualsiasi profondità</td>
+                <td>Quasi impossibile oltre 2 livelli</td>
+            </tr>
+            <tr>
+                <td>Scalabilità</td>
+                <td class="table-highlight"><span class="check-yes">Illimitata</span></td>
+                <td>Crolla oltre 10-15 agenti</td>
+            </tr>
+            <tr>
+                <td>Storico pagamenti</td>
+                <td class="table-highlight"><span class="check-yes">Completo e ricercabile</span></td>
+                <td>Dipende dall'organizzazione dei file</td>
+            </tr>
+            <tr>
+                <td>Gestione storni</td>
+                <td class="table-highlight"><span class="check-yes">Automatica</span>, con notifica</td>
+                <td>Manuale, rischio di dimenticanze</td>
+            </tr>
+            <tr>
+                <td>Bonus campagne</td>
+                <td class="table-highlight"><span class="check-yes">Configurabili</span>, applicazione automatica</td>
+                <td>Aggiornamento manuale formule</td>
+            </tr>
+            <tr>
+                <td>Integrazione con CRM</td>
+                <td class="table-highlight"><span class="check-yes">Nativa</span>, zero doppio inserimento</td>
+                <td>Nessuna (dati separati)</td>
+            </tr>
+            <tr>
+                <td>Contestazioni agenti</td>
+                <td class="table-highlight"><span class="check-yes">Quasi zero</span></td>
+                <td>Frequenti (fine mese)</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <p>Il costo di continuare a usare Excel non è solo il tempo sprecato nel calcolo. È il costo delle contestazioni, degli errori non rilevati, degli agenti che se ne vanno perché non si fidano dei conteggi, delle campagne bonus che non vengono applicate correttamente. SempliCom elimina questi costi nascosti alla radice.</p>
+
+    <h2 id="faq">Domande frequenti sul sistema provvigioni SempliCom</h2>
+
+    <div class="faq-list">
+        <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+                Posso configurare tabelle provvigionali diverse per prodotto?
+                <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    <p>Sì. SempliCom permette di configurare tabelle provvigionali distinte per ogni tipologia di prodotto: luce domestica, gas domestico, luce business, gas business, fibra, telefonia mobile, assicurazioni e altri verticali. Per ogni prodotto puoi impostare il gettone di attivazione, la ricorrente mensile e le soglie di bonus volume in modo completamente indipendente. Puoi anche creare profili provvigionali differenti per agenti senior rispetto ai junior, o per agenti che operano su zone geografiche specifiche.</p>
+                </div>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+                Gli agenti vedono le provvigioni degli altri agenti?
+                <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    <p>No. Ogni agente vede esclusivamente i propri compensi maturati, i propri contratti e il proprio storico pagamenti. Solo il Master e il titolare dell'agenzia hanno visibilità aggregata sulla rete completa. La privacy tra agenti è garantita a livello di sistema — non è una semplice impostazione che qualcuno potrebbe aggirare. Questo elimina le dinamiche di confronto tra pari che spesso creano tensioni nelle reti vendita.</p>
+                </div>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+                Come funzionano gli storni in caso di contratto non attivato?
+                <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    <p>Quando un contratto non viene attivato dall'operatore energetico (per dati errati, POD/PDR non trovato, disdetta del cliente entro il periodo di cooling off, o altri motivi), SempliCom registra automaticamente lo storno. Il gettone precedentemente maturato viene detratto dal saldo dell'agente nel ciclo di liquidazione successivo. L'agente riceve una notifica in tempo reale con il motivo dello storno e il riferimento al contratto specifico. Lo storno è tracciato nello storico con data e causale: nessuna contestazione possibile perché i dati sono completi e verificabili da entrambe le parti.</p>
+                </div>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+                Posso esportare i dati delle provvigioni per la contabilità?
+                <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    <p>Sì. SempliCom permette di esportare il riepilogo provvigioni in formato Excel e CSV, con dettaglio per agente, per prodotto, per operatore e per periodo temporale. Il file è strutturato per essere importato direttamente nei principali software di contabilità italiani (Fatture in Cloud, Zucchetti, TeamSystem, Danea). Per le agenzie che emettono provvigioni tramite nota spese o fattura, il sistema fornisce anche il riepilogo pronto per la riconciliazione contabile.</p>
+                </div>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+                Funziona anche con bonus variabili legati a campagne specifiche?
+                <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    <p>Sì. Gli operatori energetici lanciano periodicamente campagne con bonus aggiuntivi su specifici prodotti, zone geografiche o periodi temporali. SempliCom permette di creare bonus temporanei che si aggiungono automaticamente alle provvigioni base per tutti i contratti che soddisfano le condizioni della campagna. Il sistema informa gli agenti via notifica push o email quando una nuova campagna bonus è attiva, con le condizioni e la scadenza. Al termine della campagna, il bonus si disattiva automaticamente senza bisogno di modificare le tabelle.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 56px; padding: 32px; background: var(--color-gray-100); border-radius: var(--radius-lg);">
+        <h3 style="margin-top: 0; margin-bottom: 16px;">Approfondisci questi argomenti</h3>
+        <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px;">
+            <li><a href="/crm-agenzie-energia/" style="color: var(--color-accent); text-decoration: underline;">CRM per Agenzie Energia</a></li>
+            <li><a href="/rete-vendita-energia/" style="color: var(--color-accent); text-decoration: underline;">Costruire una Rete Vendita Energia</a></li>
+            <li><a href="/master-consulente/" style="color: var(--color-accent); text-decoration: underline;">Diventa Master Consulente</a></li>
+            <li><a href="/diventare-consulente-energia/" style="color: var(--color-accent); text-decoration: underline;">Diventare Consulente Energia</a></li>
+        </ul>
+    </div>
+
+</article>
+</main>
+
+<section class="cta-affiliazione">
+    <div class="container">
+        <h2>Entra nella rete SempliCom</h2>
+        <p>Unisciti a oltre 100 partner in tutta Italia. Gestisci energia, gas, telefonia e servizi da un'unica piattaforma. Compensi trasparenti, formazione inclusa, supporto dedicato.</p>
+        <div class="cta-buttons">
+            <a href="/diventa-partner/" class="btn btn-primary btn-lg">Diventa Partner</a>
+            <a href="https://wa.me/393295628882?text=Ciao%2C%20vorrei%20informazioni%20per%20diventare%20partner%20SempliCom" class="btn-whatsapp">Scrivici su WhatsApp</a>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="logo"><img src="/assets/img/logo.svg" alt="SempliCom" class="logo-img"></a>
+                <p>La suite operativa per consulenti e reti vendita.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Link utili</h4>
+                <a href="/funzionalita.html">Funzionalità</a><a href="/prezzi.html">Prezzi</a><a href="/faq.html">FAQ</a><a href="/blog/">Blog</a><a href="/diventa-partner/">Diventa Partner</a>
+            </div>
+            <div class="footer-links">
+                <h4>Partnership</h4>
+                <a href="/diventare-consulente-energia/">Diventa Consulente Energia</a><a href="/crm-agenzie-energia/">CRM per Agenzie Energia</a><a href="/partner-caf/">Programma CAF</a><a href="/master-consulente/">Diventa Master</a>
+            </div>
+            <div class="footer-links">
+                <h4>Legale</h4>
+                <a href="https://www.iubenda.com/privacy-policy/59258474" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe" title="Privacy Policy">Privacy Policy</a>
+                <a href="https://www.iubenda.com/privacy-policy/59258474/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe" title="Cookie Policy">Cookie Policy</a>
+                <a href="/termini.html">Termini e Condizioni</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="currentYear">2025</span> SempliCom · MADE SRL Semplificata · Via Martiri della Resistenza 10, Cavallino (LE)</p>
+        </div>
+    </div>
+</footer>
+
+<div class="whatsapp-sticky">
+    <a href="https://wa.me/393295628882?text=Ciao%2C%20vorrei%20informazioni%20su%20SempliCom" aria-label="WhatsApp" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+</div>
+<script src="/assets/app.js"></script>
+<script>
+document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const isActive = btn.classList.contains('active');
+        document.querySelectorAll('.faq-question').forEach(b => { b.classList.remove('active'); b.nextElementSibling.classList.remove('open'); b.setAttribute('aria-expanded','false'); });
+        if (!isActive) { btn.classList.add('active'); btn.nextElementSibling.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+    });
+});
+document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+<script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
+<script type="text/javascript" src="https://embeds.iubenda.com/widgets/6e7c4da1-3449-47c7-863f-af1c17061fbc.js"></script>
+
+</body>
+</html>

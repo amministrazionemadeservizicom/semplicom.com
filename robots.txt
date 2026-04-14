@@ -1,7 +1,27 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://semplicom.com/sitemap.xml
 
-# Disallow pages that don't need indexing
 Disallow: /assets/
+
+# AI crawlers — explicitly allowed for AI search visibility
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Omgilibot
+Allow: /

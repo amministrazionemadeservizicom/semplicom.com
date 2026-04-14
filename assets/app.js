@@ -441,6 +441,45 @@
         }
     }
 
+    // Nav Dropdowns (click toggle — works on all devices)
+    function initDropdowns() {
+        const dropdowns = document.querySelectorAll('.nav-dropdown');
+        if (!dropdowns.length) return;
+
+        dropdowns.forEach(dropdown => {
+            const trigger = dropdown.querySelector('.nav-link-dropdown');
+            if (!trigger) return;
+
+            trigger.addEventListener('click', function(e) {
+                // On desktop let CSS :hover handle it; only intercept to prevent navigation
+                // On mobile (nav is in hamburger mode) toggle open class
+                const isMobile = window.innerWidth <= 900;
+                if (isMobile) {
+                    e.preventDefault();
+                    const isOpen = dropdown.classList.contains('open');
+                    // Close all others
+                    dropdowns.forEach(d => d.classList.remove('open'));
+                    dropdown.classList.toggle('open', !isOpen);
+                }
+                // On desktop: href follows naturally (goes to main page of the section)
+            });
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-dropdown')) {
+                dropdowns.forEach(d => d.classList.remove('open'));
+            }
+        });
+
+        // Close dropdowns when mobile nav closes
+        if (navToggle) {
+            navToggle.addEventListener('click', function() {
+                dropdowns.forEach(d => d.classList.remove('open'));
+            });
+        }
+    }
+
     // Initialize
     function init() {
         window.addEventListener('scroll', handleScroll, { passive: true });
@@ -448,6 +487,7 @@
         initRevealAnimations();
         initCarousel();
         initContactModal();
+        initDropdowns();
     }
 
     // Run on DOM ready
