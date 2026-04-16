@@ -142,9 +142,68 @@
         <div class="container">
             <h1>Migliori Offerte Luce e Gas 2026:<br><span class="highlight">Trova quella Giusta per Te</span></h1>
             <p>Confronta gratuitamente le offerte dei principali fornitori del mercato libero. Un consulente SempliCom analizza la tua bolletta e ti propone il risparmio reale, senza impegno.</p>
-            <div class="cta-buttons" style="justify-content:center;">
-                <a href="https://wa.me/393295628882?text=Ciao%2C%20vorrei%20confrontare%20le%20offerte%20luce%20e%20gas" class="btn-whatsapp" style="font-size:1.05rem;padding:14px 28px;">Richiedi il confronto gratuito</a>
-                <a href="/diventa-partner/" class="btn btn-secondary btn-lg">Sei un agente? Unisciti a noi</a>
+        </div>
+    </section>
+
+    <!-- FORM LEAD -->
+    <section style="background:#f8fafc;padding:48px 16px;border-bottom:1px solid #e5e7eb;">
+        <div style="max-width:520px;margin:0 auto;">
+            <div style="background:white;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);border:1px solid #e5e7eb;padding:36px 32px;">
+                <h2 style="font-size:1.25rem;font-weight:700;color:#111827;margin:0 0 6px;text-align:center;">Lascia i tuoi dati</h2>
+                <p style="color:#6b7280;font-size:0.95rem;text-align:center;margin:0 0 24px;">Un nostro consulente ti contatterà gratuitamente</p>
+
+                <div id="lead-form-wrap">
+                    <form id="lead-form" style="display:flex;flex-direction:column;gap:16px;">
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                            <div>
+                                <label style="display:block;font-size:0.85rem;font-weight:600;color:#374151;margin-bottom:4px;">Nome *</label>
+                                <input type="text" id="lf-nome" placeholder="Mario" required style="width:100%;padding:10px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:0.95rem;box-sizing:border-box;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#1a56db'" onblur="this.style.borderColor='#d1d5db'">
+                            </div>
+                            <div>
+                                <label style="display:block;font-size:0.85rem;font-weight:600;color:#374151;margin-bottom:4px;">Cognome *</label>
+                                <input type="text" id="lf-cognome" placeholder="Rossi" required style="width:100%;padding:10px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:0.95rem;box-sizing:border-box;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#1a56db'" onblur="this.style.borderColor='#d1d5db'">
+                            </div>
+                        </div>
+                        <div>
+                            <label style="display:block;font-size:0.85rem;font-weight:600;color:#374151;margin-bottom:4px;">Email *</label>
+                            <input type="email" id="lf-email" placeholder="mario.rossi@email.com" required style="width:100%;padding:10px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:0.95rem;box-sizing:border-box;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#1a56db'" onblur="this.style.borderColor='#d1d5db'">
+                        </div>
+                        <div>
+                            <label style="display:block;font-size:0.85rem;font-weight:600;color:#374151;margin-bottom:4px;">Cellulare *</label>
+                            <input type="tel" id="lf-phone" placeholder="329 1234567" required style="width:100%;padding:10px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:0.95rem;box-sizing:border-box;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#1a56db'" onblur="this.style.borderColor='#d1d5db'">
+                        </div>
+
+                        <div style="background:#f9fafb;border-radius:10px;padding:14px;display:flex;align-items:flex-start;gap:10px;">
+                            <input type="checkbox" id="lf-privacy-made" required style="margin-top:3px;flex-shrink:0;accent-color:#1a56db;width:16px;height:16px;">
+                            <label for="lf-privacy-made" style="font-size:0.82rem;color:#374151;line-height:1.5;cursor:pointer;">
+                                Ho letto e accetto l'<a href="https://semplicom.it/privacy-policy" target="_blank" rel="noopener" style="color:#1a56db;">informativa sulla privacy</a> di MADE Srl Semplificata ai sensi del GDPR e acconsento al trattamento dei miei dati per essere ricontattato con offerte commerciali. *
+                            </label>
+                        </div>
+
+                        <div style="background:#f9fafb;border-radius:10px;padding:14px;display:flex;align-items:flex-start;gap:10px;">
+                            <input type="checkbox" id="lf-privacy-sm" required style="margin-top:3px;flex-shrink:0;accent-color:#1a56db;width:16px;height:16px;">
+                            <label for="lf-privacy-sm" style="font-size:0.82rem;color:#374151;line-height:1.5;cursor:pointer;">
+                                Autorizzo la comunicazione dei miei dati a <strong>Supermoney</strong> per ricevere proposte commerciali personalizzate su energia e servizi correlati, in conformità alla loro <a href="https://www.supermoney.it/privacy/" target="_blank" rel="noopener" style="color:#1a56db;">informativa privacy</a>. *
+                            </label>
+                        </div>
+
+                        <div id="lf-error" style="display:none;background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:10px 14px;font-size:0.875rem;color:#b91c1c;"></div>
+
+                        <button type="submit" id="lf-submit" style="width:100%;padding:14px;background:#1a56db;color:white;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;transition:background .2s;">
+                            Voglio essere contattato →
+                        </button>
+
+                        <p style="font-size:0.75rem;color:#9ca3af;text-align:center;margin:0;">* Campi obbligatori. Servizio gratuito, nessun impegno.</p>
+                    </form>
+                </div>
+
+                <div id="lead-success" style="display:none;text-align:center;padding:16px 0;">
+                    <div style="width:64px;height:64px;background:#dcfce7;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <h3 style="font-size:1.2rem;font-weight:700;color:#111827;margin:0 0 8px;">Richiesta inviata!</h3>
+                    <p style="color:#6b7280;margin:0;">Un nostro consulente ti contatterà al più presto per presentarti le migliori offerte disponibili.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -339,6 +398,56 @@
 </div>
 <script src="/assets/app.js"></script>
 <script>
+// Lead form
+const leadForm = document.getElementById('lead-form');
+if (leadForm) {
+    leadForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('lf-submit');
+        const errBox = document.getElementById('lf-error');
+        const nome = document.getElementById('lf-nome').value.trim();
+        const cognome = document.getElementById('lf-cognome').value.trim();
+        const email = document.getElementById('lf-email').value.trim();
+        const phone = document.getElementById('lf-phone').value.trim();
+        const privacyMade = document.getElementById('lf-privacy-made').checked;
+        const privacySm = document.getElementById('lf-privacy-sm').checked;
+
+        errBox.style.display = 'none';
+        if (!privacyMade || !privacySm) {
+            errBox.textContent = 'Devi accettare entrambe le informative privacy per procedere.';
+            errBox.style.display = 'block';
+            return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Invio in corso...';
+
+        try {
+            const res = await fetch('/.netlify/functions/send-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: nome + ' ' + cognome,
+                    email,
+                    phone,
+                    privacy: true,
+                    plan: 'Offerte Luce e Gas',
+                    message: 'Privacy MADE: ✅ | Privacy Supermoney: ✅ | Fonte: migliori-offerte-luce-gas'
+                })
+            });
+            if (!res.ok) throw new Error('Errore server');
+            document.getElementById('lead-form-wrap').style.display = 'none';
+            document.getElementById('lead-success').style.display = 'block';
+        } catch (err) {
+            errBox.textContent = 'Si è verificato un errore. Riprova o scrivici su WhatsApp.';
+            errBox.style.display = 'block';
+            btn.disabled = false;
+            btn.textContent = 'Voglio essere contattato →';
+        }
+    });
+}
+
+// FAQ
 document.querySelectorAll('.faq-question').forEach(btn => {
     btn.addEventListener('click', () => {
         const isActive = btn.classList.contains('active');
