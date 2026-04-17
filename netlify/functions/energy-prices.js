@@ -74,6 +74,7 @@ exports.handler = async () => {
 
   let pun = null;
   let psv = null;
+  let _gmeErr = null;
 
   // ── GME API ─────────────────────────────────────────────────────────────
   try {
@@ -111,7 +112,7 @@ exports.handler = async () => {
               live: true, source: 'GME IPEX-PUN' };
     }
 
-  } catch (e) { console.error('GME error:', e.message); }
+  } catch (e) { _gmeErr = e.message + ' | user:' + (process.env.GME_USERNAME ? 'set' : 'MISSING') + ' pass:' + (process.env.GME_PASSWORD ? 'set' : 'MISSING'); }
 
   // ── Fallback PUN: energy-charts.info ────────────────────────────────────
   if (!pun) {
@@ -150,7 +151,7 @@ exports.handler = async () => {
       currentMonth: MONTH_IT[m],  currentYear: y,
       prevMonth: MONTH_IT[pm],    prevYear: py,
       dayOfMonth: now.getDate(),
-      pun, psv,
+      pun, psv, _gmeErr,
     }),
   };
 };
