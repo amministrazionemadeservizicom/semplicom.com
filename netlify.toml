@@ -5,7 +5,7 @@
 # Credenziali API GME — aggiorna GME_PASSWORD dopo aver cambiato la password
 [build.environment]
   GME_USERNAME = "madesrls3274"
-  GME_PASSWORD = "ukEXkZQI.a8+Yg%"
+  GME_PASSWORD = "dRwPUb!DqnAki4x!"
 
 [functions]
   node_bundler = "esbuild"
