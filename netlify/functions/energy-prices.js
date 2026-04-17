@@ -36,7 +36,7 @@ async function gmeAuth() {
     body: JSON.stringify({ Login: process.env.GME_USERNAME, Password: process.env.GME_PASSWORD }),
   });
   const json = await res.json();
-  if (!json.Success) throw new Error('Auth failed: ' + json.Reason);
+  if (!json.success) throw new Error('Auth failed: ' + json.reason);
   return json.token;
 }
 
@@ -48,8 +48,8 @@ async function gmeReq(token, segment, dataName, start, end) {
                            DataName: dataName, IntervalStart: start, IntervalEnd: end, Attributes: {} }),
   });
   const json = await res.json();
-  if (!json.ContentResponse) throw new Error('No content');
-  return JSON.parse(unzipB64(json.ContentResponse));
+  if (!json.contentResponse) throw new Error('No content');
+  return JSON.parse(unzipB64(json.contentResponse));
 }
 
 exports.handler = async () => {
@@ -88,9 +88,9 @@ exports.handler = async () => {
     ]);
 
     // PSV — media giornaliera di AveragePrice
-    const psvPrices = psvCur.map(r => r.AveragePrice).filter(p => p > 0);
+    const psvPrices = psvCur.map(r => parseFloat(r.AveragePrice)).filter(p => p > 0);
     if (psvPrices.length > 0) {
-      const pp = psvPrev.map(r => r.AveragePrice).filter(p => p > 0);
+      const pp = psvPrev.map(r => parseFloat(r.AveragePrice)).filter(p => p > 0);
       psv = {
         avg:     round1(psvPrices.reduce((a, b) => a + b, 0) / psvPrices.length),
         min:     round1(Math.min(...psvPrices)),
@@ -106,8 +106,8 @@ exports.handler = async () => {
     const cRec    = [...punCur, ...punPrev].find(r => String(r.ReferencePeriod) === curKey);
     const pRec    = [...punPrev, ...punCur].find(r => String(r.ReferencePeriod) === prevKey);
     if (cRec?.Ipex_Pun) {
-      pun = { avg: round1(cRec.Ipex_Pun), min: null, max: null,
-              prevAvg: pRec ? round1(pRec.Ipex_Pun) : null,
+      pun = { avg: round1(parseFloat(cRec.Ipex_Pun)), min: null, max: null,
+              prevAvg: pRec ? round1(parseFloat(pRec.Ipex_Pun)) : null,
               live: true, source: 'GME IPEX-PUN' };
     }
 
