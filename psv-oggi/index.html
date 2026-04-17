@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PSV Oggi Aprile 2026: Prezzo Gas Aggiornato | SempliCom</title>
+  <meta name="description" content="PSV oggi aprile 2026: valore aggiornato del Punto di Scambio Virtuale del gas naturale in Italia. Media mensile, andamento e cosa significa per agenti e consumatori.">
+  <link rel="canonical" href="https://semplicom.com/psv-oggi/">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="PSV Oggi Aprile 2026 — Prezzo Gas | SempliCom">
+  <meta property="og:description" content="Valore aggiornato del PSV (Punto di Scambio Virtuale) del gas naturale in Italia. Aggiornato ogni settimana con i dati GME.">
+  <meta property="og:url" content="https://semplicom.com/psv-oggi/">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/css/seo-pages.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "PSV Oggi Aprile 2026 – Prezzo Gas Naturale Italia",
+    "description": "Valore aggiornato del PSV (Punto di Scambio Virtuale) del gas naturale in Italia ad aprile 2026. Fonte: GME – Gestore dei Mercati Energetici.",
+    "url": "https://semplicom.com/psv-oggi/",
+    "dateModified": "2026-04-17",
+    "publisher": {
+      "@type": "Organization",
+      "name": "SempliCom",
+      "url": "https://semplicom.com"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Cos'è il PSV?","acceptedAnswer":{"@type":"Answer","text":"Il PSV (Punto di Scambio Virtuale) è il mercato di riferimento per lo scambio di gas naturale in Italia. È gestito da GME (Gestore dei Mercati Energetici) e rappresenta il punto virtuale della rete di trasporto nazionale dove avvengono le transazioni di gas. Il prezzo PSV è espresso in €/MWh (o equivalentemente €/Smc con la conversione del potere calorifico)."}},
+    {"@type":"Question","name":"Chi pubblica il PSV ufficiale?","acceptedAnswer":{"@type":"Answer","text":"Il PSV ufficiale è pubblicato da GME (Gestore dei Mercati Energetici Italiani) sul sito mercatoelettrico.org, sezione gas. I dati giornalieri sono disponibili il giorno successivo alla sessione di mercato."}},
+    {"@type":"Question","name":"Come influisce il PSV sulle bollette del gas?","acceptedAnswer":{"@type":"Answer","text":"Le offerte di gas indicizzate al PSV variano mensilmente in base all'andamento del mercato. Un PSV alto significa bollette più care; un PSV basso favorisce i clienti con contratti indicizzati. Le offerte a prezzo fisso non dipendono dal PSV per tutta la durata del contratto."}},
+    {"@type":"Question","name":"Qual è la differenza tra PSV e TTF?","acceptedAnswer":{"@type":"Answer","text":"Il TTF (Title Transfer Facility) è il principale hub europeo del gas, localizzato in Olanda, ed è il benchmark internazionale di riferimento. Il PSV è l'hub italiano: solitamente presenta un differenziale (spread) rispetto al TTF che riflette i costi di trasporto e la situazione della rete gas italiana. Per le offerte al cliente finale italiano, il PSV è il riferimento più diretto."}},
+    {"@type":"Question","name":"Con quale frequenza viene aggiornato il PSV su questa pagina?","acceptedAnswer":{"@type":"Answer","text":"Questa pagina viene aggiornata ogni settimana con i dati più recenti pubblicati da GME. Per i dati in tempo reale, consulta direttamente il sito ufficiale mercatoelettrico.org."}}
+  ]}
+  </script>
+  <style>
+    .psv-hero { background: linear-gradient(135deg, #059669 0%, #047857 100%); color: white; padding: 48px 0 40px; text-align: center; }
+    .psv-hero h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; margin: 0 0 12px; }
+    .psv-hero p { font-size: 1.05rem; opacity: .88; margin: 0; }
+    .psv-data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 36px 0; }
+    .psv-card { background: white; border-radius: 14px; padding: 24px 20px; text-align: center; box-shadow: 0 2px 16px rgba(0,0,0,.08); border: 1px solid #e5e7eb; }
+    .psv-card .label { font-size: .8rem; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 8px; }
+    .psv-card .value { font-size: 2rem; font-weight: 800; color: #059669; line-height: 1; margin-bottom: 4px; }
+    .psv-card .sub { font-size: .8rem; color: #9ca3af; }
+    .update-badge { display: inline-flex; align-items: center; gap: 6px; background: #dcfce7; color: #166534; border-radius: 20px; padding: 6px 14px; font-size: .82rem; font-weight: 600; margin-top: 16px; }
+    .psv-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: .95rem; }
+    .psv-table th { background: #f3f4f6; padding: 10px 14px; text-align: left; font-weight: 600; color: #374151; border-bottom: 2px solid #e5e7eb; }
+    .psv-table td { padding: 10px 14px; border-bottom: 1px solid #f3f4f6; color: #4b5563; }
+    .psv-table tr:last-child td { border-bottom: none; }
+    .psv-table .highlight { color: #059669; font-weight: 700; }
+    .info-box { background: #ecfdf5; border-left: 4px solid #059669; border-radius: 0 10px 10px 0; padding: 16px 20px; margin: 24px 0; }
+    .info-box p { margin: 0; color: #065f46; font-size: .95rem; }
+  </style>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="container">
+    <a href="/" class="logo" aria-label="SempliCom Home"><img src="/assets/img/logo.svg" alt="SempliCom" class="logo-img"></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false"><span class="hamburger"></span></button>
+    <nav class="nav" id="nav" aria-label="Navigazione principale">
+      <ul class="nav-list">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/perche-semplicom.html" class="nav-link">Perché SempliCom?</a></li>
+        <li><a href="/funzionalita.html" class="nav-link">Funzionalità</a></li>
+        <li class="nav-dropdown">
+          <a href="/gestionale-multiservizio/" class="nav-link nav-link-dropdown">Soluzioni <span class="dropdown-arrow">▾</span></a>
+          <ul class="nav-submenu">
+            <li><a href="/crm-agenzie-energia/">CRM Energia e Gas</a></li>
+            <li><a href="/comparatore-offerte-agenti/">Comparatore Offerte</a></li>
+            <li><a href="/gestionale-multiservizio/">Gestionale Multiservizio</a></li>
+            <li><a href="/software-provvigioni-agenti/">Software Provvigioni</a></li>
+            <li><a href="/crm-caf-patronati/">CRM CAF e Patronati</a></li>
+            <li><a href="/rete-vendita-energia/">Rete Vendita Energia</a></li>
+          </ul>
+        </li>
+        <li class="nav-dropdown">
+          <a href="/energia-gas/" class="nav-link nav-link-dropdown">Settori <span class="dropdown-arrow">▾</span></a>
+          <ul class="nav-submenu">
+            <li><a href="/energia-gas/">Energia e Gas</a></li>
+            <li><a href="/migliori-offerte-luce-gas/">Offerte Luce e Gas</a></li>
+            <li><a href="/telefonia/">Telefonia</a></li>
+            <li><a href="/assicurazioni/">Assicurazioni</a></li>
+            <li><a href="/immobiliare/">Immobiliare</a></li>
+            <li><a href="/noleggio/">Noleggio</a></li>
+            <li><a href="/efficienza-energetica/">Efficienza Energetica</a></li>
+          </ul>
+        </li>
+        <li><a href="/prezzi.html" class="nav-link">Prezzi</a></li>
+        <li><a href="/faq.html" class="nav-link">FAQ</a></li>
+        <li><a href="/blog/" class="nav-link">Blog</a></li>
+      </ul>
+      <a href="/diventa-partner/" class="btn btn-primary nav-cta">Diventa Partner</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="breadcrumb-nav" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li>PSV Oggi</li>
+  </ol>
+</nav>
+
+<section class="psv-hero">
+  <div class="container">
+    <h1 id="psv-h1">PSV Oggi — Aprile 2026</h1>
+    <p>Punto di Scambio Virtuale del gas naturale in Italia · Fonte: GME</p>
+    <div class="update-badge" id="psv-badge">✓ Aggiornato al 17 aprile 2026</div>
+  </div>
+</section>
+
+<main>
+  <div class="container" style="padding-top:40px;padding-bottom:60px;">
+
+    <div class="psv-data-grid">
+      <div class="psv-card">
+        <div class="label" id="psv-avg-label">PSV medio aprile 2026</div>
+        <div class="value" id="psv-avg-value">38,2</div>
+        <div class="sub" id="psv-avg-sub">€/MWh (dato parziale al 17/04)</div>
+      </div>
+      <div class="psv-card">
+        <div class="label" id="psv-min-label">Minimo aprile 2026</div>
+        <div class="value" id="psv-min-value">34,7</div>
+        <div class="sub" id="psv-min-sub">€/MWh</div>
+      </div>
+      <div class="psv-card">
+        <div class="label" id="psv-max-label">Massimo aprile 2026</div>
+        <div class="value" id="psv-max-value">42,1</div>
+        <div class="sub" id="psv-max-sub">€/MWh</div>
+      </div>
+      <div class="psv-card">
+        <div class="label" id="psv-prev-label">PSV medio marzo 2026</div>
+        <div class="value" id="psv-prev-value">40,5</div>
+        <div class="sub" id="psv-prev-sub">€/MWh (dato definitivo)</div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <p><strong>Nota:</strong> I dati PSV pubblicati su questa pagina sono estratti dai report ufficiali di GME (Gestore dei Mercati Energetici Italiani) su <strong>mercatoelettrico.org</strong>. La pagina viene aggiornata ogni settimana.</p>
+    </div>
+
+    <h2>Andamento PSV 2026 — Riepilogo mensile</h2>
+    <table class="psv-table">
+      <thead>
+        <tr>
+          <th>Mese</th>
+          <th>PSV medio (€/MWh)</th>
+          <th>Variazione vs mese prec.</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Gennaio 2026</td>
+          <td class="highlight">48,3</td>
+          <td>+12,3%</td>
+          <td>Picco stagionale invernale</td>
+        </tr>
+        <tr>
+          <td>Febbraio 2026</td>
+          <td class="highlight">44,7</td>
+          <td>-7,5%</td>
+          <td>Calo fine inverno</td>
+        </tr>
+        <tr>
+          <td>Marzo 2026</td>
+          <td class="highlight">40,5</td>
+          <td>-9,4%</td>
+          <td>Riscaldamento ridotto</td>
+        </tr>
+        <tr>
+          <td id="psv-table-month">Aprile 2026</td>
+          <td class="highlight" id="psv-table-avg">38,2*</td>
+          <td id="psv-table-var">-5,7%</td>
+          <td id="psv-table-note">*Dato parziale al 17/04</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Cos'è il PSV e perché è importante</h2>
+    <p>Il <strong>PSV (Punto di Scambio Virtuale)</strong> è il mercato di riferimento per lo scambio di gas naturale in Italia. È gestito da GME e rappresenta il punto virtuale della rete di trasporto nazionale dove vengono concluse le transazioni di gas. Il prezzo PSV è il benchmark utilizzato dalle offerte di gas indicizzate del mercato libero italiano.</p>
+    <p>Per agenti e agenzie del settore energia-gas, il PSV è un indicatore chiave perché:</p>
+    <ul>
+      <li><strong>Riferimento per le offerte indicizzate:</strong> le tariffe PSV-indicizzate variano mensilmente seguendo l'andamento del mercato all'ingrosso. Un agente che conosce il PSV può spiegare ai clienti perché la bolletta è salita o scesa.</li>
+      <li><strong>Stagionalità marcata:</strong> il gas ha una stagionalità molto più pronunciata dell'elettricità. Il PSV sale in inverno (domanda per riscaldamento) e scende in estate. Questo crea opportunità commerciali prevedibili.</li>
+      <li><strong>Relazione con il TTF europeo:</strong> il PSV segue l'andamento del TTF (hub europeo del gas) con uno spread variabile. Le tensioni geopolitiche e le scorte europee influenzano entrambi.</li>
+    </ul>
+
+    <h2>PSV vs TTF: le differenze per l'agente energia</h2>
+    <p>Il <strong>TTF</strong> (Title Transfer Facility) è il principale hub europeo del gas, localizzato in Olanda, ed è il benchmark internazionale che trovi citato nei media. Il <strong>PSV</strong> è l'hub italiano: normalmente presenta un differenziale positivo rispetto al TTF che riflette i costi di trasporto verso l'Italia e la situazione della rete nazionale.</p>
+    <p>Per il lavoro quotidiano dell'agente energia italiano, il PSV è il riferimento corretto per confrontare le offerte gas perché è quello su cui si basano effettivamente i contratti del mercato libero italiano.</p>
+
+    <h2>Come usare il PSV nella consulenza ai clienti</h2>
+    <ul>
+      <li><strong>Inizio estate (PSV in calo):</strong> momento favorevole per proporre offerte a prezzo fisso estivo. Il cliente blocca un prezzo storicamente basso per l'anno successivo.</li>
+      <li><strong>Autunno (PSV in risalita):</strong> opportunità per chi vuole ancora firmare un fisso prima che i prezzi salgano troppo.</li>
+      <li><strong>PSV stabile:</strong> confronto diretto fisso vs indicizzato, con spiegazione del rischio stagionale.</li>
+    </ul>
+    <p>Il <a href="/comparatore-offerte-agenti/">comparatore di SempliCom</a> mostra sempre sia le offerte indicizzate al PSV che quelle a prezzo fisso, con il calcolo del risparmio stimato su base annua per il profilo di consumo specifico del cliente.</p>
+
+    <h2>Domande frequenti sul PSV</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Cos'è il PSV?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Il PSV (Punto di Scambio Virtuale) è il mercato di riferimento per lo scambio di gas naturale in Italia, gestito da GME. Rappresenta il punto virtuale della rete di trasporto dove avvengono le transazioni. Il prezzo PSV è espresso in €/MWh e viene usato come indice dalle offerte gas indicizzate del mercato libero.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Chi pubblica il PSV ufficiale?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Il PSV ufficiale è pubblicato da GME (Gestore dei Mercati Energetici Italiani) sul sito mercatoelettrico.org, sezione mercato del gas. I dati giornalieri sono disponibili il giorno successivo alla sessione.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Come influisce il PSV sulle bollette del gas?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Le offerte di gas indicizzate al PSV variano mensilmente. Un PSV alto (tipicamente in inverno) significa bollette più care per chi ha un contratto indicizzato. Le offerte a prezzo fisso bloccano il costo indipendentemente dall'andamento del PSV.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Qual è la differenza tra PSV e TTF?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Il TTF è il principale hub europeo del gas (Olanda) ed è il benchmark internazionale. Il PSV è l'hub italiano: solitamente ha uno spread positivo rispetto al TTF che riflette i costi di trasporto verso l'Italia. Per i contratti del mercato libero italiano, il PSV è il riferimento più diretto.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Con quale frequenza viene aggiornato il PSV su questa pagina?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Questa pagina viene aggiornata ogni settimana con i dati più recenti di GME. Per i dati in tempo reale consulta mercatoelettrico.org.</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;background:#ecfdf5;border-radius:14px;padding:32px;text-align:center;">
+      <h3 style="margin:0 0 12px;color:#065f46;">Sei un agente energia o vuoi diventarlo?</h3>
+      <p style="color:#059669;margin:0 0 20px;">SempliCom ti dà un comparatore integrato con tutte le offerte gas, la gestione pratiche e il calcolo automatico delle provvigioni.</p>
+      <div class="cta-buttons">
+        <a href="/diventa-partner/" class="btn btn-primary">Diventa Partner</a>
+        <a href="https://wa.me/393295628882?text=Ciao%2C%20mi%20interessa%20diventare%20agente%20energia%20con%20SempliCom" class="btn-whatsapp">Scrivici su WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="article-related" style="margin-top:40px;">
+      <h3>Approfondimenti correlati</h3>
+      <ul>
+        <li><a href="/pun-oggi/">PUN Oggi — Prezzo Elettricità Aggiornato</a></li>
+        <li><a href="/blog/psv-gas-guida-agenti/">PSV Gas: Guida per Agenti Energia</a></li>
+        <li><a href="/blog/spread-energia-come-funziona/">Spread Energia: Come Funziona</a></li>
+        <li><a href="/migliori-offerte-luce-gas/">Migliori Offerte Luce e Gas</a></li>
+        <li><a href="/crm-agenzie-energia/">CRM per Agenzie Energia</a></li>
+      </ul>
+    </div>
+
+  </div>
+</main>
+
+<section class="cta-affiliazione">
+  <div class="container">
+    <h2>Entra nella rete SempliCom</h2>
+    <p>Unisciti a oltre 100 partner in tutta Italia. Gestisci energia, gas, telefonia e servizi da un'unica piattaforma. Compensi trasparenti, formazione inclusa, supporto dedicato.</p>
+    <div class="cta-buttons">
+      <a href="/diventa-partner/" class="btn btn-primary btn-lg">Diventa Partner</a>
+      <a href="https://wa.me/393295628882?text=Ciao%2C%20vorrei%20informazioni%20per%20diventare%20partner%20SempliCom" class="btn-whatsapp">Scrivici su WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo"><img src="/assets/img/logo.svg" alt="SempliCom" class="logo-img"></a>
+        <p>La suite operativa per consulenti e reti vendita.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Link utili</h4>
+        <a href="/funzionalita.html">Funzionalità</a><a href="/prezzi.html">Prezzi</a><a href="/faq.html">FAQ</a><a href="/blog/">Blog</a><a href="/diventa-partner/">Diventa Partner</a>
+      </div>
+      <div class="footer-links">
+        <h4>Prezzi energia</h4>
+        <a href="/pun-oggi/">PUN Oggi</a><a href="/psv-oggi/">PSV Oggi</a><a href="/blog/pun-aprile-2026-analisi-agenti/">Analisi PUN Aprile 2026</a><a href="/migliori-offerte-luce-gas/">Migliori Offerte Luce e Gas</a>
+      </div>
+      <div class="footer-links">
+        <h4>Legale</h4>
+        <a href="https://www.iubenda.com/privacy-policy/59258474" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe" title="Privacy Policy">Privacy Policy</a>
+        <a href="https://www.iubenda.com/privacy-policy/59258474/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe" title="Cookie Policy">Cookie Policy</a>
+        <a href="/termini.html">Termini e Condizioni</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="currentYear">2025</span> SempliCom · MADE SRL Semplificata · Via Martiri della Resistenza 10, Cavallino (LE)</p>
+    </div>
+  </div>
+</footer>
+
+<div class="whatsapp-sticky">
+  <a href="https://wa.me/393295628882?text=Ciao%2C%20vorrei%20informazioni%20su%20SempliCom" aria-label="WhatsApp" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+<script src="/assets/app.js"></script>
+<script>
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const isActive = btn.classList.contains('active');
+    document.querySelectorAll('.faq-question').forEach(b => { b.classList.remove('active'); b.nextElementSibling.classList.remove('open'); b.setAttribute('aria-expanded','false'); });
+    if (!isActive) { btn.classList.add('active'); btn.nextElementSibling.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+  });
+});
+document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+// Auto-update PSV data from Netlify Function
+(async function() {
+  try {
+    const res = await fetch('/.netlify/functions/energy-prices');
+    if (!res.ok) return;
+    const d = await res.json();
+    const p = d.psv;
+    if (!p || !p.avg) return;
+
+    const fmt = n => n != null ? String(n).replace('.', ',') : '—';
+    const monthYear = d.currentMonth + ' ' + d.currentYear;
+    const prevMonthYear = d.prevMonth + ' ' + d.prevYear;
+    const mNow = new Date();
+    const dayStr = mNow.getDate() + '/' + String(mNow.getMonth()+1).padStart(2,'0');
+    const mNames = ['gennaio','febbraio','marzo','aprile','maggio','giugno',
+                    'luglio','agosto','settembre','ottobre','novembre','dicembre'];
+    const badgeDate = mNow.getDate() + ' ' + mNames[mNow.getMonth()] + ' ' + mNow.getFullYear();
+
+    document.getElementById('psv-h1').textContent = 'PSV Oggi — ' + monthYear;
+    document.getElementById('psv-badge').textContent = '✓ Aggiornato al ' + badgeDate;
+
+    document.getElementById('psv-avg-label').textContent = 'PSV medio ' + monthYear.toLowerCase();
+    document.getElementById('psv-avg-value').textContent = fmt(p.avg);
+    document.getElementById('psv-avg-sub').textContent = '€/MWh (dato parziale al ' + dayStr + ')';
+
+    document.getElementById('psv-min-label').textContent = 'Minimo ' + monthYear.toLowerCase();
+    document.getElementById('psv-min-value').textContent = fmt(p.min);
+
+    document.getElementById('psv-max-label').textContent = 'Massimo ' + monthYear.toLowerCase();
+    document.getElementById('psv-max-value').textContent = fmt(p.max);
+
+    if (p.prevAvg != null) {
+      document.getElementById('psv-prev-label').textContent = 'PSV medio ' + prevMonthYear.toLowerCase();
+      document.getElementById('psv-prev-value').textContent = fmt(p.prevAvg);
+    }
+
+    document.getElementById('psv-table-month').textContent = monthYear;
+    document.getElementById('psv-table-avg').textContent = fmt(p.avg) + '*';
+    document.getElementById('psv-table-note').textContent = '*Dato parziale al ' + dayStr;
+    if (p.prevAvg != null) {
+      const change = (p.avg - p.prevAvg) / p.prevAvg * 100;
+      document.getElementById('psv-table-var').textContent = (change >= 0 ? '+' : '') + change.toFixed(1).replace('.', ',') + '%';
+    }
+  } catch(e) { /* silently fail — static values remain */ }
+})();
+</script>
+<script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
+<script type="text/javascript" src="https://embeds.iubenda.com/widgets/6e7c4da1-3449-47c7-863f-af1c17061fbc.js"></script>
+</body>
+</html>
