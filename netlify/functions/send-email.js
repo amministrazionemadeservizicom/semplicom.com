@@ -14,7 +14,7 @@ exports.handler = async (event) => {
 
     try {
         const data = JSON.parse(event.body);
-        const { name, email, company, phone, plan, employees, message, privacy } = data;
+        const { name, email, company, phone, plan, employees, message, privacy, subject: customSubject } = data;
 
         // Validazione base
         if (!name || !email || !privacy) {
@@ -29,7 +29,7 @@ exports.handler = async (event) => {
             to: 'amministrazione@madeservizi.com',
             from: 'noreply@semplicom.com', // Deve essere verificato su SendGrid
             replyTo: email,
-            subject: `Nuova richiesta demo - ${name}${company ? ` (${company})` : ''}`,
+            subject: customSubject ? `${customSubject} - ${name}` : `Nuova richiesta demo - ${name}${company ? ` (${company})` : ''}`,
             html: `
                 <h2>Nuova richiesta demo da semplicom.com</h2>
                 <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
