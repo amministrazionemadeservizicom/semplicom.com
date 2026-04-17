@@ -15,6 +15,7 @@
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/styles.css">
   <link rel="stylesheet" href="/assets/css/seo-pages.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -56,6 +57,9 @@
     .pun-table .highlight { color: #1a56db; font-weight: 700; }
     .info-box { background: #eff6ff; border-left: 4px solid #1a56db; border-radius: 0 10px 10px 0; padding: 16px 20px; margin: 24px 0; }
     .info-box p { margin: 0; color: #1e40af; font-size: .95rem; }
+    .chart-section { background: white; border-radius: 16px; padding: 28px 24px 16px; box-shadow: 0 2px 16px rgba(0,0,0,.08); border: 1px solid #e5e7eb; margin: 0 0 32px; }
+    .chart-section-title { font-size: .78rem; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: .07em; margin: 0 0 18px; }
+    .chart-wrap { position: relative; height: 240px; }
     .chart-placeholder { background: #f8fafc; border: 2px dashed #e5e7eb; border-radius: 12px; padding: 40px 20px; text-align: center; color: #9ca3af; font-size: .9rem; margin: 24px 0; }
   </style>
 </head>
@@ -142,6 +146,13 @@
         <div class="label" id="pun-prev-label">PUN medio marzo 2026</div>
         <div class="value" id="pun-prev-value">143,4</div>
         <div class="sub" id="pun-prev-sub">€/MWh (dato definitivo)</div>
+      </div>
+    </div>
+
+    <div class="chart-section">
+      <p class="chart-section-title">Andamento PUN mensile €/MWh</p>
+      <div class="chart-wrap">
+        <canvas id="pun-chart"></canvas>
       </div>
     </div>
 
@@ -351,6 +362,47 @@ document.getElementById('currentYear').textContent = new Date().getFullYear();
     if (p.prevAvg != null) {
       document.getElementById('pun-prev-label').textContent = 'PUN medio ' + prevMonthYear.toLowerCase();
       document.getElementById('pun-prev-value').textContent = fmt(p.prevAvg);
+    }
+
+    // Grafico andamento mensile
+    if (d.punMonthly && d.punMonthly.length > 0) {
+      const ctx = document.getElementById('pun-chart').getContext('2d');
+      const grad = ctx.createLinearGradient(0, 0, 0, 240);
+      grad.addColorStop(0, 'rgba(26,86,219,0.18)');
+      grad.addColorStop(1, 'rgba(26,86,219,0)');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: d.punMonthly.map(r => r.month.slice(0,3)),
+          datasets: [{
+            data: d.punMonthly.map(r => r.avg),
+            backgroundColor: d.punMonthly.map(r => r.partial ? 'rgba(26,86,219,0.5)' : '#1a56db'),
+            borderRadius: 8,
+            borderSkipped: false,
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: '#1f2937', padding: 10, cornerRadius: 8,
+              callbacks: {
+                title: (items) => d.punMonthly[items[0].dataIndex].month + ' ' + d.punMonthly[items[0].dataIndex].year,
+                label: (item) => ' ' + item.raw.toLocaleString('it-IT',{minimumFractionDigits:1}) + ' €/MWh' + (d.punMonthly[item.dataIndex].partial ? ' (parziale)' : ''),
+              }
+            }
+          },
+          scales: {
+            x: { grid: { display: false }, ticks: { font: { size: 12, weight: '600' }, color: '#6b7280' } },
+            y: {
+              grid: { color: '#f3f4f6' }, border: { display: false },
+              ticks: { font: { size: 11 }, color: '#9ca3af', callback: v => v + ' €' }
+            }
+          },
+          animation: { duration: 800, easing: 'easeOutQuart' }
+        }
+      });
     }
 
     // Ricostruisce la tabella mensile completa se disponibile
