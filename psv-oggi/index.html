@@ -158,7 +158,7 @@
           <th>Note</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="psv-table-body">
         <tr>
           <td>Gennaio 2026</td>
           <td class="highlight">38,0</td>
@@ -179,8 +179,8 @@
         </tr>
         <tr>
           <td id="psv-table-month">Aprile 2026</td>
-          <td class="highlight" id="psv-table-avg">38,2*</td>
-          <td id="psv-table-var">-5,7%</td>
+          <td class="highlight" id="psv-table-avg">48,3*</td>
+          <td id="psv-table-var">-9,9%</td>
           <td id="psv-table-note">*Dato parziale al 17/04</td>
         </tr>
       </tbody>
@@ -345,12 +345,31 @@ document.getElementById('currentYear').textContent = new Date().getFullYear();
       document.getElementById('psv-prev-value').textContent = fmt(p.prevAvg);
     }
 
-    document.getElementById('psv-table-month').textContent = monthYear;
-    document.getElementById('psv-table-avg').textContent = fmt(p.avg) + '*';
-    document.getElementById('psv-table-note').textContent = '*Dato parziale al ' + dayStr;
-    if (p.prevAvg != null) {
-      const change = (p.avg - p.prevAvg) / p.prevAvg * 100;
-      document.getElementById('psv-table-var').textContent = (change >= 0 ? '+' : '') + change.toFixed(1).replace('.', ',') + '%';
+    // Ricostruisce la tabella mensile completa se disponibile
+    if (d.psvMonthly && d.psvMonthly.length > 0) {
+      const tbody = document.getElementById('psv-table-body');
+      if (tbody) {
+        tbody.innerHTML = d.psvMonthly.map(row => {
+          const varPct = row.prevAvg
+            ? ((row.avg - row.prevAvg) / row.prevAvg * 100).toFixed(1).replace('.', ',')
+            : '—';
+          const varStr = row.prevAvg
+            ? (row.avg >= row.prevAvg ? '+' : '') + varPct + '%'
+            : '—';
+          const label = row.partial
+            ? fmt(row.avg) + '*'
+            : fmt(row.avg);
+          const note = row.partial
+            ? '*Dato parziale al ' + dayStr
+            : '';
+          return `<tr>
+            <td>${row.month} ${row.year}</td>
+            <td class="highlight">${label}</td>
+            <td>${varStr}</td>
+            <td>${note}</td>
+          </tr>`;
+        }).join('');
+      }
     }
   } catch(e) { /* silently fail — static values remain */ }
 })();

@@ -13,14 +13,12 @@ function pad(n)      { return String(n).padStart(2, '0'); }
 function round1(n)   { return Math.round(n * 10) / 10; }
 function gmeDate(d)  { return `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}`; }
 
-// fetch con timeout (ms)
-function fetchT(url, opts = {}, ms = 6000) {
+function fetchT(url, opts = {}, ms = 8000) {
   const ctrl = new AbortController();
   const id   = setTimeout(() => ctrl.abort(), ms);
   return fetch(url, { ...opts, signal: ctrl.signal }).finally(() => clearTimeout(id));
 }
 
-// Decomprime base64-ZIP → stringa UTF-8
 function unzipB64(b64) {
   const buf    = Buffer.from(b64, 'base64');
   if (buf.readUInt32LE(0) !== 0x04034b50) throw new Error('Not a ZIP');
@@ -68,49 +66,78 @@ exports.handler = async () => {
   const py        = prevD.getFullYear();
   const pm        = prevD.getMonth();
 
-  const mStart    = gmeDate(new Date(y, m, 1));
+  const yearStart = gmeDate(new Date(y, 0, 1));  // 1 gennaio anno corrente
   const today     = gmeDate(now);
-  const pStart    = gmeDate(new Date(py, pm, 1));
-  const pEnd      = gmeDate(new Date(y, m, 0));
   const todayISO  = `${y}-${pad(m+1)}-${pad(now.getDate())}`;
 
   let pun = null;
   let psv = null;
+  let psvMonthly = null;
+  let punMonthly = null;
 
   // ── GME API ─────────────────────────────────────────────────────────────
   try {
     const token = await gmeAuth();
 
-    // Tutte e 4 le richieste in parallelo
-    const [psvCur, psvPrev, punCur, punPrev] = await Promise.all([
-      gmeReq(token, 'MGP-GAS', 'GAS_ContinuousTrading',  mStart, today).catch(() => []),
-      gmeReq(token, 'MGP-GAS', 'GAS_ContinuousTrading',  pStart, pEnd).catch(() => []),
-      gmeReq(token, 'MGP',     'ME_EuropeanExchanges',   mStart, today).catch(() => []),
-      gmeReq(token, 'MGP',     'ME_EuropeanExchanges',   pStart, pEnd).catch(() => []),
+    const [psvAll, punAll] = await Promise.all([
+      gmeReq(token, 'MGP-GAS', 'GAS_ContinuousTrading', yearStart, today).catch(() => []),
+      gmeReq(token, 'MGP',     'ME_EuropeanExchanges',  yearStart, today).catch(() => []),
     ]);
 
-    // PSV — media giornaliera di AveragePrice
-    const psvPrices = psvCur.map(r => parseFloat(r.AveragePrice)).filter(p => p > 0);
-    if (psvPrices.length > 0) {
-      const pp = psvPrev.map(r => parseFloat(r.AveragePrice)).filter(p => p > 0);
-      psv = {
-        avg:     round1(psvPrices.reduce((a, b) => a + b, 0) / psvPrices.length),
-        min:     round1(Math.min(...psvPrices)),
-        max:     round1(Math.max(...psvPrices)),
-        prevAvg: pp.length ? round1(pp.reduce((a, b) => a + b, 0) / pp.length) : null,
-        live: true, source: 'GME MGP-GAS',
-      };
+    // ── PSV: raggruppa per mese ──────────────────────────────────────────
+    const psvByMonth = {};
+    for (const r of psvAll) {
+      const price = parseFloat(r.AveragePrice);
+      if (!isNaN(price) && price > 0) {
+        const mk = r.FlowDate.slice(0, 6); // YYYYMM
+        if (!psvByMonth[mk]) psvByMonth[mk] = [];
+        psvByMonth[mk].push(price);
+      }
     }
 
-    // PUN — Ipex_Pun mensile
-    const curKey  = `${y}${pad(m+1)}`;
-    const prevKey = `${py}${pad(pm+1)}`;
-    const cRec    = [...punCur, ...punPrev].find(r => String(r.ReferencePeriod) === curKey);
-    const pRec    = [...punPrev, ...punCur].find(r => String(r.ReferencePeriod) === prevKey);
-    if (cRec?.Ipex_Pun) {
-      pun = { avg: round1(parseFloat(cRec.Ipex_Pun)), min: null, max: null,
-              prevAvg: pRec ? round1(parseFloat(pRec.Ipex_Pun)) : null,
-              live: true, source: 'GME IPEX-PUN' };
+    const psvKeys = Object.keys(psvByMonth).sort();
+    if (psvKeys.length > 0) {
+      psvMonthly = psvKeys.map((mk, i) => {
+        const prices  = psvByMonth[mk];
+        const avg     = round1(prices.reduce((a, b) => a + b, 0) / prices.length);
+        const min     = round1(Math.min(...prices));
+        const max     = round1(Math.max(...prices));
+        const mIdx    = parseInt(mk.slice(4, 6), 10) - 1;
+        const prevPrices = i > 0 ? psvByMonth[psvKeys[i - 1]] : null;
+        const prevAvg = prevPrices
+          ? round1(prevPrices.reduce((a, b) => a + b, 0) / prevPrices.length)
+          : null;
+        const partial = mk === `${y}${pad(m + 1)}`;
+        return { month: MONTH_IT[mIdx], year: parseInt(mk.slice(0, 4), 10), avg, min, max, prevAvg, partial };
+      });
+
+      const cur  = psvMonthly[psvMonthly.length - 1];
+      const prev = psvMonthly.length > 1 ? psvMonthly[psvMonthly.length - 2] : null;
+      psv = { avg: cur.avg, min: cur.min, max: cur.max,
+              prevAvg: prev ? prev.avg : null, live: true, source: 'GME MGP-GAS' };
+    }
+
+    // ── PUN: record mensili da ME_EuropeanExchanges ──────────────────────
+    if (punAll.length > 0) {
+      const punByMonth = {};
+      for (const r of punAll) {
+        if (r.Ipex_Pun) punByMonth[String(r.ReferencePeriod)] = parseFloat(r.Ipex_Pun);
+      }
+      const punKeys = Object.keys(punByMonth).sort();
+      if (punKeys.length > 0) {
+        punMonthly = punKeys.map((mk, i) => {
+          const avg     = round1(punByMonth[mk]);
+          const mIdx    = parseInt(mk.slice(4, 6), 10) - 1;
+          const prevAvg = i > 0 ? round1(punByMonth[punKeys[i - 1]]) : null;
+          const partial = mk === `${y}${pad(m + 1)}`;
+          return { month: MONTH_IT[mIdx], year: parseInt(mk.slice(0, 4), 10), avg, min: null, max: null, prevAvg, partial };
+        });
+
+        const cur  = punMonthly[punMonthly.length - 1];
+        const prev = punMonthly.length > 1 ? punMonthly[punMonthly.length - 2] : null;
+        pun = { avg: cur.avg, min: null, max: null,
+                prevAvg: prev ? prev.avg : null, live: true, source: 'GME IPEX-PUN' };
+      }
     }
 
   } catch (e) { console.error('GME error:', e.message); }
@@ -152,7 +179,7 @@ exports.handler = async () => {
       currentMonth: MONTH_IT[m],  currentYear: y,
       prevMonth: MONTH_IT[pm],    prevYear: py,
       dayOfMonth: now.getDate(),
-      pun, psv,
+      pun, psv, psvMonthly, punMonthly,
     }),
   };
 };
