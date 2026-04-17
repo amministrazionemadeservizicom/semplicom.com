@@ -58,7 +58,7 @@ exports.handler = async () => {
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json',
-    'Cache-Control': 'public, max-age=3600',
+    'Cache-Control': 'no-cache',
   };
 
   const now       = new Date();
