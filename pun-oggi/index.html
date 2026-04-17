@@ -15,7 +15,6 @@
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/styles.css">
   <link rel="stylesheet" href="/assets/css/seo-pages.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -364,45 +363,13 @@ document.getElementById('currentYear').textContent = new Date().getFullYear();
       document.getElementById('pun-prev-value').textContent = fmt(p.prevAvg);
     }
 
-    // Grafico andamento mensile
-    if (d.punMonthly && d.punMonthly.length > 0) {
-      const ctx = document.getElementById('pun-chart').getContext('2d');
-      const grad = ctx.createLinearGradient(0, 0, 0, 240);
-      grad.addColorStop(0, 'rgba(26,86,219,0.18)');
-      grad.addColorStop(1, 'rgba(26,86,219,0)');
-      new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: d.punMonthly.map(r => r.month.slice(0,3)),
-          datasets: [{
-            data: d.punMonthly.map(r => r.avg),
-            backgroundColor: d.punMonthly.map(r => r.partial ? 'rgba(26,86,219,0.5)' : '#1a56db'),
-            borderRadius: 8,
-            borderSkipped: false,
-          }]
-        },
-        options: {
-          responsive: true, maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              backgroundColor: '#1f2937', padding: 10, cornerRadius: 8,
-              callbacks: {
-                title: (items) => d.punMonthly[items[0].dataIndex].month + ' ' + d.punMonthly[items[0].dataIndex].year,
-                label: (item) => ' ' + item.raw.toLocaleString('it-IT',{minimumFractionDigits:1}) + ' €/MWh' + (d.punMonthly[item.dataIndex].partial ? ' (parziale)' : ''),
-              }
-            }
-          },
-          scales: {
-            x: { grid: { display: false }, ticks: { font: { size: 12, weight: '600' }, color: '#6b7280' } },
-            y: {
-              grid: { color: '#f3f4f6' }, border: { display: false },
-              ticks: { font: { size: 11 }, color: '#9ca3af', callback: v => v + ' €' }
-            }
-          },
-          animation: { duration: 800, easing: 'easeOutQuart' }
-        }
-      });
+    // Aggiorna grafico con dati live
+    if (d.punMonthly && d.punMonthly.length > 0 && window._buildPunChart) {
+      _buildPunChart(
+        d.punMonthly.map(r => r.month.slice(0,3)),
+        d.punMonthly.map(r => r.avg),
+        d.punMonthly.map(r => r.partial)
+      );
     }
 
     // Ricostruisce la tabella mensile completa se disponibile
@@ -441,5 +408,44 @@ document.getElementById('currentYear').textContent = new Date().getFullYear();
 </script>
 <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
 <script type="text/javascript" src="https://embeds.iubenda.com/widgets/6e7c4da1-3449-47c7-863f-af1c17061fbc.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+<script>
+// Grafico PUN — dati statici di fallback, sostituiti da API se disponibile
+window._punChart = null;
+window._buildPunChart = function(months, values, partial) {
+  const ctx = document.getElementById('pun-chart');
+  if (!ctx) return;
+  if (window._punChart) window._punChart.destroy();
+  window._punChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: months,
+      datasets: [{
+        data: values,
+        backgroundColor: values.map((_, i) => partial[i] ? 'rgba(26,86,219,0.45)' : '#1a56db'),
+        borderRadius: 8,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#1f2937', padding: 10, cornerRadius: 8,
+          callbacks: { label: item => ' ' + item.raw.toLocaleString('it-IT',{minimumFractionDigits:1}) + ' €/MWh' }
+        }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 12, weight: '600' }, color: '#6b7280' } },
+        y: { grid: { color: '#f3f4f6' }, border: { display: false }, ticks: { font: { size: 11 }, color: '#9ca3af', callback: v => v + ' €' } }
+      },
+      animation: { duration: 700, easing: 'easeOutQuart' }
+    }
+  });
+};
+// Fallback statico
+_buildPunChart(['Gen','Feb','Mar','Apr'],[132.7,114.4,143.4,128.0],[false,false,false,true]);
+</script>
 </body>
 </html>

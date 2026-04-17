@@ -15,7 +15,6 @@
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/styles.css">
   <link rel="stylesheet" href="/assets/css/seo-pages.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -356,42 +355,13 @@ document.getElementById('currentYear').textContent = new Date().getFullYear();
       document.getElementById('psv-prev-value').textContent = fmt(p.prevAvg);
     }
 
-    // Grafico andamento mensile
-    if (d.psvMonthly && d.psvMonthly.length > 0) {
-      const ctx = document.getElementById('psv-chart').getContext('2d');
-      new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: d.psvMonthly.map(r => r.month.slice(0,3)),
-          datasets: [{
-            data: d.psvMonthly.map(r => r.avg),
-            backgroundColor: d.psvMonthly.map(r => r.partial ? 'rgba(5,150,105,0.5)' : '#059669'),
-            borderRadius: 8,
-            borderSkipped: false,
-          }]
-        },
-        options: {
-          responsive: true, maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              backgroundColor: '#1f2937', padding: 10, cornerRadius: 8,
-              callbacks: {
-                title: (items) => d.psvMonthly[items[0].dataIndex].month + ' ' + d.psvMonthly[items[0].dataIndex].year,
-                label: (item) => ' ' + item.raw.toLocaleString('it-IT',{minimumFractionDigits:1}) + ' €/MWh' + (d.psvMonthly[item.dataIndex].partial ? ' (parziale)' : ''),
-              }
-            }
-          },
-          scales: {
-            x: { grid: { display: false }, ticks: { font: { size: 12, weight: '600' }, color: '#6b7280' } },
-            y: {
-              grid: { color: '#f3f4f6' }, border: { display: false },
-              ticks: { font: { size: 11 }, color: '#9ca3af', callback: v => v + ' €' }
-            }
-          },
-          animation: { duration: 800, easing: 'easeOutQuart' }
-        }
-      });
+    // Aggiorna grafico con dati live
+    if (d.psvMonthly && d.psvMonthly.length > 0 && window._buildPsvChart) {
+      _buildPsvChart(
+        d.psvMonthly.map(r => r.month.slice(0,3)),
+        d.psvMonthly.map(r => r.avg),
+        d.psvMonthly.map(r => r.partial)
+      );
     }
 
     // Ricostruisce la tabella mensile completa se disponibile
@@ -425,5 +395,44 @@ document.getElementById('currentYear').textContent = new Date().getFullYear();
 </script>
 <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
 <script type="text/javascript" src="https://embeds.iubenda.com/widgets/6e7c4da1-3449-47c7-863f-af1c17061fbc.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+<script>
+// Grafico PSV — dati statici di fallback, sostituiti da API se disponibile
+window._psvChart = null;
+window._buildPsvChart = function(months, values, partial) {
+  const ctx = document.getElementById('psv-chart');
+  if (!ctx) return;
+  if (window._psvChart) window._psvChart.destroy();
+  window._psvChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: months,
+      datasets: [{
+        data: values,
+        backgroundColor: values.map((_, i) => partial[i] ? 'rgba(5,150,105,0.45)' : '#059669'),
+        borderRadius: 8,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#1f2937', padding: 10, cornerRadius: 8,
+          callbacks: { label: item => ' ' + item.raw.toLocaleString('it-IT',{minimumFractionDigits:1}) + ' €/MWh' }
+        }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 12, weight: '600' }, color: '#6b7280' } },
+        y: { grid: { color: '#f3f4f6' }, border: { display: false }, ticks: { font: { size: 11 }, color: '#9ca3af', callback: v => v + ' €' } }
+      },
+      animation: { duration: 700, easing: 'easeOutQuart' }
+    }
+  });
+};
+// Fallback statico
+_buildPsvChart(['Gen','Feb','Mar','Apr'],[38.0,34.6,53.6,48.3],[false,false,false,true]);
+</script>
 </body>
 </html>
