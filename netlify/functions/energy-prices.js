@@ -141,8 +141,8 @@ exports.handler = async () => {
   }
 
   // ── Dati statici di emergenza ────────────────────────────────────────────
-  if (!pun) pun = { avg:125.4, min:101.2, max:148.7, prevAvg:118.3, live:false, source:'fallback' };
-  if (!psv) psv = { avg:38.2,  min:34.7,  max:42.1,  prevAvg:40.5,  live:false, source:'fallback' };
+  if (!pun) pun = { avg:128.0, min:null, max:null, prevAvg:143.4, live:false, source:'fallback' };
+  if (!psv) psv = { avg:48.3,  min:42.0, max:53.7, prevAvg:53.6,  live:false, source:'fallback' };
 
   return {
     statusCode: 200,
