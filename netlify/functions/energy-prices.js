@@ -4,6 +4,8 @@
 const zlib = require('zlib');
 
 const GME_BASE  = 'https://api.mercatoelettrico.org/request';
+const GME_USER  = process.env.GME_USERNAME || 'madesrls3274';
+const GME_PASS  = process.env.GME_PASSWORD || 'dRwPUb!DqnAki4x!';
 const MONTH_IT  = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno',
                    'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
 
@@ -33,7 +35,7 @@ async function gmeAuth() {
   const res  = await fetchT(`${GME_BASE}/api/v1/Auth`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ Login: process.env.GME_USERNAME, Password: process.env.GME_PASSWORD }),
+    body: JSON.stringify({ Login: GME_USER, Password: GME_PASS }),
   });
   const json = await res.json();
   if (!json.success) throw new Error('Auth failed: ' + json.reason);
@@ -74,7 +76,6 @@ exports.handler = async () => {
 
   let pun = null;
   let psv = null;
-  let _gmeErr = null;
 
   // ── GME API ─────────────────────────────────────────────────────────────
   try {
@@ -112,7 +113,7 @@ exports.handler = async () => {
               live: true, source: 'GME IPEX-PUN' };
     }
 
-  } catch (e) { _gmeErr = e.message + ' | user:' + (process.env.GME_USERNAME ? 'set' : 'MISSING') + ' pass:' + (process.env.GME_PASSWORD ? 'set' : 'MISSING'); }
+  } catch (e) { console.error('GME error:', e.message); }
 
   // ── Fallback PUN: energy-charts.info ────────────────────────────────────
   if (!pun) {
@@ -151,7 +152,7 @@ exports.handler = async () => {
       currentMonth: MONTH_IT[m],  currentYear: y,
       prevMonth: MONTH_IT[pm],    prevYear: py,
       dayOfMonth: now.getDate(),
-      pun, psv, _gmeErr,
+      pun, psv,
     }),
   };
 };
