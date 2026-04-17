@@ -2,6 +2,11 @@
   publish = "."
   functions = "netlify/functions"
 
+# Credenziali API GME — aggiorna GME_PASSWORD dopo aver cambiato la password
+[build.environment]
+  GME_USERNAME = "madesrls3274"
+  GME_PASSWORD = "ukEXkZQI.a8+Yg%"
+
 [functions]
   node_bundler = "esbuild"
 
