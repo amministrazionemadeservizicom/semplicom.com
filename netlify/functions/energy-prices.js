@@ -120,8 +120,8 @@ exports.handler = async () => {
       const ps = `${py}-${pad(pm+1)}-01`;
       const pe = `${y}-${pad(m+1)}-01`;
       const [cr, pr] = await Promise.all([
-        fetchT(`https://api.energy-charts.info/price?bzn=IT&start=${cs}&end=${todayISO}`),
-        fetchT(`https://api.energy-charts.info/price?bzn=IT&start=${ps}&end=${pe}`),
+        fetchT(`https://api.energy-charts.info/price?bzn=IT-North&start=${cs}&end=${todayISO}`),
+        fetchT(`https://api.energy-charts.info/price?bzn=IT-North&start=${ps}&end=${pe}`),
       ]);
       if (cr.ok) {
         const cd = await cr.json();
