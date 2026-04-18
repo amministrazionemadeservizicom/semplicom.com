@@ -45,6 +45,21 @@
   ]}
   </script>
 
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"DefinedTermSet",
+   "name":"Zone di mercato dell'energia elettrica italiana (MGP)",
+   "description":"Il mercato elettrico italiano è suddiviso in 6 zone geografiche di mercato (bidding zones) dal GME: Nord, Centro-Nord, Centro-Sud, Sud, Sicilia, Sardegna. Ogni zona ha un prezzo orario distinto nel Mercato del Giorno Prima (MGP).",
+   "url":"https://semplicom.com/prezzi-energia-per-zona/",
+   "hasDefinedTerm":[
+     {"@type":"DefinedTerm","name":"Zona Nord","termCode":"IT-North","description":"Zona di mercato elettrico più grande d'Italia, ben interconnessa con Francia, Svizzera, Austria e Slovenia. Tende ad avere prezzi allineati al mercato europeo."},
+     {"@type":"DefinedTerm","name":"Zona Centro-Nord","termCode":"IT-CNORTH","description":"Zona di transito tra il Nord e il Centro Italia. I prezzi riflettono le condizioni della rete di trasmissione centrale."},
+     {"@type":"DefinedTerm","name":"Zona Centro-Sud","termCode":"IT-CSOUTH","description":"Zona di transito verso il Meridione. I prezzi variano in funzione dei congestionamenti sulla dorsale appenninica."},
+     {"@type":"DefinedTerm","name":"Zona Sud","termCode":"IT-South","description":"Zona con abbondante capacità rinnovabile (eolico e solare) ma collo di bottiglia sulla trasmissione verso il Nord. Prezzi spesso divergenti dal Nord in ore di alta produzione."},
+     {"@type":"DefinedTerm","name":"Zona Sicilia","termCode":"IT-Sicily","description":"Zona insulare collegata al continente tramite cavo HVDC Sorgente-Rizziconi. Prezzi storicamente più alti della media nazionale nei periodi di congestione del cavo."},
+     {"@type":"DefinedTerm","name":"Zona Sardegna","termCode":"IT-Sardinia","description":"Zona insulare collegata tramite il cavo SAPEI. Le rinnovabili locali attenuano le differenze di prezzo nelle ore di alta produzione solare ed eolica."}
+   ]
+  }
+  </script>
   <style>
     .zona-hero { background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%); color: white; padding: 48px 0 40px; text-align: center; }
     .zona-hero h1 { font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 800; margin: 0 0 12px; color: white !important; }

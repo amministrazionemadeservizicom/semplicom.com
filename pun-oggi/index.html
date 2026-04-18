@@ -40,6 +40,36 @@
     {"@type":"Question","name":"Con quale frequenza viene aggiornato il PUN su questa pagina?","acceptedAnswer":{"@type":"Answer","text":"Questa pagina viene aggiornata ogni settimana con i dati più recenti pubblicati da GME. Per i dati in tempo reale, consulta direttamente il sito ufficiale mercatoelettrico.org."}}
   ]}
   </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"DefinedTermSet",
+   "name":"Fasce orarie ARERA per l'energia elettrica",
+   "description":"Le fasce orarie F1, F2, F3 definite da ARERA classificano le ore della settimana in base al livello di consumo e determinano il prezzo nei contratti multiorario.",
+   "url":"https://semplicom.com/pun-oggi/#prezzi-per-fascia",
+   "hasDefinedTerm":[
+     {
+       "@type":"DefinedTerm",
+       "name":"Fascia F1 — Punta",
+       "description":"Fascia oraria di punta ARERA: lunedì–venerdì ore 8:00–19:00 (escluse festività nazionali). È la fascia con i prezzi dell'energia più alti perché coincide con i picchi di consumo industriale e commerciale.",
+       "termCode":"F1",
+       "inDefinedTermSet":"https://semplicom.com/pun-oggi/#prezzi-per-fascia"
+     },
+     {
+       "@type":"DefinedTerm",
+       "name":"Fascia F2 — Intermedia",
+       "description":"Fascia oraria intermedia ARERA: lunedì–venerdì ore 7:00 e ore 19:00–23:00; sabato ore 7:00–23:00 (escluse festività). Presenta prezzi medi tra F1 e F3.",
+       "termCode":"F2",
+       "inDefinedTermSet":"https://semplicom.com/pun-oggi/#prezzi-per-fascia"
+     },
+     {
+       "@type":"DefinedTerm",
+       "name":"Fascia F3 — Fuori Punta",
+       "description":"Fascia oraria fuori punta ARERA: ore notturne 0:00–7:00 di tutti i giorni, domenica intera e festività nazionali. È la fascia con i prezzi dell'energia più bassi.",
+       "termCode":"F3",
+       "inDefinedTermSet":"https://semplicom.com/pun-oggi/#prezzi-per-fascia"
+     }
+   ]
+  }
+  </script>
   <style>
     .pun-hero { background: linear-gradient(135deg, #1a56db 0%, #0e3fa8 100%); color: white; padding: 48px 0 40px; text-align: center; }
     .pun-hero h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; margin: 0 0 12px; color: white !important; }
