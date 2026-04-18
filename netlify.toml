@@ -38,6 +38,12 @@
   status = 301
   force = true
 
+# Redirect /sitemap → /sitemap.xml (Google Search Console)
+[[redirects]]
+  from = "/sitemap"
+  to = "/sitemap.xml"
+  status = 301
+
 # 404 fallback
 [[redirects]]
   from = "/*"

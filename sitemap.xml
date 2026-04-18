@@ -4,7 +4,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://semplicom.com/</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2026-04-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -196,7 +196,7 @@
   <!-- Blog hub -->
   <url>
     <loc>https://semplicom.com/blog/</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2026-04-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
