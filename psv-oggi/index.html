@@ -36,6 +36,7 @@
     {"@type":"Question","name":"Chi pubblica il PSV ufficiale?","acceptedAnswer":{"@type":"Answer","text":"Il PSV ufficiale è pubblicato da GME (Gestore dei Mercati Energetici Italiani) sul sito mercatoelettrico.org, sezione gas. I dati giornalieri sono disponibili il giorno successivo alla sessione di mercato."}},
     {"@type":"Question","name":"Come influisce il PSV sulle bollette del gas?","acceptedAnswer":{"@type":"Answer","text":"Le offerte di gas indicizzate al PSV variano mensilmente in base all'andamento del mercato. Un PSV alto significa bollette più care; un PSV basso favorisce i clienti con contratti indicizzati. Le offerte a prezzo fisso non dipendono dal PSV per tutta la durata del contratto."}},
     {"@type":"Question","name":"Qual è la differenza tra PSV e TTF?","acceptedAnswer":{"@type":"Answer","text":"Il TTF (Title Transfer Facility) è il principale hub europeo del gas, localizzato in Olanda, ed è il benchmark internazionale di riferimento. Il PSV è l'hub italiano: solitamente presenta un differenziale (spread) rispetto al TTF che riflette i costi di trasporto e la situazione della rete gas italiana. Per le offerte al cliente finale italiano, il PSV è il riferimento più diretto."}},
+    {"@type":"Question","name":"Come si legge il grafico giornaliero del PSV?","acceptedAnswer":{"@type":"Answer","text":"Il grafico PSV giornaliero mostra il prezzo di scambio giorno per giorno nelle ultime 60 sessioni di mercato GME. Un trend in discesa indica un mercato del gas in allentamento, favorevole alle offerte indicizzate. Un trend in risalita segnala tensioni sull'approvvigionamento. Questo aiuta agenti e clienti a valutare il momento migliore per rinnovare o sottoscrivere un contratto."}},
     {"@type":"Question","name":"Con quale frequenza viene aggiornato il PSV su questa pagina?","acceptedAnswer":{"@type":"Answer","text":"Questa pagina viene aggiornata ogni settimana con i dati più recenti pubblicati da GME. Per i dati in tempo reale, consulta direttamente il sito ufficiale mercatoelettrico.org."}}
   ]}
   </script>
@@ -59,6 +60,9 @@
     .chart-section { background: white; border-radius: 16px; padding: 28px 24px 16px; box-shadow: 0 2px 16px rgba(0,0,0,.08); border: 1px solid #e5e7eb; margin: 0 0 32px; }
     .chart-section-title { font-size: .78rem; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: .07em; margin: 0 0 18px; }
     .chart-wrap { position: relative; height: 240px; }
+    .daily-chart-section { background: white; border-radius: 16px; padding: 28px 24px 16px; box-shadow: 0 2px 16px rgba(0,0,0,.08); border: 1px solid #e5e7eb; margin: 0 0 32px; }
+    .daily-chart-title { font-size: .78rem; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: .07em; margin: 0 0 18px; }
+    .daily-chart-wrap { position: relative; height: 260px; }
   </style>
 </head>
 <body>
@@ -93,6 +97,7 @@
                             <li><a href="/come-si-calcola-il-pun-in-bolletta/">Come si calcola il PUN</a></li>
                             <li><a href="/prezzo-unico-nazionale/">Prezzo Unico Nazionale</a></li>
                             <li><a href="/spread-energia/">Spread Energia</a></li>
+                            <li><a href="/prezzi-energia-per-zona/">Prezzi per Zona</a></li>
             <li><a href="/telefonia/">Telefonia</a></li>
             <li><a href="/assicurazioni/">Assicurazioni</a></li>
             <li><a href="/immobiliare/">Immobiliare</a></li>
@@ -156,6 +161,18 @@
         <canvas id="psv-chart"></canvas>
       </div>
     </div>
+
+    <!-- ── Andamento giornaliero PSV ─────────────────────────────────────── -->
+    <section id="andamento-giornaliero-psv">
+      <h2>Andamento Giornaliero PSV — Ultimi 60 Giorni</h2>
+      <p>Il grafico mostra il prezzo giornaliero del PSV rilevato al GME negli ultimi 60 giorni di mercato. Ogni punto rappresenta il prezzo medio di scambio in €/MWh. Seguire l'andamento giornaliero aiuta agenti e consulenti a valutare la tendenza recente del mercato del gas: un PSV in calo costante favorisce le offerte indicizzate, mentre una risalita rapida può rendere più conveniente bloccare un prezzo fisso per il cliente.</p>
+      <div class="daily-chart-section">
+        <p class="daily-chart-title">PSV giornaliero €/MWh — ultimi 60 giorni</p>
+        <div class="daily-chart-wrap">
+          <canvas id="psv-daily-chart"></canvas>
+        </div>
+      </div>
+    </section>
 
     <div class="info-box">
       <p><strong>Nota:</strong> I dati PSV pubblicati su questa pagina sono estratti dai report ufficiali di GME (Gestore dei Mercati Energetici Italiani) su <strong>mercatoelettrico.org</strong>. La pagina viene aggiornata ogni settimana.</p>
@@ -237,6 +254,10 @@
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">Qual è la differenza tra PSV e TTF?<span class="faq-icon">+</span></button>
         <div class="faq-answer"><div class="faq-answer-inner">Il TTF è il principale hub europeo del gas (Olanda) ed è il benchmark internazionale. Il PSV è l'hub italiano: solitamente ha uno spread positivo rispetto al TTF che riflette i costi di trasporto verso l'Italia. Per i contratti del mercato libero italiano, il PSV è il riferimento più diretto.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Come si legge il grafico giornaliero del PSV?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Il grafico mostra l'andamento del prezzo PSV giorno per giorno nelle ultime 60 sessioni di mercato. Un trend in discesa indica un mercato del gas in allentamento, favorevole ai clienti con offerta indicizzata. Un trend in risalita segnala tensioni sull'approvvigionamento. Per i clienti con scadenza contrattuale imminente, il confronto tra il PSV attuale e quello dei mesi scorsi aiuta a valutare il momento migliore per rinnovare.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">Con quale frequenza viene aggiornato il PSV su questa pagina?<span class="faq-icon">+</span></button>
@@ -358,6 +379,9 @@ document.getElementById('currentYear').textContent = new Date().getFullYear();
       document.getElementById('psv-prev-value').textContent = fmt(p.prevAvg);
     }
 
+    // Grafico giornaliero PSV
+    if (d.psvDaily && d.psvDaily.length) buildPsvDailyChart(d.psvDaily);
+
     // Aggiorna grafico con dati live
     if (d.psvMonthly && d.psvMonthly.length > 0 && window._buildPsvChart) {
       _buildPsvChart(
@@ -436,6 +460,55 @@ window._buildPsvChart = function(months, values, partial) {
 };
 // Fallback statico
 _buildPsvChart(['Gen','Feb','Mar','Apr'],[38.0,34.6,53.6,48.3],[false,false,false,true]);
+
+// Grafico PSV giornaliero
+window._psvDailyChart = null;
+function buildPsvDailyChart(data) {
+  const ctx = document.getElementById('psv-daily-chart');
+  if (!ctx || !data || !data.length) return;
+  if (window._psvDailyChart) window._psvDailyChart.destroy();
+  window._psvDailyChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: data.map(d => d.date),
+      datasets: [{
+        data: data.map(d => d.value),
+        borderColor: '#059669',
+        backgroundColor: 'rgba(5,150,105,0.08)',
+        borderWidth: 2,
+        pointRadius: 0,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: '#059669',
+        fill: true,
+        tension: 0.3,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#1f2937', padding: 10, cornerRadius: 8,
+          callbacks: {
+            title: items => items[0].label,
+            label: item => ' ' + item.raw.toLocaleString('it-IT',{minimumFractionDigits:1}) + ' €/MWh'
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { font: { size: 11 }, color: '#9ca3af', maxTicksLimit: 10 }
+        },
+        y: {
+          grid: { color: '#f3f4f6' }, border: { display: false },
+          ticks: { font: { size: 11 }, color: '#9ca3af', callback: v => v + ' €' }
+        }
+      },
+      animation: { duration: 700, easing: 'easeOutQuart' }
+    }
+  });
+}
 </script>
 </body>
 </html>

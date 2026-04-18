@@ -36,6 +36,7 @@
     {"@type":"Question","name":"Chi pubblica il PUN ufficiale?","acceptedAnswer":{"@type":"Answer","text":"Il PUN ufficiale è pubblicato da GME (Gestore dei Mercati Energetici Italiani) sul sito mercatoelettrico.org. I dati sono disponibili il giorno successivo alla sessione di mercato (D+1) e vengono aggregati mensilmente da ARERA."}},
     {"@type":"Question","name":"Come influisce il PUN sulle bollette?","acceptedAnswer":{"@type":"Answer","text":"Le offerte indicizzate al PUN (o PUN+spread) variano ogni mese in base all'andamento del mercato. Un PUN alto significa bollette più care per chi ha un contratto indicizzato; un PUN basso favorisce questi clienti. Le offerte a prezzo fisso non dipendono dal PUN per tutta la durata del contratto."}},
     {"@type":"Question","name":"Conviene un'offerta indicizzata al PUN o a prezzo fisso?","acceptedAnswer":{"@type":"Answer","text":"Dipende dall'andamento atteso dei prezzi. In periodi di alta volatilità o prezzi elevati, il prezzo fisso offre certezza di spesa. In periodi di prezzi bassi, l'indicizzato può essere più conveniente. Un agente SempliCom confronta entrambe le opzioni per il tuo profilo di consumo specifico."}},
+    {"@type":"Question","name":"Cosa sono le fasce F1, F2 e F3?","acceptedAnswer":{"@type":"Answer","text":"Le fasce orarie F1, F2, F3 classificano le ore della settimana per livello di consumo. F1 (lunedì–venerdì ore 8–19) è la fascia di punta con i prezzi più alti; F2 (lunedì–venerdì ore 7 e 19–23, sabato 7–23) è la fascia intermedia; F3 (notte 0–7 e domenica) è la fascia fuori punta più economica. I contratti multiorario applicano un prezzo diverso per ogni fascia."}},
     {"@type":"Question","name":"Con quale frequenza viene aggiornato il PUN su questa pagina?","acceptedAnswer":{"@type":"Answer","text":"Questa pagina viene aggiornata ogni settimana con i dati più recenti pubblicati da GME. Per i dati in tempo reale, consulta direttamente il sito ufficiale mercatoelettrico.org."}}
   ]}
   </script>
@@ -60,6 +61,17 @@
     .chart-section-title { font-size: .78rem; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: .07em; margin: 0 0 18px; }
     .chart-wrap { position: relative; height: 240px; }
     .chart-placeholder { background: #f8fafc; border: 2px dashed #e5e7eb; border-radius: 12px; padding: 40px 20px; text-align: center; color: #9ca3af; font-size: .9rem; margin: 24px 0; }
+    .fascia-section { margin: 0 0 36px; }
+    .fascia-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0 0; }
+    .fascia-card { background: white; border-radius: 14px; padding: 22px 16px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,.07); border: 1px solid #e5e7eb; }
+    .fascia-card .fc-badge { display: inline-block; font-size: .73rem; font-weight: 800; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; }
+    .fascia-card.f1 .fc-badge { background: #fee2e2; color: #b91c1c; }
+    .fascia-card.f2 .fc-badge { background: #fef3c7; color: #92400e; }
+    .fascia-card.f3 .fc-badge { background: #dcfce7; color: #166534; }
+    .fascia-card .fc-value { font-size: 1.9rem; font-weight: 800; color: #1a56db; line-height: 1; margin-bottom: 4px; }
+    .fascia-card .fc-label { font-size: .78rem; color: #6b7280; }
+    .fascia-card .fc-time { font-size: .72rem; color: #9ca3af; margin-top: 6px; }
+    @media(max-width:520px){.fascia-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -94,6 +106,7 @@
                             <li><a href="/come-si-calcola-il-pun-in-bolletta/">Come si calcola il PUN</a></li>
                             <li><a href="/prezzo-unico-nazionale/">Prezzo Unico Nazionale</a></li>
                             <li><a href="/spread-energia/">Spread Energia</a></li>
+                            <li><a href="/prezzi-energia-per-zona/">Prezzi per Zona</a></li>
             <li><a href="/telefonia/">Telefonia</a></li>
             <li><a href="/assicurazioni/">Assicurazioni</a></li>
             <li><a href="/immobiliare/">Immobiliare</a></li>
@@ -157,6 +170,32 @@
         <canvas id="pun-chart"></canvas>
       </div>
     </div>
+
+    <!-- ── Prezzi PUN per fascia oraria ──────────────────────────────────── -->
+    <section class="fascia-section" id="prezzi-per-fascia">
+      <h2>PUN per Fascia Oraria: F1, F2 e F3</h2>
+      <p>Le fasce orarie ARERA suddividono le ore della settimana in tre gruppi: <strong>F1</strong> (fascia di punta, lun–ven ore 8–19) è la più cara perché coincide con i picchi di consumo industriale e commerciale; <strong>F2</strong> (intermedia, lun–ven ore 7 e 19–23, sabato 7–23) ha prezzi medi; <strong>F3</strong> (fuori punta, notte e domenica) è la fascia più economica. Le offerte multiorario usano questi tre prezzi per calcolare la bolletta in modo più preciso rispetto alla monoraria.</p>
+      <div class="fascia-grid" aria-live="polite">
+        <div class="fascia-card f1">
+          <span class="fc-badge">F1 — Punta</span>
+          <div class="fc-value" id="f1-value">—</div>
+          <div class="fc-label">€/MWh media mensile</div>
+          <div class="fc-time">Lun–Ven 08:00–19:00</div>
+        </div>
+        <div class="fascia-card f2">
+          <span class="fc-badge">F2 — Intermedia</span>
+          <div class="fc-value" id="f2-value">—</div>
+          <div class="fc-label">€/MWh media mensile</div>
+          <div class="fc-time">Lun–Ven 7h &amp; 19–23 · Sab 7–23</div>
+        </div>
+        <div class="fascia-card f3">
+          <span class="fc-badge">F3 — Fuori Punta</span>
+          <div class="fc-value" id="f3-value">—</div>
+          <div class="fc-label">€/MWh media mensile</div>
+          <div class="fc-time">Notte (0–7) · Domenica</div>
+        </div>
+      </div>
+    </section>
 
     <div class="info-box">
       <p><strong>Nota:</strong> I dati PUN pubblicati su questa pagina sono estratti dai report ufficiali di GME (Gestore dei Mercati Energetici Italiani) disponibili su <strong>mercatoelettrico.org</strong>. La pagina viene aggiornata ogni settimana.</p>
@@ -245,6 +284,10 @@
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">Conviene un'offerta indicizzata al PUN o a prezzo fisso?<span class="faq-icon">+</span></button>
         <div class="faq-answer"><div class="faq-answer-inner">Dipende dall'andamento atteso dei prezzi e dalla propensione al rischio del cliente. In periodi di alta volatilità o prezzi elevati, il prezzo fisso offre certezza di spesa. In periodi di prezzi bassi e stabili, l'indicizzato può essere più conveniente. Un agente SempliCom confronta entrambe le opzioni per il profilo di consumo specifico del cliente.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Cosa sono le fasce F1, F2 e F3 e come influiscono sul PUN?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Le fasce orarie F1, F2, F3 sono classificazioni ARERA che raggruppano le ore della settimana per livello di consumo. F1 (lun–ven 8–19) è la fascia di punta con i prezzi più alti; F2 (lun–ven 7h e 19–23, sabato 7–23) è intermedia; F3 (notte e domenica) è la più economica. I contratti multiorario applicano prezzi diversi per ogni fascia, rendendo vantaggioso consumare nelle ore F3.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">Con quale frequenza viene aggiornato il PUN su questa pagina?<span class="faq-icon">+</span></button>
@@ -364,6 +407,14 @@ document.getElementById('currentYear').textContent = new Date().getFullYear();
     if (p.prevAvg != null) {
       document.getElementById('pun-prev-label').textContent = 'PUN medio ' + prevMonthYear.toLowerCase();
       document.getElementById('pun-prev-value').textContent = fmt(p.prevAvg);
+    }
+
+    // Fascia F1/F2/F3
+    if (d.punFascia) {
+      const ff = d.punFascia;
+      if (ff.F1 != null) document.getElementById('f1-value').textContent = fmt(ff.F1);
+      if (ff.F2 != null) document.getElementById('f2-value').textContent = fmt(ff.F2);
+      if (ff.F3 != null) document.getElementById('f3-value').textContent = fmt(ff.F3);
     }
 
     // Aggiorna grafico con dati live

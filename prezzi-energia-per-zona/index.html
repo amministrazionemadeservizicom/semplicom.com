@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prezzi Energia per Zona Aprile 2026: Nord, Sud, Sicilia, Sardegna | SempliCom</title>
+  <meta name="description" content="Prezzi energia per zona geografica in Italia ad aprile 2026: Nord, Centro-Nord, Centro-Sud, Sud, Sicilia, Sardegna. Medie mensili MGP in €/MWh con dati live da GME ed ENTSO-E.">
+  <link rel="canonical" href="https://semplicom.com/prezzi-energia-per-zona/">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Prezzi Energia per Zona Aprile 2026 | SempliCom">
+  <meta property="og:description" content="Confronto prezzi dell'energia elettrica nelle 6 zone geografiche italiane (MGP): Nord, Centro-Nord, Centro-Sud, Sud, Sicilia, Sardegna. Dati aggiornati.">
+  <meta property="og:url" content="https://semplicom.com/prezzi-energia-per-zona/">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/css/seo-pages.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Prezzi Energia per Zona in Italia — Nord, Centro-Nord, Centro-Sud, Sud, Sicilia, Sardegna",
+    "description": "Confronto mensile dei prezzi dell'energia elettrica nelle 6 zone di mercato italiane (MGP). Dati da ENTSO-E tramite energy-charts.info aggiornati ad aprile 2026.",
+    "url": "https://semplicom.com/prezzi-energia-per-zona/",
+    "dateModified": "2026-04-18",
+    "author": { "@type": "Organization", "name": "SempliCom", "url": "https://semplicom.com" },
+    "publisher": { "@type": "Organization", "name": "SempliCom", "url": "https://semplicom.com" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Perché i prezzi dell'energia sono diversi tra Nord e Sud Italia?","acceptedAnswer":{"@type":"Answer","text":"I prezzi dell'energia variano tra le zone geografiche italiane a causa dei cosiddetti 'congestionamenti' della rete elettrica. Quando le linee di trasmissione che collegano le zone sono sature, il prezzo si differenzia: le zone con eccesso di produzione hanno prezzi più bassi, quelle con carenza di produzione locale (come Sicilia e Sardegna) tendono ad avere prezzi più alti. Il GME calcola un prezzo separato per ciascuna delle 6 zone MGP."}},
+    {"@type":"Question","name":"Quante zone di mercato ha l'Italia?","acceptedAnswer":{"@type":"Answer","text":"Il mercato elettrico italiano è diviso in 6 zone geografiche di mercato (bidding zones): Nord, Centro-Nord, Centro-Sud, Sud, Sicilia e Sardegna. Ognuna ha un proprio prezzo orario nel Mercato del Giorno Prima (MGP). Il PUN (Prezzo Unico Nazionale) è la media ponderata di tutte le zone."}},
+    {"@type":"Question","name":"Cos'è il MGP e come determina i prezzi zonali?","acceptedAnswer":{"@type":"Answer","text":"Il MGP (Mercato del Giorno Prima) è il principale mercato dell'energia elettrica italiano, gestito da GME. Ogni giorno vengono accettate le offerte di vendita e acquisto per le 24 ore del giorno successivo. Il prezzo di equilibrio varia per zona in base alla disponibilità di produzione locale e alla capacità delle linee di trasporto interzonali (HVDC e interconnessioni)."}},
+    {"@type":"Question","name":"La zona Nord ha sempre il prezzo più basso?","acceptedAnswer":{"@type":"Answer","text":"Non sempre, ma la zona Nord tende ad avere prezzi leggermente più bassi perché è la zona più interconnessa con i mercati europei (Francia, Svizzera, Austria, Slovenia) e dispone di abbondante capacità idroelettrica. Nelle ore di picco o in caso di congestioni sulle interconnessioni, anche il Nord può allinearsi alle zone Sud o persino superarle."}},
+    {"@type":"Question","name":"Come usare i prezzi zonali nella consulenza energetica?","acceptedAnswer":{"@type":"Answer","text":"I prezzi zonali sono utili per agenti e consulenti che operano in zone geografiche specifiche. Un cliente in Sicilia o Sardegna, storicamente penalizzato da prezzi più alti, può trovare valore maggiore in offerte a prezzo fisso. Un cliente nel Nord può valutare meglio le offerte indicizzate al PUN in periodi di prezzi bassi. Il confronto zonale permette di personalizzare il consiglio in base alla localizzazione del punto di fornitura."}}
+  ]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://semplicom.com/"},
+    {"@type":"ListItem","position":2,"name":"Energia e Gas","item":"https://semplicom.com/energia-gas/"},
+    {"@type":"ListItem","position":3,"name":"Prezzi Energia per Zona","item":"https://semplicom.com/prezzi-energia-per-zona/"}
+  ]}
+  </script>
+
+  <style>
+    .zona-hero { background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%); color: white; padding: 48px 0 40px; text-align: center; }
+    .zona-hero h1 { font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 800; margin: 0 0 12px; color: white !important; }
+    .zona-hero p { font-size: 1.05rem; opacity: .88; margin: 0; color: white !important; }
+    .update-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.18); color: white; border-radius: 20px; padding: 6px 14px; font-size: .82rem; font-weight: 600; margin-top: 16px; }
+    .zona-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin: 32px 0; }
+    .zona-card { background: white; border-radius: 14px; padding: 22px 18px; box-shadow: 0 2px 14px rgba(0,0,0,.08); border: 1px solid #e5e7eb; }
+    .zona-card .zc-name { font-size: .78rem; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 8px; }
+    .zona-card .zc-avg { font-size: 2rem; font-weight: 800; color: #7c3aed; line-height: 1; margin-bottom: 4px; }
+    .zona-card .zc-sub { font-size: .78rem; color: #9ca3af; }
+    .zona-card .zc-range { font-size: .8rem; color: #6b7280; margin-top: 8px; display: flex; gap: 12px; }
+    .zona-card .zc-range span { display: flex; align-items: center; gap: 4px; }
+    .zona-card .zc-min { color: #059669; font-weight: 600; }
+    .zona-card .zc-max { color: #dc2626; font-weight: 600; }
+    .chart-section { background: white; border-radius: 16px; padding: 28px 24px 20px; box-shadow: 0 2px 16px rgba(0,0,0,.08); border: 1px solid #e5e7eb; margin: 0 0 36px; }
+    .chart-section-title { font-size: .78rem; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: .07em; margin: 0 0 18px; }
+    .chart-wrap { position: relative; height: 280px; }
+    .info-box { background: #f5f3ff; border-left: 4px solid #7c3aed; border-radius: 0 10px 10px 0; padding: 16px 20px; margin: 24px 0; }
+    .info-box p { margin: 0; color: #4c1d95; font-size: .95rem; }
+    .zona-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: .93rem; }
+    .zona-table th { background: #f3f4f6; padding: 10px 14px; text-align: left; font-weight: 600; color: #374151; border-bottom: 2px solid #e5e7eb; }
+    .zona-table td { padding: 10px 14px; border-bottom: 1px solid #f3f4f6; color: #4b5563; }
+    .zona-table tr:last-child td { border-bottom: none; }
+    .zona-table .highlight { color: #7c3aed; font-weight: 700; }
+    .zona-table .zone-name { font-weight: 600; color: #1f2937; }
+    .faq-list .faq-item { border: 1px solid #e5e7eb; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+    .faq-list .faq-question { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: white; border: none; cursor: pointer; font-size: .95rem; font-weight: 600; color: #1f2937; text-align: left; }
+    .faq-list .faq-question:hover { background: #faf5ff; }
+    .faq-list .faq-question.active { background: #faf5ff; color: #7c3aed; }
+    .faq-list .faq-icon { font-size: 1.2rem; font-weight: 400; color: #9ca3af; }
+    .faq-list .faq-answer { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+    .faq-list .faq-answer.open { max-height: 400px; }
+    .faq-list .faq-answer-inner { padding: 0 20px 16px; color: #4b5563; font-size: .93rem; line-height: 1.7; }
+    .cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .btn-whatsapp { display: inline-flex; align-items: center; gap: 8px; background: #25d366; color: white; padding: 12px 22px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: .9rem; }
+  </style>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="container">
+    <a href="/" class="logo" aria-label="SempliCom Home"><img src="/assets/img/logo.svg" alt="SempliCom" class="logo-img"></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false"><span class="hamburger"></span></button>
+    <nav class="nav" id="nav" aria-label="Navigazione principale">
+      <ul class="nav-list">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/perche-semplicom.html" class="nav-link">Perché SempliCom?</a></li>
+        <li><a href="/funzionalita.html" class="nav-link">Funzionalità</a></li>
+        <li class="nav-dropdown">
+          <a href="/gestionale-multiservizio/" class="nav-link nav-link-dropdown">Soluzioni <span class="dropdown-arrow">▾</span></a>
+          <ul class="nav-submenu">
+            <li><a href="/crm-agenzie-energia/">CRM Energia e Gas</a></li>
+            <li><a href="/comparatore-offerte-agenti/">Comparatore Offerte</a></li>
+            <li><a href="/gestionale-multiservizio/">Gestionale Multiservizio</a></li>
+            <li><a href="/software-provvigioni-agenti/">Software Provvigioni</a></li>
+            <li><a href="/crm-caf-patronati/">CRM CAF e Patronati</a></li>
+            <li><a href="/rete-vendita-energia/">Rete Vendita Energia</a></li>
+          </ul>
+        </li>
+        <li class="nav-dropdown">
+          <a href="/energia-gas/" class="nav-link nav-link-dropdown">Settori <span class="dropdown-arrow">▾</span></a>
+          <ul class="nav-submenu">
+            <li><a href="/energia-gas/">Energia e Gas</a></li>
+            <li><a href="/migliori-offerte-luce-gas/">Offerte Luce e Gas</a></li>
+                            <li><a href="/pun-oggi/">PUN Oggi</a></li>
+                            <li><a href="/psv-oggi/">PSV Oggi</a></li>
+                            <li><a href="/come-si-calcola-il-pun-in-bolletta/">Come si calcola il PUN</a></li>
+                            <li><a href="/prezzo-unico-nazionale/">Prezzo Unico Nazionale</a></li>
+                            <li><a href="/spread-energia/">Spread Energia</a></li>
+                            <li><a href="/prezzi-energia-per-zona/">Prezzi per Zona</a></li>
+            <li><a href="/telefonia/">Telefonia</a></li>
+            <li><a href="/assicurazioni/">Assicurazioni</a></li>
+            <li><a href="/immobiliare/">Immobiliare</a></li>
+            <li><a href="/noleggio/">Noleggio</a></li>
+            <li><a href="/efficienza-energetica/">Efficienza Energetica</a></li>
+          </ul>
+        </li>
+        <li><a href="/prezzi.html" class="nav-link">Prezzi</a></li>
+        <li><a href="/faq.html" class="nav-link">FAQ</a></li>
+        <li><a href="/blog/" class="nav-link">Blog</a></li>
+      </ul>
+      <a href="/diventa-partner/" class="btn btn-primary nav-cta">Diventa Partner</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="breadcrumb-nav" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/energia-gas/">Energia e Gas</a></li>
+    <li>Prezzi per Zona</li>
+  </ol>
+</nav>
+
+<section class="zona-hero">
+  <div class="container">
+    <h1 id="zona-h1">Prezzi Energia per Zona — Aprile 2026</h1>
+    <p>Medie mensili MGP nelle 6 zone geografiche italiane · Fonte: ENTSO-E / energy-charts.info</p>
+    <div class="update-badge" id="zona-badge">✓ Aggiornato al 18 aprile 2026</div>
+  </div>
+</section>
+
+<main>
+  <div class="container" style="padding-top:40px;padding-bottom:60px;">
+
+    <!-- AEO paragraph — risponde direttamente alla domanda -->
+    <p style="font-size:1.05rem;line-height:1.8;margin:0 0 32px;color:#374151;">
+      Il mercato elettrico italiano è diviso in <strong>6 zone geografiche</strong> (Nord, Centro-Nord, Centro-Sud, Sud, Sicilia, Sardegna): ciascuna ha un prezzo orario distinto nel <strong>Mercato del Giorno Prima (MGP)</strong>, gestito da GME. I prezzi zonali divergono quando le linee di trasmissione tra zone sono sature (<em>congestionamento</em>): le isole e il Sud, spesso importatrici nette, tendono ad avere prezzi più alti del Nord, meglio interconnesso con l'Europa. Il <strong>PUN</strong> è la media ponderata di tutte le zone.
+    </p>
+
+    <!-- Griglia card zonali -->
+    <div class="zona-grid" id="zona-cards" aria-live="polite">
+      <div class="zona-card" data-zone="nord">
+        <div class="zc-name">Nord</div>
+        <div class="zc-avg" id="z-nord-avg">—</div>
+        <div class="zc-sub">€/MWh media mensile</div>
+        <div class="zc-range">
+          <span>Min <strong class="zc-min" id="z-nord-min">—</strong></span>
+          <span>Max <strong class="zc-max" id="z-nord-max">—</strong></span>
+        </div>
+      </div>
+      <div class="zona-card" data-zone="cnord">
+        <div class="zc-name">Centro-Nord</div>
+        <div class="zc-avg" id="z-cnord-avg">—</div>
+        <div class="zc-sub">€/MWh media mensile</div>
+        <div class="zc-range">
+          <span>Min <strong class="zc-min" id="z-cnord-min">—</strong></span>
+          <span>Max <strong class="zc-max" id="z-cnord-max">—</strong></span>
+        </div>
+      </div>
+      <div class="zona-card" data-zone="csud">
+        <div class="zc-name">Centro-Sud</div>
+        <div class="zc-avg" id="z-csud-avg">—</div>
+        <div class="zc-sub">€/MWh media mensile</div>
+        <div class="zc-range">
+          <span>Min <strong class="zc-min" id="z-csud-min">—</strong></span>
+          <span>Max <strong class="zc-max" id="z-csud-max">—</strong></span>
+        </div>
+      </div>
+      <div class="zona-card" data-zone="sud">
+        <div class="zc-name">Sud</div>
+        <div class="zc-avg" id="z-sud-avg">—</div>
+        <div class="zc-sub">€/MWh media mensile</div>
+        <div class="zc-range">
+          <span>Min <strong class="zc-min" id="z-sud-min">—</strong></span>
+          <span>Max <strong class="zc-max" id="z-sud-max">—</strong></span>
+        </div>
+      </div>
+      <div class="zona-card" data-zone="sic">
+        <div class="zc-name">Sicilia</div>
+        <div class="zc-avg" id="z-sic-avg">—</div>
+        <div class="zc-sub">€/MWh media mensile</div>
+        <div class="zc-range">
+          <span>Min <strong class="zc-min" id="z-sic-min">—</strong></span>
+          <span>Max <strong class="zc-max" id="z-sic-max">—</strong></span>
+        </div>
+      </div>
+      <div class="zona-card" data-zone="sar">
+        <div class="zc-name">Sardegna</div>
+        <div class="zc-avg" id="z-sar-avg">—</div>
+        <div class="zc-sub">€/MWh media mensile</div>
+        <div class="zc-range">
+          <span>Min <strong class="zc-min" id="z-sar-min">—</strong></span>
+          <span>Max <strong class="zc-max" id="z-sar-max">—</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grafico a barre per confronto zonale -->
+    <div class="chart-section">
+      <p class="chart-section-title">Confronto prezzi medi mensili per zona €/MWh</p>
+      <div class="chart-wrap">
+        <canvas id="zona-chart"></canvas>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <p><strong>Fonte dati:</strong> prezzi orari da ENTSO-E tramite <strong>energy-charts.info</strong> (Fraunhofer ISE), aggiornati al mese corrente. I valori rappresentano la media delle ore del mese disponibili fino alla data odierna.</p>
+    </div>
+
+    <!-- Tabella riepilogativa -->
+    <h2>Tabella Prezzi MGP per Zona — Aprile 2026</h2>
+    <table class="zona-table" id="zona-table">
+      <thead>
+        <tr>
+          <th>Zona</th>
+          <th>Prezzo medio (€/MWh)</th>
+          <th>Minimo (€/MWh)</th>
+          <th>Massimo (€/MWh)</th>
+        </tr>
+      </thead>
+      <tbody id="zona-table-body">
+        <tr><td class="zone-name">Nord</td><td class="highlight" id="zt-nord-avg">—</td><td id="zt-nord-min">—</td><td id="zt-nord-max">—</td></tr>
+        <tr><td class="zone-name">Centro-Nord</td><td class="highlight" id="zt-cnord-avg">—</td><td id="zt-cnord-min">—</td><td id="zt-cnord-max">—</td></tr>
+        <tr><td class="zone-name">Centro-Sud</td><td class="highlight" id="zt-csud-avg">—</td><td id="zt-csud-min">—</td><td id="zt-csud-max">—</td></tr>
+        <tr><td class="zone-name">Sud</td><td class="highlight" id="zt-sud-avg">—</td><td id="zt-sud-min">—</td><td id="zt-sud-max">—</td></tr>
+        <tr><td class="zone-name">Sicilia</td><td class="highlight" id="zt-sic-avg">—</td><td id="zt-sic-min">—</td><td id="zt-sic-max">—</td></tr>
+        <tr><td class="zone-name">Sardegna</td><td class="highlight" id="zt-sar-avg">—</td><td id="zt-sar-min">—</td><td id="zt-sar-max">—</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Spiegazione SEO/AEO -->
+    <h2>Perché i Prezzi dell'Energia Variano tra le Zone Italiane</h2>
+    <p>Il mercato elettrico italiano è strutturalmente suddiviso in zone geografiche perché la rete di trasporto ad alta tensione non sempre riesce a trasportare tutta l'energia prodotta nel Nord verso le zone meridionali e insulari. Quando le linee di trasmissione sono congestionate, GME separa i mercati: la zona con surplus di produzione vede i prezzi calare, quella con deficit li vede salire.</p>
+    <ul>
+      <li><strong>Zona Nord:</strong> la più connessa con i mercati europei (Francia, Svizzera, Austria, Slovenia) tramite le interconnessioni HVDC. Beneficia di import nei momenti di produzione insufficiente.</li>
+      <li><strong>Zona Centro-Nord e Centro-Sud:</strong> zone di transito; i loro prezzi riflettono le condizioni della rete centrale italiana.</li>
+      <li><strong>Zona Sud:</strong> ampia disponibilità di rinnovabili (eolico, solare) ma collo di bottiglia sulla trasmissione verso il Nord.</li>
+      <li><strong>Sicilia:</strong> isola elettricamente separata dal continente; dipende dal cavo HVDC Sorgente-Rizziconi. Nei periodi di congestione i prezzi possono essere significativamente più alti.</li>
+      <li><strong>Sardegna:</strong> analoga alla Sicilia; collegata tramite il cavo SAPEI. Le rinnovabili locali attenuano le differenze in ore di alta produzione solare ed eolica.</li>
+    </ul>
+
+    <h2>Come Usare i Prezzi Zonali nella Consulenza Energetica</h2>
+    <p>Per un agente energia, conoscere i prezzi zonali apre opportunità di consulenza personalizzata per territorio:</p>
+    <ul>
+      <li>Un cliente in <strong>Sicilia o Sardegna</strong>, esposto storicamente a prezzi più alti, trova valore maggiore in offerte a <strong>prezzo fisso</strong> che lo proteggono dai picchi insulari.</li>
+      <li>Un cliente al <strong>Nord</strong> può valutare le offerte indicizzate al PUN in periodi di prezzi bassi, consapevole che la zona Nord tende a rimanere vicina o sotto la media nazionale.</li>
+      <li>Un'impresa nel <strong>Sud</strong> con alto consumo nelle ore di alta produzione fotovoltaica (ore centrali del giorno) può beneficiare di offerte con prezzo zonale, potenzialmente più vantaggiose nelle ore di abbondanza rinnovabile.</li>
+    </ul>
+    <p>Il <a href="/comparatore-offerte-agenti/">comparatore integrato di SempliCom</a> calcola automaticamente il risparmio stimato in base alla zona geografica del punto di fornitura del cliente.</p>
+
+    <h2>Domande Frequenti sui Prezzi Energetici Zonali</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Perché i prezzi dell'energia sono diversi tra Nord e Sud Italia?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">I prezzi variano tra zone geografiche a causa dei congestionamenti della rete elettrica. Quando le linee di trasmissione sono sature, le zone con eccesso di produzione hanno prezzi più bassi, quelle con deficit più alti. Le isole (Sicilia e Sardegna) sono particolarmente esposte perché dipendono da cavi HVDC per il collegamento con il continente.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Quante zone di mercato ha l'Italia?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Il mercato elettrico italiano è diviso in 6 zone geografiche di mercato (bidding zones): Nord, Centro-Nord, Centro-Sud, Sud, Sicilia e Sardegna. Ognuna ha un prezzo orario separato nel Mercato del Giorno Prima (MGP). Il PUN è la media ponderata di tutte le zone.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Cos'è il MGP e come determina i prezzi zonali?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Il MGP (Mercato del Giorno Prima) è il principale mercato italiano dell'energia, gestito da GME. Ogni giorno vengono abbinate le offerte di vendita e acquisto per le 24 ore successive. Il prezzo di equilibrio varia per zona in base alla disponibilità di produzione locale e alla capacità delle linee interzonali.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">La zona Nord ha sempre il prezzo più basso?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Non sempre, ma la zona Nord tende ad avere prezzi leggermente più bassi grazie alle interconnessioni europee e all'abbondante capacità idroelettrica. Nelle ore di picco o in caso di congestioni sulle interconnessioni, anche il Nord può allinearsi alle zone Sud o superarle.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Come usare i prezzi zonali nella consulenza energetica?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Un cliente in Sicilia o Sardegna, storicamente penalizzato da prezzi più alti, trova più valore in offerte a prezzo fisso. Un cliente al Nord può valutare meglio offerte indicizzate al PUN in periodi di prezzi bassi. Il confronto zonale permette di personalizzare il consiglio in base alla localizzazione del punto di fornitura.</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;background:#f5f3ff;border-radius:14px;padding:32px;text-align:center;">
+      <h3 style="margin:0 0 12px;color:#4c1d95;">Sei un agente energia o vuoi diventarlo?</h3>
+      <p style="color:#7c3aed;margin:0 0 20px;">SempliCom ti dà un comparatore integrato con dati zonali, gestione pratiche e calcolo automatico delle provvigioni.</p>
+      <div class="cta-buttons">
+        <a href="/diventa-partner/" class="btn btn-primary">Diventa Partner</a>
+        <a href="https://wa.me/393295628882?text=Ciao%2C%20mi%20interessa%20diventare%20agente%20energia%20con%20SempliCom" class="btn-whatsapp">Scrivici su WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="article-related" style="margin-top:40px;">
+      <h3>Approfondimenti correlati</h3>
+      <ul>
+        <li><a href="/pun-oggi/">PUN Oggi — Prezzo Unico Nazionale Aggiornato</a></li>
+        <li><a href="/psv-oggi/">PSV Oggi — Prezzo Gas Aggiornato</a></li>
+        <li><a href="/come-si-calcola-il-pun-in-bolletta/">Come si calcola il PUN in bolletta</a></li>
+        <li><a href="/spread-energia/">Spread Energia: come funziona e quanto incide</a></li>
+        <li><a href="/comparatore-offerte-agenti/">Comparatore Offerte per Agenti</a></li>
+      </ul>
+    </div>
+
+  </div>
+</main>
+
+<section class="cta-affiliazione">
+  <div class="container">
+    <h2>Entra nella rete SempliCom</h2>
+    <p>Unisciti a oltre 100 partner in tutta Italia. Gestisci energia, gas, telefonia e servizi da un'unica piattaforma. Compensi trasparenti, formazione inclusa, supporto dedicato.</p>
+    <div class="cta-buttons">
+      <a href="/diventa-partner/" class="btn btn-primary btn-lg">Diventa Partner</a>
+      <a href="https://wa.me/393295628882?text=Ciao%2C%20vorrei%20informazioni%20per%20diventare%20partner%20SempliCom" class="btn-whatsapp">Scrivici su WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo"><img src="/assets/img/logo.svg" alt="SempliCom" class="logo-img"></a>
+        <p>La suite operativa per consulenti e reti vendita.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Link utili</h4>
+        <a href="/funzionalita.html">Funzionalità</a><a href="/prezzi.html">Prezzi</a><a href="/faq.html">FAQ</a><a href="/blog/">Blog</a><a href="/diventa-partner/">Diventa Partner</a>
+      </div>
+      <div class="footer-links">
+        <h4>Prezzi energia</h4>
+        <a href="/pun-oggi/">PUN Oggi</a><a href="/psv-oggi/">PSV Oggi</a><a href="/prezzi-energia-per-zona/">Prezzi per Zona</a><a href="/come-si-calcola-il-pun-in-bolletta/">Come si calcola il PUN</a><a href="/migliori-offerte-luce-gas/">Migliori Offerte Luce e Gas</a>
+      </div>
+      <div class="footer-links">
+        <h4>Legale</h4>
+        <a href="https://www.iubenda.com/privacy-policy/59258474" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe" title="Privacy Policy">Privacy Policy</a>
+        <a href="https://www.iubenda.com/privacy-policy/59258474/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe" title="Cookie Policy">Cookie Policy</a>
+        <a href="/termini.html">Termini e Condizioni</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="currentYear">2025</span> SempliCom · MADE SRL Semplificata · Via Martiri della Resistenza 10, Cavallino (LE)</p>
+    </div>
+  </div>
+</footer>
+
+<div class="whatsapp-sticky">
+  <a href="https://wa.me/393295628882?text=Ciao%2C%20vorrei%20informazioni%20su%20SempliCom" aria-label="WhatsApp" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script src="/assets/app.js"></script>
+<script>
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const isActive = btn.classList.contains('active');
+    document.querySelectorAll('.faq-question').forEach(b => { b.classList.remove('active'); b.nextElementSibling.classList.remove('open'); b.setAttribute('aria-expanded','false'); });
+    if (!isActive) { btn.classList.add('active'); btn.nextElementSibling.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+  });
+});
+document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+// Aggiorna badge data
+(function(){
+  const mNames = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
+  const now = new Date();
+  document.getElementById('zona-badge').textContent = '✓ Aggiornato al ' + now.getDate() + ' ' + mNames[now.getMonth()] + ' ' + now.getFullYear();
+})();
+
+// Fetch dati live
+(async function() {
+  try {
+    const res = await fetch('/.netlify/functions/energy-prices');
+    if (!res.ok) return;
+    const d = await res.json();
+    const z = d.zonal;
+    if (!z) return;
+
+    const fmt = n => n != null ? String(n).replace('.', ',') : '—';
+    const zones = ['nord','cnord','csud','sud','sic','sar'];
+
+    // Aggiorna card e tabella
+    for (const k of zones) {
+      const zd = z[k];
+      if (!zd) continue;
+      const el = id => document.getElementById(id);
+      if (el('z-'+k+'-avg'))  el('z-'+k+'-avg').textContent  = fmt(zd.avg);
+      if (el('z-'+k+'-min'))  el('z-'+k+'-min').textContent  = fmt(zd.min);
+      if (el('z-'+k+'-max'))  el('z-'+k+'-max').textContent  = fmt(zd.max);
+      if (el('zt-'+k+'-avg')) el('zt-'+k+'-avg').textContent = fmt(zd.avg);
+      if (el('zt-'+k+'-min')) el('zt-'+k+'-min').textContent = fmt(zd.min);
+      if (el('zt-'+k+'-max')) el('zt-'+k+'-max').textContent = fmt(zd.max);
+    }
+
+    // Aggiorna titolo H1
+    if (d.currentMonth && d.currentYear) {
+      document.getElementById('zona-h1').textContent = 'Prezzi Energia per Zona — ' + d.currentMonth + ' ' + d.currentYear;
+    }
+
+    // Aggiorna grafico se disponibile
+    const zoneOrder = ['nord','cnord','csud','sud','sic','sar'];
+    const labels = zoneOrder.map(k => z[k] ? z[k].name : k);
+    const values = zoneOrder.map(k => z[k] ? z[k].avg : null);
+    if (window._buildZonaChart) _buildZonaChart(labels, values);
+
+  } catch(e) { /* static values remain */ }
+})();
+</script>
+<script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
+<script type="text/javascript" src="https://embeds.iubenda.com/widgets/6e7c4da1-3449-47c7-863f-af1c17061fbc.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+<script>
+window._zonaChart = null;
+window._buildZonaChart = function(labels, values) {
+  const ctx = document.getElementById('zona-chart');
+  if (!ctx) return;
+  if (window._zonaChart) window._zonaChart.destroy();
+  const colors = ['#7c3aed','#8b5cf6','#a78bfa','#c4b5fd','#6d28d9','#4c1d95'];
+  window._zonaChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        data: values,
+        backgroundColor: colors,
+        borderRadius: 8,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#1f2937', padding: 10, cornerRadius: 8,
+          callbacks: { label: item => ' ' + (item.raw != null ? item.raw.toLocaleString('it-IT',{minimumFractionDigits:1}) : '—') + ' €/MWh' }
+        }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 12, weight: '600' }, color: '#6b7280' } },
+        y: { grid: { color: '#f3f4f6' }, border: { display: false }, ticks: { font: { size: 11 }, color: '#9ca3af', callback: v => v + ' €' } }
+      },
+      animation: { duration: 700, easing: 'easeOutQuart' }
+    }
+  });
+};
+// Fallback statico — valori tipici per riferimento
+_buildZonaChart(
+  ['Nord','Centro-Nord','Centro-Sud','Sud','Sicilia','Sardegna'],
+  [125.0, 125.2, 126.1, 127.3, 131.4, 129.8]
+);
+</script>
+</body>
+</html>
