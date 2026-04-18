@@ -648,105 +648,7 @@
 <main class="article-body">
   <div class="content-wrap">
 
-    <!-- ─── H2: Formula ──────────────────────────────── -->
-    <h2>La formula del PUN in bolletta: passaggi operativi</h2>
-    <p>Il calcolo del PUN nella bolletta della luce segue una sequenza precisa. Ecco i sei passaggi da eseguire nell'ordine corretto, con i riferimenti normativi ARERA.</p>
-
-    <ol class="steps-list">
-      <li>
-        <div>
-          <strong>Reperire il valore del PUN</strong>
-          Consultare <a href="https://www.mercatoelettrico.org" target="_blank" rel="noopener noreferrer">mercatoelettrico.org</a> (GME). Il valore mensile è la <strong>media ponderata dei prezzi zonali orari</strong> del Mercato del Giorno Prima (MGP). Il dato è disponibile il giorno successivo alla sessione (D+1).
-        </div>
-      </li>
-      <li>
-        <div>
-          <strong>Convertire da €/MWh a €/kWh</strong>
-          Dividere il valore del PUN per <strong>1.000</strong>. Il megawattora equivale a 1.000 kWh. Esempio: <code>125 €/MWh ÷ 1.000 = 0,125 €/kWh</code>.
-        </div>
-      </li>
-      <li>
-        <div>
-          <strong>Applicare le perdite di rete</strong>
-          Moltiplicare per <strong>1,102</strong> (coefficiente ARERA pari al 10,2% per utenze domestiche in bassa tensione BT). Questo fattore copre l'energia dispersa nella rete durante il trasporto fino al contatore. Esempio: <code>0,125 × 1,102 = 0,1378 €/kWh</code>.
-        </div>
-      </li>
-      <li>
-        <div>
-          <strong>Aggiungere lo spread del fornitore</strong>
-          Sommare il margine commerciale del venditore, tipicamente <strong>0,005–0,040 €/kWh</strong>. Varia da contratto a contratto e non è regolamentato da ARERA per il mercato libero. Confrontare lo spread è la leva principale per ridurre la bolletta su un'offerta indicizzata.
-        </div>
-      </li>
-      <li>
-        <div>
-          <strong>Moltiplicare per i kWh consumati</strong>
-          Il risultato è la <strong>spesa annua per la sola componente energia</strong>. Le altre voci (trasporto, oneri) si aggiungono a parte. Esempio con 2.700 kWh/anno e spread 0,015: <code>(0,1378 + 0,015) × 2.700 = ~412 €/anno</code>.
-        </div>
-      </li>
-      <li>
-        <div>
-          <strong>Aggiungere le altre componenti della bolletta</strong>
-          Trasporto e gestione del contatore, oneri di sistema, accise e IVA (10% uso domestico) <strong>non dipendono dal PUN</strong> e vengono applicati sull'intera bolletta. Pesano tipicamente per il 15–25% della spesa totale.
-        </div>
-      </li>
-    </ol>
-
-    <!-- ─── H2: Esempio pratico ──────────────────────── -->
-    <h2>Esempio pratico di calcolo</h2>
-    <p>Parametri di riferimento: PUN mensile <strong>125 €/MWh</strong>, consumo annuo <strong>2.700 kWh</strong>, spread fornitore <strong>0,015 €/kWh</strong>, utenza domestica BT (perdite 10,2%).</p>
-
-    <!-- Nota: i valori della tabella usano arrotondamento a 4 decimali per €/kWh
-         e arrotondamento del prezzo (0,1528) × consumo per il totale (412,56 €),
-         coerente con la prassi di indicizzazione contrattuale. -->
-    <div class="example-table-wrap">
-      <table class="example-table">
-        <thead>
-          <tr>
-            <th>Passaggio</th>
-            <th>Operazione</th>
-            <th>Risultato</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>PUN mensile</td>
-            <td>Dato di mercato GME</td>
-            <td>125,00 €/MWh</td>
-          </tr>
-          <tr>
-            <td>Conversione in €/kWh</td>
-            <td>125 ÷ 1.000</td>
-            <td>0,1250 €/kWh</td>
-          </tr>
-          <tr>
-            <td>+ Perdite di rete (10,2%)</td>
-            <td>0,1250 × 1,102</td>
-            <td>0,1378 €/kWh</td>
-          </tr>
-          <tr>
-            <td>+ Spread fornitore</td>
-            <td>0,1378 + 0,015</td>
-            <td>0,1528 €/kWh</td>
-          </tr>
-          <tr class="row-total">
-            <td>Spesa annua energia</td>
-            <td>0,1528 × 2.700 kWh</td>
-            <td>412,56 €/anno</td>
-          </tr>
-          <tr class="row-monthly">
-            <td>Spesa mensile media</td>
-            <td>412,56 ÷ 12</td>
-            <td>34,38 €/mese</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="info-box">
-      <p><strong>Attenzione:</strong> questi 412,56 €/anno rappresentano <em>solo</em> la componente energia legata al PUN. La bolletta finale include anche trasporto, oneri di sistema, accise e IVA. Per un consumo di 2.700 kWh, la bolletta totale si aggira tipicamente tra 700 e 900 €/anno a seconda del fornitore e della zona geografica.</p>
-    </div>
-
-    <!-- ─── H2: Simulatore ───────────────────────────── -->
+    <!-- ─── Simulatore (in alto per visibilità immediata) ── -->
     <h2 id="simulatore">Simulatore: calcola il PUN nella tua bolletta</h2>
     <p>Inserisci i tuoi parametri reali per ottenere una stima immediata della spesa per la componente energia. Il calcolo si aggiorna in tempo reale.</p>
 
@@ -851,6 +753,106 @@
         </div><!-- /simulator-body -->
       </div><!-- /simulator-box -->
     </section>
+
+    <hr class="section-sep">
+
+    <!-- ─── H2: Formula ──────────────────────────────── -->
+    <h2>La formula del PUN in bolletta: passaggi operativi</h2>
+    <p>Il calcolo del PUN nella bolletta della luce segue una sequenza precisa. Ecco i sei passaggi da eseguire nell'ordine corretto, con i riferimenti normativi ARERA.</p>
+
+    <ol class="steps-list">
+      <li>
+        <div>
+          <strong>Reperire il valore del PUN</strong>
+          Consultare <a href="https://www.mercatoelettrico.org" target="_blank" rel="noopener noreferrer">mercatoelettrico.org</a> (GME). Il valore mensile è la <strong>media ponderata dei prezzi zonali orari</strong> del Mercato del Giorno Prima (MGP). Il dato è disponibile il giorno successivo alla sessione (D+1).
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Convertire da €/MWh a €/kWh</strong>
+          Dividere il valore del PUN per <strong>1.000</strong>. Il megawattora equivale a 1.000 kWh. Esempio: <code>125 €/MWh ÷ 1.000 = 0,125 €/kWh</code>.
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Applicare le perdite di rete</strong>
+          Moltiplicare per <strong>1,102</strong> (coefficiente ARERA pari al 10,2% per utenze domestiche in bassa tensione BT). Questo fattore copre l'energia dispersa nella rete durante il trasporto fino al contatore. Esempio: <code>0,125 × 1,102 = 0,1378 €/kWh</code>.
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Aggiungere lo spread del fornitore</strong>
+          Sommare il margine commerciale del venditore, tipicamente <strong>0,005–0,040 €/kWh</strong>. Varia da contratto a contratto e non è regolamentato da ARERA per il mercato libero. Confrontare lo spread è la leva principale per ridurre la bolletta su un'offerta indicizzata.
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Moltiplicare per i kWh consumati</strong>
+          Il risultato è la <strong>spesa annua per la sola componente energia</strong>. Le altre voci (trasporto, oneri) si aggiungono a parte. Esempio con 2.700 kWh/anno e spread 0,015: <code>(0,1378 + 0,015) × 2.700 = ~412 €/anno</code>.
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Aggiungere le altre componenti della bolletta</strong>
+          Trasporto e gestione del contatore, oneri di sistema, accise e IVA (10% uso domestico) <strong>non dipendono dal PUN</strong> e vengono applicati sull'intera bolletta. Pesano tipicamente per il 15–25% della spesa totale.
+        </div>
+      </li>
+    </ol>
+
+    <!-- ─── H2: Esempio pratico ──────────────────────── -->
+    <h2>Esempio pratico di calcolo</h2>
+    <p>Parametri di riferimento: PUN mensile <strong>125 €/MWh</strong>, consumo annuo <strong>2.700 kWh</strong>, spread fornitore <strong>0,015 €/kWh</strong>, utenza domestica BT (perdite 10,2%).</p>
+
+    <!-- Nota: i valori della tabella usano arrotondamento a 4 decimali per €/kWh
+         e arrotondamento del prezzo (0,1528) × consumo per il totale (412,56 €),
+         coerente con la prassi di indicizzazione contrattuale. -->
+    <div class="example-table-wrap">
+      <table class="example-table">
+        <thead>
+          <tr>
+            <th>Passaggio</th>
+            <th>Operazione</th>
+            <th>Risultato</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>PUN mensile</td>
+            <td>Dato di mercato GME</td>
+            <td>125,00 €/MWh</td>
+          </tr>
+          <tr>
+            <td>Conversione in €/kWh</td>
+            <td>125 ÷ 1.000</td>
+            <td>0,1250 €/kWh</td>
+          </tr>
+          <tr>
+            <td>+ Perdite di rete (10,2%)</td>
+            <td>0,1250 × 1,102</td>
+            <td>0,1378 €/kWh</td>
+          </tr>
+          <tr>
+            <td>+ Spread fornitore</td>
+            <td>0,1378 + 0,015</td>
+            <td>0,1528 €/kWh</td>
+          </tr>
+          <tr class="row-total">
+            <td>Spesa annua energia</td>
+            <td>0,1528 × 2.700 kWh</td>
+            <td>412,56 €/anno</td>
+          </tr>
+          <tr class="row-monthly">
+            <td>Spesa mensile media</td>
+            <td>412,56 ÷ 12</td>
+            <td>34,38 €/mese</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="info-box">
+      <p><strong>Attenzione:</strong> questi 412,56 €/anno rappresentano <em>solo</em> la componente energia legata al PUN. La bolletta finale include anche trasporto, oneri di sistema, accise e IVA. Per un consumo di 2.700 kWh, la bolletta totale si aggira tipicamente tra 700 e 900 €/anno a seconda del fornitore e della zona geografica.</p>
+    </div>
 
     <!-- ─── H2: Differenza PUN Index ─────────────────── -->
     <h2>Differenza tra PUN Index e prezzo in bolletta</h2>
