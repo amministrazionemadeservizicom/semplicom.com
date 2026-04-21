@@ -1,5 +1,54 @@
 const sgMail = require('@sendgrid/mail');
 
+// Normalizza telefono in formato 0039XXXXXXXXXX richiesto da Supermoney
+function normalizePhone(raw) {
+    if (!raw) return null;
+    const cleaned = raw.replace(/[\s\-\(\)\+]/g, '');
+    const digits = cleaned.startsWith('39') && cleaned.length >= 12
+        ? cleaned
+        : cleaned.startsWith('0039')
+        ? cleaned.slice(2)
+        : '39' + cleaned.replace(/^0+/, '');
+    return '00' + digits;
+}
+
+// Invia lead a Edison via API Supermoney (fire-and-forget)
+async function sendEdisonLead({ name, phone, email, ip, urlPrivacy }) {
+    const username = process.env.EDISON_USERNAME || '6MADE';
+    const secret = process.env.EDISON_SECRET || 'yZAKIQmJOPAL86FHxWltJK3D6fJUXWgt';
+    const endpoint = 'https://api.supermoney.it/service/leads/contatti/energia';
+
+    const telefono = normalizePhone(phone);
+    if (!telefono) return;
+
+    const parts = (name || '').trim().split(/\s+/);
+    const payload = {
+        telefono,
+        ip: ip || '0.0.0.0',
+        urlPrivacy: urlPrivacy || 'https://semplicom.com/migliori-offerte-luce-gas/',
+        tipoCliente: '6made_lead',
+        consensi: {
+            informativaPrivacy: { consenso: true },
+            condizioniGenerali: { consenso: true },
+            comunicazioniPreventivi: { consenso: true },
+        },
+    };
+    if (parts.length >= 2) { payload.nome = parts[0]; payload.cognome = parts.slice(1).join(' '); }
+    else if (parts[0]) { payload.nome = parts[0]; }
+    if (email) payload.email = email;
+
+    try {
+        const res = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', username, secret },
+            body: JSON.stringify(payload),
+        });
+        console.log(`📤 Edison lead: ${res.status}`, await res.text().catch(() => ''));
+    } catch (err) {
+        console.error('❌ Edison lead error:', err.message);
+    }
+}
+
 exports.handler = async (event) => {
     // Solo POST
     if (event.httpMethod !== 'POST') {
@@ -79,6 +128,18 @@ exports.handler = async (event) => {
         };
 
         await sgMail.send(msgToAdmin);
+
+        // Se è il form offerte luce/gas → invia lead a Edison (Supermoney)
+        if (plan === 'Offerte Luce e Gas' && phone) {
+            const clientIp = event.headers['x-forwarded-for']?.split(',')[0]?.trim()
+                || event.headers['x-nf-client-connection-ip']
+                || '0.0.0.0';
+            await sendEdisonLead({
+                name, phone, email,
+                ip: clientIp,
+                urlPrivacy: 'https://semplicom.com/migliori-offerte-luce-gas/',
+            });
+        }
 
         // Email di conferma al cliente con template SendGrid
         const msgToClient = {
