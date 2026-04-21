@@ -13,7 +13,7 @@ function normalizePhone(raw) {
     return '00' + digits;
 }
 
-// Invia lead a Edison via API Supermoney
+// Invia lead a Edison via API Supermoney — ritorna { status, body }
 function sendEdisonLead({ name, phone, email, ip, urlPrivacy }) {
     return new Promise((resolve) => {
         const username = process.env.EDISON_USERNAME || '6MADE';
@@ -56,12 +56,12 @@ function sendEdisonLead({ name, phone, email, ip, urlPrivacy }) {
             res.on('data', chunk => { data += chunk; });
             res.on('end', () => {
                 console.log(`📤 Edison lead: ${res.statusCode}`, data);
-                resolve();
+                resolve({ status: res.statusCode, body: data });
             });
         });
         req.on('error', (err) => {
             console.error('❌ Edison lead error:', err.message);
-            resolve();
+            resolve({ status: 0, body: err.message });
         });
         req.write(body);
         req.end();
@@ -149,11 +149,12 @@ exports.handler = async (event) => {
         await sgMail.send(msgToAdmin);
 
         // Se è il form offerte luce/gas → invia lead a Edison (Supermoney)
+        let edisonResult = null;
         if (plan === 'Offerte Luce e Gas' && phone) {
             const clientIp = event.headers['x-forwarded-for']?.split(',')[0]?.trim()
                 || event.headers['x-nf-client-connection-ip']
                 || '0.0.0.0';
-            await sendEdisonLead({
+            edisonResult = await sendEdisonLead({
                 name, phone, email,
                 ip: clientIp,
                 urlPrivacy: 'https://semplicom.com/migliori-offerte-luce-gas/',
@@ -179,7 +180,7 @@ exports.handler = async (event) => {
 
         return {
             statusCode: 200,
-            body: JSON.stringify({ success: true, message: 'Email inviata con successo' })
+            body: JSON.stringify({ success: true, message: 'Email inviata con successo', edison: edisonResult })
         };
 
     } catch (error) {
