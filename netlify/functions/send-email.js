@@ -28,6 +28,7 @@ function sendEdisonLead({ name, phone, email, ip, urlPrivacy }) {
             ip: ip || '0.0.0.0',
             urlPrivacy: urlPrivacy || 'https://semplicom.com/migliori-offerte-luce-gas/',
             tipoCliente: '6made_lead',
+            skipDeduplica: true,
             consensi: {
                 informativaPrivacy: { consenso: true },
                 condizioniGenerali: { consenso: true },
