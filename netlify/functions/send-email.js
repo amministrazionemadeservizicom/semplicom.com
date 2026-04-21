@@ -1,4 +1,5 @@
 const sgMail = require('@sendgrid/mail');
+const https = require('https');
 
 // Normalizza telefono in formato 0039XXXXXXXXXX richiesto da Supermoney
 function normalizePhone(raw) {
@@ -12,41 +13,59 @@ function normalizePhone(raw) {
     return '00' + digits;
 }
 
-// Invia lead a Edison via API Supermoney (fire-and-forget)
-async function sendEdisonLead({ name, phone, email, ip, urlPrivacy }) {
-    const username = process.env.EDISON_USERNAME || '6MADE';
-    const secret = process.env.EDISON_SECRET || 'yZAKIQmJOPAL86FHxWltJK3D6fJUXWgt';
-    const endpoint = 'https://api.supermoney.it/service/leads/contatti/energia';
+// Invia lead a Edison via API Supermoney
+function sendEdisonLead({ name, phone, email, ip, urlPrivacy }) {
+    return new Promise((resolve) => {
+        const username = process.env.EDISON_USERNAME || '6MADE';
+        const secret = process.env.EDISON_SECRET || 'yZAKIQmJOPAL86FHxWltJK3D6fJUXWgt';
 
-    const telefono = normalizePhone(phone);
-    if (!telefono) return;
+        const telefono = normalizePhone(phone);
+        if (!telefono) { resolve(); return; }
 
-    const parts = (name || '').trim().split(/\s+/);
-    const payload = {
-        telefono,
-        ip: ip || '0.0.0.0',
-        urlPrivacy: urlPrivacy || 'https://semplicom.com/migliori-offerte-luce-gas/',
-        tipoCliente: '6made_lead',
-        consensi: {
-            informativaPrivacy: { consenso: true },
-            condizioniGenerali: { consenso: true },
-            comunicazioniPreventivi: { consenso: true },
-        },
-    };
-    if (parts.length >= 2) { payload.nome = parts[0]; payload.cognome = parts.slice(1).join(' '); }
-    else if (parts[0]) { payload.nome = parts[0]; }
-    if (email) payload.email = email;
+        const parts = (name || '').trim().split(/\s+/);
+        const payload = {
+            telefono,
+            ip: ip || '0.0.0.0',
+            urlPrivacy: urlPrivacy || 'https://semplicom.com/migliori-offerte-luce-gas/',
+            tipoCliente: '6made_lead',
+            consensi: {
+                informativaPrivacy: { consenso: true },
+                condizioniGenerali: { consenso: true },
+                comunicazioniPreventivi: { consenso: true },
+            },
+        };
+        if (parts.length >= 2) { payload.nome = parts[0]; payload.cognome = parts.slice(1).join(' '); }
+        else if (parts[0]) { payload.nome = parts[0]; }
+        if (email) payload.email = email;
 
-    try {
-        const res = await fetch(endpoint, {
+        const body = JSON.stringify(payload);
+        const options = {
+            hostname: 'api.supermoney.it',
+            path: '/service/leads/contatti/energia',
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', username, secret },
-            body: JSON.stringify(payload),
+            headers: {
+                'Content-Type': 'application/json',
+                'Content-Length': Buffer.byteLength(body),
+                'username': username,
+                'secret': secret,
+            },
+        };
+
+        const req = https.request(options, (res) => {
+            let data = '';
+            res.on('data', chunk => { data += chunk; });
+            res.on('end', () => {
+                console.log(`📤 Edison lead: ${res.statusCode}`, data);
+                resolve();
+            });
         });
-        console.log(`📤 Edison lead: ${res.status}`, await res.text().catch(() => ''));
-    } catch (err) {
-        console.error('❌ Edison lead error:', err.message);
-    }
+        req.on('error', (err) => {
+            console.error('❌ Edison lead error:', err.message);
+            resolve();
+        });
+        req.write(body);
+        req.end();
+    });
 }
 
 exports.handler = async (event) => {
