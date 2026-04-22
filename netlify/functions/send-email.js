@@ -26,7 +26,7 @@ function sendEdisonLead({ name, phone, email, ip, urlPrivacy }) {
         const payload = {
             telefono,
             ip: ip || '0.0.0.0',
-            urlPrivacy: urlPrivacy || 'https://semplicom.com/migliori-offerte-luce-gas/',
+            urlPrivacy: urlPrivacy || 'https://semplicom.com/privacy.html',
             tipoCliente: '6made_lead',
             skipDeduplica: true,
             consensi: {
