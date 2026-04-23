@@ -11,17 +11,19 @@ export default async (request, context) => {
   const ct = response.headers.get('content-type') || '';
   if (!ct.includes('text/html')) return response;
 
-  // Chiama la funzione energy-prices per dati live
+  // Chiama la funzione energy-prices per dati live.
+  // Timeout breve (2s): se il CDN ha la risposta in cache è istantaneo;
+  // se non è in cache (cold start) preferiamo servire l'HTML statico subito.
   let data = null;
   try {
     const apiUrl = new URL('/.netlify/functions/energy-prices', request.url);
     const ctrl   = new AbortController();
-    const timer  = setTimeout(() => ctrl.abort(), 5000);
+    const timer  = setTimeout(() => ctrl.abort(), 2000);
     const apiRes = await fetch(apiUrl.toString(), { signal: ctrl.signal });
     clearTimeout(timer);
     if (apiRes.ok) data = await apiRes.json();
   } catch (_) {
-    // Se l'API fallisce, restituisce l'HTML originale con valori statici
+    // API lenta o non disponibile: serve HTML statico senza bloccare l'utente
     return response;
   }
 
@@ -149,9 +151,14 @@ export default async (request, context) => {
     );
   }
 
+  const newHeaders = new Headers(response.headers);
+  // Cache la pagina HTML arricchita per 1 ora sul CDN; stale-while-revalidate
+  // serve la versione precedente mentre aggiorna in background (zero latenza percepita)
+  newHeaders.set('Cache-Control', 's-maxage=3600, stale-while-revalidate=86400');
+
   return new Response(html, {
     status:  response.status,
-    headers: response.headers,
+    headers: newHeaders,
   });
 };
 

@@ -111,7 +111,9 @@ exports.handler = async () => {
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Content-Type':  'application/json',
-    'Cache-Control': 'no-cache',
+    // Cache sul CDN Netlify per 6 ore; se la funzione fallisce/è lenta
+    // serve i dati stale fino a 24h senza bloccare il visitatore
+    'Cache-Control': 's-maxage=21600, stale-while-revalidate=86400',
   };
 
   const now        = new Date();
