@@ -1,6 +1,7 @@
 [build]
   publish = "."
   functions = "netlify/functions"
+  edge_functions = "netlify/edge-functions"
 
 # Credenziali API GME — aggiorna GME_PASSWORD dopo aver cambiato la password
 [build.environment]
@@ -9,6 +10,10 @@
 
 [functions]
   node_bundler = "esbuild"
+
+[[edge_functions]]
+  path    = "/pun-oggi/"
+  function = "pun-seo"
 
 # Headers per sicurezza e performance
 [[headers]]

@@ -29,7 +29,7 @@
       "logo": { "@type": "ImageObject", "url": "https://semplicom.com/assets/img/logo.svg" }
     },
     "datePublished": "2026-04-18",
-    "dateModified": "2026-04-18",
+    "dateModified": "2026-04-23",
     "mainEntityOfPage": "https://semplicom.com/spread-energia/"
   }
   </script>
@@ -55,6 +55,38 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Cos'è lo spread energia elettrica?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lo spread energia elettrica è il margine commerciale che il fornitore aggiunge al PUN (Prezzo Unico Nazionale) nelle offerte indicizzate. È espresso in €/kWh. Formula: Prezzo energia = (PUN €/MWh ÷ 1000 × 1,102) + spread €/kWh."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Cos'è lo spread su PUN?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lo spread su PUN è il costo aggiuntivo che il fornitore applica sopra al Prezzo Unico Nazionale nelle offerte indicizzate al mercato. Il PUN cambia ogni mese (pubblicato da GME), mentre lo spread rimane fisso per la durata del contratto. Esempio ad aprile 2026: PUN = 120 €/MWh (0,120 €/kWh) + spread 0,010 €/kWh = prezzo energia 0,1323 €/kWh (incluse perdite 10,2%)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Qual è la formula dello spread energia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La formula dello spread energia è: Prezzo componente energia = (PUN mensile in €/MWh ÷ 1000 × 1,102) + spread in €/kWh. Il coefficiente 1,102 rappresenta le perdite di rete del 10,2% definite da ARERA. Esempio: PUN 120 €/MWh → 0,120 €/kWh × 1,102 = 0,1322 €/kWh + spread 0,010 = 0,1422 €/kWh."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Come si legge lo spread in bolletta?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nella bolletta, lo spread appare nella sezione 'Dettaglio spesa energia' come 'spread fornitore' o 'margine commercializzazione'. Se non è indicato esplicitamente, puoi calcolarlo: Spread = Prezzo componente energia - (PUN mensile ÷ 1000 × 1,102). I valori tipici nel 2026 sono tra 0,005 e 0,030 €/kWh."
+        }
+      },
       {
         "@type": "Question",
         "name": "Qual è uno spread buono per un'offerta luce?",
@@ -616,6 +648,28 @@
 <main class="article-body">
   <div class="content-wrap">
 
+    <!-- ─── H2: Formula spread ────────────────────────── -->
+    <h2 id="spread-formula">Formula dello spread energia</h2>
+    <p>La <strong>formula dello spread energia</strong> permette di calcolare il prezzo effettivo della componente energia in un'offerta indicizzata al PUN:</p>
+
+    <div style="background:#f0f7ff;border:2px solid #1a56db;border-radius:10px;padding:20px 24px;margin:20px 0;font-size:1.05rem;">
+      <p style="margin:0 0 8px;font-weight:700;color:#1a56db;">Formula spread energia elettrica:</p>
+      <p style="margin:0;font-family:monospace;font-size:1.1rem;color:#212529;"><strong>Prezzo energia (€/kWh) = (PUN €/MWh ÷ 1.000 × 1,102) + spread €/kWh</strong></p>
+      <p style="margin:12px 0 0;font-size:.9rem;color:#374151;">Il coefficiente <strong>1,102</strong> rappresenta le perdite di rete (10,2%) stabilite da ARERA, applicate a tutti i contratti indicizzati.</p>
+      <p style="margin:8px 0 0;font-size:.9rem;color:#374151;"><strong>Esempio pratico (aprile 2026):</strong> PUN = 120,07 €/MWh → 0,12007 × 1,102 = 0,13231 + spread 0,010 = <strong>0,1423 €/kWh</strong> componente energia</p>
+    </div>
+
+    <!-- ─── H2: Spread su PUN ──────────────────────────── -->
+    <h2 id="spread-su-pun">Spread su PUN: cos'è e come funziona</h2>
+    <p>Lo <strong>spread su PUN</strong> è la quota fissa (in €/kWh) che il fornitore applica sopra al Prezzo Unico Nazionale nelle offerte indicizzate al mercato elettrico. Il PUN viene pubblicato ogni giorno da GME e varia mensilmente; lo spread invece è negoziato al momento della firma del contratto e rimane stabile per tutta la sua durata (salvo diversa pattuizione).</p>
+    <p>Il meccanismo funziona così:</p>
+    <ul class="bullet-list">
+      <li><strong>Il PUN cambia ogni mese</strong> in base alle quotazioni del mercato all'ingrosso MGP (Mercato del Giorno Prima)</li>
+      <li><strong>Lo spread rimane fisso</strong> per la durata contrattuale concordata (tipicamente 12-24 mesi)</li>
+      <li><strong>Il cliente beneficia dei ribassi del PUN</strong> ma subisce anche i rialzi, con lo spread come unica componente certa</li>
+      <li><strong>Ad aprile 2026</strong> il PUN si attesta intorno a 120 €/MWh; uno spread di 0,010 €/kWh aggiunge ~10 €/MWh al costo finale</li>
+    </ul>
+
     <!-- ─── H2: Come funziona ─────────────────────────── -->
     <h2>Come funziona lo spread in un'offerta indicizzata</h2>
     <p>Nelle offerte indicizzate al PUN, il prezzo dell'energia non è fisso ma varia ogni mese seguendo l'andamento del mercato all'ingrosso. Lo spread è la componente che il fornitore aggiunge al PUN per coprire i propri costi e margini.</p>
@@ -690,6 +744,19 @@
         </tbody>
       </table>
     </div>
+
+    <!-- ─── H2: Spread in bolletta ───────────────────── -->
+    <h2 id="spread-in-bolletta">Come si legge lo spread in bolletta</h2>
+    <p>Nella <strong>bolletta della luce</strong>, lo spread compare nella sezione <em>Dettaglio spesa energia</em> (o <em>Materia energia</em>). Non sempre è indicato esplicitamente con la parola "spread": a seconda del fornitore può apparire come <em>margine commercializzazione</em>, <em>spread fornitore</em> o semplicemente essere incluso nel prezzo unitario della componente energia.</p>
+
+    <p><strong>Come calcolare lo spread dalla tua bolletta attuale:</strong></p>
+    <ol class="steps-list" style="margin-bottom:20px;">
+      <li><div>Trova nella bolletta il <strong>PUN del mese di riferimento</strong> (es. "indice PUN aprile 2026: 120,07 €/MWh")</div></li>
+      <li><div>Calcola il PUN in €/kWh con perdite: <strong>120,07 ÷ 1000 × 1,102 = 0,1323 €/kWh</strong></div></li>
+      <li><div>Trova nella bolletta il <strong>prezzo unitario componente energia</strong> (es. 0,1423 €/kWh)</div></li>
+      <li><div>Sottrai: <strong>0,1423 − 0,1323 = 0,010 €/kWh</strong> → questo è il tuo spread</div></li>
+    </ol>
+    <p>Se lo spread che trovi è superiore a <strong>0,025 €/kWh</strong> potrebbe valere la pena confrontare le offerte del mercato libero: con 3.000 kWh/anno, la differenza tra uno spread di 0,025 e uno di 0,010 vale circa <strong>45 €/anno</strong>.</p>
 
     <!-- ─── H2: Simulatore ───────────────────────────── -->
     <h2 id="simulatore">Simulatore: calcola l'impatto dello spread sulla tua bolletta</h2>
@@ -841,6 +908,34 @@
     <h2>Domande frequenti</h2>
 
     <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+
+      <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">Cos'è lo spread energia elettrica?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">Lo spread energia elettrica è il margine commerciale che il fornitore aggiunge al PUN (Prezzo Unico Nazionale) nelle offerte indicizzate al mercato elettrico. È espresso in €/kWh. Formula: Prezzo energia = (PUN €/MWh ÷ 1000 × 1,102) + spread €/kWh.</p>
+        </div>
+      </details>
+
+      <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">Cos'è lo spread su PUN?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">Lo spread su PUN è il costo aggiuntivo fisso (€/kWh) che il fornitore applica sopra al Prezzo Unico Nazionale nelle offerte indicizzate al mercato. Il PUN cambia ogni mese (pubblicato da GME), mentre lo spread rimane fisso per tutta la durata del contratto. Esempio aprile 2026: PUN ≈ 120 €/MWh + spread 0,010 €/kWh = prezzo componente energia ≈ 0,142 €/kWh.</p>
+        </div>
+      </details>
+
+      <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">Qual è la formula dello spread energia?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">La formula dello spread energia è: Prezzo componente energia (€/kWh) = (PUN mensile in €/MWh ÷ 1000 × 1,102) + spread in €/kWh. Il coefficiente 1,102 include le perdite di rete (10,2%) definite da ARERA. Esempio con PUN aprile 2026 di 120,07 €/MWh: (120,07 ÷ 1000 × 1,102) + 0,010 = 0,1323 + 0,010 = 0,1423 €/kWh.</p>
+        </div>
+      </details>
+
+      <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">Come si legge lo spread in bolletta?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">Lo spread appare nella sezione "Dettaglio spesa energia" come "spread fornitore" o "margine commercializzazione". Se non è indicato esplicitamente, calcolalo così: Spread = Prezzo componente energia in bolletta − (PUN del mese ÷ 1000 × 1,102). Valori tipici nel 2026: tra 0,005 e 0,030 €/kWh.</p>
+        </div>
+      </details>
 
       <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
         <summary itemprop="name">Qual è uno spread buono per un'offerta luce?</summary>
