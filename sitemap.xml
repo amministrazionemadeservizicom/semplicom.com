@@ -4,7 +4,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://semplicom.com/</loc>
-    <lastmod>2026-04-18</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -114,8 +114,8 @@
   <!-- Prezzi energia — pagine live (priority alta: dati aggiornati) -->
   <url>
     <loc>https://semplicom.com/pun-oggi/</loc>
-    <lastmod>2026-04-18</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
@@ -138,9 +138,9 @@
   </url>
   <url>
     <loc>https://semplicom.com/spread-energia/</loc>
-    <lastmod>2026-04-18</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://semplicom.com/prezzi-energia-per-zona/</loc>
@@ -196,7 +196,7 @@
   <!-- Blog hub -->
   <url>
     <loc>https://semplicom.com/blog/</loc>
-    <lastmod>2026-04-18</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -441,8 +441,14 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://semplicom.com/blog/pun-spread/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://semplicom.com/blog/pun-aprile-2026-analisi-agenti/</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
