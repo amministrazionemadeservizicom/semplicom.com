@@ -49,8 +49,8 @@
   to = "/sitemap.xml"
   status = 301
 
-# 404 fallback
+# 404 fallback — restituisce 404 reale (evita soft-404 per Google)
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200
+  status = 404
