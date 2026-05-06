@@ -162,19 +162,24 @@ exports.handler = async (event) => {
             });
         }
 
-        // Email di conferma al cliente con template SendGrid
+        // Email di conferma al cliente
         const msgToClient = {
             to: email,
             from: 'noreply@semplicom.com',
-            templateId: 'd-a87c4d5a42ce4ed89a59c62548d30cd5',
-            dynamicTemplateData: {
-                name: name,
-                email: email,
-                company: company || '',
-                phone: phone || '',
-                plan: plan || '',
-                message: message || ''
-            }
+            subject: 'Richiesta informazioni ricevuta – SempliCom',
+            html: `
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                    <div style="text-align: center; padding: 20px 0;">
+                        <img src="https://semplicom.com/logo.png" alt="SempliCom" style="max-height: 80px;" />
+                    </div>
+                    <div style="padding: 20px;">
+                        <p>Ciao ${name},</p>
+                        <p>grazie per averci scritto.<br>
+                        La tua richiesta è stata presa in carico: ti ricontatteremo entro 48 ore con tutti i dettagli.</p>
+                        <p>A presto,<br><strong>Il team SempliCom</strong></p>
+                    </div>
+                </div>
+            `
         };
 
         await sgMail.send(msgToClient);
