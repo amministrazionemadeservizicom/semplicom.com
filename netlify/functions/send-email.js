@@ -1,5 +1,34 @@
 const sgMail = require('@sendgrid/mail');
 const https = require('https');
+const admin = require('firebase-admin');
+
+// Inizializza Firebase Admin (una sola volta)
+if (!admin.apps.length) {
+    try {
+        const raw = process.env.FIREBASE_ADMIN_CREDENTIALS || process.env.FIREBASE_SERVICE_ACCOUNT;
+        if (raw) {
+            const svc = JSON.parse(raw);
+            admin.initializeApp({
+                credential: admin.credential.cert(svc),
+                projectId: svc.project_id,
+            });
+        } else {
+            const projectId = process.env.FIREBASE_PROJECT_ID;
+            const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
+            const privateKey = (process.env.FIREBASE_PRIVATE_KEY || '').replace(/\\n/g, '\n');
+            admin.initializeApp({
+                credential: admin.credential.cert({ project_id: projectId, client_email: clientEmail, private_key: privateKey }),
+                projectId,
+            });
+        }
+    } catch (e) {
+        console.error('❌ Firebase Admin init error:', e.message);
+    }
+}
+
+function getFirestore() {
+    try { return admin.firestore(); } catch (e) { return null; }
+}
 
 // Normalizza telefono in formato 0039XXXXXXXXXX richiesto da Supermoney
 function normalizePhone(raw) {
@@ -163,24 +192,101 @@ exports.handler = async (event) => {
         }
 
         // Email di conferma al cliente
-        const msgToClient = {
-            to: email,
-            from: 'noreply@semplicom.com',
-            subject: 'Richiesta informazioni ricevuta – SempliCom',
-            html: `
-                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                    <div style="text-align: center; padding: 20px 0;">
-                        <img src="https://semplicom.com/logo.png" alt="SempliCom" style="max-height: 80px;" />
+        let msgToClient;
+
+        if (plan === 'Offerte Luce e Gas') {
+            // Landing migliori-offerte-luce-gas — email consenso privacy + salvataggio Firestore
+            const now = new Date();
+            const refCode = `PRIV-${now.toISOString().slice(0,10).replace(/-/g,'')}-${Math.random().toString(36).toUpperCase().slice(2,8)}`;
+            const dataFormattata = now.toLocaleString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+            const clientIpConsent = event.headers['x-forwarded-for']?.split(',')[0]?.trim()
+                || event.headers['x-nf-client-connection-ip']
+                || '0.0.0.0';
+
+            // Salva consenso su Firestore
+            const db = getFirestore();
+            if (db) {
+                db.collection('consensi_privacy').add({
+                    nome: name,
+                    email: email || null,
+                    telefono: phone || null,
+                    ip: clientIpConsent,
+                    timestamp: admin.firestore.FieldValue.serverTimestamp(),
+                    timestampIso: now.toISOString(),
+                    refCode,
+                    fonte: 'semplicom.com/migliori-offerte-luce-gas',
+                    privacy: true,
+                }).catch(err => console.error('❌ Firestore save error:', err.message));
+            }
+
+            msgToClient = {
+                to: email,
+                from: 'noreply@semplicom.com',
+                subject: 'Grazie per la fiducia! ecco la conferma del tuo consenso',
+                html: `
+                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+                        <div style="text-align: center; padding: 24px 0 16px;">
+                            <div style="display:inline-block; background:#f5f5f5; border-radius:8px; padding:12px 24px;">
+                                <img src="https://semplicom.com/assets/img/logo.svg" alt="SempliCom" style="max-height: 60px; max-width: 220px;" />
+                            </div>
+                        </div>
+                        <hr style="border:none; border-top:1px solid #e0e0e0; margin: 0 0 24px;" />
+                        <div style="padding: 0 24px 24px;">
+                            <p style="font-size:16px; font-weight:bold; margin-bottom:16px;">👋 Ciao ${name},</p>
+                            <p style="margin-bottom:12px;">
+                                ti scriviamo per confermarti che il tuo consenso al trattamento dei dati è stato correttamente
+                                registrato tramite <span style="color:#D1009C; font-weight:600;">Semplicom</span>.
+                            </p>
+                            <p style="margin-bottom:24px;">
+                                Questa conferma ci permette di assisterti nella gestione della tua richiesta e di fornirti supporto in modo chiaro e trasparente.
+                            </p>
+                            <p style="font-weight:600; margin-bottom:8px;">Riepilogo</p>
+                            <p style="margin:0 0 4px;">• Codice di riferimento: <strong>${refCode}</strong></p>
+                            <p style="margin:0 0 4px;">• IP: <strong>${clientIpConsent}</strong></p>
+                            <p style="margin:0 0 24px;">• Data: <strong>${dataFormattata}</strong></p>
+                            <p style="margin-bottom:8px;">Puoi consultare in qualsiasi momento:</p>
+                            <p style="margin:0 0 4px;">• <a href="https://www.iubenda.com/privacy-policy/38620659" style="color:#D1009C;">Privacy Policy</a></p>
+                            <p style="margin:0 0 24px;">• <a href="https://www.iubenda.com/termini-e-condizioni/38620659" style="color:#D1009C;">Termini e Condizioni</a></p>
+                            <p style="margin-bottom:24px;">Se hai domande o desideri chiarimenti, puoi rispondere direttamente a questa email.</p>
+                            <p style="margin-bottom:4px;">Grazie ancora per la fiducia,</p>
+                            <p style="margin:0;">Il team <span style="color:#D1009C; font-weight:600;">Semplicom</span></p>
+                        </div>
+                        <div style="background:#f9f9f9; border-radius:8px; margin:0 24px 16px; padding:16px;">
+                            <p style="font-weight:700; margin:0 0 8px;">Diritto di revoca</p>
+                            <p style="margin:0 0 10px; font-size:14px; color:#555;">Ai sensi dell'art. 7 GDPR puoi revocare il tuo consenso in qualsiasi momento.</p>
+                            <div style="background:#fffbe6; border:1px solid #f0c040; border-radius:6px; padding:10px; margin-bottom:10px;">
+                                <p style="margin:0; font-size:13px; color:#7a5800;">⚠️ <strong>Attenzione:</strong> la revoca del consenso comporta l'impossibilità di procedere con la lavorazione del contratto. I trattamenti effettuati prima della revoca rimangono leciti.</p>
+                            </div>
+                            <p style="margin:0; font-size:13px; color:#555;">Se desideri revocare il consenso puoi farlo scrivendo a <a href="mailto:amministrazione@madeservizi.com" style="color:#D1009C;">amministrazione@madeservizi.com</a>.</p>
+                        </div>
+                        <div style="background:#fff3f0; border:1px solid #f5c0b0; border-radius:8px; margin:0 24px 24px; padding:16px;">
+                            <p style="font-weight:700; color:#D1009C; margin:0 0 8px;">Consenso SuperMoney</p>
+                            <p style="margin:0; font-size:13px; color:#555;">Hai anche prestato consenso a SuperMoney. Per revocarlo consulta la <a href="https://www.supermoney.it/privacy-policy/" style="color:#D1009C;">Privacy Policy SuperMoney</a>.</p>
+                        </div>
                     </div>
-                    <div style="padding: 20px;">
-                        <p>Ciao ${name},</p>
-                        <p>grazie per averci scritto.<br>
-                        La tua richiesta è stata presa in carico: ti ricontatteremo entro 48 ore con tutti i dettagli.</p>
-                        <p>A presto,<br><strong>Il team SempliCom</strong></p>
+                `
+            };
+        } else {
+            // Tutti gli altri form — email generica invariata
+            msgToClient = {
+                to: email,
+                from: 'noreply@semplicom.com',
+                subject: 'Richiesta informazioni ricevuta – SempliCom',
+                html: `
+                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                        <div style="text-align: center; padding: 20px 0;">
+                            <img src="https://semplicom.com/assets/img/logo.svg" alt="SempliCom" style="max-height: 80px;" />
+                        </div>
+                        <div style="padding: 20px;">
+                            <p>Ciao ${name},</p>
+                            <p>grazie per averci scritto.<br>
+                            La tua richiesta è stata presa in carico: ti ricontatteremo entro 48 ore con tutti i dettagli.</p>
+                            <p>A presto,<br><strong>Il team SempliCom</strong></p>
+                        </div>
                     </div>
-                </div>
-            `
-        };
+                `
+            };
+        }
 
         await sgMail.send(msgToClient);
 
