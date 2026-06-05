@@ -100,7 +100,7 @@ exports.handler = async (event) => {
             replyTo: email,
             subject: customSubject ? `${customSubject} - ${name}` : `Nuova richiesta demo - ${name}${company ? ` (${company})` : ''}`,
             html: `
-                <h2>Nuova richiesta demo da semplicom.com</h2>
+                <h2>${customSubject ? `${customSubject} da semplicom.com` : 'Nuova richiesta demo da semplicom.com'}</h2>
                 <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
                     <tr>
                         <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Nome:</strong></td>
