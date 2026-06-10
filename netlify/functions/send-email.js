@@ -112,7 +112,7 @@ exports.handler = async (event) => {
 
     try {
         const data = JSON.parse(event.body);
-        const { name, email, company, phone, plan, employees, message, privacy, subject: customSubject } = data;
+        const { name, nome: nomeRaw, cognome: cognomeRaw, email, company, phone, plan, employees, message, privacy, subject: customSubject } = data;
 
         // Validazione base
         if (!name || !email || !privacy) {
@@ -203,21 +203,25 @@ exports.handler = async (event) => {
                 || event.headers['x-nf-client-connection-ip']
                 || '0.0.0.0';
 
-            // Salva consenso su Firestore
-            const db = getFirestore();
-            if (db) {
-                db.collection('consensi_privacy').add({
-                    nome: name,
-                    email: email || null,
-                    telefono: phone || null,
-                    ip: clientIpConsent,
-                    timestamp: admin.firestore.FieldValue.serverTimestamp(),
-                    timestampIso: now.toISOString(),
-                    refCode,
+            // Salva consenso via proxy sempliswitch (ha le credenziali Firebase)
+            const nomeSalvato = nomeRaw || name.split(' ')[0] || '';
+            const cognomeSalvato = cognomeRaw || name.split(' ').slice(1).join(' ') || '';
+            const telefonoNorm = (phone || '').replace(/[\s\-\.]/g, '');
+            fetch('https://semplicom.it/.netlify/functions/save-privacy-consent', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    privacy_id: refCode,
+                    nome: nomeSalvato,
+                    cognome: cognomeSalvato,
+                    email: email || '',
+                    telefono: telefonoNorm,
+                    data_consenso: now.toISOString(),
                     fonte: 'semplicom.com/migliori-offerte-luce-gas',
-                    privacy: true,
-                }).catch(err => console.error('❌ Firestore save error:', err.message));
-            }
+                    client_ip: clientIpConsent,
+                }),
+            }).then(r => console.log('✅ Privacy consent salvato:', r.status))
+              .catch(err => console.error('❌ save-privacy-consent error:', err.message));
 
             msgToClient = {
                 to: email,
