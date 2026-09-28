@@ -42,6 +42,118 @@ function normalizePhone(raw) {
     return '00' + digits;
 }
 
+// Invia lead MMconsulting via API Supermoney (6MADE3) — ritorna { status, body }
+function sendMMLead({ name, phone, email, ip, urlPrivacy }) {
+    return new Promise((resolve) => {
+        const username = process.env.MM_SM_USERNAME || '6MADE3';
+        const secret = process.env.MM_SM_SECRET || 'TkVnw4glef9T6ZEMVvWqhyJhkjfFDA6u';
+
+        const telefono = normalizePhone(phone);
+        if (!telefono) { resolve(); return; }
+
+        const parts = (name || '').trim().split(/\s+/);
+        const payload = {
+            telefono,
+            ip: ip || '0.0.0.0',
+            urlPrivacy: urlPrivacy || 'https://semplicom.com/privacy.html',
+            tipoCliente: '6made3_lead',
+            skipDeduplica: true,
+            consensi: {
+                informativaPrivacy: { consenso: true },
+                condizioniGenerali: { consenso: true },
+                comunicazioniPreventivi: { consenso: true },
+            },
+        };
+        if (parts.length >= 2) { payload.nome = parts[0]; payload.cognome = parts.slice(1).join(' '); }
+        else if (parts[0]) { payload.nome = parts[0]; }
+        if (email) payload.email = email;
+
+        const body = JSON.stringify(payload);
+        const options = {
+            hostname: 'api.supermoney.it',
+            path: '/service/leads/contatti/energia',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Content-Length': Buffer.byteLength(body),
+                'username': username,
+                'secret': secret,
+            },
+        };
+
+        const req = https.request(options, (res) => {
+            let data = '';
+            res.on('data', chunk => { data += chunk; });
+            res.on('end', () => {
+                console.log(`📤 MM lead: ${res.statusCode}`, data);
+                resolve({ status: res.statusCode, body: data });
+            });
+        });
+        req.on('error', (err) => {
+            console.error('❌ MM lead error:', err.message);
+            resolve({ status: 0, body: err.message });
+        });
+        req.write(body);
+        req.end();
+    });
+}
+
+// Invia lead Energia Automatica via API Supermoney (6MADE4) — ritorna { status, body }
+function sendEnergiaAutomaticaLead({ name, phone, email, ip, urlPrivacy }) {
+    return new Promise((resolve) => {
+        const username = process.env.EA_SM_USERNAME || '6MADE4';
+        const secret = process.env.EA_SM_SECRET || 'CiJ4b5WfGa86izx77XnVqWT7brnoC7L2';
+
+        const telefono = normalizePhone(phone);
+        if (!telefono) { resolve(); return; }
+
+        const parts = (name || '').trim().split(/\s+/);
+        const payload = {
+            telefono,
+            ip: ip || '0.0.0.0',
+            urlPrivacy: urlPrivacy || 'https://semplicom.com/energia-automatica/',
+            tipoCliente: '6made4_lead',
+            skipDeduplica: true,
+            consensi: {
+                informativaPrivacy: { consenso: true },
+                condizioniGenerali: { consenso: true },
+                comunicazioniPreventivi: { consenso: true },
+            },
+        };
+        if (parts.length >= 2) { payload.nome = parts[0]; payload.cognome = parts.slice(1).join(' '); }
+        else if (parts[0]) { payload.nome = parts[0]; }
+        if (email) payload.email = email;
+
+        const body = JSON.stringify(payload);
+        const options = {
+            hostname: 'api.supermoney.it',
+            path: '/service/leads/contatti/energia',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Content-Length': Buffer.byteLength(body),
+                'username': username,
+                'secret': secret,
+            },
+        };
+
+        const req = https.request(options, (res) => {
+            let data = '';
+            res.on('data', chunk => { data += chunk; });
+            res.on('end', () => {
+                console.log(`📤 Energia Automatica lead: ${res.statusCode}`, data);
+                resolve({ status: res.statusCode, body: data });
+            });
+        });
+        req.on('error', (err) => {
+            console.error('❌ Energia Automatica lead error:', err.message);
+            resolve({ status: 0, body: err.message });
+        });
+        req.write(body);
+        req.end();
+    });
+}
+
 // Invia lead a Edison via API Supermoney — ritorna { status, body }
 function sendEdisonLead({ name, phone, email, ip, urlPrivacy }) {
     return new Promise((resolve) => {
@@ -191,6 +303,30 @@ exports.handler = async (event) => {
             });
         }
 
+        // Se è il form Energia Automatica (6MADE4) → invia lead a Supermoney
+        if (plan === 'Offerte Energia Automatica' && phone) {
+            const clientIp = event.headers['x-forwarded-for']?.split(',')[0]?.trim()
+                || event.headers['x-nf-client-connection-ip']
+                || '0.0.0.0';
+            await sendEnergiaAutomaticaLead({
+                name, phone, email,
+                ip: clientIp,
+                urlPrivacy: 'https://semplicom.com/energia-automatica/',
+            });
+        }
+
+        // Se è il form offerte MM (6MADE3) → invia lead MMconsulting (Supermoney)
+        if (plan === 'Offerte MM' && phone) {
+            const clientIp = event.headers['x-forwarded-for']?.split(',')[0]?.trim()
+                || event.headers['x-nf-client-connection-ip']
+                || '0.0.0.0';
+            await sendMMLead({
+                name, phone, email,
+                ip: clientIp,
+                urlPrivacy: 'https://semplicom.com/offerte-luce-gas-mm/',
+            });
+        }
+
         // Email di conferma al cliente
         let msgToClient;
 
@@ -203,25 +339,33 @@ exports.handler = async (event) => {
                 || event.headers['x-nf-client-connection-ip']
                 || '0.0.0.0';
 
-            // Salva consenso via proxy sempliswitch (ha le credenziali Firebase)
+            // Salva consenso direttamente in Firestore
             const nomeSalvato = nomeRaw || name.split(' ')[0] || '';
             const cognomeSalvato = cognomeRaw || name.split(' ').slice(1).join(' ') || '';
             const telefonoNorm = (phone || '').replace(/[\s\-\.]/g, '');
-            fetch('https://semplicom.it/.netlify/functions/save-privacy-consent', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    privacy_id: refCode,
-                    nome: nomeSalvato,
-                    cognome: cognomeSalvato,
-                    email: email || '',
-                    telefono: telefonoNorm,
-                    data_consenso: now.toISOString(),
-                    fonte: 'semplicom.com/migliori-offerte-luce-gas',
-                    client_ip: clientIpConsent,
-                }),
-            }).then(r => console.log('✅ Privacy consent salvato:', r.status))
-              .catch(err => console.error('❌ save-privacy-consent error:', err.message));
+            const db = getFirestore();
+            if (db) {
+                try {
+                    await db.collection('privacy_consents').doc(refCode).set({
+                        privacy_id: refCode,
+                        nome: nomeSalvato.trim(),
+                        cognome: cognomeSalvato.trim(),
+                        nome_completo: `${nomeSalvato} ${cognomeSalvato}`.trim(),
+                        email: email || '',
+                        telefono: telefonoNorm,
+                        data_consenso: now.toISOString(),
+                        created_at: now.toISOString(),
+                        fonte: 'semplicom.com/migliori-offerte-luce-gas',
+                        client_ip: clientIpConsent,
+                        usato_in_contratto: false,
+                    });
+                    console.log(`✅ Privacy consent salvato direttamente: ${refCode} - ${telefonoNorm}`);
+                } catch (err) {
+                    console.error('❌ Firestore save error:', err.message);
+                }
+            } else {
+                console.error('❌ Firebase non inizializzato — privacy consent non salvato');
+            }
 
             msgToClient = {
                 to: email,
