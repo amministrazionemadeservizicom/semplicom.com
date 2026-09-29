@@ -210,11 +210,23 @@ function sendEdisonLead({ name, phone, email, ip, urlPrivacy }) {
     });
 }
 
+const CORS_HEADERS = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+};
+
 exports.handler = async (event) => {
+    // Preflight CORS
+    if (event.httpMethod === 'OPTIONS') {
+        return { statusCode: 204, headers: CORS_HEADERS, body: '' };
+    }
+
     // Solo POST
     if (event.httpMethod !== 'POST') {
         return {
             statusCode: 405,
+            headers: CORS_HEADERS,
             body: JSON.stringify({ error: 'Method not allowed' })
         };
     }
@@ -440,6 +452,7 @@ exports.handler = async (event) => {
 
         return {
             statusCode: 200,
+            headers: CORS_HEADERS,
             body: JSON.stringify({ success: true, message: 'Email inviata con successo', edison: edisonResult })
         };
 
@@ -447,6 +460,7 @@ exports.handler = async (event) => {
         console.error('SendGrid Error:', error);
         return {
             statusCode: 500,
+            headers: CORS_HEADERS,
             body: JSON.stringify({ error: 'Errore nell\'invio dell\'email' })
         };
     }
