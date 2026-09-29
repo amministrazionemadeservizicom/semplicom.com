@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Energia Automatica — Verifica</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .page-wrap {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 16px 60px;
+        }
+        .logo-top { margin-bottom: 48px; }
+        .logo-top img { height: 110px; display: block; }
+        .form-container { width: 100%; max-width: 480px; }
+        .form-group { margin-bottom: 12px; }
+        .form-group label {
+            display: block;
+            font-size: 0.88rem;
+            color: #333;
+            margin-bottom: 4px;
+        }
+        .form-group label .req { color: #e91e8c; margin-left: 2px; }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            background: white;
+            outline: none;
+            transition: border-color .2s;
+        }
+        .form-group input:focus { border-color: #7b2d8b; }
+        .privacy-block { margin-bottom: 14px; }
+        .privacy-block .privacy-title {
+            font-size: 0.85rem;
+            color: #333;
+            margin-bottom: 6px;
+        }
+        .privacy-block .privacy-title .req { color: #e91e8c; margin-left: 2px; }
+        .privacy-block .privacy-row { display: flex; align-items: flex-start; gap: 8px; }
+        .privacy-block input[type="checkbox"] {
+            margin-top: 3px;
+            flex-shrink: 0;
+            accent-color: #7b2d8b;
+            width: 15px;
+            height: 15px;
+        }
+        .privacy-block .privacy-text { font-size: 0.82rem; color: #333; line-height: 1.5; }
+        .privacy-block .privacy-text a { color: #7b2d8b; text-decoration: none; }
+        .privacy-block .privacy-text a:hover { text-decoration: underline; }
+        .error-box {
+            display: none;
+            background: #fef2f2;
+            border: 1px solid #fca5a5;
+            border-radius: 4px;
+            padding: 10px 14px;
+            font-size: 0.875rem;
+            color: #b91c1c;
+            margin-bottom: 12px;
+        }
+        .btn-primary {
+            width: 100%;
+            padding: 13px;
+            background: #e91e8c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background .2s;
+            margin-bottom: 12px;
+        }
+        .btn-primary:hover { background: #c4177a; }
+        .btn-primary:disabled { background: #f08ec4; cursor: not-allowed; }
+
+        /* OTP step */
+        #step-otp { display: none; }
+        .otp-info {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        .otp-info strong { color: #333; }
+        #otp-input {
+            text-align: center;
+            font-size: 1.8rem;
+            letter-spacing: 10px;
+            font-weight: 700;
+            color: #7b2d8b;
+        }
+        .resend-link {
+            font-size: 0.82rem;
+            color: #7b2d8b;
+            cursor: pointer;
+            text-decoration: underline;
+            background: none;
+            border: none;
+            padding: 0;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .success-msg {
+            display: none;
+            font-size: 0.95rem;
+            color: #333;
+            padding: 16px;
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 4px;
+        }
+        .success-msg::before { content: '✓ '; color: #16a34a; }
+
+        /* Footer */
+        .footer {
+            background: #f0f0f0;
+            border-top: 1px solid #ddd;
+            padding: 20px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .footer-logo img { height: 36px; }
+        .footer-info { font-size: 0.78rem; color: #555; text-align: right; }
+        .footer-info strong { color: #e91e8c; font-weight: 700; }
+        .footer-info a { color: #e91e8c; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<div class="page-wrap">
+    <div class="logo-top">
+        <img src="/energia-automatica/logo-color.png" alt="Energia Automatica">
+    </div>
+
+    <div class="form-container">
+
+        <!-- STEP 1: Form principale -->
+        <div id="step-form">
+            <div class="form-group">
+                <label>Nome</label>
+                <input type="text" id="f-nome" placeholder="Nome">
+            </div>
+            <div class="form-group">
+                <label>Cognome</label>
+                <input type="text" id="f-cognome" placeholder="Cognome">
+            </div>
+            <div class="form-group">
+                <label>Email <span class="req">*</span></label>
+                <input type="email" id="f-email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <label>Telefono <span class="req">*</span></label>
+                <input type="tel" id="f-phone" placeholder="Telefono" required>
+            </div>
+
+            <div class="privacy-block">
+                <div class="privacy-title">Privacy policy Energia Automatica <span class="req">*</span></div>
+                <div class="privacy-row">
+                    <input type="checkbox" id="privacy-ea" required>
+                    <label for="privacy-ea" class="privacy-text">
+                        Dichiaro di aver letto e compreso l'<a href="https://www.iubenda.com/privacy-policy/38620659" target="_blank" rel="noopener">Informativa Privacy</a> relativa al trattamento dei miei dati personali per l'esecuzione dei servizi richiesti.
+                    </label>
+                </div>
+            </div>
+
+            <div class="privacy-block">
+                <div class="privacy-title">Privacy policy SuperMoney <span class="req">*</span></div>
+                <div class="privacy-row">
+                    <input type="checkbox" id="privacy-sm" required>
+                    <label for="privacy-sm" class="privacy-text">
+                        Dichiaro di aver letto e compreso l'<a href="https://www.supermoney.it/privacy/" target="_blank" rel="noopener">Informativa Privacy</a> relativa al trattamento dei miei dati personali per l'esecuzione dei servizi richiesti.
+                    </label>
+                </div>
+            </div>
+
+            <div class="error-box" id="err-form"></div>
+            <button class="btn-primary" id="btn-send-otp">Invia codice di verifica</button>
+        </div>
+
+        <!-- STEP 2: Inserisci OTP -->
+        <div id="step-otp">
+            <p class="otp-info">Abbiamo inviato un codice a 6 cifre a <strong id="otp-email-label"></strong>. Inseriscilo qui sotto.</p>
+            <div class="form-group">
+                <label>Codice di verifica <span class="req">*</span></label>
+                <input type="number" id="otp-input" placeholder="000000" maxlength="6">
+            </div>
+            <div class="error-box" id="err-otp"></div>
+            <button class="btn-primary" id="btn-verify-otp">Conferma e invia</button>
+            <button class="resend-link" id="btn-resend">Non hai ricevuto il codice? Reinvia</button>
+        </div>
+
+        <!-- STEP 3: Successo -->
+        <div class="success-msg" id="step-success">
+            Richiesta inviata con successo. Ti contatteremo al più presto.
+        </div>
+
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-logo">
+        <img src="/energia-automatica/logo-dark.png" alt="Energia Automatica">
+    </div>
+    <div class="footer-info">
+        <strong>Cobra Servizi Srl</strong> Via Mentana, 24, 21052 Busto Arsizio (VA)<br>
+        P.IVA 03694290127 &ndash; <a href="https://www.iubenda.com/privacy-policy/38620659" target="_blank" rel="noopener">Privacy Policy</a>
+    </div>
+</footer>
+
+<script>
+let otpToken = null;
+
+async function sendOtp() {
+    const nome = document.getElementById('f-nome').value.trim();
+    const cognome = document.getElementById('f-cognome').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    const privacyEA = document.getElementById('privacy-ea').checked;
+    const privacySM = document.getElementById('privacy-sm').checked;
+    const errBox = document.getElementById('err-form');
+    const btn = document.getElementById('btn-send-otp');
+
+    errBox.style.display = 'none';
+
+    if (!email) { errBox.textContent = 'Email obbligatoria.'; errBox.style.display = 'block'; return; }
+    if (!phone) { errBox.textContent = 'Telefono obbligatorio.'; errBox.style.display = 'block'; return; }
+    if (!privacyEA || !privacySM) { errBox.textContent = 'Devi accettare entrambe le informative privacy.'; errBox.style.display = 'block'; return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Invio codice...';
+
+    try {
+        const res = await fetch('/.netlify/functions/ea-otp-send', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nome, cognome, email, telefono: phone }),
+        });
+        const data = await res.json();
+        if (!data.ok) throw new Error(data.error || 'Errore invio');
+
+        otpToken = data.token;
+        document.getElementById('otp-email-label').textContent = email;
+        document.getElementById('step-form').style.display = 'none';
+        document.getElementById('step-otp').style.display = 'block';
+    } catch (err) {
+        errBox.textContent = 'Errore nell\'invio del codice. Riprova.';
+        errBox.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Invia codice di verifica';
+    }
+}
+
+async function verifyOtp() {
+    const otp = document.getElementById('otp-input').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    const nome = document.getElementById('f-nome').value.trim();
+    const cognome = document.getElementById('f-cognome').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    const errBox = document.getElementById('err-otp');
+    const btn = document.getElementById('btn-verify-otp');
+
+    errBox.style.display = 'none';
+
+    if (!otp || otp.length !== 6) { errBox.textContent = 'Inserisci il codice a 6 cifre.'; errBox.style.display = 'block'; return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Verifica in corso...';
+
+    try {
+        const res = await fetch('/.netlify/functions/ea-otp-verify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, otp, token: otpToken, nome, cognome, telefono: phone }),
+        });
+        const data = await res.json();
+        if (data.error) throw new Error(data.error);
+
+        document.getElementById('step-otp').style.display = 'none';
+        document.getElementById('step-success').style.display = 'block';
+    } catch (err) {
+        errBox.textContent = err.message || 'Codice non valido. Riprova.';
+        errBox.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Conferma e invia';
+    }
+}
+
+document.getElementById('btn-send-otp').addEventListener('click', sendOtp);
+document.getElementById('btn-verify-otp').addEventListener('click', verifyOtp);
+document.getElementById('btn-resend').addEventListener('click', () => {
+    document.getElementById('step-otp').style.display = 'none';
+    document.getElementById('step-form').style.display = 'block';
+    document.getElementById('btn-send-otp').disabled = false;
+    document.getElementById('btn-send-otp').textContent = 'Invia codice di verifica';
+});
+</script>
+
+</body>
+</html>
