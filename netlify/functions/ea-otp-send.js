@@ -33,10 +33,10 @@ exports.handler = async (event) => {
     await sgMail.send({
       to: email,
       from: 'noreply@semplicom.com',
-      subject: 'Il tuo codice di verifica — Energia Automatica',
+      subject: 'Il tuo codice di verifica — SempliCom',
       html: `
         <div style="font-family:Arial,sans-serif;max-width:480px;margin:0 auto;padding:32px 24px;">
-          <img src="https://semplicom.com/energia-automatica/logo-color.png" alt="Energia Automatica" style="height:60px;margin-bottom:24px;">
+          <img src="https://semplicom.com/assets/img/logo.svg" alt="SempliCom" style="height:40px;margin-bottom:24px;">
           <h2 style="color:#333;margin-bottom:8px;">Ciao${nome ? ' ' + nome : ''}!</h2>
           <p style="color:#555;margin-bottom:24px;">Ecco il tuo codice di verifica:</p>
           <div style="background:#f5f5f5;border-radius:8px;padding:24px;text-align:center;margin-bottom:24px;">
