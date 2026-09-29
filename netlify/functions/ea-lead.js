@@ -1,4 +1,5 @@
 const https = require('https');
+const querystring = require('querystring');
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -6,19 +7,26 @@ const CORS = {
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
 };
 
+function parseBody(event) {
+  const ct = (event.headers['content-type'] || '').toLowerCase();
+  if (ct.includes('application/json')) {
+    try { return JSON.parse(event.body || '{}'); } catch (e) { return {}; }
+  }
+  if (ct.includes('application/x-www-form-urlencoded')) {
+    return querystring.parse(event.body || '');
+  }
+  // Try JSON anyway
+  try { return JSON.parse(event.body || '{}'); } catch (e) {}
+  return querystring.parse(event.body || '');
+}
+
 exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') {
     return { statusCode: 204, headers: CORS, body: '' };
   }
 
-  let body;
-  try {
-    body = JSON.parse(event.body || '{}');
-  } catch (e) {
-    return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: 'Invalid JSON' }) };
-  }
+  const body = parseBody(event);
 
-  // Elementor sends fields with capital letters: Nome, Cognome, Telefono, Email, IP
   const telefono = body.Telefono || body.telefono || '';
   const nome = body.Nome || body.nome || '';
   const cognome = body.Cognome || body.cognome || '';
@@ -26,14 +34,11 @@ exports.handler = async (event) => {
   const ip = body.IP || body.IP_remoto || body.ip || '0.0.0.0';
 
   if (!telefono) {
-    return {
-      statusCode: 400,
-      headers: CORS,
-      body: JSON.stringify({ error: 'Telefono obbligatorio' }),
-    };
+    // Return 200 so Elementor doesn't show error
+    return { statusCode: 200, headers: CORS, body: JSON.stringify({ ok: false, error: 'Telefono mancante' }) };
   }
 
-  // Normalize phone: 0039XXXXXXXXXX
+  // Normalize phone to 0039XXXXXXXXXX
   let tel = telefono.replace(/\s+/g, '').replace(/[^0-9+]/g, '');
   if (tel.startsWith('+39')) tel = '00' + tel.slice(1);
   else if (tel.startsWith('39') && tel.length > 10) tel = '00' + tel;
@@ -55,33 +60,34 @@ exports.handler = async (event) => {
     },
   });
 
-  const result = await new Promise((resolve, reject) => {
-    const req = https.request(
-      {
-        hostname: 'api.supermoney.it',
-        path: '/service/leads/contatti/energia',
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          username: '6MADE4',
-          secret: 'CiJ4b5WfGa86izx77XnVqWT7brnoC7L2',
-          'Content-Length': Buffer.byteLength(payload),
+  try {
+    const result = await new Promise((resolve, reject) => {
+      const req = https.request(
+        {
+          hostname: 'api.supermoney.it',
+          path: '/service/leads/contatti/energia',
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            username: '6MADE4',
+            secret: 'CiJ4b5WfGa86izx77XnVqWT7brnoC7L2',
+            'Content-Length': Buffer.byteLength(payload),
+          },
         },
-      },
-      (res) => {
-        let data = '';
-        res.on('data', (chunk) => (data += chunk));
-        res.on('end', () => resolve({ status: res.statusCode, body: data }));
-      }
-    );
-    req.on('error', reject);
-    req.write(payload);
-    req.end();
-  });
+        (res) => {
+          let data = '';
+          res.on('data', (chunk) => (data += chunk));
+          res.on('end', () => resolve({ status: res.statusCode, body: data }));
+        }
+      );
+      req.on('error', reject);
+      req.write(payload);
+      req.end();
+    });
 
-  return {
-    statusCode: result.status === 200 ? 200 : 502,
-    headers: CORS,
-    body: result.body,
-  };
+    // Always return 200 so Elementor doesn't show webhook error
+    return { statusCode: 200, headers: CORS, body: result.body };
+  } catch (err) {
+    return { statusCode: 200, headers: CORS, body: JSON.stringify({ ok: false, error: err.message }) };
+  }
 };
