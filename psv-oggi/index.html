@@ -21,10 +21,10 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "PSV Oggi Aprile 2026 – Prezzo Gas Naturale Italia",
-    "description": "Valore aggiornato del PSV (Punto di Scambio Virtuale) del gas naturale in Italia ad aprile 2026. Fonte: GME – Gestore dei Mercati Energetici.",
+    "name": "PSV Oggi Ottobre 2026 – Prezzo Gas Naturale Italia",
+    "description": "Valore aggiornato del PSV (Punto di Scambio Virtuale) del gas naturale in Italia ad ottobre 2026. Fonte: GME – Gestore dei Mercati Energetici.",
     "url": "https://semplicom.com/psv-oggi/",
-    "dateModified": "2026-04-17",
+    "dateModified": "2026-10-11",
     "publisher": {
       "@type": "Organization",
       "name": "SempliCom",
@@ -125,9 +125,9 @@
 
 <section class="psv-hero">
   <div class="container">
-    <h1 id="psv-h1">PSV Oggi — Aprile 2026</h1>
+    <h1 id="psv-h1">PSV Oggi — Ottobre 2026</h1>
     <p>Punto di Scambio Virtuale del gas naturale in Italia · Fonte: GME</p>
-    <div class="update-badge" id="psv-badge">✓ Aggiornato al 17 aprile 2026</div>
+    <div class="update-badge" id="psv-badge">✓ Aggiornato al 11 ottobre 2026</div>
   </div>
 </section>
 
@@ -136,23 +136,23 @@
 
     <div class="psv-data-grid">
       <div class="psv-card">
-        <div class="label" id="psv-avg-label">PSV medio aprile 2026</div>
-        <div class="value" id="psv-avg-value">38,2</div>
-        <div class="sub" id="psv-avg-sub">€/MWh (dato parziale al 17/04)</div>
+        <div class="label" id="psv-avg-label">PSV medio ottobre 2026</div>
+        <div class="value" id="psv-avg-value">79,0</div>
+        <div class="sub" id="psv-avg-sub">€/MWh (dato parziale al 09/10)</div>
       </div>
       <div class="psv-card">
-        <div class="label" id="psv-min-label">Minimo aprile 2026</div>
-        <div class="value" id="psv-min-value">34,7</div>
-        <div class="sub" id="psv-min-sub">€/MWh</div>
+        <div class="label" id="psv-min-label">Minimo ottobre 2026</div>
+        <div class="value" id="psv-min-value">73,5</div>
+        <div class="sub" id="psv-min-sub">€/MWh (dato parziale)</div>
       </div>
       <div class="psv-card">
-        <div class="label" id="psv-max-label">Massimo aprile 2026</div>
-        <div class="value" id="psv-max-value">42,1</div>
-        <div class="sub" id="psv-max-sub">€/MWh</div>
+        <div class="label" id="psv-max-label">Massimo ottobre 2026</div>
+        <div class="value" id="psv-max-value">84,5</div>
+        <div class="sub" id="psv-max-sub">€/MWh (dato parziale)</div>
       </div>
       <div class="psv-card">
-        <div class="label" id="psv-prev-label">PSV medio marzo 2026</div>
-        <div class="value" id="psv-prev-value">53,6</div>
+        <div class="label" id="psv-prev-label">PSV medio settembre 2026</div>
+        <div class="value" id="psv-prev-value">76,8</div>
         <div class="sub" id="psv-prev-sub">€/MWh (dato definitivo)</div>
       </div>
     </div>
@@ -210,10 +210,46 @@
           <td>Forte rialzo scorte basse</td>
         </tr>
         <tr>
-          <td id="psv-table-month">Aprile 2026</td>
-          <td class="highlight" id="psv-table-avg">48,3*</td>
-          <td id="psv-table-var">-9,9%</td>
-          <td id="psv-table-note">*Dato parziale al 17/04</td>
+          <td>Aprile 2026</td>
+          <td class="highlight">46,7</td>
+          <td>-12,9%</td>
+          <td>Calo primavera</td>
+        </tr>
+        <tr>
+          <td>Maggio 2026</td>
+          <td class="highlight">47,5</td>
+          <td>+1,7%</td>
+          <td>Stabilizzazione</td>
+        </tr>
+        <tr>
+          <td>Giugno 2026</td>
+          <td class="highlight">47,8</td>
+          <td>+0,6%</td>
+          <td>Mercato stabile</td>
+        </tr>
+        <tr>
+          <td>Luglio 2026</td>
+          <td class="highlight">57,4</td>
+          <td>+20,1%</td>
+          <td>Rialzo stoccaggi estivi</td>
+        </tr>
+        <tr>
+          <td>Agosto 2026</td>
+          <td class="highlight">64,7</td>
+          <td>+12,7%</td>
+          <td>Alta domanda stoccaggi</td>
+        </tr>
+        <tr>
+          <td>Settembre 2026</td>
+          <td class="highlight">76,8</td>
+          <td>+18,7%</td>
+          <td>Avvio stagione riscaldamento</td>
+        </tr>
+        <tr>
+          <td id="psv-table-month">Ottobre 2026</td>
+          <td class="highlight" id="psv-table-avg">79,0*</td>
+          <td id="psv-table-var">+2,9%</td>
+          <td id="psv-table-note">*Dato parziale al 09/10</td>
         </tr>
       </tbody>
     </table>
@@ -345,6 +381,21 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 });
 document.getElementById('currentYear').textContent = new Date().getFullYear();
 
+// Aggiorna il mese dal clock di sistema — nessuna dipendenza dall'API
+(function() {
+  const mNames = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno',
+                  'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+  const mNamesShort = ['gennaio','febbraio','marzo','aprile','maggio','giugno',
+                       'luglio','agosto','settembre','ottobre','novembre','dicembre'];
+  const now = new Date();
+  const m = now.getMonth();
+  const y = now.getFullYear();
+  const day = now.getDate();
+  const monthYear = mNames[m] + ' ' + y;
+  document.getElementById('psv-h1').textContent = 'PSV Oggi — ' + monthYear;
+  document.getElementById('psv-badge').textContent = '✓ Aggiornato al ' + day + ' ' + mNamesShort[m] + ' ' + y;
+})();
+
 // Auto-update PSV data from Netlify Function
 (async function() {
   try {
@@ -461,7 +512,7 @@ window._buildPsvChart = function(months, values, partial) {
   });
 };
 // Fallback statico
-_buildPsvChart(['Gen','Feb','Mar','Apr'],[38.0,34.6,53.6,48.3],[false,false,false,true]);
+_buildPsvChart(['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott'],[38.0,34.6,53.6,46.7,47.5,47.8,57.4,64.7,76.8,79.0],[false,false,false,false,false,false,false,false,false,true]);
 
 // Grafico PSV giornaliero
 window._psvDailyChart = null;

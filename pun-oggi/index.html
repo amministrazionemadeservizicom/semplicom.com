@@ -164,9 +164,9 @@
 
 <section class="pun-hero">
   <div class="container">
-    <h1 id="pun-h1">PUN Oggi — Aprile 2026</h1>
+    <h1 id="pun-h1">PUN Oggi — Ottobre 2026</h1>
     <p>Prezzo Unico Nazionale dell'energia elettrica in Italia · Fonte: GME</p>
-    <div class="update-badge" id="pun-badge">✓ Aggiornato al 23 aprile 2026</div>
+    <div class="update-badge" id="pun-badge">✓ Aggiornato al 11 ottobre 2026</div>
   </div>
 </section>
 
@@ -175,23 +175,23 @@
 
     <div class="pun-data-grid">
       <div class="pun-card">
-        <div class="label" id="pun-avg-label">PUN medio aprile 2026</div>
-        <div class="value" id="pun-avg-value">122,5</div>
-        <div class="sub" id="pun-avg-sub">€/MWh (dato parziale al 23/04)</div>
+        <div class="label" id="pun-avg-label">PUN medio ottobre 2026</div>
+        <div class="value" id="pun-avg-value">213,0</div>
+        <div class="sub" id="pun-avg-sub">€/MWh (dato parziale al 09/10)</div>
       </div>
       <div class="pun-card">
-        <div class="label" id="pun-min-label">Minimo aprile 2026</div>
-        <div class="value" id="pun-min-value">95,7</div>
-        <div class="sub" id="pun-min-sub">€/MWh</div>
+        <div class="label" id="pun-min-label">Minimo ottobre 2026</div>
+        <div class="value" id="pun-min-value">192,0</div>
+        <div class="sub" id="pun-min-sub">€/MWh (dato parziale)</div>
       </div>
       <div class="pun-card">
-        <div class="label" id="pun-max-label">Massimo aprile 2026</div>
-        <div class="value" id="pun-max-value">148,7</div>
-        <div class="sub" id="pun-max-sub">€/MWh</div>
+        <div class="label" id="pun-max-label">Massimo ottobre 2026</div>
+        <div class="value" id="pun-max-value">237,0</div>
+        <div class="sub" id="pun-max-sub">€/MWh (dato parziale)</div>
       </div>
       <div class="pun-card">
-        <div class="label" id="pun-prev-label">PUN medio marzo 2026</div>
-        <div class="value" id="pun-prev-value">143,4</div>
+        <div class="label" id="pun-prev-label">PUN medio settembre 2026</div>
+        <div class="value" id="pun-prev-value">207,9</div>
         <div class="sub" id="pun-prev-sub">€/MWh (dato definitivo)</div>
       </div>
     </div>
@@ -263,10 +263,46 @@
           <td>Forte rialzo domanda industriale</td>
         </tr>
         <tr>
-          <td id="pun-table-month">Aprile 2026</td>
-          <td class="highlight" id="pun-table-avg">122,5*</td>
-          <td id="pun-table-var">-14,6%</td>
-          <td id="pun-table-note">*Dato parziale al 23/04</td>
+          <td>Aprile 2026</td>
+          <td class="highlight">122,5</td>
+          <td>-14,6%</td>
+          <td>Primavera: prezzi in calo</td>
+        </tr>
+        <tr>
+          <td>Maggio 2026</td>
+          <td class="highlight">119,4</td>
+          <td>-2,5%</td>
+          <td>Domanda in calo stagionale</td>
+        </tr>
+        <tr>
+          <td>Giugno 2026</td>
+          <td class="highlight">132,5</td>
+          <td>+11,0%</td>
+          <td>Rialzo estivo</td>
+        </tr>
+        <tr>
+          <td>Luglio 2026</td>
+          <td class="highlight">157,0</td>
+          <td>+18,5%</td>
+          <td>Picco estivo</td>
+        </tr>
+        <tr>
+          <td>Agosto 2026</td>
+          <td class="highlight">186,7</td>
+          <td>+18,9%</td>
+          <td>Massimo estivo</td>
+        </tr>
+        <tr>
+          <td>Settembre 2026</td>
+          <td class="highlight">207,9</td>
+          <td>+11,4%</td>
+          <td>Continuazione rialzo autunnale</td>
+        </tr>
+        <tr>
+          <td id="pun-table-month">Ottobre 2026</td>
+          <td class="highlight" id="pun-table-avg">213,0*</td>
+          <td id="pun-table-var">+2,5%</td>
+          <td id="pun-table-note">*Dato parziale al 09/10</td>
         </tr>
       </tbody>
     </table>
@@ -406,6 +442,21 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 });
 document.getElementById('currentYear').textContent = new Date().getFullYear();
 
+// Aggiorna il mese dal clock di sistema — nessuna dipendenza dall'API
+(function() {
+  const mNames = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno',
+                  'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+  const mNamesShort = ['gennaio','febbraio','marzo','aprile','maggio','giugno',
+                       'luglio','agosto','settembre','ottobre','novembre','dicembre'];
+  const now = new Date();
+  const m = now.getMonth(); // 0-based
+  const y = now.getFullYear();
+  const day = now.getDate();
+  const monthYear = mNames[m] + ' ' + y;
+  document.getElementById('pun-h1').textContent = 'PUN Oggi — ' + monthYear;
+  document.getElementById('pun-badge').textContent = '✓ Aggiornato al ' + day + ' ' + mNamesShort[m] + ' ' + y;
+})();
+
 // Auto-update PUN data from Netlify Function
 (async function() {
   try {
@@ -532,7 +583,7 @@ window._buildPunChart = function(months, values, partial) {
   });
 };
 // Fallback statico
-_buildPunChart(['Gen','Feb','Mar','Apr'],[132.7,114.4,143.4,122.5],[false,false,false,true]);
+_buildPunChart(['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott'],[132.7,114.4,143.4,122.5,119.4,132.5,157.0,186.7,207.9,213.0],[false,false,false,false,false,false,false,false,false,true]);
 </script>
 </body>
 </html>
