@@ -42,6 +42,9 @@ function row(label, value) {
 }
 
 function buildAdminHtml(d, nomeCompleto, cittaLabel, sourceLabel) {
+    const origineRow = d.origine
+        ? `<tr style="background:#fff3cd;"><td colspan="2" style="padding:10px 12px;font-weight:700;font-size:14px;">📲 Origine: ${d.origine.charAt(0).toUpperCase() + d.origine.slice(1)}</td></tr>`
+        : '';
     return `<div style="font-family:system-ui,sans-serif;max-width:700px;margin:0 auto;color:#212529;">
   <div style="background:#1A1A2E;padding:20px 28px;border-radius:8px 8px 0 0;">
     <img src="https://semplicom.com/assets/img/logo.svg" alt="SempliCom" style="height:36px;">
@@ -51,6 +54,7 @@ function buildAdminHtml(d, nomeCompleto, cittaLabel, sourceLabel) {
     <p style="margin:0 0 20px;color:#6c757d;">Da: <strong>${sourceLabel}</strong> &mdash; ${new Date().toLocaleString('it-IT')}</p>
     <table style="border-collapse:collapse;width:100%;font-size:14px;">
       <tbody>
+        ${origineRow}
         <tr><td colspan="2" style="padding:8px 12px;background:#f8f9fa;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:#6c757d;">DATI DI CONTATTO</td></tr>
         ${row('Nome e cognome', nomeCompleto)}
         ${row('Ragione sociale', d.ragione_sociale)}
@@ -91,20 +95,29 @@ exports.handler = async (event) => {
         const data = JSON.parse(event.body);
         const { token, ...formData } = data;
 
-        // Verifica token
-        const secret = process.env.QUESTIONNAIRE_SECRET;
-        if (!secret) {
-            return { statusCode: 500, headers: CORS_HEADERS, body: JSON.stringify({ error: 'Configurazione mancante' }) };
-        }
+        // Se è presente `origine` (es. "whatsapp"), il token non è richiesto
+        const origineLabel = formData.origine
+            ? formData.origine.charAt(0).toUpperCase() + formData.origine.slice(1)
+            : null;
 
-        let tokenData;
-        try {
-            tokenData = jwt.verify(token, secret);
-        } catch (e) {
-            return { statusCode: 401, headers: CORS_HEADERS, body: JSON.stringify({ error: 'Link non valido o scaduto. Richiedi un nuovo link.' }) };
-        }
+        let requestId = null;
+        let source = origineLabel ? `origine:${formData.origine}` : null;
 
-        const { requestId, source } = tokenData;
+        if (!origineLabel) {
+            // Flusso normale: verifica JWT
+            const secret = process.env.QUESTIONNAIRE_SECRET;
+            if (!secret) {
+                return { statusCode: 500, headers: CORS_HEADERS, body: JSON.stringify({ error: 'Configurazione mancante' }) };
+            }
+            let tokenData;
+            try {
+                tokenData = jwt.verify(token, secret);
+            } catch (e) {
+                return { statusCode: 401, headers: CORS_HEADERS, body: JSON.stringify({ error: 'Link non valido o scaduto. Richiedi un nuovo link.' }) };
+            }
+            requestId = tokenData.requestId;
+            source    = tokenData.source;
+        }
 
         // Validazione campi obbligatori
         const required = ['nome', 'cognome', 'ragione_sociale', 'piva_cf', 'citta', 'telefono', 'email', 'privacy'];
@@ -118,7 +131,9 @@ exports.handler = async (event) => {
         const submissionId = `QST-${now.toISOString().slice(0, 10).replace(/-/g, '')}-${Math.random().toString(36).toUpperCase().slice(2, 8)}`;
         const nomeCompleto = `${formData.nome || ''} ${formData.cognome || ''}`.trim();
         const cittaLabel = `${formData.citta || ''}${formData.provincia ? ` (${formData.provincia})` : ''}`;
-        const sourceLabel = source === 'diventa-partner' ? 'Diventa Partner' : 'Richiedi Demo';
+        const sourceLabel = origineLabel
+            ? origineLabel
+            : source === 'diventa-partner' ? 'Diventa Partner' : 'Richiedi Demo';
 
         // Salva su Firestore
         const db = getFirestore();

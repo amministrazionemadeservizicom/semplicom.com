@@ -630,12 +630,29 @@
   var TOTAL_STEPS = 7;
   var currentStep = 1;
   var tokenStr = '';
+  var origineStr = '';
   var formData = {};
 
   // ---- Leggi token dall'URL ----
   function getToken() {
     var params = new URLSearchParams(window.location.search);
     return params.get('t') || '';
+  }
+
+  // ---- Leggi origine dall'URL (es. ?origine=whatsapp) ----
+  function getOrigine() {
+    var params = new URLSearchParams(window.location.search);
+    return params.get('origine') || '';
+  }
+
+  // ---- Prefill telefono dall'URL (es. &telefono=3331234567) ----
+  function prefillTelefono() {
+    var params = new URLSearchParams(window.location.search);
+    var tel = params.get('telefono') || '';
+    if (tel) {
+      var el = document.getElementById('f-tel');
+      if (el && !el.value) el.value = tel;
+    }
   }
 
   // Decode JWT payload lato client (solo per prefill — verifica avviene server-side)
@@ -864,6 +881,7 @@
     var data = collectFormData();
     data.token = tokenStr;
     data.privacy = true;
+    if (origineStr) data.origine = origineStr;
 
     fetch('/.netlify/functions/submit-questionnaire', {
       method: 'POST',
@@ -912,8 +930,14 @@
   // ---- Init ----
   document.getElementById('yr').textContent = new Date().getFullYear();
 
-  tokenStr = getToken();
-  if (!tokenStr) {
+  tokenStr  = getToken();
+  origineStr = getOrigine();
+
+  if (origineStr) {
+    // Accesso diretto (es. da WhatsApp): nessun token richiesto
+    prefillTelefono();
+    showStep(1);
+  } else if (!tokenStr) {
     document.getElementById('stepsWrap').style.display = 'none';
     document.getElementById('tokenError').style.display = '';
   } else {

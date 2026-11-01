@@ -19,6 +19,12 @@
   path    = "/pun-oggi/"
   function = "pun-seo"
 
+# Pagina partner esterno — nascosta da motori di ricerca e AI crawlers
+[[headers]]
+  for = "/energia-automatica/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+
 # Headers per sicurezza e performance
 [[headers]]
   for = "/*"
