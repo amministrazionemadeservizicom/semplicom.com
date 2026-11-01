@@ -350,7 +350,7 @@ exports.handler = async (event) => {
 
     try {
         const data = JSON.parse(event.body);
-        const { name, nome: nomeRaw, cognome: cognomeRaw, email, company, phone, plan, employees, message, privacy, subject: customSubject, formSource } = data;
+        const { name, nome: nomeRaw, cognome: cognomeRaw, email, company, phone, plan, employees, message, privacy, subject: customSubject, formSource, mandato, allegati } = data;
 
         // Validazione base
         if (!name || !email || !privacy) {
@@ -407,12 +407,23 @@ exports.handler = async (event) => {
                         <td style="padding: 10px; border-bottom: 1px solid #eee;">${message}</td>
                     </tr>
                     ` : ''}
+                    ${mandato ? `
+                    <tr><td colspan="2" style="padding:12px 10px 4px;background:#fff9e6;border-top:2px solid #F2C927;font-weight:700;color:#1A1A2E;">Dati per il mandato</td></tr>
+                    <tr><td style="padding:10px;border-bottom:1px solid #eee;width:160px"><strong>CF / P.IVA:</strong></td><td style="padding:10px;border-bottom:1px solid #eee">${mandato.cfPiva || ''}</td></tr>
+                    ${mandato.ragioneSociale ? `<tr><td style="padding:10px;border-bottom:1px solid #eee"><strong>Ragione Sociale:</strong></td><td style="padding:10px;border-bottom:1px solid #eee">${mandato.ragioneSociale}</td></tr>` : ''}
+                    <tr><td style="padding:10px;border-bottom:1px solid #eee"><strong>Sede Legale:</strong></td><td style="padding:10px;border-bottom:1px solid #eee">${mandato.sedeLegale || ''}</td></tr>
+                    ${mandato.sedeOperativa ? `<tr><td style="padding:10px;border-bottom:1px solid #eee"><strong>Sede Operativa:</strong></td><td style="padding:10px;border-bottom:1px solid #eee">${mandato.sedeOperativa}</td></tr>` : ''}
+                    ` : ''}
                 </table>
                 <p style="margin-top: 20px; color: #666; font-size: 12px;">
                     Richiesta inviata da semplicom.com il ${new Date().toLocaleString('it-IT')}
                 </p>
             `
         };
+
+        if (allegati && allegati.length) {
+            msgToAdmin.attachments = allegati.map(a => ({ content: a.content, filename: a.filename, type: a.type || 'application/octet-stream', disposition: 'attachment' }));
+        }
 
         await sgMail.send(msgToAdmin);
 
@@ -563,12 +574,6 @@ exports.handler = async (event) => {
         }
 
         await sgMail.send(msgToClient);
-
-        // Mail "Completa la registrazione" per i moduli partner (non per le landing clienti finali)
-        if (!CLIENT_PLANS.has(plan)) {
-            const source = formSource || (customSubject && customSubject.toLowerCase().includes('partner') ? 'diventa-partner' : 'richiedi-demo');
-            await sendRegistrationEmail({ name, email, phone, company, plan, source }).catch(e => console.error('sendRegistrationEmail error:', e.message));
-        }
 
         return {
             statusCode: 200,

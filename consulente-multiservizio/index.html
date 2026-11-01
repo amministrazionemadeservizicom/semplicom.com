@@ -335,6 +335,41 @@
                         <option value="nessuno">Nessuna esperienza specifica</option>
                     </select>
                 </div>
+                <div style="margin:20px 0 8px;padding-top:18px;border-top:2px solid #F2C927;">
+                    <p style="font-weight:700;color:#1A1A2E;margin:0 0 4px;font-size:1rem;">Dati per il mandato</p>
+                    <p style="color:#6c757d;font-size:.85rem;margin:0 0 14px;">Necessari per formalizzare la collaborazione</p>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label for="cf_piva">Codice Fiscale / P.IVA *</label><input type="text" id="cf_piva" name="cf_piva" required placeholder="RSSMRA80A01H501U"></div>
+                    <div class="form-group"><label for="ragione_sociale">Ragione Sociale <span style="font-weight:400;color:#888">(se azienda)</span></label><input type="text" id="ragione_sociale" name="ragione_sociale" placeholder="Mario Rossi Srl"></div>
+                </div>
+                <fieldset style="border:1px solid #dee2e6;border-radius:8px;padding:14px 18px;margin-bottom:10px;">
+                    <legend style="font-weight:600;font-size:.85rem;color:#495057;padding:0 6px;">Sede legale *</legend>
+                    <div class="form-row">
+                        <div class="form-group" style="flex:3"><label for="sl_via">Via e numero civico *</label><input type="text" id="sl_via" name="sl_via" required placeholder="Via Roma 10"></div>
+                        <div class="form-group"><label for="sl_cap">CAP *</label><input type="text" id="sl_cap" name="sl_cap" required placeholder="20121" maxlength="5"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group" style="flex:3"><label for="sl_citta">Città *</label><input type="text" id="sl_citta" name="sl_citta" required placeholder="Milano"></div>
+                        <div class="form-group"><label for="sl_prov">Prov. *</label><input type="text" id="sl_prov" name="sl_prov" required placeholder="MI" maxlength="2"></div>
+                    </div>
+                </fieldset>
+                <div class="form-group form-checkbox" style="margin-bottom:8px;"><input type="checkbox" id="sede_op_diversa"><label for="sede_op_diversa">Sede operativa diversa dalla sede legale</label></div>
+                <fieldset id="soBox" style="border:1px solid #dee2e6;border-radius:8px;padding:14px 18px;margin-bottom:10px;display:none;">
+                    <legend style="font-weight:600;font-size:.85rem;color:#495057;padding:0 6px;">Sede operativa</legend>
+                    <div class="form-row">
+                        <div class="form-group" style="flex:3"><label for="so_via">Via e numero civico</label><input type="text" id="so_via" name="so_via" placeholder="Via Garibaldi 5"></div>
+                        <div class="form-group"><label for="so_cap">CAP</label><input type="text" id="so_cap" name="so_cap" placeholder="20100" maxlength="5"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group" style="flex:3"><label for="so_citta">Città</label><input type="text" id="so_citta" name="so_citta" placeholder="Milano"></div>
+                        <div class="form-group"><label for="so_prov">Prov.</label><input type="text" id="so_prov" name="so_prov" placeholder="MI" maxlength="2"></div>
+                    </div>
+                </fieldset>
+                <div class="form-row">
+                    <div class="form-group"><label for="foto_negozio">Foto punto vendita <span style="font-weight:400;color:#888">(facoltativa, max 2 MB)</span></label><input type="file" id="foto_negozio" name="foto_negozio" accept="image/*"></div>
+                    <div class="form-group"><label for="visura">Visura camerale <span style="font-weight:400;color:#888">(facoltativa, max 2 MB)</span></label><input type="file" id="visura" name="visura" accept=".pdf,image/*"></div>
+                </div>
                 <div class="form-group"><label for="messaggio">Raccontaci la tua situazione</label><textarea id="messaggio" name="messaggio" rows="4" placeholder="Es: Sono un agente energia con 2 anni di esperienza e voglio aggiungere telefonia e noleggio al mio portafoglio..."></textarea></div>
                 <div class="form-group form-checkbox">
                     <input type="checkbox" id="privacy" name="privacy" required>
@@ -472,6 +507,9 @@ document.getElementById('currentYear').textContent = new Date().getFullYear();
 (function() {
     var form = document.getElementById('consulenteForm');
     if (!form) return;
+    document.getElementById('sede_op_diversa').addEventListener('change', function() {
+        document.getElementById('soBox').style.display = this.checked ? '' : 'none';
+    });
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
         var nome = form.querySelector('#nome').value.trim();
@@ -482,18 +520,37 @@ document.getElementById('currentYear').textContent = new Date().getFullYear();
         var verticale = form.querySelector('#verticale').value;
         var messaggio = form.querySelector('#messaggio').value.trim();
         var privacy = form.querySelector('#privacy').checked;
-        if (!nome || !email || !privacy) return;
+        var cfPiva = form.querySelector('#cf_piva').value.trim();
+        var ragioneSociale = form.querySelector('#ragione_sociale').value.trim();
+        var slVia = form.querySelector('#sl_via').value.trim();
+        var slCap = form.querySelector('#sl_cap').value.trim();
+        var slCitta = form.querySelector('#sl_citta').value.trim();
+        var slProv = form.querySelector('#sl_prov').value.trim().toUpperCase();
+        var sedeOpDiversa = form.querySelector('#sede_op_diversa').checked;
+        if (!nome || !email || !privacy || !cfPiva || !slVia || !slCap || !slCitta || !slProv) return;
         var btn = form.querySelector('button[type="submit"]');
         var originalText = btn.textContent;
         btn.disabled = true; btn.textContent = 'Invio in corso...';
         document.getElementById('consulenteError').hidden = true;
+        function leggiFile(input) {
+            var f = input && input.files && input.files[0];
+            if (!f) return Promise.resolve(null);
+            if (f.size > 2097152) { alert('File troppo grande (max 2 MB): ' + f.name); return Promise.resolve(null); }
+            return new Promise(function(res) {
+                var r = new FileReader();
+                r.onload = function(ev) { res({ content: ev.target.result.split(',')[1], filename: f.name, type: f.type || 'application/octet-stream' }); };
+                r.readAsDataURL(f);
+            });
+        }
+        var allegati = (await Promise.all([leggiFile(form.querySelector('#foto_negozio')), leggiFile(form.querySelector('#visura'))])).filter(Boolean);
+        var mandato = { cfPiva: cfPiva, ragioneSociale: ragioneSociale, sedeLegale: slVia + ', ' + slCap + ' ' + slCitta + ' (' + slProv + ')', sedeOperativa: sedeOpDiversa ? form.querySelector('#so_via').value.trim() + ', ' + form.querySelector('#so_cap').value.trim() + ' ' + form.querySelector('#so_citta').value.trim() + ' (' + form.querySelector('#so_prov').value.trim().toUpperCase() + ')' : '' };
         var msgParts = [];
         if (verticale) msgParts.push('Settore di esperienza: ' + verticale);
         if (messaggio) msgParts.push('Note: ' + messaggio);
         try {
             var res = await fetch('/.netlify/functions/send-email', {
                 method: 'POST', headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name: nome + ' ' + cognome, email: email, phone: telefono, company: citta, plan: verticale, message: msgParts.join('\n'), privacy: true, subject: 'Candidatura Consulente Multiservizio', formSource: 'consulente-multiservizio' })
+                body: JSON.stringify({ name: nome + ' ' + cognome, email: email, phone: telefono, company: citta, plan: verticale, message: msgParts.join('\n'), privacy: true, subject: 'Candidatura Consulente Multiservizio', formSource: 'consulente-multiservizio', mandato: mandato, allegati: allegati })
             });
             if (!res.ok) throw new Error('Errore');
             form.hidden = true;
