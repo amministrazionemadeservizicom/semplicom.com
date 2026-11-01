@@ -276,7 +276,7 @@ async function sendRegistrationEmail({ name, email, phone, company, plan, source
   <style>
     body{margin:0;padding:0;background:#f4f4f7;font-family:system-ui,-apple-system,sans-serif;}
     .wrap{max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;}
-    .hd{background:#1A1A2E;padding:28px 32px;text-align:center;}
+    .hd{background:#F2C927;padding:28px 32px;text-align:center;border-bottom:4px solid #D81B60;}
     .bd{padding:32px;}
     .btn{display:inline-block;background:#D81B60;color:#fff!important;text-decoration:none;padding:14px 32px;border-radius:8px;font-weight:700;font-size:16px;margin:24px 0;}
     .ft{background:#f8f9fa;padding:20px 32px;font-size:13px;color:#888;text-align:center;}
