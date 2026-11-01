@@ -914,6 +914,7 @@
       document.getElementById('stepsWrap').style.display = 'none';
       document.getElementById('successScreen').style.display = '';
       renderProgress(TOTAL_STEPS + 1);
+      try { localStorage.setItem('sc_questionnaire_done', '1'); } catch (_) {}
       setTimeout(function () {
         window.location.href = 'https://semplicom.it/registrazione';
       }, 2500);
