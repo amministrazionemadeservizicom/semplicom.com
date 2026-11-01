@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Questionario di registrazione – SempliCom</title>
+  <style>
+    :root {
+      --primary:   #F2C927;
+      --accent:    #D81B60;
+      --dark:      #1A1A2E;
+      --gray-900:  #212529;
+      --gray-700:  #495057;
+      --gray-600:  #6C757D;
+      --gray-300:  #DEE2E6;
+      --gray-100:  #F8F9FA;
+      --white:     #FFFFFF;
+      --radius:    8px;
+      --shadow:    0 4px 16px rgba(0,0,0,.08);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--gray-900);
+      background: var(--gray-100);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ---- HEADER ---- */
+    .site-header {
+      background: var(--dark);
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-header img { height: 36px; }
+    .site-header-right { font-size: 13px; color: rgba(255,255,255,.5); }
+
+    /* ---- HERO ---- */
+    .hero {
+      background: var(--dark);
+      color: var(--white);
+      text-align: center;
+      padding: 40px 24px 56px;
+    }
+    .hero h1 { font-size: clamp(22px, 4vw, 30px); font-weight: 800; margin-bottom: 8px; }
+    .hero p  { font-size: 15px; color: rgba(255,255,255,.7); max-width: 480px; margin: 0 auto; }
+
+    /* ---- PROGRESS ---- */
+    .progress-wrap {
+      background: var(--dark);
+      padding: 0 24px 32px;
+      display: flex;
+      justify-content: center;
+    }
+    .progress-bar {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      max-width: 560px;
+      width: 100%;
+    }
+    .step-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      color: rgba(255,255,255,.5);
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background .3s, color .3s;
+      position: relative;
+      z-index: 1;
+    }
+    .step-dot.active  { background: var(--accent); color: var(--white); }
+    .step-dot.done    { background: var(--primary); color: var(--dark); }
+    .step-line {
+      flex: 1;
+      height: 3px;
+      background: rgba(255,255,255,.12);
+      transition: background .3s;
+    }
+    .step-line.done { background: var(--primary); }
+
+    /* ---- CARD ---- */
+    .card-wrap {
+      max-width: 640px;
+      margin: -20px auto 48px;
+      padding: 0 16px;
+    }
+    .card {
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .card-head {
+      padding: 24px 28px 20px;
+      border-bottom: 1px solid var(--gray-300);
+    }
+    .card-head .step-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 4px;
+    }
+    .card-head h2 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+    .card-head p {
+      font-size: 14px;
+      color: var(--gray-600);
+    }
+    .card-body { padding: 24px 28px; }
+
+    /* ---- FORM ---- */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 520px) { .form-row { grid-template-columns: 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
+    .form-group:last-child { margin-bottom: 0; }
+    label { font-size: 14px; font-weight: 600; color: var(--gray-700); }
+    label .req { color: var(--accent); margin-left: 2px; }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid var(--gray-300);
+      border-radius: var(--radius);
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--gray-900);
+      background: var(--white);
+      transition: border-color .2s;
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+    input.error, select.error, textarea.error { border-color: #dc3545; }
+    .field-error { font-size: 12px; color: #dc3545; margin-top: 2px; display: none; }
+    .field-error.visible { display: block; }
+    textarea { resize: vertical; min-height: 96px; }
+    select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236C757D' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
+
+    /* checkboxes and radios */
+    .check-group, .radio-group { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+    .check-item, .radio-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--gray-700);
+    }
+    .check-item input, .radio-item input {
+      width: 18px;
+      height: 18px;
+      margin-top: 1px;
+      flex-shrink: 0;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+    .radio-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+    .radio-card {
+      border: 2px solid var(--gray-300);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .radio-card input { display: none; }
+    .radio-card.selected { border-color: var(--accent); background: #fdf0f5; color: var(--accent); }
+
+    /* mandati radios */
+    .toggle-row { display: flex; gap: 10px; }
+    .toggle-btn {
+      flex: 1;
+      border: 2px solid var(--gray-300);
+      border-radius: var(--radius);
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      transition: border-color .2s, background .2s;
+    }
+    .toggle-btn.selected { border-color: var(--accent); background: #fdf0f5; color: var(--accent); }
+
+    /* privacy block */
+    .privacy-block {
+      background: var(--gray-100);
+      border-radius: var(--radius);
+      padding: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      border: 1.5px solid var(--gray-300);
+    }
+    .privacy-block.error { border-color: #dc3545; }
+    .privacy-block input { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; accent-color: var(--accent); cursor: pointer; }
+    .privacy-block label { font-size: 13px; font-weight: 400; color: var(--gray-700); cursor: pointer; }
+
+    /* ---- NAVIGATION BUTTONS ---- */
+    .card-footer {
+      padding: 20px 28px;
+      border-top: 1px solid var(--gray-300);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: opacity .2s, transform .1s;
+      font-family: inherit;
+    }
+    .btn:active { transform: scale(.98); }
+    .btn:disabled { opacity: .6; cursor: not-allowed; }
+    .btn-primary  { background: var(--accent); color: var(--white); }
+    .btn-outline  { background: transparent; border: 2px solid var(--gray-300); color: var(--gray-700); }
+    .btn-outline:hover { border-color: var(--gray-600); }
+    .btn-success  { background: #198754; color: var(--white); }
+
+    /* ---- SUCCESS SCREEN ---- */
+    .success-screen {
+      display: none;
+      text-align: center;
+      padding: 48px 28px;
+    }
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #d1fae5;
+      color: #065f46;
+      font-size: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .success-screen h2 { font-size: 22px; font-weight: 800; margin-bottom: 10px; color: var(--dark); }
+    .success-screen p  { font-size: 15px; color: var(--gray-600); max-width: 380px; margin: 0 auto 28px; }
+
+    /* ---- ERROR ALERT ---- */
+    .alert-error {
+      display: none;
+      background: #fff5f5;
+      border: 1px solid #fc8181;
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      font-size: 14px;
+      color: #c53030;
+      margin-bottom: 16px;
+    }
+    .alert-error.visible { display: block; }
+
+    /* ---- EXPIRY ---- */
+    .token-error {
+      display: none;
+      text-align: center;
+      padding: 48px 28px;
+    }
+    .token-error h2 { font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
+    .token-error p  { font-size: 14px; color: var(--gray-600); }
+
+    /* ---- FOOTER ---- */
+    .site-footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 13px;
+      color: var(--gray-600);
+    }
+    .site-footer a { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://semplicom.com">
+    <img src="/assets/img/logo.svg" alt="SempliCom">
+  </a>
+  <span class="site-header-right">Registrazione partner</span>
+</header>
+
+<div class="hero">
+  <h1>Questionario di registrazione</h1>
+  <p>Completa il tuo profilo: bastano pochi minuti e potrai accedere alla tua area riservata.</p>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-bar" id="progressBar">
+    <!-- generato via JS -->
+  </div>
+</div>
+
+<div class="card-wrap">
+  <div class="card" id="mainCard">
+
+    <!-- TOKEN ERROR -->
+    <div class="token-error" id="tokenError">
+      <h2>Link non valido o scaduto</h2>
+      <p>Il link che hai usato non è più valido (scade dopo 7 giorni).<br>
+         Torna su <a href="https://semplicom.com">semplicom.com</a> e invia di nuovo la richiesta.</p>
+    </div>
+
+    <!-- STEPS (visibili uno alla volta) -->
+    <div id="stepsWrap">
+
+      <!-- STEP 1 — Dati di contatto -->
+      <div class="step-panel" data-step="1">
+        <div class="card-head">
+          <div class="step-label">Passo 1 di 7</div>
+          <h2>Dati di contatto</h2>
+          <p>Verifica e completa i tuoi recapiti.</p>
+        </div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-nome">Nome <span class="req">*</span></label>
+              <input type="text" id="f-nome" name="nome" autocomplete="given-name" required>
+              <span class="field-error" id="err-nome">Campo obbligatorio</span>
+            </div>
+            <div class="form-group">
+              <label for="f-cognome">Cognome <span class="req">*</span></label>
+              <input type="text" id="f-cognome" name="cognome" autocomplete="family-name" required>
+              <span class="field-error" id="err-cognome">Campo obbligatorio</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="f-ragione">Ragione sociale <span class="req">*</span></label>
+            <input type="text" id="f-ragione" name="ragione_sociale" autocomplete="organization" required>
+            <span class="field-error" id="err-ragione">Campo obbligatorio</span>
+          </div>
+          <div class="form-group">
+            <label for="f-piva">P.IVA / Codice fiscale <span class="req">*</span></label>
+            <input type="text" id="f-piva" name="piva_cf" placeholder="12345678901 oppure RSSMRA80A01H501U" required>
+            <span class="field-error" id="err-piva">Formato non valido (P.IVA: 11 cifre / CF: 16 caratteri)</span>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-citta">Città sede operativa <span class="req">*</span></label>
+              <input type="text" id="f-citta" name="citta" autocomplete="address-level2" required>
+              <span class="field-error" id="err-citta">Campo obbligatorio</span>
+            </div>
+            <div class="form-group">
+              <label for="f-prov">Provincia <span class="req">*</span></label>
+              <input type="text" id="f-prov" name="provincia" maxlength="2" placeholder="MI" autocomplete="address-level1">
+              <span class="field-error" id="err-prov">Campo obbligatorio</span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-tel">Telefono <span class="req">*</span></label>
+              <input type="tel" id="f-tel" name="telefono" autocomplete="tel" required>
+              <span class="field-error" id="err-tel">Numero non valido</span>
+            </div>
+            <div class="form-group">
+              <label for="f-email">Email <span class="req">*</span></label>
+              <input type="email" id="f-email" name="email" autocomplete="email" required>
+              <span class="field-error" id="err-email">Email non valida</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span></span>
+          <button class="btn btn-primary" onclick="goNext(1)">Avanti &rarr;</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 — Profilo -->
+      <div class="step-panel" data-step="2" style="display:none;">
+        <div class="card-head">
+          <div class="step-label">Passo 2 di 7</div>
+          <h2>Il tuo profilo</h2>
+          <p>Aiutaci a capire come lavori oggi.</p>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="f-tipo">Tipo di attività <span class="req">*</span></label>
+            <select id="f-tipo" name="tipo_attivita" required>
+              <option value="">Seleziona</option>
+              <option value="Agenzia">Agenzia</option>
+              <option value="Consulente">Consulente</option>
+              <option value="Negozio / Punto vendita">Negozio / Punto vendita</option>
+              <option value="CAF / Centro servizi">CAF / Centro servizi</option>
+              <option value="Broker">Broker</option>
+              <option value="Altro">Altro</option>
+            </select>
+            <span class="field-error" id="err-tipo">Campo obbligatorio</span>
+          </div>
+          <div class="form-group">
+            <label for="f-anni">Anni nel settore <span class="req">*</span></label>
+            <select id="f-anni" name="anni_settore" required>
+              <option value="">Seleziona</option>
+              <option value="Meno di 1 anno">Meno di 1 anno</option>
+              <option value="1–3 anni">1–3 anni</option>
+              <option value="3–5 anni">3–5 anni</option>
+              <option value="5–10 anni">5–10 anni</option>
+              <option value="Oltre 10 anni">Oltre 10 anni</option>
+            </select>
+            <span class="field-error" id="err-anni">Campo obbligatorio</span>
+          </div>
+          <div class="form-group">
+            <label for="f-collab">Numero di collaboratori / agenti <span class="req">*</span></label>
+            <select id="f-collab" name="n_collaboratori" required>
+              <option value="">Seleziona</option>
+              <option value="Solo io">Solo io</option>
+              <option value="2–5">2–5</option>
+              <option value="6–15">6–15</option>
+              <option value="16–30">16–30</option>
+              <option value="Oltre 30">Oltre 30</option>
+            </select>
+            <span class="field-error" id="err-collab">Campo obbligatorio</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-outline" onclick="goBack(2)">&larr; Indietro</button>
+          <button class="btn btn-primary" onclick="goNext(2)">Avanti &rarr;</button>
+        </div>
+      </div>
+
+      <!-- STEP 3 — Settori di interesse -->
+      <div class="step-panel" data-step="3" style="display:none;">
+        <div class="card-head">
+          <div class="step-label">Passo 3 di 7</div>
+          <h2>Settori di interesse</h2>
+          <p>Seleziona uno o più settori in cui operi o vuoi operare.</p>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <div class="check-group">
+              <label class="check-item">
+                <input type="checkbox" id="f-settore-lg" name="settore_luce_gas" value="1">
+                <span>Luce e Gas</span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" id="f-settore-tel" name="settore_telefonia" value="1">
+                <span>Telefonia fissa e mobile</span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" id="f-settore-altro" name="settore_altro" value="1">
+                <span>Altro (assicurazioni, finanza, noleggio, ecc.)</span>
+              </label>
+            </div>
+            <span class="field-error" id="err-settori">Seleziona almeno un settore</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-outline" onclick="goBack(3)">&larr; Indietro</button>
+          <button class="btn btn-primary" onclick="goNext(3)">Avanti &rarr;</button>
+        </div>
+      </div>
+
+      <!-- STEP 4 — Situazione attuale -->
+      <div class="step-panel" data-step="4" style="display:none;">
+        <div class="card-head">
+          <div class="step-label">Passo 4 di 7</div>
+          <h2>Situazione attuale</h2>
+          <p>Come stai lavorando oggi?</p>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label>Hai già mandati diretti o lavori con altre agenzie / piattaforme? <span class="req">*</span></label>
+            <div class="toggle-row" id="mandati-toggle">
+              <div class="toggle-btn" data-val="Si" onclick="selectToggle('mandati-toggle', this, 'ha_mandati')">Si</div>
+              <div class="toggle-btn" data-val="No" onclick="selectToggle('mandati-toggle', this, 'ha_mandati')">No</div>
+            </div>
+            <input type="hidden" id="f-ha-mandati" name="ha_mandati">
+            <span class="field-error" id="err-mandati">Seleziona un'opzione</span>
+          </div>
+          <div class="form-group" id="quali-wrap" style="display:none;">
+            <label for="f-quali">Con quali agenzie / piattaforme lavori?</label>
+            <input type="text" id="f-quali" name="quali_mandati" placeholder="Es. Enel, Edison, Vodafone...">
+          </div>
+          <div class="form-group">
+            <label for="f-volume">Volume medio mensile di contratti <span class="req">*</span></label>
+            <select id="f-volume" name="volume_mensile" required>
+              <option value="">Seleziona</option>
+              <option value="Meno di 10">Meno di 10 contratti/mese</option>
+              <option value="10–30">10–30 contratti/mese</option>
+              <option value="31–80">31–80 contratti/mese</option>
+              <option value="81–200">81–200 contratti/mese</option>
+              <option value="Oltre 200">Oltre 200 contratti/mese</option>
+            </select>
+            <span class="field-error" id="err-volume">Campo obbligatorio</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-outline" onclick="goBack(4)">&larr; Indietro</button>
+          <button class="btn btn-primary" onclick="goNext(4)">Avanti &rarr;</button>
+        </div>
+      </div>
+
+      <!-- STEP 5 — Piano di interesse -->
+      <div class="step-panel" data-step="5" style="display:none;">
+        <div class="card-head">
+          <div class="step-label">Passo 5 di 7</div>
+          <h2>Piano di interesse</h2>
+          <p>Quale piano si avvicina di più alle tue esigenze?</p>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <input type="hidden" id="f-piano" name="piano">
+            <div class="radio-cards" id="piano-cards">
+              <div class="radio-card" data-val="Affiliato"    onclick="selectPiano(this)">Affiliato</div>
+              <div class="radio-card" data-val="Consulente"   onclick="selectPiano(this)">Consulente</div>
+              <div class="radio-card" data-val="Agenzia"      onclick="selectPiano(this)">Agenzia</div>
+              <div class="radio-card" data-val="Master"       onclick="selectPiano(this)">Master</div>
+              <div class="radio-card" data-val="Team Base"    onclick="selectPiano(this)">Team Base</div>
+              <div class="radio-card" data-val="Enterprise"   onclick="selectPiano(this)">Enterprise</div>
+            </div>
+            <span class="field-error" id="err-piano">Seleziona un piano</span>
+          </div>
+          <p style="font-size:13px;color:var(--gray-600);margin-top:8px;">Non sei sicuro?
+            <a href="https://semplicom.com/prezzi.html" target="_blank">Confronta i piani</a>
+          </p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-outline" onclick="goBack(5)">&larr; Indietro</button>
+          <button class="btn btn-primary" onclick="goNext(5)">Avanti &rarr;</button>
+        </div>
+      </div>
+
+      <!-- STEP 6 — Note libere -->
+      <div class="step-panel" data-step="6" style="display:none;">
+        <div class="card-head">
+          <div class="step-label">Passo 6 di 7</div>
+          <h2>Note libere</h2>
+          <p>Hai domande, richieste particolari o vuoi raccontarci la tua situazione?</p>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="f-note">Note (opzionale)</label>
+            <textarea id="f-note" name="note" rows="5" placeholder="Scrivi qui qualsiasi cosa ritieni utile..."></textarea>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-outline" onclick="goBack(6)">&larr; Indietro</button>
+          <button class="btn btn-primary" onclick="goNext(6)">Avanti &rarr;</button>
+        </div>
+      </div>
+
+      <!-- STEP 7 — Privacy e invio -->
+      <div class="step-panel" data-step="7" style="display:none;">
+        <div class="card-head">
+          <div class="step-label">Passo 7 di 7</div>
+          <h2>Conferma e invio</h2>
+          <p>Leggi e accetta la privacy policy per completare la registrazione.</p>
+        </div>
+        <div class="card-body">
+          <div class="alert-error" id="alertError">Si è verificato un errore. Riprova o scrivici su WhatsApp.</div>
+          <div class="privacy-block" id="privacy-block">
+            <input type="checkbox" id="f-privacy" name="privacy">
+            <label for="f-privacy">
+              Ho letto e accetto la
+              <a href="/privacy.html" target="_blank">Privacy Policy di SempliCom</a>
+              e acconsento al trattamento dei miei dati personali per la gestione della registrazione. <span class="req">*</span>
+            </label>
+          </div>
+          <span class="field-error" id="err-privacy" style="margin-top:8px;">Devi accettare la privacy policy</span>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-outline" onclick="goBack(7)">&larr; Indietro</button>
+          <button class="btn btn-primary" id="submitBtn" onclick="submitForm()">
+            <span id="btnText">Invia questionario</span>
+            <span id="btnLoading" style="display:none;">Invio in corso...</span>
+          </button>
+        </div>
+      </div>
+
+    </div><!-- /stepsWrap -->
+
+    <!-- SUCCESS -->
+    <div class="success-screen" id="successScreen">
+      <div class="success-icon">&#10003;</div>
+      <h2>Questionario inviato!</h2>
+      <p>Grazie! Stai per essere reindirizzato alla pagina di registrazione...</p>
+      <a href="https://semplicom.it/registrazione" class="btn btn-success" style="margin-top:8px;">
+        Vai subito &rarr;
+      </a>
+    </div>
+
+  </div><!-- /card -->
+</div><!-- /card-wrap -->
+
+<footer class="site-footer">
+  <p>&copy; <span id="yr"></span> SempliCom &middot;
+    <a href="/privacy.html">Privacy Policy</a> &middot;
+    <a href="/termini.html">Termini</a>
+  </p>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  // ---- Stato ----
+  var TOTAL_STEPS = 7;
+  var currentStep = 1;
+  var tokenStr = '';
+  var formData = {};
+
+  // ---- Leggi token dall'URL ----
+  function getToken() {
+    var params = new URLSearchParams(window.location.search);
+    return params.get('t') || '';
+  }
+
+  // Decode JWT payload lato client (solo per prefill — verifica avviene server-side)
+  function decodeTokenPayload(token) {
+    try {
+      var parts = token.split('.');
+      if (parts.length !== 3) return null;
+      var b64 = parts[1].replace(/-/g, '+').replace(/_/g, '/');
+      return JSON.parse(atob(b64));
+    } catch (e) { return null; }
+  }
+
+  // ---- Progress bar ----
+  function renderProgress(active) {
+    var bar = document.getElementById('progressBar');
+    bar.innerHTML = '';
+    for (var i = 1; i <= TOTAL_STEPS; i++) {
+      var dot = document.createElement('div');
+      dot.className = 'step-dot' + (i < active ? ' done' : i === active ? ' active' : '');
+      dot.textContent = i;
+      bar.appendChild(dot);
+      if (i < TOTAL_STEPS) {
+        var line = document.createElement('div');
+        line.className = 'step-line' + (i < active ? ' done' : '');
+        bar.appendChild(line);
+      }
+    }
+  }
+
+  // ---- Mostra step ----
+  function showStep(n) {
+    document.querySelectorAll('.step-panel').forEach(function (p) {
+      p.style.display = p.dataset.step == n ? '' : 'none';
+    });
+    renderProgress(n);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ---- Validazione step 1 ----
+  function validateStep1() {
+    var ok = true;
+
+    function req(id, errId) {
+      var el = document.getElementById(id);
+      var err = document.getElementById(errId);
+      if (!el.value.trim()) {
+        el.classList.add('error');
+        err.classList.add('visible');
+        ok = false;
+      } else {
+        el.classList.remove('error');
+        err.classList.remove('visible');
+      }
+    }
+
+    req('f-nome', 'err-nome');
+    req('f-cognome', 'err-cognome');
+    req('f-ragione', 'err-ragione');
+    req('f-citta', 'err-citta');
+    req('f-prov', 'err-prov');
+
+    // P.IVA / CF
+    var piva = document.getElementById('f-piva');
+    var pivaErr = document.getElementById('err-piva');
+    var v = piva.value.trim().replace(/\s/g, '');
+    var pivaOk = /^\d{11}$/.test(v) || /^[A-Z0-9]{16}$/i.test(v);
+    if (!v || !pivaOk) {
+      piva.classList.add('error');
+      pivaErr.classList.add('visible');
+      ok = false;
+    } else {
+      piva.classList.remove('error');
+      pivaErr.classList.remove('visible');
+    }
+
+    // Email
+    var email = document.getElementById('f-email');
+    var emailErr = document.getElementById('err-email');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+      email.classList.add('error');
+      emailErr.classList.add('visible');
+      ok = false;
+    } else {
+      email.classList.remove('error');
+      emailErr.classList.remove('visible');
+    }
+
+    // Telefono
+    var tel = document.getElementById('f-tel');
+    var telErr = document.getElementById('err-tel');
+    var telClean = tel.value.trim().replace(/[\s\-\.]/g, '');
+    if (!/^(\+39|0039|39)?[0-9]{9,10}$/.test(telClean)) {
+      tel.classList.add('error');
+      telErr.classList.add('visible');
+      ok = false;
+    } else {
+      tel.classList.remove('error');
+      telErr.classList.remove('visible');
+    }
+
+    return ok;
+  }
+
+  // ---- Validazione step 2 ----
+  function validateStep2() {
+    var ok = true;
+    ['f-tipo', 'f-anni', 'f-collab'].forEach(function (id) {
+      var errId = { 'f-tipo': 'err-tipo', 'f-anni': 'err-anni', 'f-collab': 'err-collab' }[id];
+      var el = document.getElementById(id);
+      var err = document.getElementById(errId);
+      if (!el.value) {
+        el.classList.add('error');
+        err.classList.add('visible');
+        ok = false;
+      } else {
+        el.classList.remove('error');
+        err.classList.remove('visible');
+      }
+    });
+    return ok;
+  }
+
+  // ---- Validazione step 3 ----
+  function validateStep3() {
+    var checked = document.querySelector('#stepsWrap [data-step="3"] input[type="checkbox"]:checked');
+    var err = document.getElementById('err-settori');
+    if (!checked) { err.classList.add('visible'); return false; }
+    err.classList.remove('visible');
+    return true;
+  }
+
+  // ---- Validazione step 4 ----
+  function validateStep4() {
+    var ok = true;
+    var hidden = document.getElementById('f-ha-mandati');
+    var err = document.getElementById('err-mandati');
+    if (!hidden.value) { err.classList.add('visible'); ok = false; }
+    else { err.classList.remove('visible'); }
+
+    var vol = document.getElementById('f-volume');
+    var volErr = document.getElementById('err-volume');
+    if (!vol.value) { vol.classList.add('error'); volErr.classList.add('visible'); ok = false; }
+    else { vol.classList.remove('error'); volErr.classList.remove('visible'); }
+
+    return ok;
+  }
+
+  // ---- Validazione step 5 ----
+  function validateStep5() {
+    var piano = document.getElementById('f-piano').value;
+    var err = document.getElementById('err-piano');
+    if (!piano) { err.classList.add('visible'); return false; }
+    err.classList.remove('visible');
+    return true;
+  }
+
+  // ---- Avanti ----
+  window.goNext = function (step) {
+    var valid = true;
+    if (step === 1) valid = validateStep1();
+    else if (step === 2) valid = validateStep2();
+    else if (step === 3) valid = validateStep3();
+    else if (step === 4) valid = validateStep4();
+    else if (step === 5) valid = validateStep5();
+    if (!valid) return;
+    currentStep = step + 1;
+    showStep(currentStep);
+  };
+
+  // ---- Indietro ----
+  window.goBack = function (step) {
+    currentStep = step - 1;
+    showStep(currentStep);
+  };
+
+  // ---- Toggle mandati ----
+  window.selectToggle = function (groupId, el, hiddenId) {
+    document.querySelectorAll('#' + groupId + ' .toggle-btn').forEach(function (b) { b.classList.remove('selected'); });
+    el.classList.add('selected');
+    document.getElementById('f-' + hiddenId.replace('_', '-')).value = el.dataset.val;
+    var qualiWrap = document.getElementById('quali-wrap');
+    if (hiddenId === 'ha_mandati') {
+      qualiWrap.style.display = el.dataset.val === 'Si' ? '' : 'none';
+    }
+    document.getElementById('err-mandati').classList.remove('visible');
+  };
+
+  // ---- Seleziona piano ----
+  window.selectPiano = function (el) {
+    document.querySelectorAll('#piano-cards .radio-card').forEach(function (c) { c.classList.remove('selected'); });
+    el.classList.add('selected');
+    document.getElementById('f-piano').value = el.dataset.val;
+    document.getElementById('err-piano').classList.remove('visible');
+  };
+
+  // ---- Raccoglie tutti i dati del form ----
+  function collectFormData() {
+    var d = {};
+    document.querySelectorAll('#stepsWrap input[name], #stepsWrap select[name], #stepsWrap textarea[name]').forEach(function (el) {
+      if (el.type === 'checkbox') d[el.name] = el.checked ? el.value : '';
+      else d[el.name] = el.value.trim ? el.value.trim() : el.value;
+    });
+    return d;
+  }
+
+  // ---- Submit ----
+  window.submitForm = function () {
+    var privacyEl = document.getElementById('f-privacy');
+    var privacyErr = document.getElementById('err-privacy');
+    var privacyBlock = document.getElementById('privacy-block');
+
+    if (!privacyEl.checked) {
+      privacyErr.classList.add('visible');
+      privacyBlock.classList.add('error');
+      return;
+    }
+    privacyErr.classList.remove('visible');
+    privacyBlock.classList.remove('error');
+
+    var btn = document.getElementById('submitBtn');
+    document.getElementById('btnText').style.display = 'none';
+    document.getElementById('btnLoading').style.display = '';
+    btn.disabled = true;
+    document.getElementById('alertError').classList.remove('visible');
+
+    var data = collectFormData();
+    data.token = tokenStr;
+    data.privacy = true;
+
+    fetch('/.netlify/functions/submit-questionnaire', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+    .then(function (res) { return res.json().then(function (body) { return { ok: res.ok, body: body }; }); })
+    .then(function (r) {
+      if (!r.ok) throw new Error(r.body.error || 'Errore server');
+      document.getElementById('stepsWrap').style.display = 'none';
+      document.getElementById('successScreen').style.display = '';
+      renderProgress(TOTAL_STEPS + 1);
+      setTimeout(function () {
+        window.location.href = 'https://semplicom.it/registrazione';
+      }, 2500);
+    })
+    .catch(function (err) {
+      document.getElementById('alertError').textContent = err.message || 'Si è verificato un errore. Riprova.';
+      document.getElementById('alertError').classList.add('visible');
+      document.getElementById('btnText').style.display = '';
+      document.getElementById('btnLoading').style.display = 'none';
+      btn.disabled = false;
+    });
+  };
+
+  // ---- Prefill dai dati del token ----
+  function prefillFromToken(payload) {
+    if (!payload) return;
+    var fullName = payload.name || '';
+    var parts = fullName.trim().split(/\s+/);
+    var nome = parts[0] || '';
+    var cognome = parts.slice(1).join(' ') || '';
+    if (nome) document.getElementById('f-nome').value = nome;
+    if (cognome) document.getElementById('f-cognome').value = cognome;
+    if (payload.email) document.getElementById('f-email').value = payload.email;
+    if (payload.phone) document.getElementById('f-tel').value = payload.phone;
+    if (payload.company) document.getElementById('f-ragione').value = payload.company;
+
+    // Prefill piano se corrisponde a un'opzione
+    if (payload.plan) {
+      var card = document.querySelector('#piano-cards [data-val="' + payload.plan + '"]');
+      if (card) selectPiano(card);
+    }
+  }
+
+  // ---- Init ----
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  tokenStr = getToken();
+  if (!tokenStr) {
+    document.getElementById('stepsWrap').style.display = 'none';
+    document.getElementById('tokenError').style.display = '';
+  } else {
+    var payload = decodeTokenPayload(tokenStr);
+    // Controlla exp
+    if (payload && payload.exp && Date.now() / 1000 > payload.exp) {
+      document.getElementById('stepsWrap').style.display = 'none';
+      document.getElementById('tokenError').style.display = '';
+    } else {
+      prefillFromToken(payload);
+      showStep(1);
+    }
+  }
+
+})();
+</script>
+</body>
+</html>

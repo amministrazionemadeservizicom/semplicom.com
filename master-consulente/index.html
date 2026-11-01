@@ -365,7 +365,14 @@
         <h2>Candidati come Master SempliCom</h2>
         <p class="lead">Compila il form e il nostro responsabile partnership ti ricontatterà entro 24 ore.</p>
         <div class="landing-form">
-            <form>
+            <div id="masterSuccess" hidden style="background:#d1fae5;border:1px solid #6ee7b7;border-radius:10px;padding:24px;text-align:center;margin-bottom:16px;">
+                <p style="font-size:1.1rem;font-weight:600;color:#065f46;margin:0 0 8px;">Candidatura inviata!</p>
+                <p style="color:#047857;margin:0;">Ti ricontatteremo entro 24 ore. Nel frattempo puoi scriverci su WhatsApp.</p>
+            </div>
+            <div id="masterError" hidden style="background:#fee2e2;border:1px solid #fca5a5;border-radius:10px;padding:16px;text-align:center;margin-bottom:16px;">
+                <p style="color:#991b1b;margin:0;">Si è verificato un errore. Riprova o scrivici su WhatsApp.</p>
+            </div>
+            <form id="masterForm">
                 <div class="form-row">
                     <div class="form-group"><label for="nome">Nome *</label><input type="text" id="nome" name="nome" required></div>
                     <div class="form-group"><label for="cognome">Cognome *</label><input type="text" id="cognome" name="cognome" required></div>
@@ -528,6 +535,43 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     });
 });
 document.getElementById('currentYear').textContent = new Date().getFullYear();
+(function() {
+    var form = document.getElementById('masterForm');
+    if (!form) return;
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        var nome = form.querySelector('#nome').value.trim();
+        var cognome = form.querySelector('#cognome').value.trim();
+        var email = form.querySelector('#email').value.trim();
+        var telefono = form.querySelector('#telefono').value.trim();
+        var citta = form.querySelector('#citta').value.trim();
+        var esperienza = form.querySelector('#esperienza').value;
+        var rete = form.querySelector('#rete').value;
+        var messaggio = form.querySelector('#messaggio').value.trim();
+        var privacy = form.querySelector('#privacy').checked;
+        if (!nome || !email || !privacy) return;
+        var btn = form.querySelector('button[type="submit"]');
+        var originalText = btn.textContent;
+        btn.disabled = true; btn.textContent = 'Invio in corso...';
+        document.getElementById('masterError').hidden = true;
+        var msgParts = [];
+        if (esperienza) msgParts.push('Esperienza: ' + esperienza);
+        if (rete) msgParts.push('Rete collaboratori: ' + rete);
+        if (messaggio) msgParts.push('Note: ' + messaggio);
+        try {
+            var res = await fetch('/.netlify/functions/send-email', {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: nome + ' ' + cognome, email: email, phone: telefono, company: citta, plan: rete || esperienza, message: msgParts.join('\n'), privacy: true, subject: 'Candidatura Master Consulente', formSource: 'master-consulente' })
+            });
+            if (!res.ok) throw new Error('Errore');
+            form.hidden = true;
+            document.getElementById('masterSuccess').hidden = false;
+        } catch(err) {
+            document.getElementById('masterError').hidden = false;
+            btn.disabled = false; btn.textContent = originalText;
+        }
+    });
+})();
 </script>
 <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
 <script type="text/javascript" src="https://embeds.iubenda.com/widgets/6e7c4da1-3449-47c7-863f-af1c17061fbc.js"></script>

@@ -1,6 +1,7 @@
 const sgMail = require('@sendgrid/mail');
 const https = require('https');
 const admin = require('firebase-admin');
+const jwt = require('jsonwebtoken');
 
 // Inizializza Firebase Admin (una sola volta)
 if (!admin.apps.length) {
@@ -210,6 +211,115 @@ function sendEdisonLead({ name, phone, email, ip, urlPrivacy }) {
     });
 }
 
+// Piani che identificano richieste da clienti finali — esclusi dal flusso questionario
+const CLIENT_PLANS = new Set(['Offerte Luce e Gas', 'Offerte Energia Automatica', 'Offerte MM']);
+
+// Invia la mail "Completa la registrazione" e salva la richiesta su Firestore.
+// Non reinvia se la stessa email ha già ricevuto il questionario negli ultimi 30 giorni.
+async function sendRegistrationEmail({ name, email, phone, company, plan, source }) {
+    const secret = process.env.QUESTIONNAIRE_SECRET;
+    if (!secret || !email) return;
+
+    const db = getFirestore();
+
+    // Controllo 30 giorni
+    if (db) {
+        try {
+            const cutoff = new Date(Date.now() - 30 * 24 * 3600 * 1000).toISOString();
+            const snap = await db.collection('demo_requests')
+                .where('email', '==', email)
+                .where('questionnaire_sent_at', '>', cutoff)
+                .limit(1)
+                .get();
+            if (!snap.empty) {
+                console.log(`Questionario già inviato a ${email} negli ultimi 30gg — skip`);
+                return;
+            }
+        } catch (e) {
+            console.error('Firestore 30d check error:', e.message);
+        }
+    }
+
+    const now = new Date();
+    const requestId = `REQ-${now.toISOString().slice(0, 10).replace(/-/g, '')}-${Math.random().toString(36).toUpperCase().slice(2, 8)}`;
+
+    const tokenPayload = { requestId, name, email, phone: phone || '', company: company || '', plan: plan || '', source: source || '' };
+    const token = jwt.sign(tokenPayload, secret, { expiresIn: '7d' });
+
+    if (db) {
+        try {
+            await db.collection('demo_requests').doc(requestId).set({
+                requestId, name, email,
+                phone: phone || '',
+                company: company || '',
+                plan: plan || '',
+                source: source || '',
+                created_at: now.toISOString(),
+                questionnaire_sent_at: now.toISOString(),
+                questionnaire_submitted_at: null,
+            });
+        } catch (e) {
+            console.error('Firestore demo_requests save error:', e.message);
+        }
+    }
+
+    const url = `https://semplicom.com/questionario-registrazione/?t=${token}`;
+    const sourceLabel = source === 'diventa-partner'
+        ? 'per la collaborazione con SempliCom'
+        : 'per la demo di SempliCom';
+
+    const html = `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <style>
+    body{margin:0;padding:0;background:#f4f4f7;font-family:system-ui,-apple-system,sans-serif;}
+    .wrap{max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;}
+    .hd{background:#1A1A2E;padding:28px 32px;text-align:center;}
+    .bd{padding:32px;}
+    .btn{display:inline-block;background:#D81B60;color:#fff!important;text-decoration:none;padding:14px 32px;border-radius:8px;font-weight:700;font-size:16px;margin:24px 0;}
+    .ft{background:#f8f9fa;padding:20px 32px;font-size:13px;color:#888;text-align:center;}
+    p{margin:0 0 12px;color:#495057;line-height:1.6;}
+  </style>
+</head>
+<body>
+<div style="padding:24px 16px;background:#f4f4f7;">
+  <div class="wrap">
+    <div class="hd">
+      <img src="https://semplicom.com/assets/img/logo.svg" alt="SempliCom" style="height:44px;margin:0 auto;">
+    </div>
+    <div class="bd">
+      <p style="font-size:18px;font-weight:700;color:#1A1A2E;">Ciao ${name},</p>
+      <p>grazie per aver richiesto ${sourceLabel}!</p>
+      <p>Per completare la tua registrazione ti chiediamo di compilare un breve questionario — bastano <strong>pochi minuti</strong>. Ci aiuterà a configurare al meglio il tuo account e a supportarti fin dal primo giorno.</p>
+      <div style="text-align:center;">
+        <a href="${url}" class="btn">Compila il questionario &rarr;</a>
+      </div>
+      <p style="font-size:13px;color:#aaa;text-align:center;margin:0;">Il link è valido per 7 giorni.</p>
+    </div>
+    <div class="ft">
+      <p><strong>SempliCom</strong> &middot; semplicom.com</p>
+      <p style="margin:0;">Hai ricevuto questa email perché hai compilato un modulo su semplicom.com.<br>Per assistenza scrivi a <a href="mailto:info@semplicom.com" style="color:#D81B60;">info@semplicom.com</a></p>
+    </div>
+  </div>
+</div>
+</body>
+</html>`;
+
+    const text = `Ciao ${name},\n\ngrazie per aver richiesto ${sourceLabel}!\n\nPer completare la tua registrazione compila il questionario al link qui sotto (bastano pochi minuti):\n${url}\n\nIl link è valido per 7 giorni.\n\nA presto,\nIl team SempliCom\nsemplicom.com`;
+
+    await sgMail.send({
+        to: email,
+        from: 'noreply@semplicom.com',
+        subject: 'SempliCom \u2013 Completa la tua registrazione',
+        html,
+        text,
+    });
+
+    console.log(`Registration email inviata a ${email} (${requestId})`);
+}
+
 const CORS_HEADERS = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
@@ -236,7 +346,7 @@ exports.handler = async (event) => {
 
     try {
         const data = JSON.parse(event.body);
-        const { name, nome: nomeRaw, cognome: cognomeRaw, email, company, phone, plan, employees, message, privacy, subject: customSubject } = data;
+        const { name, nome: nomeRaw, cognome: cognomeRaw, email, company, phone, plan, employees, message, privacy, subject: customSubject, formSource } = data;
 
         // Validazione base
         if (!name || !email || !privacy) {
@@ -251,7 +361,7 @@ exports.handler = async (event) => {
             to: 'amministrazione@madeservizi.com',
             from: 'noreply@semplicom.com', // Deve essere verificato su SendGrid
             replyTo: email,
-            subject: customSubject ? `${customSubject} - ${name}` : `Nuova richiesta demo - ${name}${company ? ` (${company})` : ''}`,
+            subject: customSubject ? `${customSubject} - ${name}${company ? ` (${company})` : ''}` : `Nuova richiesta demo - ${name}${company ? ` (${company})` : ''}`,
             html: `
                 <h2>${customSubject ? `${customSubject} da semplicom.com` : 'Nuova richiesta demo da semplicom.com'}</h2>
                 <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
@@ -449,6 +559,12 @@ exports.handler = async (event) => {
         }
 
         await sgMail.send(msgToClient);
+
+        // Mail "Completa la registrazione" per i moduli partner (non per le landing clienti finali)
+        if (!CLIENT_PLANS.has(plan)) {
+            const source = formSource || (customSubject && customSubject.toLowerCase().includes('partner') ? 'diventa-partner' : 'richiedi-demo');
+            await sendRegistrationEmail({ name, email, phone, company, plan, source }).catch(e => console.error('sendRegistrationEmail error:', e.message));
+        }
 
         return {
             statusCode: 200,
