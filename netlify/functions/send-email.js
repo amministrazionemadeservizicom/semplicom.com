@@ -315,6 +315,10 @@ async function sendRegistrationEmail({ name, email, phone, company, plan, source
         subject: 'SempliCom \u2013 Completa la tua registrazione',
         html,
         text,
+        tracking_settings: {
+            click_tracking: { enable: false },
+            open_tracking: { enable: false },
+        },
     });
 
     console.log(`Registration email inviata a ${email} (${requestId})`);
