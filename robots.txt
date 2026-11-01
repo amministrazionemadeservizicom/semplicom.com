@@ -2,8 +2,6 @@ User-agent: *
 Allow: /
 Sitemap: https://semplicom.com/sitemap.xml
 
-Disallow: /assets/
-
 # AI crawlers — explicitly allowed for AI search visibility
 User-agent: GPTBot
 Allow: /

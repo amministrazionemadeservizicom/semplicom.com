@@ -56,13 +56,13 @@
   <!-- Landing reclutamento principale -->
   <url>
     <loc>https://semplicom.com/diventa-partner/</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://semplicom.com/diventare-consulente-energia/</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -70,31 +70,37 @@
   <!-- Landing reclutamento secondarie -->
   <url>
     <loc>https://semplicom.com/agente-energia-cercasi/</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://semplicom.com/consulente-multiservizio/</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://semplicom.com/apri-point-semplicom/</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://semplicom.com/partner-caf/</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://semplicom.com/master-consulente/</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://semplicom.com/massima-tranquillita/</loc>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -114,7 +120,7 @@
   <!-- Prezzi energia — pagine live (priority alta: dati aggiornati) -->
   <url>
     <loc>https://semplicom.com/pun-oggi/</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -126,7 +132,7 @@
   </url>
   <url>
     <loc>https://semplicom.com/come-si-calcola-il-pun-in-bolletta/</loc>
-    <lastmod>2026-04-18</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -246,25 +252,19 @@
   </url>
   <url>
     <loc>https://semplicom.com/blog/ccv-corrispettivo-commercializzazione/</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://semplicom.com/blog/spread-energia-come-funziona/</loc>
-    <lastmod>2026-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://semplicom.com/blog/confronto-crm-energia-italia/</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://semplicom.com/blog/quanto-guadagna-agente-energia/</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -326,7 +326,7 @@
   </url>
   <url>
     <loc>https://semplicom.com/blog/provvigioni-luce-gas-quanto-si-guadagna/</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -454,12 +454,6 @@
   </url>
   <url>
     <loc>https://semplicom.com/blog/switch-24-ore-arera-agenti/</loc>
-    <lastmod>2026-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://semplicom.com/blog/confronto-crm-energia-italia-2026/</loc>
     <lastmod>2026-04-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

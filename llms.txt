@@ -1,0 +1,45 @@
+# SempliCom
+
+> SempliCom è la piattaforma CRM e gestionale per agenti e agenzie del mercato libero dell'energia (luce, gas), telefonia e servizi multiservizio in Italia. Sviluppata da MADE SRL, P.IVA IT05266540755, Via Martiri della Resistenza 10, Cavallino (LE).
+
+SempliCom fornisce strumenti per:
+- Gestione pratiche luce, gas, telefonia e multiservizio
+- Comparatore offerte multi-operatore (ACEA, Edison, Sorgenia, Fastweb, WindTre, TIM, AGN, Illumia, Engie, A2A, Axpo, Hera, Estra, Sky e altri)
+- Calcolo provvigioni in tempo reale
+- Automazioni WhatsApp ed email per aggiornamenti pratiche
+- Dashboard per Master Consulenti con gestione rete vendita multi-livello
+
+## Pagine principali
+
+- [Homepage](https://semplicom.com/) — panoramica della piattaforma
+- [CRM Agenzie Energia](https://semplicom.com/crm-agenzie-energia/) — gestionale per agenzie
+- [Comparatore Offerte](https://semplicom.com/comparatore-offerte-agenti/) — comparatore multi-operatore per agenti
+- [Software Provvigioni](https://semplicom.com/software-provvigioni-agenti/) — calcolo e tracciamento compensi
+- [Gestionale Multiservizio](https://semplicom.com/gestionale-multiservizio/) — piattaforma multi-verticale
+
+## Collaborare con SempliCom
+
+- [Diventa Partner](https://semplicom.com/diventa-partner/) — entra nella rete
+- [Diventare Consulente Energia](https://semplicom.com/diventare-consulente-energia/) — guida completa
+- [Agente Energia Cercasi](https://semplicom.com/agente-energia-cercasi/) — opportunità di lavoro
+- [Consulente Multiservizio](https://semplicom.com/consulente-multiservizio/) — più servizi, più provvigioni
+- [Master Consulente](https://semplicom.com/master-consulente/) — costruisci la tua rete
+- [Partner CAF/Patronati](https://semplicom.com/partner-caf/) — servizi energetici per sportelli CAF
+- [Apri un Point SempliCom](https://semplicom.com/apri-point-semplicom/) — punto fisico multiservizio
+
+## Prezzi energia (dati live)
+
+- [PUN Oggi](https://semplicom.com/pun-oggi/) — Prezzo Unico Nazionale energia elettrica, aggiornato settimanalmente
+- [PSV Oggi](https://semplicom.com/psv-oggi/) — Punto di Scambio Virtuale gas, aggiornato settimanalmente
+- [Come si calcola il PUN in bolletta](https://semplicom.com/come-si-calcola-il-pun-in-bolletta/) — formula completa e simulatore
+- [Spread energia](https://semplicom.com/spread-energia/) — cos'è lo spread nei contratti indicizzati
+- [Migliori offerte luce e gas](https://semplicom.com/migliori-offerte-luce-gas/) — confronto offerte mercato libero
+
+## Blog
+
+- [Blog SempliCom](https://semplicom.com/blog/) — guide per agenti energia, normativa, mercato libero
+
+## Contatti
+
+- WhatsApp: +39 329 562 8882
+- Sito: https://semplicom.com
