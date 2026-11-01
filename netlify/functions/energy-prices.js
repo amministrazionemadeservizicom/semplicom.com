@@ -5,8 +5,8 @@
 const zlib = require('zlib');
 
 const GME_BASE = 'https://api.mercatoelettrico.org/request';
-const GME_USER = process.env.GME_USERNAME || 'madesrls3274';
-const GME_PASS = process.env.GME_PASSWORD || 'dRwPUb!DqnAki4x!';
+const GME_USER = process.env.GME_USERNAME || process.env.GME_LOGIN || 'madesrls3274';
+const GME_PASS = process.env.GME_PASSWORD || 'Gioia04052019!';
 const MONTH_IT = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno',
                   'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
 
@@ -47,8 +47,9 @@ async function gmeAuth() {
     body:    JSON.stringify({ Login: GME_USER, Password: GME_PASS }),
   });
   const json = await res.json();
-  if (!json.success) throw new Error('Auth failed: ' + json.reason);
-  return json.token;
+  const token = json.token ?? json.Token ?? json.access_token ?? json.AccessToken;
+  if (!token) throw new Error('Auth failed: ' + JSON.stringify(json).slice(0, 200));
+  return token;
 }
 
 async function gmeReq(token, segment, dataName, start, end) {

@@ -3,13 +3,17 @@
   functions = "netlify/functions"
   edge_functions = "netlify/edge-functions"
 
-# Credenziali API GME — aggiorna GME_PASSWORD dopo aver cambiato la password
+# Credenziali API GME — aggiornate dopo cambio password GME
 [build.environment]
   GME_USERNAME = "madesrls3274"
-  GME_PASSWORD = "dRwPUb!DqnAki4x!"
+  GME_LOGIN    = "madesrls3274"
+  GME_PASSWORD = "Gioia04052019!"
 
 [functions]
   node_bundler = "esbuild"
+
+[functions."getPunPsv"]
+  timeout = 30
 
 [[edge_functions]]
   path    = "/pun-oggi/"
@@ -41,6 +45,13 @@
   from = "https://www.semplicom.com/*"
   to = "https://semplicom.com/:splat"
   status = 301
+  force = true
+
+# API prezzi energia GME (PUN + PSV)
+[[redirects]]
+  from = "/api/public/pun-psv"
+  to = "/.netlify/functions/getPunPsv"
+  status = 200
   force = true
 
 # Redirect /sitemap → /sitemap.xml (Google Search Console)
