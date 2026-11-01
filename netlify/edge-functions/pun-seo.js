@@ -4,6 +4,7 @@
 // Fonte dati: /.netlify/functions/energy-prices (GME API + energy-charts.info)
 
 export default async (request, context) => {
+  try {
   // Ottieni l'HTML statico dal filesystem
   const response = await context.next();
   if (!response.ok) return response;
@@ -160,6 +161,10 @@ export default async (request, context) => {
     status:  response.status,
     headers: newHeaders,
   });
+  } catch (_) {
+    // Fallback: servi la pagina statica senza modifiche (utile in locale)
+    try { return await context.next(); } catch (_2) { return new Response('', { status: 500 }); }
+  }
 };
 
 export const config = { path: '/pun-oggi/' };
