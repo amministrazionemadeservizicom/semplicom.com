@@ -104,19 +104,24 @@ exports.handler = async (event) => {
         let source = origineLabel ? `origine:${formData.origine}` : null;
 
         if (!origineLabel) {
-            // Flusso normale: verifica JWT
-            const secret = process.env.QUESTIONNAIRE_SECRET;
-            if (!secret) {
-                return { statusCode: 500, headers: CORS_HEADERS, body: JSON.stringify({ error: 'Configurazione mancante' }) };
+            if (token) {
+                // Flusso con token (link email): verifica JWT
+                const secret = process.env.QUESTIONNAIRE_SECRET;
+                if (!secret) {
+                    return { statusCode: 500, headers: CORS_HEADERS, body: JSON.stringify({ error: 'Configurazione mancante' }) };
+                }
+                let tokenData;
+                try {
+                    tokenData = jwt.verify(token, secret);
+                } catch (e) {
+                    return { statusCode: 401, headers: CORS_HEADERS, body: JSON.stringify({ error: 'Link non valido o scaduto. Richiedi un nuovo link.' }) };
+                }
+                requestId = tokenData.requestId;
+                source    = tokenData.source;
+            } else {
+                // Accesso diretto senza token né origine
+                source = 'direct';
             }
-            let tokenData;
-            try {
-                tokenData = jwt.verify(token, secret);
-            } catch (e) {
-                return { statusCode: 401, headers: CORS_HEADERS, body: JSON.stringify({ error: 'Link non valido o scaduto. Richiedi un nuovo link.' }) };
-            }
-            requestId = tokenData.requestId;
-            source    = tokenData.source;
         }
 
         // Validazione campi obbligatori
