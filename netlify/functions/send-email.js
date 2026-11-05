@@ -212,7 +212,7 @@ function sendEdisonLead({ name, phone, email, ip, urlPrivacy }) {
 }
 
 // Piani che identificano richieste da clienti finali — esclusi dal flusso questionario
-const CLIENT_PLANS = new Set(['Offerte Luce e Gas', 'Offerte Energia Automatica', 'Offerte MM']);
+const CLIENT_PLANS = new Set(['Offerte Luce e Gas', 'Offerte Energia Automatica', 'Offerte MM', 'Offerte Luce e Gas Casa']);
 
 // Invia la mail "Completa la registrazione" e salva la richiesta su Firestore.
 // Non reinvia se la stessa email ha già ricevuto il questionario negli ultimi 30 giorni.
@@ -352,8 +352,9 @@ exports.handler = async (event) => {
         const data = JSON.parse(event.body);
         const { name, nome: nomeRaw, cognome: cognomeRaw, email, company, phone, plan, employees, message, privacy, subject: customSubject, formSource, mandato, allegati } = data;
 
-        // Validazione base
-        if (!name || !email || !privacy) {
+        // Validazione base (email facoltativa per il piano "Offerte Luce e Gas Casa")
+        const emailOptional = plan === 'Offerte Luce e Gas Casa';
+        if (!name || (!emailOptional && !email) || !privacy) {
             return {
                 statusCode: 400,
                 body: JSON.stringify({ error: 'Campi obbligatori mancanti' })
@@ -551,6 +552,69 @@ exports.handler = async (event) => {
                     </div>
                 `
             };
+        } else if (plan === 'Offerte Luce e Gas Casa') {
+            // Landing Google Ads — Luce e Gas Privati
+            // Salva consenso in Firestore; email di conferma inviata solo se fornita
+            const now = new Date();
+            const refCode = `PRIV-${now.toISOString().slice(0,10).replace(/-/g,'')}-${Math.random().toString(36).toUpperCase().slice(2,8)}`;
+            const clientIpCasa = event.headers['x-forwarded-for']?.split(',')[0]?.trim()
+                || event.headers['x-nf-client-connection-ip']
+                || '0.0.0.0';
+            const nomeSalvatoCasa   = nomeRaw    || name.split(' ')[0]            || '';
+            const cognomeSalvatoCasa= cognomeRaw || name.split(' ').slice(1).join(' ') || '';
+            const telefonoNormCasa  = (phone || '').replace(/[\s\-\.]/g, '');
+            const dbCasa = getFirestore();
+            if (dbCasa) {
+                try {
+                    await dbCasa.collection('privacy_consents').doc(refCode).set({
+                        privacy_id:      refCode,
+                        nome:            nomeSalvatoCasa.trim(),
+                        cognome:         cognomeSalvatoCasa.trim(),
+                        nome_completo:   `${nomeSalvatoCasa} ${cognomeSalvatoCasa}`.trim(),
+                        email:           email || '',
+                        telefono:        telefonoNormCasa,
+                        data_consenso:   now.toISOString(),
+                        created_at:      now.toISOString(),
+                        fonte:           'semplicom.com/offerte-luce-gas-casa',
+                        fonte_campagna:  'Landing Google Ads \u2013 Luce e Gas Privati',
+                        client_ip:       clientIpCasa,
+                        usato_in_contratto: false,
+                    });
+                    console.log(`\u2705 Privacy consent (casa) salvato: ${refCode} - ${telefonoNormCasa}`);
+                } catch (err) {
+                    console.error('\u274C Firestore save error (casa):', err.message);
+                }
+            }
+            if (email) {
+                const dataFormattata = now.toLocaleString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+                msgToClient = {
+                    to: email,
+                    from: 'noreply@semplicom.com',
+                    subject: 'Abbiamo ricevuto la tua richiesta \u2013 SempliCom',
+                    html: `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#333;">
+                        <div style="text-align:center;padding:24px 0 16px;">
+                            <div style="display:inline-block;background:#f5f5f5;border-radius:8px;padding:12px 24px;">
+                                <img src="https://semplicom.com/assets/img/logo.svg" alt="SempliCom" style="max-height:60px;max-width:220px;">
+                            </div>
+                        </div>
+                        <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 24px;">
+                        <div style="padding:0 24px 24px;">
+                            <p style="font-size:16px;font-weight:bold;margin-bottom:16px;">Ciao ${name.split(' ')[0]},</p>
+                            <p style="margin-bottom:12px;">abbiamo ricevuto la tua richiesta di consulenza per le offerte luce e gas per la casa.</p>
+                            <p style="margin-bottom:24px;">Un nostro consulente ti ricontatterà al numero che hai indicato per analizzare i tuoi consumi e proporti le tariffe più adatte.</p>
+                            <p style="margin-bottom:8px;">Riepilogo:</p>
+                            <p style="margin:0 0 4px;">&#x2022; Codice riferimento: <strong>${refCode}</strong></p>
+                            <p style="margin:0 0 24px;">&#x2022; Data richiesta: <strong>${dataFormattata}</strong></p>
+                            <p style="margin-bottom:4px;">Grazie per la fiducia,</p>
+                            <p style="margin:0;">Il team <span style="color:#D81B60;font-weight:600;">SempliCom</span></p>
+                        </div>
+                        <div style="background:#f9f9f9;padding:16px 24px;font-size:12px;color:#888;text-align:center;">
+                            <p style="margin:0 0 4px;">SempliCom &middot; MADE SRL &middot; Via Martiri della Resistenza 10, 73020 Cavallino (LE)</p>
+                            <p style="margin:0;">Puoi consultare la nostra <a href="https://www.iubenda.com/privacy-policy/59258474" style="color:#D81B60;">Privacy Policy</a> in qualsiasi momento.</p>
+                        </div>
+                    </div>`
+                };
+            }
         } else {
             // Tutti gli altri form — email generica invariata
             msgToClient = {
@@ -573,7 +637,7 @@ exports.handler = async (event) => {
             };
         }
 
-        await sgMail.send(msgToClient);
+        if (msgToClient) await sgMail.send(msgToClient);
 
         return {
             statusCode: 200,

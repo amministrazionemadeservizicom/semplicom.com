@@ -154,6 +154,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- Landing Google Ads — offerte luce e gas per clienti domestici -->
+  <url>
+    <loc>https://semplicom.com/offerte-luce-gas-casa/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
 
   <!-- Vertical pages (new — lastmod 2026-04-14) -->
   <url>
