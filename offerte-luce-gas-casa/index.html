@@ -643,7 +643,7 @@
                 </li>
                 <li><a href="/prezzi.html" class="nav-link">Prezzi</a></li>
                 <li><a href="/faq.html" class="nav-link">FAQ</a></li>
-                <li><a href="/blog/" class="nav-link">Blog</a></li>
+                <li><a href="/blog/" class="nav-link">Blog</a></li><li><a href="/massima-tranquillita/" class="nav-link" style="color:#6C5CE7;font-weight:600;">Massima Tranquillità</a></li>
             </ul>
             <a href="/diventa-partner/" class="btn btn-primary nav-cta">Diventa Partner</a>
         </nav>
@@ -867,33 +867,40 @@
 <section class="lp-prices-section" aria-labelledby="prices-title">
     <div class="lp-prices-inner">
 
-        <p class="lp-section-title" id="prices-title">Prezzi luce e gas novembre 2026:<br>potresti pagare <span style="color:#F2C927;">fino al 50% in meno</span></p>
-        <p class="lp-section-sub">I prezzi all'ingrosso oggi in Italia (fonte GME) — e quanto stai pagando in più se sei ancora nelle tutele</p>
+        <p class="lp-section-title" id="prices-title">Il mercato oscilla ogni mese:<br>con l'offerta giusta <span style="color:#F2C927;">blocchi il prezzo oggi</span></p>
+        <p class="lp-section-sub">PUN e PSV sono i prezzi all'ingrosso variabili che determinano la tua bolletta se sei nelle tutele — con un'offerta a prezzo fisso li blocchi e non rischi rincari</p>
 
-        <!-- Mini widget PUN + PSV -->
-        <div class="lp-market-cards" role="list" aria-label="Prezzi di mercato luce e gas">
-            <a class="lp-market-card" href="/pun-oggi/" aria-label="Vedi andamento PUN energia elettrica">
+        <!-- Mini widget PUN + PSV — framing variabile vs fisso -->
+        <div class="lp-market-cards" role="list" aria-label="Prezzi di mercato variabili luce e gas">
+            <a class="lp-market-card" href="/pun-oggi/" aria-label="Vedi andamento PUN energia elettrica" style="border-color:rgba(248,113,113,.3);">
                 <div class="lp-market-card-icon pun" aria-hidden="true">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fca5a5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                 </div>
                 <div>
-                    <div class="lp-market-card-label">PUN Energia Elettrica</div>
-                    <div class="lp-market-card-value">213,0</div>
-                    <div class="lp-market-card-unit">€/MWh · media ottobre 2026</div>
-                    <span class="lp-market-card-link">Vedi andamento completo &rarr;</span>
+                    <div class="lp-market-card-label" style="color:rgba(252,165,165,.7);">&#9888; PUN Luce — prezzo variabile</div>
+                    <div class="lp-market-card-value" style="color:#fca5a5;">213,0 €/MWh</div>
+                    <div class="lp-market-card-unit">media ottobre 2026 · sale e scende ogni mese</div>
+                    <span class="lp-market-card-link">Vedi andamento storico &rarr;</span>
                 </div>
             </a>
-            <a class="lp-market-card" href="/psv-oggi/" aria-label="Vedi andamento PSV gas naturale">
+            <a class="lp-market-card" href="/psv-oggi/" aria-label="Vedi andamento PSV gas naturale" style="border-color:rgba(248,113,113,.3);">
                 <div class="lp-market-card-icon psv" aria-hidden="true">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6ee7b7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c0 6-8 8-8 14a8 8 0 0 0 16 0c0-6-8-8-8-14z"/></svg>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fca5a5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c0 6-8 8-8 14a8 8 0 0 0 16 0c0-6-8-8-8-14z"/></svg>
                 </div>
                 <div>
-                    <div class="lp-market-card-label">PSV Gas Naturale</div>
-                    <div class="lp-market-card-value">79,0</div>
-                    <div class="lp-market-card-unit">€/MWh · media ottobre 2026</div>
-                    <span class="lp-market-card-link">Vedi andamento completo &rarr;</span>
+                    <div class="lp-market-card-label" style="color:rgba(252,165,165,.7);">&#9888; PSV Gas — prezzo variabile</div>
+                    <div class="lp-market-card-value" style="color:#fca5a5;">79,0 €/MWh</div>
+                    <div class="lp-market-card-unit">media ottobre 2026 · sale e scende ogni mese</div>
+                    <span class="lp-market-card-link">Vedi andamento storico &rarr;</span>
                 </div>
             </a>
+        </div>
+
+        <!-- Freccia verso il basso: da variabile a fisso -->
+        <div style="text-align:center;margin:-8px 0 20px;font-size:.78rem;color:rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;gap:12px;">
+            <span style="flex:1;border-top:1px solid rgba(255,255,255,.08);"></span>
+            <span>&#8595; con un'offerta a prezzo fisso, esci dal rischio mercato</span>
+            <span style="flex:1;border-top:1px solid rgba(255,255,255,.08);"></span>
         </div>
 
         <!-- Tabella comparativa risparmio -->
@@ -928,9 +935,17 @@
                     </tr>
                     <tr>
                         <td class="col-label">&#127775; Componente energia pura (luce)</td>
-                        <td class="col-old">~&#8364;&nbsp;0,22/kWh</td>
-                        <td class="col-new">da &#8364;&nbsp;0,11/kWh</td>
+                        <td class="col-old">~&#8364;&nbsp;0,22/kWh<br><span style="font-size:.7rem;color:rgba(248,113,113,.6);">variabile, segue il PUN</span></td>
+                        <td class="col-new">da &#8364;&nbsp;0,11/kWh<br><span style="font-size:.7rem;color:rgba(74,222,128,.6);">fisso, bloccato</span></td>
                         <td class="col-save">fino al 50%</td>
+                    </tr>
+                    <tr style="border-top:1px solid rgba(255,255,255,.12);">
+                        <td class="col-label" colspan="4" style="padding:10px 16px 6px;">
+                            <span style="font-size:.72rem;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:6px;">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                                Con un'offerta a <strong style="color:rgba(255,255,255,.7);">prezzo fisso</strong> blocchi il costo oggi: se il PUN sale, la tua bolletta non cambia. Il consulente SempliCom ti aiuta a scegliere il momento giusto.
+                            </span>
+                        </td>
                     </tr>
                 </tbody>
             </table>
